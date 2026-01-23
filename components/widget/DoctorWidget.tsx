@@ -5,7 +5,8 @@ import { WidgetTabs } from './WidgetTabs';
 import { WidgetChat } from './WidgetChat';
 import { WidgetVoice } from './WidgetVoice';
 import { WidgetHistory } from './WidgetHistory';
-import { useChat } from '../../hooks/useChat';
+import { useChat } from '@/services/hooks/hookChat';
+
 
 export const DoctorWidget: React.FC<{ onClose: () => void }> = ({ onClose }) => {
   const [activeTab, setActiveTab] = useState<'chat' | 'voice' | 'history'>('chat');

@@ -1,26 +1,27 @@
+import { useChat } from "@/services/hooks/hookChat";
+import React from "react";
 
-import React from 'react';
-import { useChat } from '../../hooks/useChat';
-
-export const WidgetHistory: React.FC<ReturnType<typeof useChat> & { onSelect: () => void }> = ({ 
-  conversations, 
-  selectConversation, 
-  onSelect 
-}) => {
+export const WidgetHistory: React.FC<
+  ReturnType<typeof useChat> & { onSelect: () => void }
+> = ({ conversations, selectConversation, onSelect }) => {
   return (
     <div className="p-4 space-y-4 bg-slate-50 dark:bg-slate-950/20 h-full">
       <div className="flex justify-between items-center mb-2">
-        <h3 className="font-bold text-slate-800 dark:text-white">Recent Consultations</h3>
+        <h3 className="font-bold text-slate-800 dark:text-white">
+          Recent Consultations
+        </h3>
       </div>
-      
+
       {conversations.length === 0 ? (
         <div className="text-center py-12">
-          <span className="material-icons-round text-slate-300 text-5xl mb-2">history</span>
+          <span className="material-icons-round text-slate-300 text-5xl mb-2">
+            history
+          </span>
           <p className="text-sm text-slate-500">No history found.</p>
         </div>
       ) : (
         <div className="space-y-3">
-          {conversations.map(conv => (
+          {conversations.map((conv) => (
             <button
               key={conv.id}
               onClick={() => {

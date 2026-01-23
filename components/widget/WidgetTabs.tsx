@@ -18,13 +18,6 @@ export const WidgetTabs: React.FC<TabsProps> = ({ activeTab, onTabChange }) => {
           <span className="text-[10px] font-bold uppercase tracking-wider">Chat</span>
         </button>
         <button 
-          onClick={() => onTabChange('voice')}
-          className={`flex flex-col items-center gap-1 transition-colors ${activeTab === 'voice' ? 'text-primary' : 'text-slate-400'}`}
-        >
-          <span className="material-icons-round">graphic_eq</span>
-          <span className="text-[10px] font-bold uppercase tracking-wider">Voice</span>
-        </button>
-        <button 
           onClick={() => onTabChange('history')}
           className={`flex flex-col items-center gap-1 transition-colors ${activeTab === 'history' ? 'text-primary' : 'text-slate-400'}`}
         >
