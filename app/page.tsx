@@ -219,7 +219,7 @@ const HomePage: React.FC = () => {
 
       {/* Floating Action Button */}
       {!isWidgetOpen && (
-        <div className="fixed bottom-8 right-8 z-[60]">
+        <div className="fixed bottom-15 right-8 z-[60]">
           <button
             onClick={() => setIsWidgetOpen(true)}
             className="group flex items-center gap-3 bg-primary text-white pl-4 pr-6 py-4 rounded-full shadow-2xl shadow-primary/40 hover:scale-105 transition-all"
@@ -234,6 +234,186 @@ const HomePage: React.FC = () => {
 
       {/* Pop-up Widget */}
       {isWidgetOpen && <DoctorWidget onClose={() => setIsWidgetOpen(false)} />}
+      {/* How it Works */}
+      <section >
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="text-center">
+            <h2 className="text-xl font-extrabold">How it Works</h2>
+            <p className="mt-2 text-sm text-slate-500">
+              Our process is designed to be seamless and straightforward.
+            </p>
+          </div>
+
+          <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-6">
+            {[
+              {
+                step: "1",
+                icon: "edit_note",
+                title: "Input Information",
+                desc: "Enter your symptoms, questions, or context in the chat.",
+              },
+              {
+                step: "2",
+                icon: "psychology",
+                title: "AI Analysis",
+                desc: "Our AI evaluates and references relevant clinical signals.",
+              },
+              {
+                step: "3",
+                icon: "tips_and_updates",
+                title: "Suggested Results",
+                desc: "Get guidance, next steps, and supportive explanations.",
+              },
+            ].map((s) => (
+              <div
+                key={s.title}
+                className="rounded-2xl bg-white border border-slate-200 shadow-sm p-6 text-center"
+              >
+                <div className="mx-auto h-12 w-12 rounded-full bg-[#0F766E]/10 text-[#0F766E] flex items-center justify-center">
+                  <span className="material-icons-round">{s.icon}</span>
+                </div>
+                <div className="mt-4 font-bold">
+                  {s.step}. {s.title}
+                </div>
+                <p className="mt-2 text-sm text-slate-600 leading-relaxed">
+                  {s.desc}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          {/* Smart Applications */}
+          <div className="mt-12 grid lg:grid-cols-2 gap-10 items-center">
+            <div className="relative">
+              <div className="rounded-3xl bg-gradient-to-br from-[#0F766E]/80 to-[#0F766E]/40 p-8 shadow-sm">
+                <div className="h-56 rounded-2xl bg-white/10 border border-white/20 flex items-center justify-center overflow-hidden">
+                  {/* Placeholder illustration */}
+                  <img
+                    className="h-full object-cover"
+                    src="https://images.unsplash.com/photo-1582750433449-648ed127bb54?auto=format&fit=crop&w=1200&q=80"
+                    alt=""
+                  />
+                </div>
+              </div>
+
+              <div className="absolute bottom-4 right-4 rounded-2xl bg-white border border-slate-200 shadow-sm px-4 py-3 flex items-center gap-3">
+                <div className="h-9 w-9 rounded-xl bg-[#0F766E]/10 text-[#0F766E] flex items-center justify-center">
+                  <span className="material-icons-round text-[20px]">
+                    image_search
+                  </span>
+                </div>
+                <div>
+                  <div className="text-sm font-bold leading-none">
+                    Image Recognition
+                  </div>
+                  <div className="text-xs text-slate-500">
+                    Supportive visual checks
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <h3 className="text-2xl font-extrabold">Smart Applications</h3>
+              <div className="mt-5 space-y-4">
+                {[
+                  {
+                    icon: "biotech",
+                    title: "Clinical Image Analysis",
+                    desc: "Upload images for supportive insights and general guidance.",
+                  },
+                  {
+                    icon: "tips_and_updates",
+                    title: "Medical Education Highlights",
+                    desc: "Personalized learning summaries based on symptoms and context.",
+                  },
+                ].map((a) => (
+                  <div
+                    key={a.title}
+                    className="rounded-2xl bg-white border border-slate-200 shadow-sm p-5 flex items-start gap-4"
+                  >
+                    <div className="h-10 w-10 rounded-xl bg-[#0F766E]/10 text-[#0F766E] flex items-center justify-center shrink-0">
+                      <span className="material-icons-round">{a.icon}</span>
+                    </div>
+                    <div>
+                      <div className="font-bold">{a.title}</div>
+                      <div className="mt-1 text-sm text-slate-600 leading-relaxed">
+                        {a.desc}
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Ethics & Privacy */}
+          <div className="mt-12 rounded-3xl bg-white border border-slate-200 shadow-sm p-8">
+            <div className="grid lg:grid-cols-[1fr,220px] gap-8 items-center">
+              <div>
+                <h3 className="text-xl font-extrabold">
+                  Ethics &amp; Privacy Committed
+                </h3>
+                <p className="mt-2 text-sm text-slate-600 max-w-2xl leading-relaxed">
+                  Your health data is secured. We employ privacy-grade
+                  encryption and follow best practices to help ensure your
+                  safety.
+                </p>
+
+                <div className="mt-5 grid sm:grid-cols-2 gap-3 text-sm">
+                  {[
+                    "HIPAA Compliant",
+                    "End-to-end Encryption",
+                    "Bias-Free Algorithms",
+                    "Human-in-the-loop QA",
+                  ].map((t) => (
+                    <div key={t} className="flex items-center gap-2">
+                      <span className="material-icons-round text-[#0F766E] text-[18px]">
+                        check_circle
+                      </span>
+                      <span className="text-slate-700">{t}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="flex justify-center lg:justify-end">
+                <div className="h-32 w-32 rounded-full bg-[#0F766E]/10 flex items-center justify-center">
+                  <div className="h-20 w-20 rounded-full bg-[#0F766E] flex items-center justify-center text-white">
+                    <span className="material-icons-round text-[34px]">
+                      shield
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="mt-16 pb-20">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="text-center">
+            <h2 className="text-2xl font-extrabold">
+              Bắt đầu trải nghiệm AI Trợ Lý Bác Sĩ
+            </h2>
+            <p className="mt-2 text-sm text-slate-500">
+              Gia nhập cộng đồng hơn 10,000+ bác sĩ và sinh viên y khoa đang
+              học hỏi và hỗ trợ mỗi ngày.
+            </p>
+
+            <div className="mt-6 flex justify-center">
+              <button
+                onClick={() => navigate("/chat")}
+                className="h-11 px-7 rounded-full bg-[#2563EB] text-white font-semibold shadow-sm hover:brightness-95 transition"
+              >
+                Trải nghiệm miễn phí ngay bây giờ
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   );
 };

@@ -1,10 +1,11 @@
+import { ArrowLeft, CheckCircle2, KeyRound, Mail } from "lucide-react";
 import React, { useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
-import { Mail, ArrowLeft, KeyRound, CheckCircle2 } from "lucide-react";
 
 import { Button } from "@/components/ui/Button";
 import { TextInput } from "@/components/ui/TextInput";
+import { useUserForgotPassword } from "@/services/hooks/hookAuth";
 
 const ForgotPasswordPage: React.FC = () => {
   const navigate = useNavigate();
@@ -14,8 +15,7 @@ const ForgotPasswordPage: React.FC = () => {
   const [submitted, setSubmitted] = useState(false);
 
   const trimmedEmail = useMemo(() => email.trim(), [email]);
-
-  const apiBase = "https://marie-dod-considers-heavily.trycloudflare.com";
+  const { postUserForgotPassword } = useUserForgotPassword();
 
   const validate = () => {
     if (!trimmedEmail) {
@@ -26,10 +26,7 @@ const ForgotPasswordPage: React.FC = () => {
       toast.error("Email không hợp lệ.");
       return false;
     }
-    if (!apiBase) {
-      toast.error("Thiếu API domain.");
-      return false;
-    }
+
     return true;
   };
 
@@ -39,22 +36,8 @@ const ForgotPasswordPage: React.FC = () => {
 
     setIsLoading(true);
     try {
-      const url = `${apiBase}/auth/forgot-password`;
-      const res = await fetch(url, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email: trimmedEmail }),
-      });
 
-      if (!res.ok) {
-        let detail = "Lỗi gửi email";
-        try {
-          const data = await res.json();
-          detail = data?.detail || detail;
-        } catch {}
-        throw new Error(detail);
-      }
-
+      await postUserForgotPassword({ email: trimmedEmail });
       toast.success(
         "Đã gửi liên kết đặt lại mật khẩu. Vui lòng kiểm tra email.",
       );

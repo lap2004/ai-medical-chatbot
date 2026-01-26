@@ -50,7 +50,6 @@ const LoginPage: React.FC = () => {
       });
 
       const data = res?.data;
-
       if (data?.access_token) {
         // Lưu token
         setAuthCookies(data.access_token, data.refresh_token);
@@ -65,7 +64,7 @@ const LoginPage: React.FC = () => {
           toast.info(
             "Bạn đang sử dụng mật khẩu tạm thời. Vui lòng đổi mật khẩu.",
           );
-          navigate("/change-password");
+          navigate("/reset-password");
           return;
         }
 
