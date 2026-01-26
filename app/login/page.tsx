@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
-import { toast } from "react-toastify";
+import { toast } from "sonner";
 import { Mail, Lock, Stethoscope, Apple, Eye, EyeOff } from "lucide-react";
 
 import { Button } from "@/components/ui/Button";
