@@ -488,3 +488,736 @@ ValueError: 'string' is not a valid language code (accepted language codes: af, 
 2026-01-27 00:09:52 | INFO | Startup completed: admin ensured.
 2026-01-27 00:09:58 | INFO | ✅ Logger initialized (level=INFO, file=logs/app.log)
 2026-01-27 00:09:58 | INFO | Startup completed: admin ensured.
+2026-01-27 11:50:10 | INFO | ✅ Logger initialized (level=INFO, file=logs/app.log)
+2026-01-27 11:50:10 | INFO | Startup completed: admin ensured.
+2026-01-27 11:51:28 | INFO | GET / -> 200 (0.6 ms)
+2026-01-27 11:51:38 | INFO | ✅ Logger initialized (level=INFO, file=logs/app.log)
+2026-01-27 11:51:38 | INFO | Startup completed: admin ensured.
+2026-01-27 11:51:47 | INFO | ✅ Logger initialized (level=INFO, file=logs/app.log)
+2026-01-27 11:51:47 | INFO | Startup completed: admin ensured.
+2026-01-27 11:51:48 | INFO | GET /docs -> 200 (0.5 ms)
+2026-01-27 11:51:48 | INFO | GET /openapi.json -> 200 (29.4 ms)
+2026-01-27 12:00:57 | INFO | POST /login -> 200 (99.8 ms)
+2026-01-27 13:04:28 | INFO | GET /docs -> 200 (2.0 ms)
+2026-01-27 13:04:28 | INFO | GET /openapi.json -> 200 (2.8 ms)
+2026-01-27 13:04:37 | ERROR | chat() failed
+Traceback (most recent call last):
+
+  File "<string>", line 1, in <module>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\multiprocessing\spawn.py", line 122, in spawn_main
+    exitcode = _main(fd, parent_sentinel)
+               │     │   └ 184
+               │     └ 3
+               └ <function _main at 0x000001783690DDA0>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\multiprocessing\spawn.py", line 135, in _main
+    return self._bootstrap(parent_sentinel)
+           │    │          └ 184
+           │    └ <function BaseProcess._bootstrap at 0x0000017836820860>
+           └ <SpawnProcess name='SpawnProcess-3' parent=30336 started>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\multiprocessing\process.py", line 314, in _bootstrap
+    self.run()
+    │    └ <function BaseProcess.run at 0x000001783670BD80>
+    └ <SpawnProcess name='SpawnProcess-3' parent=30336 started>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\multiprocessing\process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+    │    │        │    │        │    └ {'config': <uvicorn.config.Config object at 0x00000178368E6850>, 'target': <bound method Server.run of <uvicorn.server.Server...
+    │    │        │    │        └ <SpawnProcess name='SpawnProcess-3' parent=30336 started>
+    │    │        │    └ ()
+    │    │        └ <SpawnProcess name='SpawnProcess-3' parent=30336 started>
+    │    └ <function subprocess_started at 0x0000017838D16700>
+    └ <SpawnProcess name='SpawnProcess-3' parent=30336 started>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\uvicorn\_subprocess.py", line 80, in subprocess_started
+    target(sockets=sockets)
+    │              └ [<socket.socket fd=616, family=2, type=1, proto=6, laddr=('127.0.1.8', 8000)>]
+    └ <bound method Server.run of <uvicorn.server.Server object at 0x0000017838E92C10>>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\uvicorn\server.py", line 65, in run
+    return asyncio.run(self.serve(sockets=sockets))
+           │       │   │    │             └ [<socket.socket fd=616, family=2, type=1, proto=6, laddr=('127.0.1.8', 8000)>]
+           │       │   │    └ <function Server.serve at 0x0000017838D153A0>
+           │       │   └ <uvicorn.server.Server object at 0x0000017838E92C10>
+           │       └ <function run at 0x0000017838574860>
+           └ <module 'asyncio' from 'C:\\Users\\lapth\\anaconda3\\envs\\aibacsi\\Lib\\asyncio\\__init__.py'>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\asyncio\runners.py", line 190, in run
+    return runner.run(main)
+           │      │   └ <coroutine object Server.serve at 0x0000017838DDBD30>
+           │      └ <function Runner.run at 0x0000017838578A40>
+           └ <asyncio.runners.Runner object at 0x0000017838E92550>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\asyncio\runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           │    │     │                  └ <Task pending name='Task-1' coro=<Server.serve() running at C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\uvicorn\s...
+           │    │     └ <function BaseEventLoop.run_until_complete at 0x0000017838576660>
+           │    └ <_WindowsSelectorEventLoop running=True closed=False debug=False>
+           └ <asyncio.runners.Runner object at 0x0000017838E92550>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\asyncio\base_events.py", line 641, in run_until_complete
+    self.run_forever()
+    │    └ <function BaseEventLoop.run_forever at 0x00000178385765C0>
+    └ <_WindowsSelectorEventLoop running=True closed=False debug=False>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\asyncio\base_events.py", line 608, in run_forever
+    self._run_once()
+    │    └ <function BaseEventLoop._run_once at 0x0000017838578400>
+    └ <_WindowsSelectorEventLoop running=True closed=False debug=False>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\asyncio\base_events.py", line 1936, in _run_once
+    handle._run()
+    │      └ <function Handle._run at 0x00000178384BE840>
+    └ <Handle Task.task_wakeup(<Future finished result=None>)>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\asyncio\events.py", line 84, in _run
+    self._context.run(self._callback, *self._args)
+    │    │            │    │           │    └ <member '_args' of 'Handle' objects>
+    │    │            │    │           └ <Handle Task.task_wakeup(<Future finished result=None>)>
+    │    │            │    └ <member '_callback' of 'Handle' objects>
+    │    │            └ <Handle Task.task_wakeup(<Future finished result=None>)>
+    │    └ <member '_context' of 'Handle' objects>
+    └ <Handle Task.task_wakeup(<Future finished result=None>)>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\starlette\middleware\base.py", line 149, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+          │    │   │      │                      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.send_no_error at 0x000001785E547240>
+          │    │   │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x000001785E547BA0>
+          │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.1.8', 8000), 'cl...
+          │    └ <starlette.middleware.exceptions.ExceptionMiddleware object at 0x000001785DFCEAD0>
+          └ <app.middleware.log_request.RequestLogMiddleware object at 0x000001783903FDD0>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+          │                            │    │    │     │      │        └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.send_no_error at 0x000001785E547240>
+          │                            │    │    │     │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x000001785E547BA0>
+          │                            │    │    │     └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.1.8', 8000), 'cl...
+          │                            │    │    └ <starlette.requests.Request object at 0x000001785E54E5D0>
+          │                            │    └ <fastapi.routing.APIRouter object at 0x000001785E46EDD0>
+          │                            └ <starlette.middleware.exceptions.ExceptionMiddleware object at 0x000001785DFCEAD0>
+          └ <function wrap_app_handling_exceptions at 0x000001783AF499E0>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\starlette\_exception_handler.py", line 51, in wrapped_app
+    await app(scope, receive, sender)
+          │   │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x000001785E547420>
+          │   │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x000001785E547BA0>
+          │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.1.8', 8000), 'cl...
+          └ <fastapi.routing.APIRouter object at 0x000001785E46EDD0>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\starlette\routing.py", line 715, in __call__
+    await self.middleware_stack(scope, receive, send)
+          │    │                │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x000001785E547420>
+          │    │                │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x000001785E547BA0>
+          │    │                └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.1.8', 8000), 'cl...
+          │    └ <bound method Router.app of <fastapi.routing.APIRouter object at 0x000001785E46EDD0>>
+          └ <fastapi.routing.APIRouter object at 0x000001785E46EDD0>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\starlette\routing.py", line 735, in app
+    await route.handle(scope, receive, send)
+          │     │      │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x000001785E547420>
+          │     │      │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x000001785E547BA0>
+          │     │      └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.1.8', 8000), 'cl...
+          │     └ <function Route.handle at 0x000001783AF4B1A0>
+          └ APIRoute(path='/chat', name='chat', methods=['POST'])
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\starlette\routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+          │    │   │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x000001785E547420>
+          │    │   │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x000001785E547BA0>
+          │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.1.8', 8000), 'cl...
+          │    └ <function request_response.<locals>.app at 0x000001785E49C900>
+          └ APIRoute(path='/chat', name='chat', methods=['POST'])
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\starlette\routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+          │                            │    │        │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x000001785E547420>
+          │                            │    │        │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x000001785E547BA0>
+          │                            │    │        └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.1.8', 8000), 'cl...
+          │                            │    └ <starlette.requests.Request object at 0x000001785E6C7810>
+          │                            └ <function request_response.<locals>.app.<locals>.app at 0x000001785E5474C0>
+          └ <function wrap_app_handling_exceptions at 0x000001783AF499E0>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\starlette\_exception_handler.py", line 51, in wrapped_app
+    await app(scope, receive, sender)
+          │   │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x000001785E547E20>
+          │   │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x000001785E547BA0>
+          │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.1.8', 8000), 'cl...
+          └ <function request_response.<locals>.app.<locals>.app at 0x000001785E5474C0>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\starlette\routing.py", line 73, in app
+    response = await f(request)
+                     │ └ <starlette.requests.Request object at 0x000001785E6C7810>
+                     └ <function get_request_handler.<locals>.app at 0x000001785E49C9A0>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\fastapi\routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+                         └ <function run_endpoint_function at 0x00000178366A7740>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\fastapi\routing.py", line 212, in run_endpoint_function
+    return await dependant.call(**values)
+                 │         │      └ {'db': <sqlalchemy.orm.session.AsyncSession object at 0x000001785E6C7F90>, 'req': ChatRequest(question='chơi cờ không', user_...
+                 │         └ <function chat at 0x000001783C003E20>
+                 └ Dependant(path_params=[], query_params=[], header_params=[], cookie_params=[], body_params=[ModelField(field_info=Body(Pydant...
+
+> File "E:\KLTN\chatbot\backend\app\routers\chat.py", line 30, in chat
+    resp = await handle_chat_request(req, db)
+                 │                   │    └ <sqlalchemy.orm.session.AsyncSession object at 0x000001785E6C7F90>
+                 │                   └ ChatRequest(question='chơi cờ không', user_id='6606f37d-a69a-4319-9028-c3e9d34c02ca')
+                 └ <function handle_chat_request at 0x000001783C0B9080>
+
+  File "E:\KLTN\chatbot\backend\app\services\chat_service.py", line 40, in handle_chat_request
+    contexts = [RetrievedContext(**c) for c in (out.get("contexts") or [])]
+                │                               └ <coroutine object run at 0x000001785E6BD8A0>
+                └ <class 'db.schemas.chat_schema.RetrievedContext'>
+
+AttributeError: 'coroutine' object has no attribute 'get'
+2026-01-27 13:04:37 | INFO | POST /chat -> 500 (34.7 ms)
+2026-01-27 13:05:33 | INFO | ✅ Logger initialized (level=INFO, file=logs/app.log)
+2026-01-27 13:05:33 | INFO | Startup completed: admin ensured.
+2026-01-27 13:05:39 | INFO | ✅ Logger initialized (level=INFO, file=logs/app.log)
+2026-01-27 13:05:39 | INFO | Startup completed: admin ensured.
+2026-01-27 13:05:39 | ERROR | chat() failed
+Traceback (most recent call last):
+
+  File "<string>", line 1, in <module>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\multiprocessing\spawn.py", line 122, in spawn_main
+    exitcode = _main(fd, parent_sentinel)
+               │     │   └ 188
+               │     └ 3
+               └ <function _main at 0x000001FC220FDDA0>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\multiprocessing\spawn.py", line 135, in _main
+    return self._bootstrap(parent_sentinel)
+           │    │          └ 188
+           │    └ <function BaseProcess._bootstrap at 0x000001FC22010860>
+           └ <SpawnProcess name='SpawnProcess-5' parent=30336 started>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\multiprocessing\process.py", line 314, in _bootstrap
+    self.run()
+    │    └ <function BaseProcess.run at 0x000001FC21EFBD80>
+    └ <SpawnProcess name='SpawnProcess-5' parent=30336 started>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\multiprocessing\process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+    │    │        │    │        │    └ {'config': <uvicorn.config.Config object at 0x000001FC220D6850>, 'target': <bound method Server.run of <uvicorn.server.Server...
+    │    │        │    │        └ <SpawnProcess name='SpawnProcess-5' parent=30336 started>
+    │    │        │    └ ()
+    │    │        └ <SpawnProcess name='SpawnProcess-5' parent=30336 started>
+    │    └ <function subprocess_started at 0x000001FC244D6700>
+    └ <SpawnProcess name='SpawnProcess-5' parent=30336 started>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\uvicorn\_subprocess.py", line 80, in subprocess_started
+    target(sockets=sockets)
+    │              └ [<socket.socket fd=356, family=2, type=1, proto=6, laddr=('127.0.1.8', 8000)>]
+    └ <bound method Server.run of <uvicorn.server.Server object at 0x000001FC24652C10>>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\uvicorn\server.py", line 65, in run
+    return asyncio.run(self.serve(sockets=sockets))
+           │       │   │    │             └ [<socket.socket fd=356, family=2, type=1, proto=6, laddr=('127.0.1.8', 8000)>]
+           │       │   │    └ <function Server.serve at 0x000001FC244D53A0>
+           │       │   └ <uvicorn.server.Server object at 0x000001FC24652C10>
+           │       └ <function run at 0x000001FC23D54860>
+           └ <module 'asyncio' from 'C:\\Users\\lapth\\anaconda3\\envs\\aibacsi\\Lib\\asyncio\\__init__.py'>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\asyncio\runners.py", line 190, in run
+    return runner.run(main)
+           │      │   └ <coroutine object Server.serve at 0x000001FC2459BD30>
+           │      └ <function Runner.run at 0x000001FC23D58A40>
+           └ <asyncio.runners.Runner object at 0x000001FC24652550>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\asyncio\runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           │    │     │                  └ <Task pending name='Task-1' coro=<Server.serve() running at C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\uvicorn\s...
+           │    │     └ <function BaseEventLoop.run_until_complete at 0x000001FC23D56660>
+           │    └ <_WindowsSelectorEventLoop running=True closed=False debug=False>
+           └ <asyncio.runners.Runner object at 0x000001FC24652550>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\asyncio\base_events.py", line 641, in run_until_complete
+    self.run_forever()
+    │    └ <function BaseEventLoop.run_forever at 0x000001FC23D565C0>
+    └ <_WindowsSelectorEventLoop running=True closed=False debug=False>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\asyncio\base_events.py", line 608, in run_forever
+    self._run_once()
+    │    └ <function BaseEventLoop._run_once at 0x000001FC23D58400>
+    └ <_WindowsSelectorEventLoop running=True closed=False debug=False>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\asyncio\base_events.py", line 1936, in _run_once
+    handle._run()
+    │      └ <function Handle._run at 0x000001FC23C9E840>
+    └ <Handle Task.task_wakeup(<Future finished result=None>)>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\asyncio\events.py", line 84, in _run
+    self._context.run(self._callback, *self._args)
+    │    │            │    │           │    └ <member '_args' of 'Handle' objects>
+    │    │            │    │           └ <Handle Task.task_wakeup(<Future finished result=None>)>
+    │    │            │    └ <member '_callback' of 'Handle' objects>
+    │    │            └ <Handle Task.task_wakeup(<Future finished result=None>)>
+    │    └ <member '_context' of 'Handle' objects>
+    └ <Handle Task.task_wakeup(<Future finished result=None>)>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\starlette\middleware\base.py", line 149, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+          │    │   │      │                      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.send_no_error at 0x000001FC49D04B80>
+          │    │   │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x000001FC49CC1EE0>
+          │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.1.8', 8000), 'cl...
+          │    └ <starlette.middleware.exceptions.ExceptionMiddleware object at 0x000001FC49BFAA50>
+          └ <app.middleware.log_request.RequestLogMiddleware object at 0x000001FC49C83010>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+          │                            │    │    │     │      │        └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.send_no_error at 0x000001FC49D04B80>
+          │                            │    │    │     │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x000001FC49CC1EE0>
+          │                            │    │    │     └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.1.8', 8000), 'cl...
+          │                            │    │    └ <starlette.requests.Request object at 0x000001FC49C2D1D0>
+          │                            │    └ <fastapi.routing.APIRouter object at 0x000001FC49C2DE50>
+          │                            └ <starlette.middleware.exceptions.ExceptionMiddleware object at 0x000001FC49BFAA50>
+          └ <function wrap_app_handling_exceptions at 0x000001FC267099E0>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\starlette\_exception_handler.py", line 51, in wrapped_app
+    await app(scope, receive, sender)
+          │   │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x000001FC49D174C0>
+          │   │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x000001FC49CC1EE0>
+          │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.1.8', 8000), 'cl...
+          └ <fastapi.routing.APIRouter object at 0x000001FC49C2DE50>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\starlette\routing.py", line 715, in __call__
+    await self.middleware_stack(scope, receive, send)
+          │    │                │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x000001FC49D174C0>
+          │    │                │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x000001FC49CC1EE0>
+          │    │                └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.1.8', 8000), 'cl...
+          │    └ <bound method Router.app of <fastapi.routing.APIRouter object at 0x000001FC49C2DE50>>
+          └ <fastapi.routing.APIRouter object at 0x000001FC49C2DE50>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\starlette\routing.py", line 735, in app
+    await route.handle(scope, receive, send)
+          │     │      │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x000001FC49D174C0>
+          │     │      │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x000001FC49CC1EE0>
+          │     │      └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.1.8', 8000), 'cl...
+          │     └ <function Route.handle at 0x000001FC2670B1A0>
+          └ APIRoute(path='/chat', name='chat', methods=['POST'])
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\starlette\routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+          │    │   │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x000001FC49D174C0>
+          │    │   │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x000001FC49CC1EE0>
+          │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.1.8', 8000), 'cl...
+          │    └ <function request_response.<locals>.app at 0x000001FC49C70900>
+          └ APIRoute(path='/chat', name='chat', methods=['POST'])
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\starlette\routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+          │                            │    │        │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x000001FC49D174C0>
+          │                            │    │        │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x000001FC49CC1EE0>
+          │                            │    │        └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.1.8', 8000), 'cl...
+          │                            │    └ <starlette.requests.Request object at 0x000001FC49BF9950>
+          │                            └ <function request_response.<locals>.app.<locals>.app at 0x000001FC49D17560>
+          └ <function wrap_app_handling_exceptions at 0x000001FC267099E0>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\starlette\_exception_handler.py", line 51, in wrapped_app
+    await app(scope, receive, sender)
+          │   │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x000001FC49D176A0>
+          │   │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x000001FC49CC1EE0>
+          │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.1.8', 8000), 'cl...
+          └ <function request_response.<locals>.app.<locals>.app at 0x000001FC49D17560>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\starlette\routing.py", line 73, in app
+    response = await f(request)
+                     │ └ <starlette.requests.Request object at 0x000001FC49BF9950>
+                     └ <function get_request_handler.<locals>.app at 0x000001FC49C709A0>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\fastapi\routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+                         └ <function run_endpoint_function at 0x000001FC21E97740>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\fastapi\routing.py", line 212, in run_endpoint_function
+    return await dependant.call(**values)
+                 │         │      └ {'db': <sqlalchemy.orm.session.AsyncSession object at 0x000001FC49D12ED0>, 'req': ChatRequest(question='chơi cờ không', user_...
+                 │         └ <function chat at 0x000001FC277C3E20>
+                 └ Dependant(path_params=[], query_params=[], header_params=[], cookie_params=[], body_params=[ModelField(field_info=Body(Pydant...
+
+> File "E:\KLTN\chatbot\backend\app\routers\chat.py", line 30, in chat
+    resp = await handle_chat_request(req, db)
+                 │                   │    └ <sqlalchemy.orm.session.AsyncSession object at 0x000001FC49D12ED0>
+                 │                   └ ChatRequest(question='chơi cờ không', user_id='6606f37d-a69a-4319-9028-c3e9d34c02ca')
+                 └ <function handle_chat_request at 0x000001FC27879080>
+
+  File "E:\KLTN\chatbot\backend\app\services\chat_service.py", line 40, in handle_chat_request
+    contexts = [RetrievedContext(**c) for c in (out.get("contexts") or [])]
+                │                               └ <coroutine object run at 0x000001FC49CD8D60>
+                └ <class 'db.schemas.chat_schema.RetrievedContext'>
+
+AttributeError: 'coroutine' object has no attribute 'get'
+2026-01-27 13:05:39 | INFO | POST /chat -> 500 (16.6 ms)
+2026-01-27 13:10:40 | INFO | ✅ Logger initialized (level=INFO, file=logs/app.log)
+2026-01-27 13:10:40 | INFO | Startup completed: admin ensured.
+2026-01-27 14:06:41 | INFO | Loading query embedding model: BAAI/bge-m3
+2026-01-27 14:06:57 | INFO | POST /chat -> 200 (20704.6 ms)
+2026-01-27 21:42:58 | INFO | ✅ Logger initialized (level=INFO, file=logs/app.log)
+2026-01-27 21:42:58 | INFO | Startup completed: admin ensured.
+2026-01-27 21:44:02 | INFO | ✅ Logger initialized (level=INFO, file=logs/app.log)
+2026-01-27 21:44:02 | INFO | Startup completed: admin ensured.
+2026-01-27 21:44:08 | INFO | ✅ Logger initialized (level=INFO, file=logs/app.log)
+2026-01-27 21:44:08 | INFO | Startup completed: admin ensured.
+2026-01-27 21:44:09 | INFO | GET / -> 200 (0.5 ms)
+2026-01-27 21:44:10 | INFO | POST /login -> 401 (74.2 ms)
+2026-01-27 21:44:18 | INFO | POST /login -> 401 (2.7 ms)
+2026-01-27 21:44:25 | INFO | POST /login -> 200 (13.8 ms)
+2026-01-27 21:48:30 | INFO | Loading query embedding model: BAAI/bge-m3
+2026-01-27 21:48:44 | INFO | POST /chat -> 200 (20648.0 ms)
+2026-01-27 21:49:20 | INFO | POST /chat -> 200 (3737.9 ms)
+2026-01-27 21:49:26 | INFO | POST /chat -> 400 (1.0 ms)
+2026-01-27 21:50:04 | INFO | POST /chat -> 200 (11391.5 ms)
+2026-01-27 21:50:10 | INFO | POST /chat -> 200 (5067.5 ms)
+2026-01-27 21:50:20 | INFO | POST /chat -> 200 (4459.6 ms)
+2026-01-27 21:58:32 | INFO | GET / -> 200 (0.4 ms)
+2026-01-27 21:58:36 | INFO | GET /favicon.ico -> 404 (0.7 ms)
+2026-01-27 21:58:36 | INFO | GET /docs -> 200 (0.6 ms)
+2026-01-27 21:58:36 | INFO | GET /openapi.json -> 200 (27.5 ms)
+2026-01-27 21:58:49 | INFO | GET /voice/ffmpeg_check -> 200 (17.7 ms)
+2026-01-27 22:29:21 | INFO | ✅ Logger initialized (level=INFO, file=logs/app.log)
+2026-01-27 22:29:21 | INFO | Startup completed: admin ensured.
+2026-01-27 22:29:34 | INFO | POST /login -> 200 (94.0 ms)
+2026-01-27 22:33:52 | INFO | POST /login -> 200 (3.1 ms)
+2026-01-27 22:39:49 | INFO | POST /login -> 200 (3.3 ms)
+2026-01-27 22:40:28 | INFO | POST /chat -> 422 (4.5 ms)
+2026-01-27 22:40:42 | INFO | Loading query embedding model: BAAI/bge-m3
+2026-01-27 22:40:52 | INFO | POST /chat -> 200 (15243.0 ms)
+2026-01-28 00:29:24 | INFO | ✅ Logger initialized (level=INFO, file=logs/app.log)
+2026-01-28 00:29:24 | INFO | Startup completed: admin ensured.
+2026-01-28 00:30:36 | INFO | ✅ Logger initialized (level=INFO, file=logs/app.log)
+2026-01-28 00:30:36 | INFO | Startup completed: admin ensured.
+2026-01-28 00:30:36 | INFO | POST /login -> 200 (103.1 ms)
+2026-01-28 00:30:44 | INFO | POST /chat -> 400 (4.8 ms)
+2026-01-28 00:31:43 | INFO | Loading query embedding model: BAAI/bge-m3
+2026-01-28 00:31:53 | INFO | POST /chat -> 200 (14606.2 ms)
+2026-01-28 00:33:39 | INFO | POST /chat -> 200 (2834.1 ms)
+2026-01-28 00:34:20 | INFO | POST /signup -> 201 (18.8 ms)
+2026-01-28 00:34:26 | INFO | POST /login -> 200 (2.8 ms)
+2026-01-28 00:39:27 | INFO | POST /chat -> 200 (3442.3 ms)
+2026-01-28 00:47:05 | INFO | ✅ Logger initialized (level=INFO, file=logs/app.log)
+2026-01-28 00:47:05 | INFO | Startup completed: admin ensured.
+2026-01-28 00:52:04 | INFO | ✅ Logger initialized (level=INFO, file=logs/app.log)
+2026-01-28 00:52:04 | INFO | Startup completed: admin ensured.
+2026-01-28 00:52:11 | INFO | ✅ Logger initialized (level=INFO, file=logs/app.log)
+2026-01-28 00:52:11 | INFO | Startup completed: admin ensured.
+2026-01-28 00:55:47 | INFO | ✅ Logger initialized (level=INFO, file=logs/app.log)
+2026-01-28 00:55:48 | INFO | Startup completed: admin ensured.
+2026-01-28 00:55:54 | INFO | ✅ Logger initialized (level=INFO, file=logs/app.log)
+2026-01-28 00:55:54 | INFO | Startup completed: admin ensured.
+2026-01-28 00:56:07 | INFO | ✅ Logger initialized (level=INFO, file=logs/app.log)
+2026-01-28 00:56:07 | INFO | Startup completed: admin ensured.
+2026-01-28 00:56:40 | INFO | POST /login -> 200 (88.8 ms)
+2026-01-28 00:56:51 | ERROR | chat() failed
+Traceback (most recent call last):
+
+  File "<string>", line 1, in <module>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\multiprocessing\spawn.py", line 122, in spawn_main
+    exitcode = _main(fd, parent_sentinel)
+               │     │   └ 200
+               │     └ 3
+               └ <function _main at 0x000001C8DB0CDDA0>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\multiprocessing\spawn.py", line 135, in _main
+    return self._bootstrap(parent_sentinel)
+           │    │          └ 200
+           │    └ <function BaseProcess._bootstrap at 0x000001C8DAFE0860>
+           └ <SpawnProcess name='SpawnProcess-1' parent=26244 started>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\multiprocessing\process.py", line 314, in _bootstrap
+    self.run()
+    │    └ <function BaseProcess.run at 0x000001C8DADCBD80>
+    └ <SpawnProcess name='SpawnProcess-1' parent=26244 started>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\multiprocessing\process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+    │    │        │    │        │    └ {'config': <uvicorn.config.Config object at 0x000001C8DB0A6750>, 'target': <bound method Server.run of <uvicorn.server.Server...
+    │    │        │    │        └ <SpawnProcess name='SpawnProcess-1' parent=26244 started>
+    │    │        │    └ ()
+    │    │        └ <SpawnProcess name='SpawnProcess-1' parent=26244 started>
+    │    └ <function subprocess_started at 0x000001C8DD482700>
+    └ <SpawnProcess name='SpawnProcess-1' parent=26244 started>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\uvicorn\_subprocess.py", line 80, in subprocess_started
+    target(sockets=sockets)
+    │              └ [<socket.socket fd=780, family=2, type=1, proto=6, laddr=('127.0.1.8', 8000)>]
+    └ <bound method Server.run of <uvicorn.server.Server object at 0x000001C8DD5F2A90>>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\uvicorn\server.py", line 65, in run
+    return asyncio.run(self.serve(sockets=sockets))
+           │       │   │    │             └ [<socket.socket fd=780, family=2, type=1, proto=6, laddr=('127.0.1.8', 8000)>]
+           │       │   │    └ <function Server.serve at 0x000001C8DD4813A0>
+           │       │   └ <uvicorn.server.Server object at 0x000001C8DD5F2A90>
+           │       └ <function run at 0x000001C8DCD24860>
+           └ <module 'asyncio' from 'C:\\Users\\lapth\\anaconda3\\envs\\aibacsi\\Lib\\asyncio\\__init__.py'>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\asyncio\runners.py", line 190, in run
+    return runner.run(main)
+           │      │   └ <coroutine object Server.serve at 0x000001C8DD53BD30>
+           │      └ <function Runner.run at 0x000001C8DCD28A40>
+           └ <asyncio.runners.Runner object at 0x000001C8DD5F22D0>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\asyncio\runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           │    │     │                  └ <Task pending name='Task-1' coro=<Server.serve() running at C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\uvicorn\s...
+           │    │     └ <function BaseEventLoop.run_until_complete at 0x000001C8DCD26660>
+           │    └ <_WindowsSelectorEventLoop running=True closed=False debug=False>
+           └ <asyncio.runners.Runner object at 0x000001C8DD5F22D0>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\asyncio\base_events.py", line 641, in run_until_complete
+    self.run_forever()
+    │    └ <function BaseEventLoop.run_forever at 0x000001C8DCD265C0>
+    └ <_WindowsSelectorEventLoop running=True closed=False debug=False>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\asyncio\base_events.py", line 608, in run_forever
+    self._run_once()
+    │    └ <function BaseEventLoop._run_once at 0x000001C8DCD28400>
+    └ <_WindowsSelectorEventLoop running=True closed=False debug=False>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\asyncio\base_events.py", line 1936, in _run_once
+    handle._run()
+    │      └ <function Handle._run at 0x000001C8DCC6E840>
+    └ <Handle Task.task_wakeup(<Future finished result=None>)>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\asyncio\events.py", line 84, in _run
+    self._context.run(self._callback, *self._args)
+    │    │            │    │           │    └ <member '_args' of 'Handle' objects>
+    │    │            │    │           └ <Handle Task.task_wakeup(<Future finished result=None>)>
+    │    │            │    └ <member '_callback' of 'Handle' objects>
+    │    │            └ <Handle Task.task_wakeup(<Future finished result=None>)>
+    │    └ <member '_context' of 'Handle' objects>
+    └ <Handle Task.task_wakeup(<Future finished result=None>)>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\starlette\middleware\base.py", line 149, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+          │    │   │      │                      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.send_no_error at 0x000001C882DA22A0>
+          │    │   │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x000001C882D54680>
+          │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.1.8', 8000), 'cl...
+          │    └ <starlette.middleware.exceptions.ExceptionMiddleware object at 0x000001C882CD1FD0>
+          └ <app.middleware.log_request.RequestLogMiddleware object at 0x000001C882C75510>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+          │                            │    │    │     │      │        └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.send_no_error at 0x000001C882DA22A0>
+          │                            │    │    │     │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x000001C882D54680>
+          │                            │    │    │     └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.1.8', 8000), 'cl...
+          │                            │    │    └ <starlette.requests.Request object at 0x000001C882ED3790>
+          │                            │    └ <fastapi.routing.APIRouter object at 0x000001C882729D10>
+          │                            └ <starlette.middleware.exceptions.ExceptionMiddleware object at 0x000001C882CD1FD0>
+          └ <function wrap_app_handling_exceptions at 0x000001C8DF6699E0>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\starlette\_exception_handler.py", line 51, in wrapped_app
+    await app(scope, receive, sender)
+          │   │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x000001C882DA2200>
+          │   │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x000001C882D54680>
+          │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.1.8', 8000), 'cl...
+          └ <fastapi.routing.APIRouter object at 0x000001C882729D10>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\starlette\routing.py", line 715, in __call__
+    await self.middleware_stack(scope, receive, send)
+          │    │                │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x000001C882DA2200>
+          │    │                │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x000001C882D54680>
+          │    │                └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.1.8', 8000), 'cl...
+          │    └ <bound method Router.app of <fastapi.routing.APIRouter object at 0x000001C882729D10>>
+          └ <fastapi.routing.APIRouter object at 0x000001C882729D10>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\starlette\routing.py", line 735, in app
+    await route.handle(scope, receive, send)
+          │     │      │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x000001C882DA2200>
+          │     │      │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x000001C882D54680>
+          │     │      └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.1.8', 8000), 'cl...
+          │     └ <function Route.handle at 0x000001C8DF66B1A0>
+          └ APIRoute(path='/chat', name='chat', methods=['POST'])
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\starlette\routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+          │    │   │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x000001C882DA2200>
+          │    │   │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x000001C882D54680>
+          │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.1.8', 8000), 'cl...
+          │    └ <function request_response.<locals>.app at 0x000001C882CECD60>
+          └ APIRoute(path='/chat', name='chat', methods=['POST'])
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\starlette\routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+          │                            │    │        │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x000001C882DA2200>
+          │                            │    │        │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x000001C882D54680>
+          │                            │    │        └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.1.8', 8000), 'cl...
+          │                            │    └ <starlette.requests.Request object at 0x000001C882ED3850>
+          │                            └ <function request_response.<locals>.app.<locals>.app at 0x000001C882DA1DA0>
+          └ <function wrap_app_handling_exceptions at 0x000001C8DF6699E0>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\starlette\_exception_handler.py", line 51, in wrapped_app
+    await app(scope, receive, sender)
+          │   │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x000001C882DA1EE0>
+          │   │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x000001C882D54680>
+          │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.1.8', 8000), 'cl...
+          └ <function request_response.<locals>.app.<locals>.app at 0x000001C882DA1DA0>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\starlette\routing.py", line 73, in app
+    response = await f(request)
+                     │ └ <starlette.requests.Request object at 0x000001C882ED3850>
+                     └ <function get_request_handler.<locals>.app at 0x000001C882CECE00>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\fastapi\routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+                         └ <function run_endpoint_function at 0x000001C8DAD67740>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\fastapi\routing.py", line 212, in run_endpoint_function
+    return await dependant.call(**values)
+                 │         │      └ {'db': <sqlalchemy.orm.session.AsyncSession object at 0x000001C882EDC050>, 'req': ChatRequest(question='hi lo')}
+                 │         └ <function chat at 0x000001C8E0723F60>
+                 └ Dependant(path_params=[], query_params=[], header_params=[], cookie_params=[], body_params=[ModelField(field_info=Body(Pydant...
+
+> File "E:\KLTN\chatbot\backend\app\routers\chat.py", line 30, in chat
+    resp = await handle_chat_request(req, db)
+                 │                   │    └ <sqlalchemy.orm.session.AsyncSession object at 0x000001C882EDC050>
+                 │                   └ ChatRequest(question='hi lo')
+                 └ <function handle_chat_request at 0x000001C8E07DCF40>
+
+TypeError: handle_chat_request() missing 1 required positional argument: 'current_user'
+2026-01-28 00:56:51 | INFO | POST /chat -> 500 (13.1 ms)
+2026-01-28 00:59:46 | INFO | ✅ Logger initialized (level=INFO, file=logs/app.log)
+2026-01-28 00:59:46 | INFO | Startup completed: admin ensured.
+2026-01-28 01:00:00 | INFO | Loading query embedding model: BAAI/bge-m3
+2026-01-28 01:00:14 | ERROR | chat() failed
+Traceback (most recent call last):
+
+  File "<string>", line 1, in <module>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\multiprocessing\spawn.py", line 122, in spawn_main
+    exitcode = _main(fd, parent_sentinel)
+               │     │   └ 200
+               │     └ 3
+               └ <function _main at 0x0000029D9EC2DDA0>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\multiprocessing\spawn.py", line 135, in _main
+    return self._bootstrap(parent_sentinel)
+           │    │          └ 200
+           │    └ <function BaseProcess._bootstrap at 0x0000029D9EB40860>
+           └ <SpawnProcess name='SpawnProcess-4' parent=26244 started>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\multiprocessing\process.py", line 314, in _bootstrap
+    self.run()
+    │    └ <function BaseProcess.run at 0x0000029D9EA2BD80>
+    └ <SpawnProcess name='SpawnProcess-4' parent=26244 started>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\multiprocessing\process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+    │    │        │    │        │    └ {'config': <uvicorn.config.Config object at 0x0000029D9EC06750>, 'target': <bound method Server.run of <uvicorn.server.Server...
+    │    │        │    │        └ <SpawnProcess name='SpawnProcess-4' parent=26244 started>
+    │    │        │    └ ()
+    │    │        └ <SpawnProcess name='SpawnProcess-4' parent=26244 started>
+    │    └ <function subprocess_started at 0x0000029DA10A2700>
+    └ <SpawnProcess name='SpawnProcess-4' parent=26244 started>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\uvicorn\_subprocess.py", line 80, in subprocess_started
+    target(sockets=sockets)
+    │              └ [<socket.socket fd=768, family=2, type=1, proto=6, laddr=('127.0.1.8', 8000)>]
+    └ <bound method Server.run of <uvicorn.server.Server object at 0x0000029DA1212A90>>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\uvicorn\server.py", line 65, in run
+    return asyncio.run(self.serve(sockets=sockets))
+           │       │   │    │             └ [<socket.socket fd=768, family=2, type=1, proto=6, laddr=('127.0.1.8', 8000)>]
+           │       │   │    └ <function Server.serve at 0x0000029DA10A13A0>
+           │       │   └ <uvicorn.server.Server object at 0x0000029DA1212A90>
+           │       └ <function run at 0x0000029DA0944860>
+           └ <module 'asyncio' from 'C:\\Users\\lapth\\anaconda3\\envs\\aibacsi\\Lib\\asyncio\\__init__.py'>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\asyncio\runners.py", line 190, in run
+    return runner.run(main)
+           │      │   └ <coroutine object Server.serve at 0x0000029DA115BD30>
+           │      └ <function Runner.run at 0x0000029DA0948A40>
+           └ <asyncio.runners.Runner object at 0x0000029DA12122D0>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\asyncio\runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           │    │     │                  └ <Task pending name='Task-1' coro=<Server.serve() running at C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\uvicorn\s...
+           │    │     └ <function BaseEventLoop.run_until_complete at 0x0000029DA0946660>
+           │    └ <_WindowsSelectorEventLoop running=True closed=False debug=False>
+           └ <asyncio.runners.Runner object at 0x0000029DA12122D0>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\asyncio\base_events.py", line 641, in run_until_complete
+    self.run_forever()
+    │    └ <function BaseEventLoop.run_forever at 0x0000029DA09465C0>
+    └ <_WindowsSelectorEventLoop running=True closed=False debug=False>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\asyncio\base_events.py", line 608, in run_forever
+    self._run_once()
+    │    └ <function BaseEventLoop._run_once at 0x0000029DA0948400>
+    └ <_WindowsSelectorEventLoop running=True closed=False debug=False>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\asyncio\base_events.py", line 1936, in _run_once
+    handle._run()
+    │      └ <function Handle._run at 0x0000029DA088E840>
+    └ <Handle Task.task_wakeup(<Future finis...ECT 5', True)>)>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\asyncio\events.py", line 84, in _run
+    self._context.run(self._callback, *self._args)
+    │    │            │    │           │    └ <member '_args' of 'Handle' objects>
+    │    │            │    │           └ <Handle Task.task_wakeup(<Future finis...ECT 5', True)>)>
+    │    │            │    └ <member '_callback' of 'Handle' objects>
+    │    │            └ <Handle Task.task_wakeup(<Future finis...ECT 5', True)>)>
+    │    └ <member '_context' of 'Handle' objects>
+    └ <Handle Task.task_wakeup(<Future finis...ECT 5', True)>)>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\starlette\middleware\base.py", line 149, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+          │    │   │      │                      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.send_no_error at 0x0000029DC6843420>
+          │    │   │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x0000029DC68405E0>
+          │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.1.8', 8000), 'cl...
+          │    └ <starlette.middleware.exceptions.ExceptionMiddleware object at 0x0000029DC676B710>
+          └ <app.middleware.log_request.RequestLogMiddleware object at 0x0000029DC676B290>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+          │                            │    │    │     │      │        └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.send_no_error at 0x0000029DC6843420>
+          │                            │    │    │     │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x0000029DC68405E0>
+          │                            │    │    │     └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.1.8', 8000), 'cl...
+          │                            │    │    └ <starlette.requests.Request object at 0x0000029DC684C7D0>
+          │                            │    └ <fastapi.routing.APIRouter object at 0x0000029DC45EAA50>
+          │                            └ <starlette.middleware.exceptions.ExceptionMiddleware object at 0x0000029DC676B710>
+          └ <function wrap_app_handling_exceptions at 0x0000029DA32799E0>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\starlette\_exception_handler.py", line 51, in wrapped_app
+    await app(scope, receive, sender)
+          │   │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x0000029DC6895DA0>
+          │   │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x0000029DC68405E0>
+          │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.1.8', 8000), 'cl...
+          └ <fastapi.routing.APIRouter object at 0x0000029DC45EAA50>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\starlette\routing.py", line 715, in __call__
+    await self.middleware_stack(scope, receive, send)
+          │    │                │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x0000029DC6895DA0>
+          │    │                │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x0000029DC68405E0>
+          │    │                └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.1.8', 8000), 'cl...
+          │    └ <bound method Router.app of <fastapi.routing.APIRouter object at 0x0000029DC45EAA50>>
+          └ <fastapi.routing.APIRouter object at 0x0000029DC45EAA50>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\starlette\routing.py", line 735, in app
+    await route.handle(scope, receive, send)
+          │     │      │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x0000029DC6895DA0>
+          │     │      │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x0000029DC68405E0>
+          │     │      └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.1.8', 8000), 'cl...
+          │     └ <function Route.handle at 0x0000029DA327B1A0>
+          └ APIRoute(path='/chat', name='chat', methods=['POST'])
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\starlette\routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+          │    │   │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x0000029DC6895DA0>
+          │    │   │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x0000029DC68405E0>
+          │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.1.8', 8000), 'cl...
+          │    └ <function request_response.<locals>.app at 0x0000029DC67DCFE0>
+          └ APIRoute(path='/chat', name='chat', methods=['POST'])
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\starlette\routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+          │                            │    │        │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x0000029DC6895DA0>
+          │                            │    │        │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x0000029DC68405E0>
+          │                            │    │        └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.1.8', 8000), 'cl...
+          │                            │    └ <starlette.requests.Request object at 0x0000029DC61DF650>
+          │                            └ <function request_response.<locals>.app.<locals>.app at 0x0000029DC6895E40>
+          └ <function wrap_app_handling_exceptions at 0x0000029DA32799E0>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\starlette\_exception_handler.py", line 51, in wrapped_app
+    await app(scope, receive, sender)
+          │   │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x0000029DC6895F80>
+          │   │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x0000029DC68405E0>
+          │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.1.8', 8000), 'cl...
+          └ <function request_response.<locals>.app.<locals>.app at 0x0000029DC6895E40>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\starlette\routing.py", line 73, in app
+    response = await f(request)
+                     │ └ <starlette.requests.Request object at 0x0000029DC61DF650>
+                     └ <function get_request_handler.<locals>.app at 0x0000029DC67DD080>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\fastapi\routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+                         └ <function run_endpoint_function at 0x0000029D9E9C7740>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\fastapi\routing.py", line 212, in run_endpoint_function
+    return await dependant.call(**values)
+                 │         │      └ {'db': <sqlalchemy.orm.session.AsyncSession object at 0x0000029DC688AB50>, 'current_user': <db.models.user_model.User object ...
+                 │         └ <function chat at 0x0000029DA418C860>
+                 └ Dependant(path_params=[], query_params=[], header_params=[], cookie_params=[], body_params=[ModelField(field_info=Body(Pydant...
+
+> File "E:\KLTN\chatbot\backend\app\routers\chat.py", line 78, in chat
+    resp = await handle_chat_request(req, db, current_user)
+                 │                   │    │   └ <db.models.user_model.User object at 0x0000029DC68B0950>
+                 │                   │    └ <sqlalchemy.orm.session.AsyncSession object at 0x0000029DC688AB50>
+                 │                   └ ChatRequest(question='hí lô')
+                 └ <function handle_chat_request at 0x0000029DA43ECEA0>
+
+  File "E:\KLTN\chatbot\backend\app\services\chat_service.py", line 72, in handle_chat_request
+    return ChatResponse(
+           └ <class 'db.schemas.chat_schema.ChatResponse'>
+
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\pydantic\main.py", line 212, in __init__
+    validated_self = self.__pydantic_validator__.validate_python(data, self_instance=self)
+                     │    │                      │               │                   └ ChatResponse()
+                     │    │                      │               └ {'question': 'hí lô', 'user_id': 5, 'answer': ChatAnswer(answer='Chào bạn! Tôi là trợ lý bác sĩ AI, sẵn sàng giúp bạn về các ...
+                     │    │                      └ <method 'validate_python' of 'pydantic_core._pydantic_core.SchemaValidator' objects>
+                     │    └ SchemaValidator(title="ChatResponse", validator=Model(
+                     │          ModelValidator {
+                     │              revalidate: Never,
+                     │              validator: Mod...
+                     └ ChatResponse()
+
+pydantic_core._pydantic_core.ValidationError: 1 validation error for ChatResponse
+user_id
+  Input should be a valid string [type=string_type, input_value=5, input_type=int]
+    For further information visit https://errors.pydantic.dev/2.9/v/string_type
+2026-01-28 01:00:14 | INFO | POST /chat -> 500 (17642.1 ms)
+2026-01-28 01:01:13 | INFO | ✅ Logger initialized (level=INFO, file=logs/app.log)
+2026-01-28 01:01:13 | INFO | Startup completed: admin ensured.
+2026-01-28 01:01:21 | INFO | ✅ Logger initialized (level=INFO, file=logs/app.log)
+2026-01-28 01:01:21 | INFO | Startup completed: admin ensured.
+2026-01-28 01:02:43 | INFO | ✅ Logger initialized (level=INFO, file=logs/app.log)
+2026-01-28 01:02:43 | INFO | Startup completed: admin ensured.
+2026-01-28 01:06:08 | INFO | ✅ Logger initialized (level=INFO, file=logs/app.log)
+2026-01-28 01:06:08 | INFO | Startup completed: admin ensured.
+2026-01-28 01:06:15 | INFO | ✅ Logger initialized (level=INFO, file=logs/app.log)
+2026-01-28 01:06:15 | INFO | Startup completed: admin ensured.
+2026-01-28 01:06:28 | INFO | ✅ Logger initialized (level=INFO, file=logs/app.log)
+2026-01-28 01:06:29 | INFO | Startup completed: admin ensured.
+2026-01-28 01:06:29 | INFO | GET /docs -> 200 (0.7 ms)
+2026-01-28 01:06:29 | INFO | GET /openapi.json -> 200 (48.3 ms)
+2026-01-28 01:06:38 | INFO | POST /login -> 401 (81.3 ms)
+2026-01-28 01:06:43 | INFO | POST /login -> 200 (4.6 ms)
+2026-01-28 01:07:02 | INFO | Loading query embedding model: BAAI/bge-m3
+2026-01-28 01:07:12 | INFO | POST /chat -> 200 (13331.2 ms)
+2026-01-28 01:08:12 | INFO | ✅ Logger initialized (level=INFO, file=logs/app.log)
+2026-01-28 01:08:12 | INFO | Startup completed: admin ensured.
+2026-01-28 01:09:15 | INFO | ✅ Logger initialized (level=INFO, file=logs/app.log)
+2026-01-28 01:09:15 | INFO | Startup completed: admin ensured.
+2026-01-28 01:12:04 | INFO | Loading query embedding model: BAAI/bge-m3
+2026-01-28 01:12:27 | INFO | POST /voice/chat -> 200 (29613.8 ms)
+2026-01-28 01:25:04 | INFO | ✅ Logger initialized (level=INFO, file=logs/app.log)
+2026-01-28 01:25:04 | INFO | Startup completed: admin ensured.
+2026-01-28 01:25:08 | INFO | Loading query embedding model: BAAI/bge-m3
+2026-01-28 01:25:18 | INFO | POST /chat -> 200 (14048.9 ms)
+2026-01-28 01:35:04 | INFO | ✅ Logger initialized (level=INFO, file=logs/app.log)
+2026-01-28 01:35:05 | INFO | Startup completed: admin ensured.
+2026-01-28 01:35:11 | INFO | ✅ Logger initialized (level=INFO, file=logs/app.log)
+2026-01-28 01:35:11 | INFO | Startup completed: admin ensured.
+2026-01-28 01:40:11 | INFO | ✅ Logger initialized (level=INFO, file=logs/app.log)
+2026-01-28 01:40:11 | INFO | Startup completed: admin ensured.
+2026-01-28 01:40:17 | INFO | ✅ Logger initialized (level=INFO, file=logs/app.log)
+2026-01-28 01:40:17 | INFO | Startup completed: admin ensured.
+2026-01-28 02:29:08 | INFO | Loading query embedding model: BAAI/bge-m3
+2026-01-28 02:29:26 | INFO | POST /chat -> 200 (20967.0 ms)
+2026-01-28 02:29:52 | INFO | POST /chat -> 200 (13011.9 ms)
+2026-01-28 02:30:14 | INFO | POST /chat -> 200 (3080.5 ms)
+2026-01-28 02:30:58 | INFO | POST /chat -> 200 (8604.6 ms)
+2026-01-28 02:34:09 | INFO | POST /chat -> 200 (7335.2 ms)

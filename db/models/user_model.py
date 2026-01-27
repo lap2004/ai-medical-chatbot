@@ -3,7 +3,7 @@ from __future__ import annotations
 
 from sqlalchemy import Boolean, Column, DateTime, Integer, String, func
 from db.database import Base
-
+from sqlalchemy.orm import relationship
 
 class User(Base):
     __tablename__ = "users"
@@ -15,6 +15,7 @@ class User(Base):
     # NOTE: DB của bạn đang dùng cột tên "password"
     # Thực tế nên lưu bcrypt hash vào đây (không lưu plain text).
     password = Column(String(255), nullable=False)
+    chat_messages = relationship("ChatMessage", back_populates="user", cascade="all, delete-orphan")
 
     full_name = Column(String(255), nullable=True)
 

@@ -5,10 +5,13 @@ Schema I/O cho API chat, có trường safety để hiển thị khuyến cáo y
 
 from pydantic import BaseModel, Field
 from typing import Optional, List, Literal
+from datetime import datetime
+
 
 class ChatRequest(BaseModel):
     question: str = Field(..., min_length=3, max_length=2000)
-    user_id: Optional[str] = None
+    # Không nhận user_id từ client (lấy từ JWT/current_user ở backend)
+
 
 class RetrievedContext(BaseModel):
     doc_id: str
@@ -16,9 +19,11 @@ class RetrievedContext(BaseModel):
     text: str
     score: float
 
+
 class SafetyAdvisory(BaseModel):
     urgency: Literal["emergency", "urgent", "routine"]
     rationale: str
+
 
 class ChatAnswer(BaseModel):
     answer: str
@@ -26,8 +31,13 @@ class ChatAnswer(BaseModel):
     references: List[str] = []
     safety: SafetyAdvisory
 
+
 class ChatResponse(BaseModel):
     question: str
-    user_id: Optional[str]
+    user_id: Optional[int] = None  # ✅ users.id là INTEGER
     answer: ChatAnswer
     contexts: List[RetrievedContext] = []
+
+    # ✅ (khuyến nghị) phục vụ lưu/hiển thị lịch sử
+    message_id: Optional[int] = None
+    created_at: Optional[datetime] = None

@@ -21,19 +21,20 @@ from app.rag.chat_pipeline import run as run_pipeline
 from app.rag.word_filter import has_banned_terms
 
 
-async def handle_chat_request(req: ChatRequest, db: Session) -> ChatResponse:
+async def handle_chat_request(req: ChatRequest, db: Session, current_user) -> ChatResponse:
     """
     Thực thi toàn bộ luồng cho một yêu cầu chat.
     """
     question = req.question.strip()
-
+    current_user_id = current_user.id
     # 1) Word filter (guardrails cơ bản)
     bad, terms = _check_word_filter(question)
     if bad:
         raise HTTPException(status_code=400, detail=f"Câu hỏi chứa từ bị cấm: {', '.join(terms)}")
 
     # 2) Chạy pipeline RAG + Gemini
-    out = run_pipeline(question, db)
+    # out = run_pipeline(question, db)
+    out = await run_pipeline(question, db)
     # out: {"answer": {...}, "contexts": [...]}
 
     # 3) Chuẩn hóa dữ liệu trả về theo schema
@@ -56,20 +57,26 @@ async def handle_chat_request(req: ChatRequest, db: Session) -> ChatResponse:
 
     # 4) Lưu lịch sử (không fail app nếu ghi DB lỗi)
     try:
-        msg = ChatMessage(user_id=req.user_id, question=question, answer=json.dumps(raw_answer, ensure_ascii=False))
+        msg = ChatMessage(
+            user_id=current_user_id,
+            question=question,
+            answer=json.dumps(raw_answer, ensure_ascii=False),
+        )
         db.add(msg)
-        db.commit()
+        await db.commit()
     except Exception:
-        db.rollback()
+        await db.rollback()
         logger.exception("Lỗi khi lưu lịch sử chat, tiếp tục trả lời cho client.")
 
-    # 5) Build response
     return ChatResponse(
         question=question,
-        user_id=req.user_id,
+        user_id=current_user.id,
         answer=answer,
         contexts=contexts,
+        message_id=msg.id,
+        created_at=msg.created_at,
     )
+
 
 
 def _check_word_filter(text: str) -> Tuple[bool, list]:

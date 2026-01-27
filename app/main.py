@@ -31,9 +31,10 @@ app.add_middleware(RequestLogMiddleware)
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
-        "https://marie-dod-considers-heavily.trycloudflare.com",
+        "https://admissions-pty-browser-insights.trycloudflare.com",
         "http://localhost:3000",
         "http://127.0.1.8:8000",
+        "http://192.168.1.12:3000"
     ],
     allow_credentials=True,  # nếu bạn dùng cookie token -> True
     allow_methods=["*"],
