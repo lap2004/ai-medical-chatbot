@@ -7,7 +7,7 @@ const timeOut = 600_000;
 
 export const restTransport = () => {
   const client = axios.create({
-    baseURL: "https://barrier-spatial-sec-washer.trycloudflare.com",
+    baseURL: "https://competing-infections-status-happens.trycloudflare.com",
     timeout: timeOut,
   });
 
