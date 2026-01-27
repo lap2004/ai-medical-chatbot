@@ -71,10 +71,33 @@ export const ChatComposer: React.FC<Props> = ({ loading, onSend }) => {
     resetTranscript,
   ]);
 
+  // const stopVoice = useCallback(() => {
+  //   console.log("[VOICE] stopVoice clicked");
+  //   SpeechRecognition.stopListening();
+  // }, []);
   const stopVoice = useCallback(() => {
     console.log("[VOICE] stopVoice clicked");
+    setSendOnStop(true);
     SpeechRecognition.stopListening();
   }, []);
+
+  const [sendOnStop, setSendOnStop] = useState(false);
+    useEffect(() => {
+      if (listening) return;
+      if (!sendOnStop) return;
+
+      setSendOnStop(false);
+
+      const text = (transcript || input).trim();
+      if (!text) {
+        resetTranscript();
+        return;
+      }
+
+      onSend(text);
+      setInput("");
+      resetTranscript();
+    }, [listening, sendOnStop, transcript, input, onSend, resetTranscript]);
 
   const toggleVoice = useCallback(() => {
     if (loading) return;
@@ -100,7 +123,12 @@ export const ChatComposer: React.FC<Props> = ({ loading, onSend }) => {
       {listening && (
         <VoiceTranscriptionPill
           text={transcript}
+          // onClose={() => {
+          //   stopVoice();
+          //   resetTranscript();
+          // }}
           onClose={() => {
+            setSendOnStop(false);   // ✅ hủy ý định gửi
             stopVoice();
             resetTranscript();
           }}
@@ -152,21 +180,6 @@ export const ChatComposer: React.FC<Props> = ({ loading, onSend }) => {
               {listening ? "STOP" : "VOICE"}
             </span>
           </button>
-        </div>
-
-        {/* ✅ DEBUG PANEL – IN RA */}
-        <div className="mt-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/40 p-3 text-xs">
-          <div className="font-bold mb-1">VOICE DEBUG</div>
-          <div>supported: {String(browserSupportsSpeechRecognition)}</div>
-          <div>micAvailable: {String(isMicrophoneAvailable)}</div>
-          <div>listening: {String(listening)}</div>
-          <div>secureContext: {String(isSecureContext)} (protocol: {protocol})</div>
-          <div className="mt-2">
-            transcript: <span className="italic">{transcript ? `“${transcript}”` : "—"}</span>
-          </div>
-          <div className="mt-2 text-[10px] text-slate-500 break-all">
-            UA: {ua}
-          </div>
         </div>
       </div>
     </div>
