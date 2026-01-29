@@ -20,6 +20,11 @@ from db.models.chat_model import ChatMessage
 from app.rag.chat_pipeline import run as run_pipeline
 from app.rag.word_filter import has_banned_terms
 
+from fastapi import HTTPException
+from sqlalchemy.ext.asyncio import AsyncSession
+from sqlalchemy import delete, select
+
+from db.models.chat_model import ChatMessage
 
 async def handle_chat_request(req: ChatRequest, db: Session, current_user) -> ChatResponse:
     """
@@ -77,8 +82,6 @@ async def handle_chat_request(req: ChatRequest, db: Session, current_user) -> Ch
         created_at=msg.created_at,
     )
 
-
-
 def _check_word_filter(text: str) -> Tuple[bool, list]:
     """
     Kiểm tra text có chứa từ cấm hay không theo file JSON.
@@ -93,3 +96,34 @@ def _check_word_filter(text: str) -> Tuple[bool, list]:
     except Exception:
         logger.exception("Kiểm tra word filter thất bại.")
         return False, []
+    
+async def delete_chat_message(message_id: int, db: AsyncSession, current_user) -> dict:
+    # 1) Tìm message
+    result = await db.execute(
+        select(ChatMessage).where(ChatMessage.id == message_id)
+    )
+    msg = result.scalar_one_or_none()
+
+    if msg is None:
+        raise HTTPException(status_code=404, detail="Không tìm thấy message.")
+
+    # 2) Check ownership
+    if msg.user_id != current_user.id:
+        raise HTTPException(status_code=403, detail="Bạn không có quyền xóa message này.")
+
+    # 3) Xóa
+    await db.delete(msg)
+    await db.commit()
+
+    return {"deleted": True, "message_id": message_id}
+
+
+async def delete_chat_history(db: AsyncSession, current_user) -> dict:
+    # Xóa tất cả messages của user hiện tại
+    result = await db.execute(
+        delete(ChatMessage).where(ChatMessage.user_id == current_user.id)
+    )
+    await db.commit()
+
+    deleted_count = result.rowcount or 0
+    return {"deleted": True, "deleted_count": deleted_count}

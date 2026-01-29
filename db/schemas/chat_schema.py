@@ -9,7 +9,7 @@ from datetime import datetime
 
 
 class ChatRequest(BaseModel):
-    question: str = Field(..., min_length=3, max_length=2000)
+    question: str = Field(..., min_length=2, max_length=2000)
     # Không nhận user_id từ client (lấy từ JWT/current_user ở backend)
 
 

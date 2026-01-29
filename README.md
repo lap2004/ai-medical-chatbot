@@ -95,7 +95,7 @@ CREATE TABLE chat_messages (
   user_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
   question TEXT NOT NULL,
   answer TEXT NOT NULL,
-  created_at TIMESTAMP NOT NULL DEFAULT NOW()
+  created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
 
 CREATE INDEX idx_chat_messages_user_time ON chat_messages(user_id, created_at DESC);

@@ -14,6 +14,11 @@ from app.utils.audio import save_upload_to_temp
 from app.services.stt_service import transcribe_audio
 from app.services.tts_service import synthesize_speech
 from app.rag.chat_pipeline import run as run_rag_pipeline
+
+from app.services.chat_service import handle_chat_request
+from app.utils.security import get_current_user
+from db.models.user_model import User
+from db.schemas.chat_schema import ChatRequest, ChatResponse
 from db.database import get_db
 
 from gtts.lang import tts_langs
@@ -232,6 +237,70 @@ async def voice_chat(
         raise
     except Exception as e:
         logger.exception("voice_chat failed")
+        raise HTTPException(status_code=500, detail=str(e))
+    finally:
+        pass
+    
+    
+@router.post("/voice")
+async def voice_voice(
+    file: UploadFile = File(...),
+    stt_language: Optional[str] = Form(default=None),
+    tts: bool = Form(default=False),
+    tts_language: Optional[str] = Form(default=None),
+    db: AsyncSession = Depends(get_db),
+    current_user: User = Depends(get_current_user),
+):
+    """
+    Audio -> STT (Whisper) -> Chat (giống /chat: lưu DB + schema ChatResponse) -> optional TTS
+    """
+    tmp_path: Optional[str] = None
+    try:
+        if not file or not getattr(file, "filename", ""):
+            raise HTTPException(status_code=400, detail="Thiếu file audio.")
+
+        # 1) save temp
+        tmp_path = save_upload_to_temp(file)
+
+        # 2) STT
+        transcript = await _stt_to_text(tmp_path, stt_language)
+        if not transcript:
+            raise HTTPException(status_code=400, detail="Không nhận diện được lời nói.")
+
+        # 3) Chat chuẩn như /chat
+        chat_resp: ChatResponse = await handle_chat_request(
+            ChatRequest(question=transcript),
+            db,
+            current_user,
+        )
+
+        # 4) optional TTS
+        tts_audio_path = None
+        if tts:
+            answer_text = (chat_resp.answer.answer or "").strip()
+            if not answer_text:
+                answer_text = "Xin lỗi, tôi chưa có câu trả lời phù hợp."
+
+            _tts_lang = _normalize_lang(tts_language) or _normalize_lang(getattr(settings, "tts_language", None)) or "vi"
+            supported = tts_langs()
+            if _tts_lang not in supported:
+                _tts_lang = "vi"
+
+            out_dir = getattr(settings, "audio_output_dir", None) or "data/audio"
+            audio_path = await asyncio.to_thread(synthesize_speech, answer_text, out_dir, _tts_lang)
+            filename = Path(audio_path).name
+            tts_audio_path = f"/static/audio/{filename}"
+
+        return {
+            "transcript": transcript,
+            "chat": chat_resp.model_dump(),   # pydantic v2
+            "tts_audio_path": tts_audio_path,
+        }
+
+    except HTTPException:
+        raise
+    except Exception as e:
+        logger.exception("voice_voice failed")
         raise HTTPException(status_code=500, detail=str(e))
     finally:
         pass

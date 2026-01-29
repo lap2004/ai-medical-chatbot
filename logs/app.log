@@ -1221,3 +1221,1380 @@ user_id
 2026-01-28 02:30:14 | INFO | POST /chat -> 200 (3080.5 ms)
 2026-01-28 02:30:58 | INFO | POST /chat -> 200 (8604.6 ms)
 2026-01-28 02:34:09 | INFO | POST /chat -> 200 (7335.2 ms)
+2026-01-28 02:34:25 | INFO | POST /chat -> 200 (7995.4 ms)
+2026-01-28 02:34:52 | INFO | POST /chat -> 200 (5673.7 ms)
+2026-01-28 02:35:04 | INFO | POST /chat -> 200 (5154.9 ms)
+2026-01-28 02:47:35 | INFO | GET /docs -> 200 (0.4 ms)
+2026-01-28 02:47:47 | INFO | ✅ Logger initialized (level=INFO, file=logs/app.log)
+2026-01-28 02:47:47 | INFO | Startup completed: admin ensured.
+2026-01-28 02:47:53 | INFO | ✅ Logger initialized (level=INFO, file=logs/app.log)
+2026-01-28 02:47:53 | INFO | Startup completed: admin ensured.
+2026-01-28 02:48:01 | INFO | GET /docs -> 200 (0.5 ms)
+2026-01-28 02:48:01 | INFO | GET /openapi.json -> 200 (25.5 ms)
+2026-01-28 21:26:38 | INFO | ✅ Logger initialized (level=INFO, file=logs/app.log)
+2026-01-28 21:26:39 | INFO | Startup completed: admin ensured.
+2026-01-28 21:29:57 | INFO | ✅ Logger initialized (level=INFO, file=logs/app.log)
+2026-01-28 21:29:57 | INFO | Startup completed: admin ensured.
+2026-01-28 21:30:03 | INFO | ✅ Logger initialized (level=INFO, file=logs/app.log)
+2026-01-28 21:30:03 | INFO | Startup completed: admin ensured.
+2026-01-28 21:30:03 | INFO | POST /login -> 200 (90.6 ms)
+2026-01-28 21:30:36 | INFO | Loading query embedding model: BAAI/bge-m3
+2026-01-28 21:30:47 | INFO | POST /chat -> 200 (14340.8 ms)
+2026-01-28 21:30:59 | INFO | POST /chat -> 200 (3476.0 ms)
+2026-01-28 23:36:18 | INFO | ✅ Logger initialized (level=INFO, file=logs/app.log)
+2026-01-28 23:36:18 | INFO | Startup completed: admin ensured.
+2026-01-28 23:37:16 | INFO | GET / -> 200 (1.0 ms)
+2026-01-28 23:37:26 | INFO | ✅ Logger initialized (level=INFO, file=logs/app.log)
+2026-01-28 23:37:26 | INFO | Startup completed: admin ensured.
+2026-01-28 23:37:26 | INFO | GET / -> 200 (0.8 ms)
+2026-01-28 23:37:26 | INFO | GET / -> 200 (1.5 ms)
+2026-01-28 23:37:27 | INFO | GET / -> 200 (0.4 ms)
+2026-01-28 23:39:46 | INFO | POST /login -> 200 (78.7 ms)
+2026-01-28 23:39:55 | INFO | Loading query embedding model: BAAI/bge-m3
+2026-01-28 23:40:04 | INFO | POST /chat -> 200 (12673.7 ms)
+2026-01-28 23:40:36 | INFO | POST /chat -> 200 (6420.5 ms)
+2026-01-28 23:42:54 | INFO | GET / -> 200 (0.6 ms)
+2026-01-28 23:43:39 | INFO | GET / -> 200 (0.4 ms)
+2026-01-28 23:43:44 | INFO | GET / -> 200 (0.4 ms)
+2026-01-29 00:06:40 | INFO | POST /chat -> 422 (5.4 ms)
+2026-01-29 00:06:47 | INFO | POST /chat -> 200 (2922.4 ms)
+2026-01-29 03:59:43 | INFO | GET / -> 200 (0.4 ms)
+2026-01-29 09:30:35 | INFO | ✅ Logger initialized (level=INFO, file=logs/app.log)
+2026-01-29 09:30:35 | INFO | Startup completed: admin ensured.
+2026-01-29 09:31:23 | INFO | GET / -> 200 (0.9 ms)
+2026-01-29 09:31:24 | INFO | GET / -> 200 (0.7 ms)
+2026-01-29 09:32:21 | INFO | ✅ Logger initialized (level=INFO, file=logs/app.log)
+2026-01-29 09:32:21 | INFO | Startup completed: admin ensured.
+2026-01-29 09:32:21 | INFO | POST /login -> 200 (121.1 ms)
+2026-01-29 09:32:23 | INFO | POST /login -> 200 (3.1 ms)
+2026-01-29 09:32:25 | INFO | GET / -> 200 (0.4 ms)
+2026-01-29 09:32:52 | INFO | Loading query embedding model: BAAI/bge-m3
+2026-01-29 09:33:04 | INFO | POST /chat -> 200 (16115.7 ms)
+2026-01-29 09:33:25 | INFO | GET / -> 200 (0.5 ms)
+2026-01-29 13:02:50 | INFO | ✅ Logger initialized (level=INFO, file=logs/app.log)
+2026-01-29 13:02:50 | INFO | Startup completed: admin ensured.
+2026-01-29 13:03:17 | INFO | GET / -> 200 (0.9 ms)
+2026-01-29 13:03:25 | INFO | ✅ Logger initialized (level=INFO, file=logs/app.log)
+2026-01-29 13:03:25 | INFO | Startup completed: admin ensured.
+2026-01-29 13:03:32 | INFO | ✅ Logger initialized (level=INFO, file=logs/app.log)
+2026-01-29 13:03:32 | INFO | Startup completed: admin ensured.
+2026-01-29 13:03:54 | INFO | POST /login -> 200 (113.8 ms)
+2026-01-29 13:04:01 | INFO | POST /chat -> 422 (8.1 ms)
+2026-01-29 13:04:11 | INFO | Loading query embedding model: BAAI/bge-m3
+2026-01-29 13:04:25 | INFO | POST /chat -> 200 (18508.1 ms)
+2026-01-29 13:26:43 | INFO | ✅ Logger initialized (level=INFO, file=logs/app.log)
+2026-01-29 13:26:43 | INFO | Startup completed: admin ensured.
+2026-01-29 13:26:52 | INFO | POST /chat -> 422 (77.9 ms)
+2026-01-29 13:27:00 | INFO | Loading query embedding model: BAAI/bge-m3
+2026-01-29 13:27:11 | INFO | POST /chat -> 200 (14805.9 ms)
+2026-01-29 13:27:56 | INFO | POST /login -> 200 (15.8 ms)
+2026-01-29 13:28:18 | INFO | POST /chat -> 200 (7233.5 ms)
+2026-01-29 13:28:44 | INFO | POST /chat -> 200 (3943.5 ms)
+2026-01-29 13:29:04 | INFO | POST /chat -> 200 (6258.9 ms)
+2026-01-29 13:34:02 | INFO | GET / -> 200 (0.4 ms)
+2026-01-29 13:34:04 | INFO | GET / -> 200 (0.5 ms)
+2026-01-29 13:34:19 | INFO | GET / -> 200 (0.4 ms)
+2026-01-29 13:57:33 | INFO | POST /login -> 200 (3.2 ms)
+2026-01-29 13:58:26 | INFO | POST /forgot-password -> 200 (3970.4 ms)
+2026-01-29 13:58:46 | INFO | POST /login -> 200 (2.6 ms)
+2026-01-29 14:00:30 | INFO | POST /login -> 200 (3.6 ms)
+2026-01-29 14:00:37 | INFO | POST /forgot-password -> 200 (3659.8 ms)
+2026-01-29 14:01:21 | INFO | POST /login -> 401 (3.5 ms)
+2026-01-29 14:02:01 | INFO | POST /change-password -> 200 (6.5 ms)
+2026-01-29 14:02:50 | INFO | POST /login -> 200 (3.1 ms)
+2026-01-29 14:03:51 | INFO | POST /login -> 200 (3.1 ms)
+2026-01-29 14:04:35 | INFO | POST /login -> 401 (2.3 ms)
+2026-01-29 14:04:36 | INFO | POST /login -> 401 (3.5 ms)
+2026-01-29 14:04:48 | INFO | POST /forgot-password -> 200 (4388.2 ms)
+2026-01-29 14:05:09 | INFO | POST /login -> 200 (2.6 ms)
+2026-01-29 14:05:57 | INFO | POST /change-password -> 200 (3.8 ms)
+2026-01-29 14:06:09 | INFO | POST /login -> 200 (2.7 ms)
+2026-01-29 14:06:56 | INFO | POST /login -> 200 (6.6 ms)
+2026-01-29 14:08:11 | INFO | POST /forgot-password -> 200 (3288.0 ms)
+2026-01-29 14:10:06 | INFO | POST /forgot-password -> 200 (4118.0 ms)
+2026-01-29 14:10:34 | INFO | POST /login -> 200 (2.8 ms)
+2026-01-29 14:11:32 | INFO | POST /change-password -> 200 (5.4 ms)
+2026-01-29 14:11:44 | INFO | POST /login -> 200 (3.3 ms)
+2026-01-29 14:12:53 | INFO | POST /login -> 200 (4.0 ms)
+2026-01-29 14:13:00 | INFO | POST /chat -> 422 (3.5 ms)
+2026-01-29 14:13:10 | INFO | POST /chat -> 422 (2.5 ms)
+2026-01-29 14:13:32 | INFO | POST /forgot-password -> 200 (3630.6 ms)
+2026-01-29 14:13:43 | INFO | POST /login -> 200 (3.1 ms)
+2026-01-29 14:13:57 | INFO | ✅ Logger initialized (level=INFO, file=logs/app.log)
+2026-01-29 14:13:57 | INFO | Startup completed: admin ensured.
+2026-01-29 14:13:57 | INFO | POST /chat -> 422 (81.9 ms)
+2026-01-29 14:13:59 | INFO | POST /chat -> 400 (4.0 ms)
+2026-01-29 14:14:06 | INFO | Loading query embedding model: BAAI/bge-m3
+2026-01-29 14:14:17 | INFO | POST /chat -> 200 (14892.1 ms)
+2026-01-29 14:14:17 | INFO | POST /change-password -> 200 (88.0 ms)
+2026-01-29 14:14:20 | INFO | POST /chat -> 400 (3.5 ms)
+2026-01-29 14:14:48 | INFO | ✅ Logger initialized (level=INFO, file=logs/app.log)
+2026-01-29 14:14:48 | INFO | Startup completed: admin ensured.
+2026-01-29 14:14:56 | INFO | ✅ Logger initialized (level=INFO, file=logs/app.log)
+2026-01-29 14:14:56 | INFO | Startup completed: admin ensured.
+2026-01-29 14:15:02 | INFO | POST /login -> 200 (73.6 ms)
+2026-01-29 14:15:20 | INFO | POST /change-password -> 200 (7.0 ms)
+2026-01-29 14:17:15 | INFO | POST /change-password -> 200 (4.1 ms)
+2026-01-29 14:19:56 | INFO | ✅ Logger initialized (level=INFO, file=logs/app.log)
+2026-01-29 14:19:56 | INFO | Startup completed: admin ensured.
+2026-01-29 14:20:02 | INFO | ✅ Logger initialized (level=INFO, file=logs/app.log)
+2026-01-29 14:20:02 | INFO | Startup completed: admin ensured.
+2026-01-29 14:20:09 | INFO | ✅ Logger initialized (level=INFO, file=logs/app.log)
+2026-01-29 14:20:09 | INFO | Startup completed: admin ensured.
+2026-01-29 14:20:25 | INFO | Loading query embedding model: BAAI/bge-m3
+2026-01-29 14:20:35 | INFO | POST /chat -> 200 (14463.6 ms)
+2026-01-29 14:24:00 | INFO | GET / -> 200 (0.9 ms)
+2026-01-29 14:24:01 | INFO | GET /favicon.ico -> 404 (0.8 ms)
+2026-01-29 14:24:03 | INFO | GET /docs -> 200 (0.4 ms)
+2026-01-29 14:24:04 | INFO | GET /openapi.json -> 200 (27.6 ms)
+2026-01-29 14:24:28 | INFO | POST /login -> 200 (11.1 ms)
+2026-01-29 14:30:15 | INFO | ✅ Logger initialized (level=INFO, file=logs/app.log)
+2026-01-29 14:30:15 | INFO | Startup completed: admin ensured.
+2026-01-29 14:30:21 | INFO | ✅ Logger initialized (level=INFO, file=logs/app.log)
+2026-01-29 14:30:21 | INFO | Startup completed: admin ensured.
+2026-01-29 14:34:17 | INFO | Loading query embedding model: BAAI/bge-m3
+2026-01-29 14:34:28 | INFO | POST /chat -> 200 (14445.4 ms)
+2026-01-29 14:35:24 | INFO | POST /chat -> 200 (5342.3 ms)
+2026-01-29 14:35:27 | INFO | GET /docs -> 200 (0.5 ms)
+2026-01-29 14:35:27 | INFO | GET /openapi.json -> 200 (23.2 ms)
+2026-01-29 14:38:31 | INFO | POST /chat -> 200 (3372.4 ms)
+2026-01-29 14:41:58 | INFO | POST /login -> 200 (13.9 ms)
+2026-01-29 14:42:06 | INFO | POST /chat -> 200 (3629.6 ms)
+2026-01-29 14:43:50 | INFO | POST /login -> 200 (2.7 ms)
+2026-01-29 14:44:28 | INFO | GET /docs -> 200 (0.3 ms)
+2026-01-29 14:44:29 | INFO | GET /openapi.json -> 200 (1.5 ms)
+2026-01-29 14:44:48 | INFO | POST /chat -> 200 (4406.6 ms)
+2026-01-29 14:45:13 | INFO | POST /chat -> 200 (11404.4 ms)
+2026-01-29 14:45:22 | ERROR | chat() failed
+Traceback (most recent call last):
+
+  File "<string>", line 1, in <module>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\multiprocessing\spawn.py", line 122, in spawn_main
+    exitcode = _main(fd, parent_sentinel)
+               │     │   └ 336
+               │     └ 3
+               └ <function _main at 0x00000203F9D8DDA0>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\multiprocessing\spawn.py", line 135, in _main
+    return self._bootstrap(parent_sentinel)
+           │    │          └ 336
+           │    └ <function BaseProcess._bootstrap at 0x00000203F9CA0860>
+           └ <SpawnProcess name='SpawnProcess-12' parent=31060 started>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\multiprocessing\process.py", line 314, in _bootstrap
+    self.run()
+    │    └ <function BaseProcess.run at 0x00000203F9B8BD80>
+    └ <SpawnProcess name='SpawnProcess-12' parent=31060 started>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\multiprocessing\process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+    │    │        │    │        │    └ {'config': <uvicorn.config.Config object at 0x00000203F9D66750>, 'target': <bound method Server.run of <uvicorn.server.Server...
+    │    │        │    │        └ <SpawnProcess name='SpawnProcess-12' parent=31060 started>
+    │    │        │    └ ()
+    │    │        └ <SpawnProcess name='SpawnProcess-12' parent=31060 started>
+    │    └ <function subprocess_started at 0x00000203FC1D2700>
+    └ <SpawnProcess name='SpawnProcess-12' parent=31060 started>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\uvicorn\_subprocess.py", line 80, in subprocess_started
+    target(sockets=sockets)
+    │              └ [<socket.socket fd=864, family=2, type=1, proto=6, laddr=('127.0.1.8', 8000)>]
+    └ <bound method Server.run of <uvicorn.server.Server object at 0x00000203FC342A90>>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\uvicorn\server.py", line 65, in run
+    return asyncio.run(self.serve(sockets=sockets))
+           │       │   │    │             └ [<socket.socket fd=864, family=2, type=1, proto=6, laddr=('127.0.1.8', 8000)>]
+           │       │   │    └ <function Server.serve at 0x00000203FC1D13A0>
+           │       │   └ <uvicorn.server.Server object at 0x00000203FC342A90>
+           │       └ <function run at 0x00000203FBA74860>
+           └ <module 'asyncio' from 'C:\\Users\\lapth\\anaconda3\\envs\\aibacsi\\Lib\\asyncio\\__init__.py'>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\asyncio\runners.py", line 190, in run
+    return runner.run(main)
+           │      │   └ <coroutine object Server.serve at 0x00000203FC28BD30>
+           │      └ <function Runner.run at 0x00000203FBA78A40>
+           └ <asyncio.runners.Runner object at 0x00000203FC3422D0>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\asyncio\runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           │    │     │                  └ <Task pending name='Task-1' coro=<Server.serve() running at C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\uvicorn\s...
+           │    │     └ <function BaseEventLoop.run_until_complete at 0x00000203FBA76660>
+           │    └ <_WindowsSelectorEventLoop running=True closed=False debug=False>
+           └ <asyncio.runners.Runner object at 0x00000203FC3422D0>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\asyncio\base_events.py", line 641, in run_until_complete
+    self.run_forever()
+    │    └ <function BaseEventLoop.run_forever at 0x00000203FBA765C0>
+    └ <_WindowsSelectorEventLoop running=True closed=False debug=False>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\asyncio\base_events.py", line 608, in run_forever
+    self._run_once()
+    │    └ <function BaseEventLoop._run_once at 0x00000203FBA78400>
+    └ <_WindowsSelectorEventLoop running=True closed=False debug=False>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\asyncio\base_events.py", line 1936, in _run_once
+    handle._run()
+    │      └ <function Handle._run at 0x00000203FB9BE840>
+    └ <Handle Task.task_wakeup(<Future finis...ECT 5', True)>)>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\asyncio\events.py", line 84, in _run
+    self._context.run(self._callback, *self._args)
+    │    │            │    │           │    └ <member '_args' of 'Handle' objects>
+    │    │            │    │           └ <Handle Task.task_wakeup(<Future finis...ECT 5', True)>)>
+    │    │            │    └ <member '_callback' of 'Handle' objects>
+    │    │            └ <Handle Task.task_wakeup(<Future finis...ECT 5', True)>)>
+    │    └ <member '_context' of 'Handle' objects>
+    └ <Handle Task.task_wakeup(<Future finis...ECT 5', True)>)>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\starlette\middleware\base.py", line 149, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+          │    │   │      │                      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.send_no_error at 0x00000203BEDB7BA0>
+          │    │   │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x00000203A1A96CA0>
+          │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.1.8', 8000), 'cl...
+          │    └ <starlette.middleware.exceptions.ExceptionMiddleware object at 0x00000203A1A09490>
+          └ <app.middleware.log_request.RequestLogMiddleware object at 0x00000203A1A7DDD0>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+          │                            │    │    │     │      │        └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.send_no_error at 0x00000203BEDB7BA0>
+          │                            │    │    │     │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x00000203A1A96CA0>
+          │                            │    │    │     └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.1.8', 8000), 'cl...
+          │                            │    │    └ <starlette.requests.Request object at 0x00000203BECFA2D0>
+          │                            │    └ <fastapi.routing.APIRouter object at 0x00000203A1A26C90>
+          │                            └ <starlette.middleware.exceptions.ExceptionMiddleware object at 0x00000203A1A09490>
+          └ <function wrap_app_handling_exceptions at 0x00000203FE3A99E0>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\starlette\_exception_handler.py", line 51, in wrapped_app
+    await app(scope, receive, sender)
+          │   │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x00000203BEDB7CE0>
+          │   │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x00000203A1A96CA0>
+          │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.1.8', 8000), 'cl...
+          └ <fastapi.routing.APIRouter object at 0x00000203A1A26C90>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\starlette\routing.py", line 715, in __call__
+    await self.middleware_stack(scope, receive, send)
+          │    │                │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x00000203BEDB7CE0>
+          │    │                │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x00000203A1A96CA0>
+          │    │                └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.1.8', 8000), 'cl...
+          │    └ <bound method Router.app of <fastapi.routing.APIRouter object at 0x00000203A1A26C90>>
+          └ <fastapi.routing.APIRouter object at 0x00000203A1A26C90>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\starlette\routing.py", line 735, in app
+    await route.handle(scope, receive, send)
+          │     │      │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x00000203BEDB7CE0>
+          │     │      │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x00000203A1A96CA0>
+          │     │      └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.1.8', 8000), 'cl...
+          │     └ <function Route.handle at 0x00000203FE3AB1A0>
+          └ APIRoute(path='/chat', name='chat', methods=['POST'])
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\starlette\routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+          │    │   │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x00000203BEDB7CE0>
+          │    │   │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x00000203A1A96CA0>
+          │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.1.8', 8000), 'cl...
+          │    └ <function request_response.<locals>.app at 0x00000203A1A42200>
+          └ APIRoute(path='/chat', name='chat', methods=['POST'])
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\starlette\routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+          │                            │    │        │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x00000203BEDB7CE0>
+          │                            │    │        │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x00000203A1A96CA0>
+          │                            │    │        └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.1.8', 8000), 'cl...
+          │                            │    └ <starlette.requests.Request object at 0x00000203BED866D0>
+          │                            └ <function request_response.<locals>.app.<locals>.app at 0x00000203BEDB7380>
+          └ <function wrap_app_handling_exceptions at 0x00000203FE3A99E0>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\starlette\_exception_handler.py", line 51, in wrapped_app
+    await app(scope, receive, sender)
+          │   │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x00000203BEDB72E0>
+          │   │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x00000203A1A96CA0>
+          │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.1.8', 8000), 'cl...
+          └ <function request_response.<locals>.app.<locals>.app at 0x00000203BEDB7380>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\starlette\routing.py", line 73, in app
+    response = await f(request)
+                     │ └ <starlette.requests.Request object at 0x00000203BED866D0>
+                     └ <function get_request_handler.<locals>.app at 0x00000203A1A422A0>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\fastapi\routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+                         └ <function run_endpoint_function at 0x00000203F9B27740>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\fastapi\routing.py", line 212, in run_endpoint_function
+    return await dependant.call(**values)
+                 │         │      └ {'db': <sqlalchemy.orm.session.AsyncSession object at 0x00000203C6307ED0>, 'current_user': <db.models.user_model.User object ...
+                 │         └ <function chat at 0x00000203FF463F60>
+                 └ Dependant(path_params=[], query_params=[], header_params=[], cookie_params=[], body_params=[ModelField(field_info=Body(Pydant...
+
+> File "E:\KLTN\chatbot\backend\app\routers\chat.py", line 71, in chat
+    resp = await handle_chat_request(req, db, current_user)
+                 │                   │    │   └ <db.models.user_model.User object at 0x00000203C63214D0>
+                 │                   │    └ <sqlalchemy.orm.session.AsyncSession object at 0x00000203C6307ED0>
+                 │                   └ ChatRequest(question='nếu 32 thì sao')
+                 └ <function handle_chat_request at 0x00000203FF51E2A0>
+
+  File "E:\KLTN\chatbot\backend\app\services\chat_service.py", line 42, in handle_chat_request
+    out = await run_pipeline(question, db)
+                │            │         └ <sqlalchemy.orm.session.AsyncSession object at 0x00000203C6307ED0>
+                │            └ 'nếu 32 thì sao'
+                └ <function run at 0x00000203FF51E480>
+
+  File "E:\KLTN\chatbot\backend\app\rag\chat_pipeline.py", line 57, in run
+    answer = build_answer(question, contexts)
+             │            │         └ [{'doc_id': 'medical', 'chunk_id': '55beba35-dc2a-4252-b9c5-0aef228b77c4', 'text': 'Title: Thông tin về Di truyền và khuyết t...
+             │            └ 'nếu 32 thì sao'
+             └ <function build_answer at 0x0000020397B07240>
+
+  File "E:\KLTN\chatbot\backend\app\rag\llm_chain.py", line 177, in build_answer
+    raw = call_gemini(prompt)
+          │           └ 'SYSTEM\n\nBạn là **AI Bác sĩ trợ lý sức khỏe tổng quát**.\n\nVai trò của bạn là:\n- Giải thích kiến thức về **triệu chứng, b...
+          └ <function call_gemini at 0x00000203FF8FAB60>
+
+  File "E:\KLTN\chatbot\backend\app\rag\llm_chain.py", line 143, in call_gemini
+    resp = model.generate_content(prompt)
+           │     │                └ 'SYSTEM\n\nBạn là **AI Bác sĩ trợ lý sức khỏe tổng quát**.\n\nVai trò của bạn là:\n- Giải thích kiến thức về **triệu chứng, b...
+           │     └ <function GenerativeModel.generate_content at 0x0000020397B06660>
+           └ genai.GenerativeModel(
+                 model_name='models/gemini-2.5-flash',
+                 generation_config={},
+                 safety_settings={},
+                 tools=...
+
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\google\generativeai\generative_models.py", line 331, in generate_content
+    response = self._client.generate_content(
+               │    │       └ <function GenerativeServiceClient.generate_content at 0x0000020397531A80>
+               │    └ <google.ai.generativelanguage_v1beta.services.generative_service.client.GenerativeServiceClient object at 0x00000203BED04910>
+               └ genai.GenerativeModel(
+                     model_name='models/gemini-2.5-flash',
+                     generation_config={},
+                     safety_settings={},
+                     tools=...
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\google\ai\generativelanguage_v1beta\services\generative_service\client.py", line 827, in generate_content
+    response = rpc(
+               └ <google.api_core.gapic_v1.method._GapicCallable object at 0x00000203A1AFAA10>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\google\api_core\gapic_v1\method.py", line 131, in __call__
+    return wrapped_func(*args, **kwargs)
+           │             │       └ {'metadata': [('x-goog-request-params', 'model=models/gemini-2.5-flash'), ('x-goog-api-client', 'genai-py/0.7.2 gl-python/3.1...
+           │             └ (model: "models/gemini-2.5-flash"
+           │               contents {
+           │                 parts {
+           │                   text: "SYSTEM\n\nBạn là **AI Bác sĩ trợ lý sức khỏe tổng quát**.\n...
+           └ <function _wrap_unary_errors.<locals>.error_remapped_callable at 0x00000203A1AFF100>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\google\api_core\retry\retry_unary.py", line 294, in retry_wrapped_func
+    return retry_target(
+           └ <function retry_target at 0x0000020397037CE0>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\google\api_core\retry\retry_unary.py", line 156, in retry_target
+    next_sleep = _retry_error_helper(
+                 └ <function _retry_error_helper at 0x0000020397037560>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\google\api_core\retry\retry_base.py", line 214, in _retry_error_helper
+    raise final_exc from source_exc
+          │              └ None
+          └ ResourceExhausted('You exceeded your current quota, please check your plan and billing details. For more information on this ...
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\google\api_core\retry\retry_unary.py", line 147, in retry_target
+    result = target()
+             └ functools.partial(<function _wrap_unary_errors.<locals>.error_remapped_callable at 0x00000203A1AFECA0>, model: "models/gemini...
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\google\api_core\timeout.py", line 130, in func_with_timeout
+    return func(*args, **kwargs)
+           │     │       └ {'metadata': [('x-goog-request-params', 'model=models/gemini-2.5-flash'), ('x-goog-api-client', 'genai-py/0.7.2 gl-python/3.1...
+           │     └ (model: "models/gemini-2.5-flash"
+           │       contents {
+           │         parts {
+           │           text: "SYSTEM\n\nBạn là **AI Bác sĩ trợ lý sức khỏe tổng quát**.\n...
+           └ <function _wrap_unary_errors.<locals>.error_remapped_callable at 0x00000203BED61760>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\google\api_core\grpc_helpers.py", line 77, in error_remapped_callable
+    raise exceptions.from_grpc_error(exc) from exc
+          │          └ <function from_grpc_error at 0x00000203FFD3C680>
+          └ <module 'google.api_core.exceptions' from 'C:\\Users\\lapth\\anaconda3\\envs\\aibacsi\\Lib\\site-packages\\google\\api_core\\...
+
+google.api_core.exceptions.ResourceExhausted: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. 
+* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash
+Please retry in 40.698509591s. [links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, violations {
+  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_requests"
+  quota_id: "GenerateRequestsPerDayPerProjectPerModel-FreeTier"
+  quota_dimensions {
+    key: "model"
+    value: "gemini-2.5-flash"
+  }
+  quota_dimensions {
+    key: "location"
+    value: "global"
+  }
+  quota_value: 20
+}
+, retry_delay {
+  seconds: 40
+}
+]
+2026-01-29 14:45:22 | INFO | POST /chat -> 500 (645.5 ms)
+2026-01-29 14:47:48 | ERROR | chat() failed
+Traceback (most recent call last):
+
+  File "<string>", line 1, in <module>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\multiprocessing\spawn.py", line 122, in spawn_main
+    exitcode = _main(fd, parent_sentinel)
+               │     │   └ 336
+               │     └ 3
+               └ <function _main at 0x00000203F9D8DDA0>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\multiprocessing\spawn.py", line 135, in _main
+    return self._bootstrap(parent_sentinel)
+           │    │          └ 336
+           │    └ <function BaseProcess._bootstrap at 0x00000203F9CA0860>
+           └ <SpawnProcess name='SpawnProcess-12' parent=31060 started>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\multiprocessing\process.py", line 314, in _bootstrap
+    self.run()
+    │    └ <function BaseProcess.run at 0x00000203F9B8BD80>
+    └ <SpawnProcess name='SpawnProcess-12' parent=31060 started>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\multiprocessing\process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+    │    │        │    │        │    └ {'config': <uvicorn.config.Config object at 0x00000203F9D66750>, 'target': <bound method Server.run of <uvicorn.server.Server...
+    │    │        │    │        └ <SpawnProcess name='SpawnProcess-12' parent=31060 started>
+    │    │        │    └ ()
+    │    │        └ <SpawnProcess name='SpawnProcess-12' parent=31060 started>
+    │    └ <function subprocess_started at 0x00000203FC1D2700>
+    └ <SpawnProcess name='SpawnProcess-12' parent=31060 started>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\uvicorn\_subprocess.py", line 80, in subprocess_started
+    target(sockets=sockets)
+    │              └ [<socket.socket fd=864, family=2, type=1, proto=6, laddr=('127.0.1.8', 8000)>]
+    └ <bound method Server.run of <uvicorn.server.Server object at 0x00000203FC342A90>>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\uvicorn\server.py", line 65, in run
+    return asyncio.run(self.serve(sockets=sockets))
+           │       │   │    │             └ [<socket.socket fd=864, family=2, type=1, proto=6, laddr=('127.0.1.8', 8000)>]
+           │       │   │    └ <function Server.serve at 0x00000203FC1D13A0>
+           │       │   └ <uvicorn.server.Server object at 0x00000203FC342A90>
+           │       └ <function run at 0x00000203FBA74860>
+           └ <module 'asyncio' from 'C:\\Users\\lapth\\anaconda3\\envs\\aibacsi\\Lib\\asyncio\\__init__.py'>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\asyncio\runners.py", line 190, in run
+    return runner.run(main)
+           │      │   └ <coroutine object Server.serve at 0x00000203FC28BD30>
+           │      └ <function Runner.run at 0x00000203FBA78A40>
+           └ <asyncio.runners.Runner object at 0x00000203FC3422D0>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\asyncio\runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           │    │     │                  └ <Task pending name='Task-1' coro=<Server.serve() running at C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\uvicorn\s...
+           │    │     └ <function BaseEventLoop.run_until_complete at 0x00000203FBA76660>
+           │    └ <_WindowsSelectorEventLoop running=True closed=False debug=False>
+           └ <asyncio.runners.Runner object at 0x00000203FC3422D0>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\asyncio\base_events.py", line 641, in run_until_complete
+    self.run_forever()
+    │    └ <function BaseEventLoop.run_forever at 0x00000203FBA765C0>
+    └ <_WindowsSelectorEventLoop running=True closed=False debug=False>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\asyncio\base_events.py", line 608, in run_forever
+    self._run_once()
+    │    └ <function BaseEventLoop._run_once at 0x00000203FBA78400>
+    └ <_WindowsSelectorEventLoop running=True closed=False debug=False>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\asyncio\base_events.py", line 1936, in _run_once
+    handle._run()
+    │      └ <function Handle._run at 0x00000203FB9BE840>
+    └ <Handle Task.task_wakeup(<Future finis...ECT 5', True)>)>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\asyncio\events.py", line 84, in _run
+    self._context.run(self._callback, *self._args)
+    │    │            │    │           │    └ <member '_args' of 'Handle' objects>
+    │    │            │    │           └ <Handle Task.task_wakeup(<Future finis...ECT 5', True)>)>
+    │    │            │    └ <member '_callback' of 'Handle' objects>
+    │    │            └ <Handle Task.task_wakeup(<Future finis...ECT 5', True)>)>
+    │    └ <member '_context' of 'Handle' objects>
+    └ <Handle Task.task_wakeup(<Future finis...ECT 5', True)>)>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\starlette\middleware\base.py", line 149, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+          │    │   │      │                      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.send_no_error at 0x00000203BEDB7CE0>
+          │    │   │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x00000203BEDB7D80>
+          │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.1.8', 8000), 'cl...
+          │    └ <starlette.middleware.exceptions.ExceptionMiddleware object at 0x00000203A1A09490>
+          └ <app.middleware.log_request.RequestLogMiddleware object at 0x00000203A1A7DDD0>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+          │                            │    │    │     │      │        └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.send_no_error at 0x00000203BEDB7CE0>
+          │                            │    │    │     │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x00000203BEDB7D80>
+          │                            │    │    │     └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.1.8', 8000), 'cl...
+          │                            │    │    └ <starlette.requests.Request object at 0x00000203BED06E90>
+          │                            │    └ <fastapi.routing.APIRouter object at 0x00000203A1A26C90>
+          │                            └ <starlette.middleware.exceptions.ExceptionMiddleware object at 0x00000203A1A09490>
+          └ <function wrap_app_handling_exceptions at 0x00000203FE3A99E0>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\starlette\_exception_handler.py", line 51, in wrapped_app
+    await app(scope, receive, sender)
+          │   │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x00000203A1AFF1A0>
+          │   │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x00000203BEDB7D80>
+          │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.1.8', 8000), 'cl...
+          └ <fastapi.routing.APIRouter object at 0x00000203A1A26C90>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\starlette\routing.py", line 715, in __call__
+    await self.middleware_stack(scope, receive, send)
+          │    │                │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x00000203A1AFF1A0>
+          │    │                │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x00000203BEDB7D80>
+          │    │                └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.1.8', 8000), 'cl...
+          │    └ <bound method Router.app of <fastapi.routing.APIRouter object at 0x00000203A1A26C90>>
+          └ <fastapi.routing.APIRouter object at 0x00000203A1A26C90>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\starlette\routing.py", line 735, in app
+    await route.handle(scope, receive, send)
+          │     │      │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x00000203A1AFF1A0>
+          │     │      │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x00000203BEDB7D80>
+          │     │      └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.1.8', 8000), 'cl...
+          │     └ <function Route.handle at 0x00000203FE3AB1A0>
+          └ APIRoute(path='/chat', name='chat', methods=['POST'])
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\starlette\routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+          │    │   │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x00000203A1AFF1A0>
+          │    │   │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x00000203BEDB7D80>
+          │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.1.8', 8000), 'cl...
+          │    └ <function request_response.<locals>.app at 0x00000203A1A42200>
+          └ APIRoute(path='/chat', name='chat', methods=['POST'])
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\starlette\routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+          │                            │    │        │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x00000203A1AFF1A0>
+          │                            │    │        │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x00000203BEDB7D80>
+          │                            │    │        └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.1.8', 8000), 'cl...
+          │                            │    └ <starlette.requests.Request object at 0x00000203C6320F50>
+          │                            └ <function request_response.<locals>.app.<locals>.app at 0x00000203A1AFEDE0>
+          └ <function wrap_app_handling_exceptions at 0x00000203FE3A99E0>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\starlette\_exception_handler.py", line 51, in wrapped_app
+    await app(scope, receive, sender)
+          │   │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x00000203A1AFF060>
+          │   │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x00000203BEDB7D80>
+          │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.1.8', 8000), 'cl...
+          └ <function request_response.<locals>.app.<locals>.app at 0x00000203A1AFEDE0>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\starlette\routing.py", line 73, in app
+    response = await f(request)
+                     │ └ <starlette.requests.Request object at 0x00000203C6320F50>
+                     └ <function get_request_handler.<locals>.app at 0x00000203A1A422A0>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\fastapi\routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+                         └ <function run_endpoint_function at 0x00000203F9B27740>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\fastapi\routing.py", line 212, in run_endpoint_function
+    return await dependant.call(**values)
+                 │         │      └ {'db': <sqlalchemy.orm.session.AsyncSession object at 0x00000203C630A6D0>, 'current_user': <db.models.user_model.User object ...
+                 │         └ <function chat at 0x00000203FF463F60>
+                 └ Dependant(path_params=[], query_params=[], header_params=[], cookie_params=[], body_params=[ModelField(field_info=Body(Pydant...
+
+> File "E:\KLTN\chatbot\backend\app\routers\chat.py", line 71, in chat
+    resp = await handle_chat_request(req, db, current_user)
+                 │                   │    │   └ <db.models.user_model.User object at 0x00000203C61003D0>
+                 │                   │    └ <sqlalchemy.orm.session.AsyncSession object at 0x00000203C630A6D0>
+                 │                   └ ChatRequest(question='54 tuổi, khó ngủ')
+                 └ <function handle_chat_request at 0x00000203FF51E2A0>
+
+  File "E:\KLTN\chatbot\backend\app\services\chat_service.py", line 42, in handle_chat_request
+    out = await run_pipeline(question, db)
+                │            │         └ <sqlalchemy.orm.session.AsyncSession object at 0x00000203C630A6D0>
+                │            └ '54 tuổi, khó ngủ'
+                └ <function run at 0x00000203FF51E480>
+
+  File "E:\KLTN\chatbot\backend\app\rag\chat_pipeline.py", line 57, in run
+    answer = build_answer(question, contexts)
+             │            │         └ [{'doc_id': 'medical', 'chunk_id': '617e8cd2-c04c-465f-b7cd-8729abbd167e', 'text': 'Title: Thông tin về Não và dây thần kinh\...
+             │            └ '54 tuổi, khó ngủ'
+             └ <function build_answer at 0x0000020397B07240>
+
+  File "E:\KLTN\chatbot\backend\app\rag\llm_chain.py", line 177, in build_answer
+    raw = call_gemini(prompt)
+          │           └ 'SYSTEM\n\nBạn là **AI Bác sĩ trợ lý sức khỏe tổng quát**.\n\nVai trò của bạn là:\n- Giải thích kiến thức về **triệu chứng, b...
+          └ <function call_gemini at 0x00000203FF8FAB60>
+
+  File "E:\KLTN\chatbot\backend\app\rag\llm_chain.py", line 143, in call_gemini
+    resp = model.generate_content(prompt)
+           │     │                └ 'SYSTEM\n\nBạn là **AI Bác sĩ trợ lý sức khỏe tổng quát**.\n\nVai trò của bạn là:\n- Giải thích kiến thức về **triệu chứng, b...
+           │     └ <function GenerativeModel.generate_content at 0x0000020397B06660>
+           └ genai.GenerativeModel(
+                 model_name='models/gemini-2.5-flash',
+                 generation_config={},
+                 safety_settings={},
+                 tools=...
+
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\google\generativeai\generative_models.py", line 331, in generate_content
+    response = self._client.generate_content(
+               │    │       └ <function GenerativeServiceClient.generate_content at 0x0000020397531A80>
+               │    └ <google.ai.generativelanguage_v1beta.services.generative_service.client.GenerativeServiceClient object at 0x00000203C6321450>
+               └ genai.GenerativeModel(
+                     model_name='models/gemini-2.5-flash',
+                     generation_config={},
+                     safety_settings={},
+                     tools=...
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\google\ai\generativelanguage_v1beta\services\generative_service\client.py", line 827, in generate_content
+    response = rpc(
+               └ <google.api_core.gapic_v1.method._GapicCallable object at 0x00000203C60E7B50>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\google\api_core\gapic_v1\method.py", line 131, in __call__
+    return wrapped_func(*args, **kwargs)
+           │             │       └ {'metadata': [('x-goog-request-params', 'model=models/gemini-2.5-flash'), ('x-goog-api-client', 'genai-py/0.7.2 gl-python/3.1...
+           │             └ (model: "models/gemini-2.5-flash"
+           │               contents {
+           │                 parts {
+           │                   text: "SYSTEM\n\nBạn là **AI Bác sĩ trợ lý sức khỏe tổng quát**.\n...
+           └ <function _wrap_unary_errors.<locals>.error_remapped_callable at 0x00000203A1AFEFC0>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\google\api_core\retry\retry_unary.py", line 294, in retry_wrapped_func
+    return retry_target(
+           └ <function retry_target at 0x0000020397037CE0>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\google\api_core\retry\retry_unary.py", line 156, in retry_target
+    next_sleep = _retry_error_helper(
+                 └ <function _retry_error_helper at 0x0000020397037560>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\google\api_core\retry\retry_base.py", line 214, in _retry_error_helper
+    raise final_exc from source_exc
+          │              └ None
+          └ ResourceExhausted('You exceeded your current quota, please check your plan and billing details. For more information on this ...
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\google\api_core\retry\retry_unary.py", line 147, in retry_target
+    result = target()
+             └ functools.partial(<function _wrap_unary_errors.<locals>.error_remapped_callable at 0x00000203A1AFFE20>, model: "models/gemini...
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\google\api_core\timeout.py", line 130, in func_with_timeout
+    return func(*args, **kwargs)
+           │     │       └ {'metadata': [('x-goog-request-params', 'model=models/gemini-2.5-flash'), ('x-goog-api-client', 'genai-py/0.7.2 gl-python/3.1...
+           │     └ (model: "models/gemini-2.5-flash"
+           │       contents {
+           │         parts {
+           │           text: "SYSTEM\n\nBạn là **AI Bác sĩ trợ lý sức khỏe tổng quát**.\n...
+           └ <function _wrap_unary_errors.<locals>.error_remapped_callable at 0x00000203C60D5620>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\google\api_core\grpc_helpers.py", line 77, in error_remapped_callable
+    raise exceptions.from_grpc_error(exc) from exc
+          │          └ <function from_grpc_error at 0x00000203FFD3C680>
+          └ <module 'google.api_core.exceptions' from 'C:\\Users\\lapth\\anaconda3\\envs\\aibacsi\\Lib\\site-packages\\google\\api_core\\...
+
+google.api_core.exceptions.ResourceExhausted: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. 
+* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash
+Please retry in 15.025330697s. [links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, violations {
+  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_requests"
+  quota_id: "GenerateRequestsPerDayPerProjectPerModel-FreeTier"
+  quota_dimensions {
+    key: "model"
+    value: "gemini-2.5-flash"
+  }
+  quota_dimensions {
+    key: "location"
+    value: "global"
+  }
+  quota_value: 20
+}
+, retry_delay {
+  seconds: 15
+}
+]
+2026-01-29 14:47:48 | INFO | POST /chat -> 500 (1304.0 ms)
+2026-01-29 14:48:31 | ERROR | chat() failed
+Traceback (most recent call last):
+
+  File "<string>", line 1, in <module>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\multiprocessing\spawn.py", line 122, in spawn_main
+    exitcode = _main(fd, parent_sentinel)
+               │     │   └ 336
+               │     └ 3
+               └ <function _main at 0x00000203F9D8DDA0>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\multiprocessing\spawn.py", line 135, in _main
+    return self._bootstrap(parent_sentinel)
+           │    │          └ 336
+           │    └ <function BaseProcess._bootstrap at 0x00000203F9CA0860>
+           └ <SpawnProcess name='SpawnProcess-12' parent=31060 started>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\multiprocessing\process.py", line 314, in _bootstrap
+    self.run()
+    │    └ <function BaseProcess.run at 0x00000203F9B8BD80>
+    └ <SpawnProcess name='SpawnProcess-12' parent=31060 started>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\multiprocessing\process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+    │    │        │    │        │    └ {'config': <uvicorn.config.Config object at 0x00000203F9D66750>, 'target': <bound method Server.run of <uvicorn.server.Server...
+    │    │        │    │        └ <SpawnProcess name='SpawnProcess-12' parent=31060 started>
+    │    │        │    └ ()
+    │    │        └ <SpawnProcess name='SpawnProcess-12' parent=31060 started>
+    │    └ <function subprocess_started at 0x00000203FC1D2700>
+    └ <SpawnProcess name='SpawnProcess-12' parent=31060 started>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\uvicorn\_subprocess.py", line 80, in subprocess_started
+    target(sockets=sockets)
+    │              └ [<socket.socket fd=864, family=2, type=1, proto=6, laddr=('127.0.1.8', 8000)>]
+    └ <bound method Server.run of <uvicorn.server.Server object at 0x00000203FC342A90>>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\uvicorn\server.py", line 65, in run
+    return asyncio.run(self.serve(sockets=sockets))
+           │       │   │    │             └ [<socket.socket fd=864, family=2, type=1, proto=6, laddr=('127.0.1.8', 8000)>]
+           │       │   │    └ <function Server.serve at 0x00000203FC1D13A0>
+           │       │   └ <uvicorn.server.Server object at 0x00000203FC342A90>
+           │       └ <function run at 0x00000203FBA74860>
+           └ <module 'asyncio' from 'C:\\Users\\lapth\\anaconda3\\envs\\aibacsi\\Lib\\asyncio\\__init__.py'>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\asyncio\runners.py", line 190, in run
+    return runner.run(main)
+           │      │   └ <coroutine object Server.serve at 0x00000203FC28BD30>
+           │      └ <function Runner.run at 0x00000203FBA78A40>
+           └ <asyncio.runners.Runner object at 0x00000203FC3422D0>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\asyncio\runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           │    │     │                  └ <Task pending name='Task-1' coro=<Server.serve() running at C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\uvicorn\s...
+           │    │     └ <function BaseEventLoop.run_until_complete at 0x00000203FBA76660>
+           │    └ <_WindowsSelectorEventLoop running=True closed=False debug=False>
+           └ <asyncio.runners.Runner object at 0x00000203FC3422D0>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\asyncio\base_events.py", line 641, in run_until_complete
+    self.run_forever()
+    │    └ <function BaseEventLoop.run_forever at 0x00000203FBA765C0>
+    └ <_WindowsSelectorEventLoop running=True closed=False debug=False>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\asyncio\base_events.py", line 608, in run_forever
+    self._run_once()
+    │    └ <function BaseEventLoop._run_once at 0x00000203FBA78400>
+    └ <_WindowsSelectorEventLoop running=True closed=False debug=False>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\asyncio\base_events.py", line 1936, in _run_once
+    handle._run()
+    │      └ <function Handle._run at 0x00000203FB9BE840>
+    └ <Handle Task.task_wakeup(<Future finis...ECT 5', True)>)>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\asyncio\events.py", line 84, in _run
+    self._context.run(self._callback, *self._args)
+    │    │            │    │           │    └ <member '_args' of 'Handle' objects>
+    │    │            │    │           └ <Handle Task.task_wakeup(<Future finis...ECT 5', True)>)>
+    │    │            │    └ <member '_callback' of 'Handle' objects>
+    │    │            └ <Handle Task.task_wakeup(<Future finis...ECT 5', True)>)>
+    │    └ <member '_context' of 'Handle' objects>
+    └ <Handle Task.task_wakeup(<Future finis...ECT 5', True)>)>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\starlette\middleware\base.py", line 149, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+          │    │   │      │                      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.send_no_error at 0x00000203A1AFF060>
+          │    │   │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x00000203A1AFEDE0>
+          │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.1.8', 8000), 'cl...
+          │    └ <starlette.middleware.exceptions.ExceptionMiddleware object at 0x00000203A1A09490>
+          └ <app.middleware.log_request.RequestLogMiddleware object at 0x00000203A1A7DDD0>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+          │                            │    │    │     │      │        └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.send_no_error at 0x00000203A1AFF060>
+          │                            │    │    │     │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x00000203A1AFEDE0>
+          │                            │    │    │     └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.1.8', 8000), 'cl...
+          │                            │    │    └ <starlette.requests.Request object at 0x00000203C6322650>
+          │                            │    └ <fastapi.routing.APIRouter object at 0x00000203A1A26C90>
+          │                            └ <starlette.middleware.exceptions.ExceptionMiddleware object at 0x00000203A1A09490>
+          └ <function wrap_app_handling_exceptions at 0x00000203FE3A99E0>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\starlette\_exception_handler.py", line 51, in wrapped_app
+    await app(scope, receive, sender)
+          │   │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x00000203BEDB7C40>
+          │   │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x00000203A1AFEDE0>
+          │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.1.8', 8000), 'cl...
+          └ <fastapi.routing.APIRouter object at 0x00000203A1A26C90>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\starlette\routing.py", line 715, in __call__
+    await self.middleware_stack(scope, receive, send)
+          │    │                │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x00000203BEDB7C40>
+          │    │                │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x00000203A1AFEDE0>
+          │    │                └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.1.8', 8000), 'cl...
+          │    └ <bound method Router.app of <fastapi.routing.APIRouter object at 0x00000203A1A26C90>>
+          └ <fastapi.routing.APIRouter object at 0x00000203A1A26C90>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\starlette\routing.py", line 735, in app
+    await route.handle(scope, receive, send)
+          │     │      │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x00000203BEDB7C40>
+          │     │      │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x00000203A1AFEDE0>
+          │     │      └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.1.8', 8000), 'cl...
+          │     └ <function Route.handle at 0x00000203FE3AB1A0>
+          └ APIRoute(path='/chat', name='chat', methods=['POST'])
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\starlette\routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+          │    │   │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x00000203BEDB7C40>
+          │    │   │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x00000203A1AFEDE0>
+          │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.1.8', 8000), 'cl...
+          │    └ <function request_response.<locals>.app at 0x00000203A1A42200>
+          └ APIRoute(path='/chat', name='chat', methods=['POST'])
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\starlette\routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+          │                            │    │        │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x00000203BEDB7C40>
+          │                            │    │        │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x00000203A1AFEDE0>
+          │                            │    │        └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.1.8', 8000), 'cl...
+          │                            │    └ <starlette.requests.Request object at 0x00000203C6320990>
+          │                            └ <function request_response.<locals>.app.<locals>.app at 0x00000203BEDB7380>
+          └ <function wrap_app_handling_exceptions at 0x00000203FE3A99E0>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\starlette\_exception_handler.py", line 51, in wrapped_app
+    await app(scope, receive, sender)
+          │   │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x00000203BEDB7CE0>
+          │   │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x00000203A1AFEDE0>
+          │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.1.8', 8000), 'cl...
+          └ <function request_response.<locals>.app.<locals>.app at 0x00000203BEDB7380>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\starlette\routing.py", line 73, in app
+    response = await f(request)
+                     │ └ <starlette.requests.Request object at 0x00000203C6320990>
+                     └ <function get_request_handler.<locals>.app at 0x00000203A1A422A0>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\fastapi\routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+                         └ <function run_endpoint_function at 0x00000203F9B27740>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\fastapi\routing.py", line 212, in run_endpoint_function
+    return await dependant.call(**values)
+                 │         │      └ {'db': <sqlalchemy.orm.session.AsyncSession object at 0x00000203C630AD50>, 'current_user': <db.models.user_model.User object ...
+                 │         └ <function chat at 0x00000203FF463F60>
+                 └ Dependant(path_params=[], query_params=[], header_params=[], cookie_params=[], body_params=[ModelField(field_info=Body(Pydant...
+
+> File "E:\KLTN\chatbot\backend\app\routers\chat.py", line 71, in chat
+    resp = await handle_chat_request(req, db, current_user)
+                 │                   │    │   └ <db.models.user_model.User object at 0x00000203C6100A10>
+                 │                   │    └ <sqlalchemy.orm.session.AsyncSession object at 0x00000203C630AD50>
+                 │                   └ ChatRequest(question='54 tuổi, khó ngủ')
+                 └ <function handle_chat_request at 0x00000203FF51E2A0>
+
+  File "E:\KLTN\chatbot\backend\app\services\chat_service.py", line 42, in handle_chat_request
+    out = await run_pipeline(question, db)
+                │            │         └ <sqlalchemy.orm.session.AsyncSession object at 0x00000203C630AD50>
+                │            └ '54 tuổi, khó ngủ'
+                └ <function run at 0x00000203FF51E480>
+
+  File "E:\KLTN\chatbot\backend\app\rag\chat_pipeline.py", line 57, in run
+    answer = build_answer(question, contexts)
+             │            │         └ [{'doc_id': 'medical', 'chunk_id': '617e8cd2-c04c-465f-b7cd-8729abbd167e', 'text': 'Title: Thông tin về Não và dây thần kinh\...
+             │            └ '54 tuổi, khó ngủ'
+             └ <function build_answer at 0x0000020397B07240>
+
+  File "E:\KLTN\chatbot\backend\app\rag\llm_chain.py", line 177, in build_answer
+    raw = call_gemini(prompt)
+          │           └ 'SYSTEM\n\nBạn là **AI Bác sĩ trợ lý sức khỏe tổng quát**.\n\nVai trò của bạn là:\n- Giải thích kiến thức về **triệu chứng, b...
+          └ <function call_gemini at 0x00000203FF8FAB60>
+
+  File "E:\KLTN\chatbot\backend\app\rag\llm_chain.py", line 143, in call_gemini
+    resp = model.generate_content(prompt)
+           │     │                └ 'SYSTEM\n\nBạn là **AI Bác sĩ trợ lý sức khỏe tổng quát**.\n\nVai trò của bạn là:\n- Giải thích kiến thức về **triệu chứng, b...
+           │     └ <function GenerativeModel.generate_content at 0x0000020397B06660>
+           └ genai.GenerativeModel(
+                 model_name='models/gemini-2.5-flash',
+                 generation_config={},
+                 safety_settings={},
+                 tools=...
+
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\google\generativeai\generative_models.py", line 331, in generate_content
+    response = self._client.generate_content(
+               │    │       └ <function GenerativeServiceClient.generate_content at 0x0000020397531A80>
+               │    └ <google.ai.generativelanguage_v1beta.services.generative_service.client.GenerativeServiceClient object at 0x00000203C60E6C10>
+               └ genai.GenerativeModel(
+                     model_name='models/gemini-2.5-flash',
+                     generation_config={},
+                     safety_settings={},
+                     tools=...
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\google\ai\generativelanguage_v1beta\services\generative_service\client.py", line 827, in generate_content
+    response = rpc(
+               └ <google.api_core.gapic_v1.method._GapicCallable object at 0x00000203C61023D0>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\google\api_core\gapic_v1\method.py", line 131, in __call__
+    return wrapped_func(*args, **kwargs)
+           │             │       └ {'metadata': [('x-goog-request-params', 'model=models/gemini-2.5-flash'), ('x-goog-api-client', 'genai-py/0.7.2 gl-python/3.1...
+           │             └ (model: "models/gemini-2.5-flash"
+           │               contents {
+           │                 parts {
+           │                   text: "SYSTEM\n\nBạn là **AI Bác sĩ trợ lý sức khỏe tổng quát**.\n...
+           └ <function _wrap_unary_errors.<locals>.error_remapped_callable at 0x00000203C60D5A80>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\google\api_core\retry\retry_unary.py", line 294, in retry_wrapped_func
+    return retry_target(
+           └ <function retry_target at 0x0000020397037CE0>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\google\api_core\retry\retry_unary.py", line 156, in retry_target
+    next_sleep = _retry_error_helper(
+                 └ <function _retry_error_helper at 0x0000020397037560>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\google\api_core\retry\retry_base.py", line 214, in _retry_error_helper
+    raise final_exc from source_exc
+          │              └ None
+          └ ResourceExhausted('You exceeded your current quota, please check your plan and billing details. For more information on this ...
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\google\api_core\retry\retry_unary.py", line 147, in retry_target
+    result = target()
+             └ functools.partial(<function _wrap_unary_errors.<locals>.error_remapped_callable at 0x00000203C60D59E0>, model: "models/gemini...
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\google\api_core\timeout.py", line 130, in func_with_timeout
+    return func(*args, **kwargs)
+           │     │       └ {'metadata': [('x-goog-request-params', 'model=models/gemini-2.5-flash'), ('x-goog-api-client', 'genai-py/0.7.2 gl-python/3.1...
+           │     └ (model: "models/gemini-2.5-flash"
+           │       contents {
+           │         parts {
+           │           text: "SYSTEM\n\nBạn là **AI Bác sĩ trợ lý sức khỏe tổng quát**.\n...
+           └ <function _wrap_unary_errors.<locals>.error_remapped_callable at 0x00000203BED61BC0>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\google\api_core\grpc_helpers.py", line 77, in error_remapped_callable
+    raise exceptions.from_grpc_error(exc) from exc
+          │          └ <function from_grpc_error at 0x00000203FFD3C680>
+          └ <module 'google.api_core.exceptions' from 'C:\\Users\\lapth\\anaconda3\\envs\\aibacsi\\Lib\\site-packages\\google\\api_core\\...
+
+google.api_core.exceptions.ResourceExhausted: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. 
+* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash
+Please retry in 31.585242477s. [links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, violations {
+  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_requests"
+  quota_id: "GenerateRequestsPerDayPerProjectPerModel-FreeTier"
+  quota_dimensions {
+    key: "model"
+    value: "gemini-2.5-flash"
+  }
+  quota_dimensions {
+    key: "location"
+    value: "global"
+  }
+  quota_value: 20
+}
+, retry_delay {
+  seconds: 31
+}
+]
+2026-01-29 14:48:31 | INFO | POST /chat -> 500 (677.1 ms)
+2026-01-29 14:53:51 | INFO | GET / -> 200 (0.4 ms)
+2026-01-29 14:53:53 | INFO | GET /favicon.ico -> 404 (0.5 ms)
+2026-01-29 14:53:58 | INFO | GET /docs -> 200 (0.4 ms)
+2026-01-29 14:53:59 | INFO | GET /openapi.json -> 200 (0.9 ms)
+2026-01-29 14:54:55 | INFO | POST /chat -> 200 (3649.9 ms)
+2026-01-29 14:55:22 | ERROR | chat() failed
+Traceback (most recent call last):
+
+  File "<string>", line 1, in <module>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\multiprocessing\spawn.py", line 122, in spawn_main
+    exitcode = _main(fd, parent_sentinel)
+               │     │   └ 336
+               │     └ 3
+               └ <function _main at 0x00000203F9D8DDA0>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\multiprocessing\spawn.py", line 135, in _main
+    return self._bootstrap(parent_sentinel)
+           │    │          └ 336
+           │    └ <function BaseProcess._bootstrap at 0x00000203F9CA0860>
+           └ <SpawnProcess name='SpawnProcess-12' parent=31060 started>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\multiprocessing\process.py", line 314, in _bootstrap
+    self.run()
+    │    └ <function BaseProcess.run at 0x00000203F9B8BD80>
+    └ <SpawnProcess name='SpawnProcess-12' parent=31060 started>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\multiprocessing\process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+    │    │        │    │        │    └ {'config': <uvicorn.config.Config object at 0x00000203F9D66750>, 'target': <bound method Server.run of <uvicorn.server.Server...
+    │    │        │    │        └ <SpawnProcess name='SpawnProcess-12' parent=31060 started>
+    │    │        │    └ ()
+    │    │        └ <SpawnProcess name='SpawnProcess-12' parent=31060 started>
+    │    └ <function subprocess_started at 0x00000203FC1D2700>
+    └ <SpawnProcess name='SpawnProcess-12' parent=31060 started>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\uvicorn\_subprocess.py", line 80, in subprocess_started
+    target(sockets=sockets)
+    │              └ [<socket.socket fd=864, family=2, type=1, proto=6, laddr=('127.0.1.8', 8000)>]
+    └ <bound method Server.run of <uvicorn.server.Server object at 0x00000203FC342A90>>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\uvicorn\server.py", line 65, in run
+    return asyncio.run(self.serve(sockets=sockets))
+           │       │   │    │             └ [<socket.socket fd=864, family=2, type=1, proto=6, laddr=('127.0.1.8', 8000)>]
+           │       │   │    └ <function Server.serve at 0x00000203FC1D13A0>
+           │       │   └ <uvicorn.server.Server object at 0x00000203FC342A90>
+           │       └ <function run at 0x00000203FBA74860>
+           └ <module 'asyncio' from 'C:\\Users\\lapth\\anaconda3\\envs\\aibacsi\\Lib\\asyncio\\__init__.py'>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\asyncio\runners.py", line 190, in run
+    return runner.run(main)
+           │      │   └ <coroutine object Server.serve at 0x00000203FC28BD30>
+           │      └ <function Runner.run at 0x00000203FBA78A40>
+           └ <asyncio.runners.Runner object at 0x00000203FC3422D0>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\asyncio\runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           │    │     │                  └ <Task pending name='Task-1' coro=<Server.serve() running at C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\uvicorn\s...
+           │    │     └ <function BaseEventLoop.run_until_complete at 0x00000203FBA76660>
+           │    └ <_WindowsSelectorEventLoop running=True closed=False debug=False>
+           └ <asyncio.runners.Runner object at 0x00000203FC3422D0>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\asyncio\base_events.py", line 641, in run_until_complete
+    self.run_forever()
+    │    └ <function BaseEventLoop.run_forever at 0x00000203FBA765C0>
+    └ <_WindowsSelectorEventLoop running=True closed=False debug=False>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\asyncio\base_events.py", line 608, in run_forever
+    self._run_once()
+    │    └ <function BaseEventLoop._run_once at 0x00000203FBA78400>
+    └ <_WindowsSelectorEventLoop running=True closed=False debug=False>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\asyncio\base_events.py", line 1936, in _run_once
+    handle._run()
+    │      └ <function Handle._run at 0x00000203FB9BE840>
+    └ <Handle Task.task_wakeup(<Future finis...ECT 5', True)>)>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\asyncio\events.py", line 84, in _run
+    self._context.run(self._callback, *self._args)
+    │    │            │    │           │    └ <member '_args' of 'Handle' objects>
+    │    │            │    │           └ <Handle Task.task_wakeup(<Future finis...ECT 5', True)>)>
+    │    │            │    └ <member '_callback' of 'Handle' objects>
+    │    │            └ <Handle Task.task_wakeup(<Future finis...ECT 5', True)>)>
+    │    └ <member '_context' of 'Handle' objects>
+    └ <Handle Task.task_wakeup(<Future finis...ECT 5', True)>)>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\starlette\middleware\base.py", line 149, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+          │    │   │      │                      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.send_no_error at 0x00000203A1AFFE20>
+          │    │   │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x00000203A1AFF1A0>
+          │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.1.8', 8000), 'cl...
+          │    └ <starlette.middleware.exceptions.ExceptionMiddleware object at 0x00000203A1A09490>
+          └ <app.middleware.log_request.RequestLogMiddleware object at 0x00000203A1A7DDD0>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+          │                            │    │    │     │      │        └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.send_no_error at 0x00000203A1AFFE20>
+          │                            │    │    │     │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x00000203A1AFF1A0>
+          │                            │    │    │     └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.1.8', 8000), 'cl...
+          │                            │    │    └ <starlette.requests.Request object at 0x00000203C6100210>
+          │                            │    └ <fastapi.routing.APIRouter object at 0x00000203A1A26C90>
+          │                            └ <starlette.middleware.exceptions.ExceptionMiddleware object at 0x00000203A1A09490>
+          └ <function wrap_app_handling_exceptions at 0x00000203FE3A99E0>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\starlette\_exception_handler.py", line 51, in wrapped_app
+    await app(scope, receive, sender)
+          │   │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x00000203C630C040>
+          │   │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x00000203A1AFF1A0>
+          │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.1.8', 8000), 'cl...
+          └ <fastapi.routing.APIRouter object at 0x00000203A1A26C90>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\starlette\routing.py", line 715, in __call__
+    await self.middleware_stack(scope, receive, send)
+          │    │                │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x00000203C630C040>
+          │    │                │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x00000203A1AFF1A0>
+          │    │                └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.1.8', 8000), 'cl...
+          │    └ <bound method Router.app of <fastapi.routing.APIRouter object at 0x00000203A1A26C90>>
+          └ <fastapi.routing.APIRouter object at 0x00000203A1A26C90>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\starlette\routing.py", line 735, in app
+    await route.handle(scope, receive, send)
+          │     │      │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x00000203C630C040>
+          │     │      │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x00000203A1AFF1A0>
+          │     │      └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.1.8', 8000), 'cl...
+          │     └ <function Route.handle at 0x00000203FE3AB1A0>
+          └ APIRoute(path='/chat', name='chat', methods=['POST'])
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\starlette\routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+          │    │   │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x00000203C630C040>
+          │    │   │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x00000203A1AFF1A0>
+          │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.1.8', 8000), 'cl...
+          │    └ <function request_response.<locals>.app at 0x00000203A1A42200>
+          └ APIRoute(path='/chat', name='chat', methods=['POST'])
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\starlette\routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+          │                            │    │        │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x00000203C630C040>
+          │                            │    │        │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x00000203A1AFF1A0>
+          │                            │    │        └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.1.8', 8000), 'cl...
+          │                            │    └ <starlette.requests.Request object at 0x00000203C6102810>
+          │                            └ <function request_response.<locals>.app.<locals>.app at 0x00000203BED63F60>
+          └ <function wrap_app_handling_exceptions at 0x00000203FE3A99E0>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\starlette\_exception_handler.py", line 51, in wrapped_app
+    await app(scope, receive, sender)
+          │   │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x00000203BED634C0>
+          │   │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x00000203A1AFF1A0>
+          │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.1.8', 8000), 'cl...
+          └ <function request_response.<locals>.app.<locals>.app at 0x00000203BED63F60>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\starlette\routing.py", line 73, in app
+    response = await f(request)
+                     │ └ <starlette.requests.Request object at 0x00000203C6102810>
+                     └ <function get_request_handler.<locals>.app at 0x00000203A1A422A0>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\fastapi\routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+                         └ <function run_endpoint_function at 0x00000203F9B27740>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\fastapi\routing.py", line 212, in run_endpoint_function
+    return await dependant.call(**values)
+                 │         │      └ {'db': <sqlalchemy.orm.session.AsyncSession object at 0x00000203C6103E90>, 'current_user': <db.models.user_model.User object ...
+                 │         └ <function chat at 0x00000203FF463F60>
+                 └ Dependant(path_params=[], query_params=[], header_params=[], cookie_params=[], body_params=[ModelField(field_info=Body(Pydant...
+
+> File "E:\KLTN\chatbot\backend\app\routers\chat.py", line 71, in chat
+    resp = await handle_chat_request(req, db, current_user)
+                 │                   │    │   └ <db.models.user_model.User object at 0x00000203C6100910>
+                 │                   │    └ <sqlalchemy.orm.session.AsyncSession object at 0x00000203C6103E90>
+                 │                   └ ChatRequest(question='54 tuổi, khó ngủ')
+                 └ <function handle_chat_request at 0x00000203FF51E2A0>
+
+  File "E:\KLTN\chatbot\backend\app\services\chat_service.py", line 42, in handle_chat_request
+    out = await run_pipeline(question, db)
+                │            │         └ <sqlalchemy.orm.session.AsyncSession object at 0x00000203C6103E90>
+                │            └ '54 tuổi, khó ngủ'
+                └ <function run at 0x00000203FF51E480>
+
+  File "E:\KLTN\chatbot\backend\app\rag\chat_pipeline.py", line 57, in run
+    answer = build_answer(question, contexts)
+             │            │         └ [{'doc_id': 'medical', 'chunk_id': '617e8cd2-c04c-465f-b7cd-8729abbd167e', 'text': 'Title: Thông tin về Não và dây thần kinh\...
+             │            └ '54 tuổi, khó ngủ'
+             └ <function build_answer at 0x0000020397B07240>
+
+  File "E:\KLTN\chatbot\backend\app\rag\llm_chain.py", line 177, in build_answer
+    raw = call_gemini(prompt)
+          │           └ 'SYSTEM\n\nBạn là **AI Bác sĩ trợ lý sức khỏe tổng quát**.\n\nVai trò của bạn là:\n- Giải thích kiến thức về **triệu chứng, b...
+          └ <function call_gemini at 0x00000203FF8FAB60>
+
+  File "E:\KLTN\chatbot\backend\app\rag\llm_chain.py", line 143, in call_gemini
+    resp = model.generate_content(prompt)
+           │     │                └ 'SYSTEM\n\nBạn là **AI Bác sĩ trợ lý sức khỏe tổng quát**.\n\nVai trò của bạn là:\n- Giải thích kiến thức về **triệu chứng, b...
+           │     └ <function GenerativeModel.generate_content at 0x0000020397B06660>
+           └ genai.GenerativeModel(
+                 model_name='models/gemini-2.5-flash',
+                 generation_config={},
+                 safety_settings={},
+                 tools=...
+
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\google\generativeai\generative_models.py", line 331, in generate_content
+    response = self._client.generate_content(
+               │    │       └ <function GenerativeServiceClient.generate_content at 0x0000020397531A80>
+               │    └ <google.ai.generativelanguage_v1beta.services.generative_service.client.GenerativeServiceClient object at 0x00000203BED1C390>
+               └ genai.GenerativeModel(
+                     model_name='models/gemini-2.5-flash',
+                     generation_config={},
+                     safety_settings={},
+                     tools=...
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\google\ai\generativelanguage_v1beta\services\generative_service\client.py", line 827, in generate_content
+    response = rpc(
+               └ <google.api_core.gapic_v1.method._GapicCallable object at 0x00000203C6110850>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\google\api_core\gapic_v1\method.py", line 131, in __call__
+    return wrapped_func(*args, **kwargs)
+           │             │       └ {'metadata': [('x-goog-request-params', 'model=models/gemini-2.5-flash'), ('x-goog-api-client', 'genai-py/0.7.2 gl-python/3.1...
+           │             └ (model: "models/gemini-2.5-flash"
+           │               contents {
+           │                 parts {
+           │                   text: "SYSTEM\n\nBạn là **AI Bác sĩ trợ lý sức khỏe tổng quát**.\n...
+           └ <function _wrap_unary_errors.<locals>.error_remapped_callable at 0x00000203BEDB7100>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\google\api_core\retry\retry_unary.py", line 294, in retry_wrapped_func
+    return retry_target(
+           └ <function retry_target at 0x0000020397037CE0>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\google\api_core\retry\retry_unary.py", line 156, in retry_target
+    next_sleep = _retry_error_helper(
+                 └ <function _retry_error_helper at 0x0000020397037560>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\google\api_core\retry\retry_base.py", line 214, in _retry_error_helper
+    raise final_exc from source_exc
+          │              └ None
+          └ ResourceExhausted('You exceeded your current quota, please check your plan and billing details. For more information on this ...
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\google\api_core\retry\retry_unary.py", line 147, in retry_target
+    result = target()
+             └ functools.partial(<function _wrap_unary_errors.<locals>.error_remapped_callable at 0x00000203BEDB7D80>, model: "models/gemini...
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\google\api_core\timeout.py", line 130, in func_with_timeout
+    return func(*args, **kwargs)
+           │     │       └ {'metadata': [('x-goog-request-params', 'model=models/gemini-2.5-flash'), ('x-goog-api-client', 'genai-py/0.7.2 gl-python/3.1...
+           │     └ (model: "models/gemini-2.5-flash"
+           │       contents {
+           │         parts {
+           │           text: "SYSTEM\n\nBạn là **AI Bác sĩ trợ lý sức khỏe tổng quát**.\n...
+           └ <function _wrap_unary_errors.<locals>.error_remapped_callable at 0x00000203BED61DA0>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\google\api_core\grpc_helpers.py", line 77, in error_remapped_callable
+    raise exceptions.from_grpc_error(exc) from exc
+          │          └ <function from_grpc_error at 0x00000203FFD3C680>
+          └ <module 'google.api_core.exceptions' from 'C:\\Users\\lapth\\anaconda3\\envs\\aibacsi\\Lib\\site-packages\\google\\api_core\\...
+
+google.api_core.exceptions.ResourceExhausted: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. 
+* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash
+Please retry in 41.172302752s. [links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, violations {
+  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_requests"
+  quota_id: "GenerateRequestsPerDayPerProjectPerModel-FreeTier"
+  quota_dimensions {
+    key: "model"
+    value: "gemini-2.5-flash"
+  }
+  quota_dimensions {
+    key: "location"
+    value: "global"
+  }
+  quota_value: 20
+}
+, retry_delay {
+  seconds: 41
+}
+]
+2026-01-29 14:55:22 | INFO | POST /chat -> 500 (927.2 ms)
+2026-01-29 14:55:43 | ERROR | chat() failed
+Traceback (most recent call last):
+
+  File "<string>", line 1, in <module>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\multiprocessing\spawn.py", line 122, in spawn_main
+    exitcode = _main(fd, parent_sentinel)
+               │     │   └ 336
+               │     └ 3
+               └ <function _main at 0x00000203F9D8DDA0>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\multiprocessing\spawn.py", line 135, in _main
+    return self._bootstrap(parent_sentinel)
+           │    │          └ 336
+           │    └ <function BaseProcess._bootstrap at 0x00000203F9CA0860>
+           └ <SpawnProcess name='SpawnProcess-12' parent=31060 started>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\multiprocessing\process.py", line 314, in _bootstrap
+    self.run()
+    │    └ <function BaseProcess.run at 0x00000203F9B8BD80>
+    └ <SpawnProcess name='SpawnProcess-12' parent=31060 started>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\multiprocessing\process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+    │    │        │    │        │    └ {'config': <uvicorn.config.Config object at 0x00000203F9D66750>, 'target': <bound method Server.run of <uvicorn.server.Server...
+    │    │        │    │        └ <SpawnProcess name='SpawnProcess-12' parent=31060 started>
+    │    │        │    └ ()
+    │    │        └ <SpawnProcess name='SpawnProcess-12' parent=31060 started>
+    │    └ <function subprocess_started at 0x00000203FC1D2700>
+    └ <SpawnProcess name='SpawnProcess-12' parent=31060 started>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\uvicorn\_subprocess.py", line 80, in subprocess_started
+    target(sockets=sockets)
+    │              └ [<socket.socket fd=864, family=2, type=1, proto=6, laddr=('127.0.1.8', 8000)>]
+    └ <bound method Server.run of <uvicorn.server.Server object at 0x00000203FC342A90>>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\uvicorn\server.py", line 65, in run
+    return asyncio.run(self.serve(sockets=sockets))
+           │       │   │    │             └ [<socket.socket fd=864, family=2, type=1, proto=6, laddr=('127.0.1.8', 8000)>]
+           │       │   │    └ <function Server.serve at 0x00000203FC1D13A0>
+           │       │   └ <uvicorn.server.Server object at 0x00000203FC342A90>
+           │       └ <function run at 0x00000203FBA74860>
+           └ <module 'asyncio' from 'C:\\Users\\lapth\\anaconda3\\envs\\aibacsi\\Lib\\asyncio\\__init__.py'>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\asyncio\runners.py", line 190, in run
+    return runner.run(main)
+           │      │   └ <coroutine object Server.serve at 0x00000203FC28BD30>
+           │      └ <function Runner.run at 0x00000203FBA78A40>
+           └ <asyncio.runners.Runner object at 0x00000203FC3422D0>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\asyncio\runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           │    │     │                  └ <Task pending name='Task-1' coro=<Server.serve() running at C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\uvicorn\s...
+           │    │     └ <function BaseEventLoop.run_until_complete at 0x00000203FBA76660>
+           │    └ <_WindowsSelectorEventLoop running=True closed=False debug=False>
+           └ <asyncio.runners.Runner object at 0x00000203FC3422D0>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\asyncio\base_events.py", line 641, in run_until_complete
+    self.run_forever()
+    │    └ <function BaseEventLoop.run_forever at 0x00000203FBA765C0>
+    └ <_WindowsSelectorEventLoop running=True closed=False debug=False>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\asyncio\base_events.py", line 608, in run_forever
+    self._run_once()
+    │    └ <function BaseEventLoop._run_once at 0x00000203FBA78400>
+    └ <_WindowsSelectorEventLoop running=True closed=False debug=False>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\asyncio\base_events.py", line 1936, in _run_once
+    handle._run()
+    │      └ <function Handle._run at 0x00000203FB9BE840>
+    └ <Handle Task.task_wakeup(<Future finis...ECT 5', True)>)>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\asyncio\events.py", line 84, in _run
+    self._context.run(self._callback, *self._args)
+    │    │            │    │           │    └ <member '_args' of 'Handle' objects>
+    │    │            │    │           └ <Handle Task.task_wakeup(<Future finis...ECT 5', True)>)>
+    │    │            │    └ <member '_callback' of 'Handle' objects>
+    │    │            └ <Handle Task.task_wakeup(<Future finis...ECT 5', True)>)>
+    │    └ <member '_context' of 'Handle' objects>
+    └ <Handle Task.task_wakeup(<Future finis...ECT 5', True)>)>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\starlette\middleware\base.py", line 149, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+          │    │   │      │                      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.send_no_error at 0x00000203C630C860>
+          │    │   │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x00000203A1AFF1A0>
+          │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.1.8', 8000), 'cl...
+          │    └ <starlette.middleware.exceptions.ExceptionMiddleware object at 0x00000203A1A09490>
+          └ <app.middleware.log_request.RequestLogMiddleware object at 0x00000203A1A7DDD0>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+          │                            │    │    │     │      │        └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.send_no_error at 0x00000203C630C860>
+          │                            │    │    │     │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x00000203A1AFF1A0>
+          │                            │    │    │     └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.1.8', 8000), 'cl...
+          │                            │    │    └ <starlette.requests.Request object at 0x00000203C6113950>
+          │                            │    └ <fastapi.routing.APIRouter object at 0x00000203A1A26C90>
+          │                            └ <starlette.middleware.exceptions.ExceptionMiddleware object at 0x00000203A1A09490>
+          └ <function wrap_app_handling_exceptions at 0x00000203FE3A99E0>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\starlette\_exception_handler.py", line 51, in wrapped_app
+    await app(scope, receive, sender)
+          │   │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x00000203BED61C60>
+          │   │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x00000203A1AFF1A0>
+          │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.1.8', 8000), 'cl...
+          └ <fastapi.routing.APIRouter object at 0x00000203A1A26C90>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\starlette\routing.py", line 715, in __call__
+    await self.middleware_stack(scope, receive, send)
+          │    │                │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x00000203BED61C60>
+          │    │                │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x00000203A1AFF1A0>
+          │    │                └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.1.8', 8000), 'cl...
+          │    └ <bound method Router.app of <fastapi.routing.APIRouter object at 0x00000203A1A26C90>>
+          └ <fastapi.routing.APIRouter object at 0x00000203A1A26C90>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\starlette\routing.py", line 735, in app
+    await route.handle(scope, receive, send)
+          │     │      │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x00000203BED61C60>
+          │     │      │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x00000203A1AFF1A0>
+          │     │      └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.1.8', 8000), 'cl...
+          │     └ <function Route.handle at 0x00000203FE3AB1A0>
+          └ APIRoute(path='/chat', name='chat', methods=['POST'])
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\starlette\routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+          │    │   │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x00000203BED61C60>
+          │    │   │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x00000203A1AFF1A0>
+          │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.1.8', 8000), 'cl...
+          │    └ <function request_response.<locals>.app at 0x00000203A1A42200>
+          └ APIRoute(path='/chat', name='chat', methods=['POST'])
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\starlette\routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+          │                            │    │        │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x00000203BED61C60>
+          │                            │    │        │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x00000203A1AFF1A0>
+          │                            │    │        └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.1.8', 8000), 'cl...
+          │                            │    └ <starlette.requests.Request object at 0x00000203C6113910>
+          │                            └ <function request_response.<locals>.app.<locals>.app at 0x00000203BED63F60>
+          └ <function wrap_app_handling_exceptions at 0x00000203FE3A99E0>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\starlette\_exception_handler.py", line 51, in wrapped_app
+    await app(scope, receive, sender)
+          │   │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x00000203BED634C0>
+          │   │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x00000203A1AFF1A0>
+          │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.1.8', 8000), 'cl...
+          └ <function request_response.<locals>.app.<locals>.app at 0x00000203BED63F60>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\starlette\routing.py", line 73, in app
+    response = await f(request)
+                     │ └ <starlette.requests.Request object at 0x00000203C6113910>
+                     └ <function get_request_handler.<locals>.app at 0x00000203A1A422A0>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\fastapi\routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+                         └ <function run_endpoint_function at 0x00000203F9B27740>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\fastapi\routing.py", line 212, in run_endpoint_function
+    return await dependant.call(**values)
+                 │         │      └ {'db': <sqlalchemy.orm.session.AsyncSession object at 0x00000203C6103850>, 'current_user': <db.models.user_model.User object ...
+                 │         └ <function chat at 0x00000203FF463F60>
+                 └ Dependant(path_params=[], query_params=[], header_params=[], cookie_params=[], body_params=[ModelField(field_info=Body(Pydant...
+
+> File "E:\KLTN\chatbot\backend\app\routers\chat.py", line 71, in chat
+    resp = await handle_chat_request(req, db, current_user)
+                 │                   │    │   └ <db.models.user_model.User object at 0x00000203BED856D0>
+                 │                   │    └ <sqlalchemy.orm.session.AsyncSession object at 0x00000203C6103850>
+                 │                   └ ChatRequest(question='sao lỗi')
+                 └ <function handle_chat_request at 0x00000203FF51E2A0>
+
+  File "E:\KLTN\chatbot\backend\app\services\chat_service.py", line 42, in handle_chat_request
+    out = await run_pipeline(question, db)
+                │            │         └ <sqlalchemy.orm.session.AsyncSession object at 0x00000203C6103850>
+                │            └ 'sao lỗi'
+                └ <function run at 0x00000203FF51E480>
+
+  File "E:\KLTN\chatbot\backend\app\rag\chat_pipeline.py", line 57, in run
+    answer = build_answer(question, contexts)
+             │            │         └ [{'doc_id': 'medical', 'chunk_id': 'f94fe6ee-6053-499a-adcd-aed13c36c47c', 'text': 'Title: Thông tin về Da, tóc và móng\nQues...
+             │            └ 'sao lỗi'
+             └ <function build_answer at 0x0000020397B07240>
+
+  File "E:\KLTN\chatbot\backend\app\rag\llm_chain.py", line 177, in build_answer
+    raw = call_gemini(prompt)
+          │           └ 'SYSTEM\n\nBạn là **AI Bác sĩ trợ lý sức khỏe tổng quát**.\n\nVai trò của bạn là:\n- Giải thích kiến thức về **triệu chứng, b...
+          └ <function call_gemini at 0x00000203FF8FAB60>
+
+  File "E:\KLTN\chatbot\backend\app\rag\llm_chain.py", line 143, in call_gemini
+    resp = model.generate_content(prompt)
+           │     │                └ 'SYSTEM\n\nBạn là **AI Bác sĩ trợ lý sức khỏe tổng quát**.\n\nVai trò của bạn là:\n- Giải thích kiến thức về **triệu chứng, b...
+           │     └ <function GenerativeModel.generate_content at 0x0000020397B06660>
+           └ genai.GenerativeModel(
+                 model_name='models/gemini-2.5-flash',
+                 generation_config={},
+                 safety_settings={},
+                 tools=...
+
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\google\generativeai\generative_models.py", line 331, in generate_content
+    response = self._client.generate_content(
+               │    │       └ <function GenerativeServiceClient.generate_content at 0x0000020397531A80>
+               │    └ <google.ai.generativelanguage_v1beta.services.generative_service.client.GenerativeServiceClient object at 0x00000203BED2AA50>
+               └ genai.GenerativeModel(
+                     model_name='models/gemini-2.5-flash',
+                     generation_config={},
+                     safety_settings={},
+                     tools=...
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\google\ai\generativelanguage_v1beta\services\generative_service\client.py", line 827, in generate_content
+    response = rpc(
+               └ <google.api_core.gapic_v1.method._GapicCallable object at 0x00000203BED07650>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\google\api_core\gapic_v1\method.py", line 131, in __call__
+    return wrapped_func(*args, **kwargs)
+           │             │       └ {'metadata': [('x-goog-request-params', 'model=models/gemini-2.5-flash'), ('x-goog-api-client', 'genai-py/0.7.2 gl-python/3.1...
+           │             └ (model: "models/gemini-2.5-flash"
+           │               contents {
+           │                 parts {
+           │                   text: "SYSTEM\n\nBạn là **AI Bác sĩ trợ lý sức khỏe tổng quát**.\n...
+           └ <function _wrap_unary_errors.<locals>.error_remapped_callable at 0x00000203C60D62A0>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\google\api_core\retry\retry_unary.py", line 294, in retry_wrapped_func
+    return retry_target(
+           └ <function retry_target at 0x0000020397037CE0>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\google\api_core\retry\retry_unary.py", line 156, in retry_target
+    next_sleep = _retry_error_helper(
+                 └ <function _retry_error_helper at 0x0000020397037560>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\google\api_core\retry\retry_base.py", line 214, in _retry_error_helper
+    raise final_exc from source_exc
+          │              └ None
+          └ ResourceExhausted('You exceeded your current quota, please check your plan and billing details. For more information on this ...
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\google\api_core\retry\retry_unary.py", line 147, in retry_target
+    result = target()
+             └ functools.partial(<function _wrap_unary_errors.<locals>.error_remapped_callable at 0x00000203C60D6200>, model: "models/gemini...
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\google\api_core\timeout.py", line 130, in func_with_timeout
+    return func(*args, **kwargs)
+           │     │       └ {'metadata': [('x-goog-request-params', 'model=models/gemini-2.5-flash'), ('x-goog-api-client', 'genai-py/0.7.2 gl-python/3.1...
+           │     └ (model: "models/gemini-2.5-flash"
+           │       contents {
+           │         parts {
+           │           text: "SYSTEM\n\nBạn là **AI Bác sĩ trợ lý sức khỏe tổng quát**.\n...
+           └ <function _wrap_unary_errors.<locals>.error_remapped_callable at 0x00000203C60D54E0>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\google\api_core\grpc_helpers.py", line 77, in error_remapped_callable
+    raise exceptions.from_grpc_error(exc) from exc
+          │          └ <function from_grpc_error at 0x00000203FFD3C680>
+          └ <module 'google.api_core.exceptions' from 'C:\\Users\\lapth\\anaconda3\\envs\\aibacsi\\Lib\\site-packages\\google\\api_core\\...
+
+google.api_core.exceptions.ResourceExhausted: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. 
+* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash
+Please retry in 19.6536623s. [links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, violations {
+  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_requests"
+  quota_id: "GenerateRequestsPerDayPerProjectPerModel-FreeTier"
+  quota_dimensions {
+    key: "model"
+    value: "gemini-2.5-flash"
+  }
+  quota_dimensions {
+    key: "location"
+    value: "global"
+  }
+  quota_value: 20
+}
+, retry_delay {
+  seconds: 19
+}
+]
+2026-01-29 14:55:43 | INFO | POST /chat -> 500 (802.5 ms)
+2026-01-29 15:01:07 | INFO | ✅ Logger initialized (level=INFO, file=logs/app.log)
+2026-01-29 15:01:08 | INFO | Startup completed: admin ensured.
+2026-01-29 15:01:09 | INFO | GET /docs -> 200 (0.8 ms)
+2026-01-29 15:01:09 | INFO | GET /openapi.json -> 200 (35.3 ms)
+2026-01-29 15:05:41 | INFO | Loading query embedding model: BAAI/bge-m3
+2026-01-29 15:05:57 | INFO | POST /chat -> 200 (20470.6 ms)
+2026-01-29 15:06:15 | INFO | POST /chat -> 200 (8513.9 ms)
+2026-01-29 16:30:02 | INFO | ✅ Logger initialized (level=INFO, file=logs/app.log)
+2026-01-29 16:30:31 | INFO | ✅ Logger initialized (level=INFO, file=logs/app.log)
+2026-01-29 16:32:22 | INFO | ✅ Logger initialized (level=INFO, file=logs/app.log)
+2026-01-29 16:32:35 | INFO | ✅ Logger initialized (level=INFO, file=logs/app.log)
+2026-01-29 16:32:35 | INFO | Startup completed: admin ensured.
+2026-01-29 16:32:41 | INFO | ✅ Logger initialized (level=INFO, file=logs/app.log)
+2026-01-29 16:32:41 | INFO | Startup completed: admin ensured.
+2026-01-29 16:33:11 | INFO | Loading query embedding model: BAAI/bge-m3
+2026-01-29 16:33:20 | INFO | POST /chat -> 200 (14017.6 ms)
+2026-01-29 16:49:54 | INFO | POST /chat -> 200 (3198.7 ms)
+2026-01-29 16:53:18 | INFO | GET / -> 200 (0.6 ms)

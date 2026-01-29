@@ -50,7 +50,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from app.core.security import get_current_user
 from db.database import get_db
 from db.schemas.chat_schema import ChatRequest, ChatResponse
-from app.services.chat_service import handle_chat_request
+from app.services.chat_service import delete_chat_history, delete_chat_message, handle_chat_request
 
 from db.models.user_model import User
 
@@ -63,14 +63,7 @@ async def chat(
     db: AsyncSession = Depends(get_db),
     current_user: User = Depends(get_current_user),
 ) -> ChatResponse:
-    """
-    Nhận câu hỏi từ người dùng, gọi service để:
-      - lọc từ cấm
-      - chạy RAG + Gemini
-      - lưu lịch sử chat (theo current_user.id)
-      - trả JSON đã chuẩn hóa (có trường safety)
-    """
-    if not req.question or len(req.question.strip()) < 3:
+    if not req.question or len(req.question.strip()) < 2:
         raise HTTPException(status_code=400, detail="Câu hỏi quá ngắn.")
 
     try:
@@ -84,3 +77,32 @@ async def chat(
     except Exception:
         logger.exception("chat() failed")
         raise HTTPException(status_code=500, detail="Có lỗi xảy ra khi xử lý yêu cầu.")
+
+@router.delete(
+    "/{message_id}",
+    status_code=status.HTTP_200_OK,
+)
+async def delete_one_chat(
+    message_id: int,
+    db: AsyncSession = Depends(get_db),
+    current_user: User = Depends(get_current_user),
+):
+    """
+    Xóa 1 message chat theo message_id (chỉ owner được xóa)
+    """
+    return await delete_chat_message(message_id, db, current_user)
+
+
+# ✅ DELETE toàn bộ lịch sử chat của user hiện tại
+@router.delete(
+    "/history",
+    status_code=status.HTTP_200_OK,
+)
+async def delete_all_chat_history(
+    db: AsyncSession = Depends(get_db),
+    current_user: User = Depends(get_current_user),
+):
+    """
+    Xóa toàn bộ lịch sử chat của user hiện tại
+    """
+    return await delete_chat_history(db, current_user)
