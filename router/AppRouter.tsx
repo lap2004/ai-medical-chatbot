@@ -5,7 +5,6 @@ import SignupPage from "@/app/signup/page";
 import { Routes, Route, Navigate } from "react-router-dom";
 import AuthRoute from "./AuthRoute";
 import ForgotPasswordPage from "@/app/login/forgot_pw";
-import ResetPasswordPage from "@/app/login/reset_pw";
 
 export default function AppRouter() {
   return (
@@ -39,7 +38,6 @@ export default function AppRouter() {
 
       <Route path="/signup" element={<SignupPage />} />
       <Route path="/forgot-password" element={<ForgotPasswordPage />} />
-      <Route path="/reset-password" element={<ResetPasswordPage />} />
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   );

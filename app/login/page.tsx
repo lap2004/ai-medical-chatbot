@@ -10,8 +10,8 @@ import { TextInput } from "@/components/ui/TextInput";
 
 import { useUserLogin } from "@/services/hooks/hookAuth";
 import { setAuthCookies } from "@/lib/helper/token";
-import { getUserRole } from "@/lib/helper";
 import { ROLE_VALUE } from "@/services/config/const";
+import { useAuthUIStore } from "@/store";
 
 const LoginPage: React.FC = () => {
   const { postUserLogin } = useUserLogin();
@@ -20,6 +20,10 @@ const LoginPage: React.FC = () => {
   const [form, setForm] = useState({ email: "", password: "" });
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+
+  const setForcePasswordChange = useAuthUIStore(
+    (s) => s.setForcePasswordChange,
+  );
 
   const handleChange =
     (key: "email" | "password") => (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -50,38 +54,41 @@ const LoginPage: React.FC = () => {
       });
 
       const data = res?.data;
-      if (data?.access_token) {
-        // Lưu token
-        setAuthCookies(data.access_token, data.refresh_token);
 
-        // Lưu role (js-cookie)
-        if (data?.role) {
-          Cookies.set(ROLE_VALUE, data.role);
-        }
-
-        // Force đổi mật khẩu nếu là mật khẩu tạm
-        if (data?.force_password_change === true) {
-          toast.info(
-            "Bạn đang sử dụng mật khẩu tạm thời. Vui lòng đổi mật khẩu.",
-          );
-          navigate("/reset-password");
-          return;
-        }
-
-        toast.success("Đăng nhập thành công!");
-
-        // Điều hướng theo role
-        const savedRole = getUserRole(); // hoặc dùng data.role luôn
-        if (savedRole === "admin") {
-          navigate("/admin/dashboard");
-        } else {
-          navigate("/");
-        }
+      if (!data?.access_token) {
+        toast.error(data?.detail || "Đăng nhập thất bại!");
         return;
       }
 
-      // Không có token => fail
-      toast.error(data?.detail || "Đăng nhập thất bại!");
+      // ✅ Lưu token
+      setAuthCookies(data.access_token, data.refresh_token);
+
+      // ✅ Lưu role
+      if (data?.role) {
+        Cookies.set(ROLE_VALUE, data.role);
+      }
+
+      // ✅ Force đổi mật khẩu
+      if (data?.force_password_change === true) {
+        toast.info(
+          "Bạn đang sử dụng mật khẩu tạm thời. Vui lòng đổi mật khẩu.",
+        );
+        setForcePasswordChange(true);
+
+        // ✅ Đi vào hệ thống; popup sẽ mở ở Home/Admin
+        navigate(data.role === "admin" ? "/admin/dashboard" : "/", {
+          replace: true,
+        });
+        return;
+      }
+
+      // ✅ Login bình thường
+      toast.success("Đăng nhập thành công!");
+      setForcePasswordChange(false); // (khuyến nghị) clear flag nếu trước đó còn
+
+      navigate(data.role === "admin" ? "/admin/dashboard" : "/", {
+        replace: true,
+      });
     } catch (err: any) {
       toast.error(err?.response?.data?.detail || "Đăng nhập thất bại!");
     } finally {
@@ -151,7 +158,6 @@ const LoginPage: React.FC = () => {
                   disabled={isLoading}
                 />
 
-                {/* Toggle show/hide password (nếu TextInput không hỗ trợ rightIcon thì để nút overlay như này) */}
                 <button
                   type="button"
                   className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-200"
@@ -168,7 +174,6 @@ const LoginPage: React.FC = () => {
               </div>
             </div>
 
-            {/* Submit */}
             <Button
               type="submit"
               variant="primary"
@@ -203,17 +208,13 @@ const LoginPage: React.FC = () => {
                   alt="Google"
                 />
               }
-              onClick={() => {
-                toast.info("Google login chưa được tích hợp.");
-              }}
+              onClick={() => toast.info("Google login chưa được tích hợp.")}
             />
 
             <SocialButton
               label="Apple"
               icon={<Apple className="w-5 h-5" />}
-              onClick={() => {
-                toast.info("Apple login chưa được tích hợp.");
-              }}
+              onClick={() => toast.info("Apple login chưa được tích hợp.")}
             />
           </div>
         </div>

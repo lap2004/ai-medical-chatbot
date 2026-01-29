@@ -4,9 +4,16 @@ import { DoctorWidget } from "../components/widget/DoctorWidget";
 import { removeAuthCookies } from "@/lib/helper/token";
 import { useNavigate } from "react-router-dom";
 import { isLogin } from "../lib/helper";
+import { useAuthUIStore } from "@/store";
+import { ResetPasswordDialog } from "@/components/auth/ResetPasswordDialog";
+import { ProfileMenuDialog } from "@/components/chat/ProfileMenuDialog";
 const HomePage: React.FC = () => {
   const [isWidgetOpen, setIsWidgetOpen] = useState(false);
   const navigate = useNavigate();
+  const forcePasswordChange = useAuthUIStore((s) => s.forcePasswordChange);
+  const [openReset, setOpenReset] = useState(false);
+  const [profileOpen, setProfileOpen] = React.useState(false);
+  const profileAnchorRef = React.useRef<HTMLButtonElement>(null);
 
   const handleLogout = () => {
     try {
@@ -16,6 +23,10 @@ const HomePage: React.FC = () => {
       console.error("Logout error:", err);
     }
   };
+
+  React.useEffect(() => {
+    if (forcePasswordChange) setOpenReset(true);
+  }, [forcePasswordChange]);
   return (
     <div className="min-h-screen">
       {/* Navigation */}
@@ -62,25 +73,22 @@ const HomePage: React.FC = () => {
                   light_mode
                 </span>
               </button>
-              {isLogin() ? (
-                <button
-                  onClick={handleLogout}
-                  className="bg-primary/10 text-primary hover:bg-primary hover:text-white
-               px-6 py-2.5 rounded-full font-semibold transition-all
-               shadow-lg shadow-primary/10"
-                >
-                  Logout
-                </button>
-              ) : (
-                <button
-                  onClick={() => navigate("/login")}
-                  className="bg-primary hover:bg-teal-700 text-white
-               px-6 py-2.5 rounded-full font-semibold transition-all
-               shadow-lg shadow-teal-700/20"
-                >
-                  Sign In
-                </button>
-              )}
+              <button
+                ref={profileAnchorRef}
+                onClick={() => setProfileOpen(true)}
+                className="flex items-center gap-2 p-2 rounded-2xl hover:bg-primary/5 transition-all"
+                aria-label="Open profile menu"
+                title="Profile"
+              >
+                <img
+                  alt="Alex Johnson"
+                  className="w-9 h-9 rounded-full border border-slate-200 dark:border-slate-700 object-cover"
+                  src="https://picsum.photos/seed/alex/100/100"
+                />
+                <span className="hidden md:inline text-sm font-bold text-slate-700 dark:text-white truncate max-w-[140px]">
+                  Alex Johnson
+                </span>
+              </button>
             </div>
           </div>
         </div>
@@ -237,12 +245,10 @@ const HomePage: React.FC = () => {
         </div>
       )}
 
-
-
       {/* Pop-up Widget */}
       {isWidgetOpen && <DoctorWidget onClose={() => setIsWidgetOpen(false)} />}
       {/* How it Works */}
-      <section >
+      <section>
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <h2 className="text-xl font-extrabold">How it Works</h2>
@@ -406,8 +412,8 @@ const HomePage: React.FC = () => {
               Bắt đầu trải nghiệm AI Trợ Lý Bác Sĩ
             </h2>
             <p className="mt-2 text-sm text-slate-500">
-              Gia nhập cộng đồng hơn 10,000+ bác sĩ và sinh viên y khoa đang
-              học hỏi và hỗ trợ mỗi ngày.
+              Gia nhập cộng đồng hơn 10,000+ bác sĩ và sinh viên y khoa đang học
+              hỏi và hỗ trợ mỗi ngày.
             </p>
 
             <div className="mt-6 flex justify-center">
@@ -421,6 +427,21 @@ const HomePage: React.FC = () => {
           </div>
         </div>
       </section>
+      <ProfileMenuDialog
+        open={profileOpen}
+        onClose={() => setProfileOpen(false)}
+        anchorRef={profileAnchorRef}
+        onChangePassword={() => setOpenReset(true)}
+        onSignOut={() => {
+          handleLogout();
+          setProfileOpen(false);
+        }}
+      />
+      <ResetPasswordDialog
+        open={openReset}
+        onClose={() => setOpenReset(false)}
+        onSuccess={() => navigate("/login", { replace: true })}
+      />
     </div>
   );
 };
