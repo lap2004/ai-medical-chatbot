@@ -1,5 +1,7 @@
 import React, { useCallback, useEffect, useState } from "react";
-import SpeechRecognition, { useSpeechRecognition } from "react-speech-recognition";
+import SpeechRecognition, {
+  useSpeechRecognition,
+} from "react-speech-recognition";
 import { VoiceTranscriptionPill } from "./VoiceTranscriptionPill";
 
 type Props = {
@@ -21,7 +23,8 @@ export const ChatComposer: React.FC<Props> = ({ loading, onSend }) => {
   // DEBUG extra: insecure context / protocol
   const isSecureContext =
     typeof window !== "undefined" ? (window.isSecureContext ?? false) : false;
-  const protocol = typeof window !== "undefined" ? window.location.protocol : "";
+  const protocol =
+    typeof window !== "undefined" ? window.location.protocol : "";
   const ua = typeof navigator !== "undefined" ? navigator.userAgent : "";
 
   // Khi đang nghe: đổ transcript vào input
@@ -32,20 +35,13 @@ export const ChatComposer: React.FC<Props> = ({ loading, onSend }) => {
   }, [listening, transcript]);
 
   const startVoice = useCallback(async () => {
-    console.log("[VOICE] startVoice clicked");
-    console.log("[VOICE] supports:", browserSupportsSpeechRecognition);
-    console.log("[VOICE] micAvailable:", isMicrophoneAvailable);
-    console.log("[VOICE] secureContext:", isSecureContext, "protocol:", protocol);
-
     if (!browserSupportsSpeechRecognition) {
       alert("Browser không hỗ trợ SpeechRecognition. Hãy thử Chrome/Edge.");
       return;
     }
 
     try {
-      // ✅ ép browser mở mic thật
       const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-      // đóng stream ngay cũng được, mục tiêu là xin permission + “unlock” audio
       stream.getTracks().forEach((t) => t.stop());
     } catch (e) {
       console.error("[VOICE] getUserMedia error:", e);
@@ -55,12 +51,11 @@ export const ChatComposer: React.FC<Props> = ({ loading, onSend }) => {
 
     resetTranscript();
 
-    // ✅ nhiều máy cần stop trước để reset engine
     SpeechRecognition.stopListening();
 
     SpeechRecognition.startListening({
       continuous: true,
-      interimResults: true, // ✅ quan trọng để thấy text chạy ngay
+      interimResults: true,
       language: "vi-VN",
     });
   }, [
@@ -71,33 +66,28 @@ export const ChatComposer: React.FC<Props> = ({ loading, onSend }) => {
     resetTranscript,
   ]);
 
-  // const stopVoice = useCallback(() => {
-  //   console.log("[VOICE] stopVoice clicked");
-  //   SpeechRecognition.stopListening();
-  // }, []);
   const stopVoice = useCallback(() => {
-    console.log("[VOICE] stopVoice clicked");
     setSendOnStop(true);
     SpeechRecognition.stopListening();
   }, []);
 
   const [sendOnStop, setSendOnStop] = useState(false);
-    useEffect(() => {
-      if (listening) return;
-      if (!sendOnStop) return;
+  useEffect(() => {
+    if (listening) return;
+    if (!sendOnStop) return;
 
-      setSendOnStop(false);
+    setSendOnStop(false);
 
-      const text = (transcript || input).trim();
-      if (!text) {
-        resetTranscript();
-        return;
-      }
-
-      onSend(text);
-      setInput("");
+    const text = (transcript || input).trim();
+    if (!text) {
       resetTranscript();
-    }, [listening, sendOnStop, transcript, input, onSend, resetTranscript]);
+      return;
+    }
+
+    onSend(text);
+    setInput("");
+    resetTranscript();
+  }, [listening, sendOnStop, transcript, input, onSend, resetTranscript]);
 
   const toggleVoice = useCallback(() => {
     if (loading) return;
@@ -119,16 +109,11 @@ export const ChatComposer: React.FC<Props> = ({ loading, onSend }) => {
 
   return (
     <div className="relative bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 p-6">
-      {/* pill */}
       {listening && (
         <VoiceTranscriptionPill
           text={transcript}
-          // onClose={() => {
-          //   stopVoice();
-          //   resetTranscript();
-          // }}
           onClose={() => {
-            setSendOnStop(false);   // ✅ hủy ý định gửi
+            setSendOnStop(false);
             stopVoice();
             resetTranscript();
           }}
@@ -150,7 +135,11 @@ export const ChatComposer: React.FC<Props> = ({ loading, onSend }) => {
               value={input}
               onChange={(e) => setInput(e.target.value)}
               onKeyDown={(e) => e.key === "Enter" && !loading && handleSend()}
-              placeholder={listening ? "Listening..." : "Tell me more about your symptoms..."}
+              placeholder={
+                listening
+                  ? "Listening..."
+                  : "Tell me more about your symptoms..."
+              }
               className="w-full pl-14 pr-14 py-4 bg-slate-100 dark:bg-slate-800 border-none rounded-2xl focus:ring-2 focus:ring-primary/50 text-slate-700 dark:text-slate-200 placeholder-slate-400 dark:placeholder-slate-500 transition-all"
             />
 
