@@ -17,6 +17,7 @@ from app.core.security import require_admin  # đã sửa theo is_admin/password
 from app.routers.chat import router as chat_router
 from app.routers.voice import router as voice_router
 from app.routers import auth
+from app.routers.conversations import router as conversations_router
 
 warnings.filterwarnings("ignore", category=UserWarning, module="ctranslate2")
 
@@ -31,7 +32,7 @@ app.add_middleware(RequestLogMiddleware)
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
-        "https://needle-sole-amended-conferencing.trycloudflare.com",
+        "https://integrated-sunshine-feels-brilliant.trycloudflare.com",
         "http://localhost:3000",
         "http://127.0.1.8:8000",
         "http://192.168.1.12:3000"
@@ -56,7 +57,7 @@ app.mount("/static", StaticFiles(directory=settings.static_dir), name="static")
 app.include_router(chat_router)
 app.include_router(voice_router)
 app.include_router(auth.router)
-
+app.include_router(conversations_router)
 # -----------------------
 # Meta endpoints
 # -----------------------

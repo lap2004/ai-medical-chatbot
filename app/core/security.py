@@ -70,7 +70,7 @@ from __future__ import annotations
 
 from typing import Optional, Callable
 
-from fastapi import Depends, Header, HTTPException, status
+from fastapi import Depends, Header, HTTPException, Request, status
 from jose import JWTError, jwt
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select
@@ -103,23 +103,41 @@ def decode_access_token(token: str) -> dict:
 
 
 async def get_current_user(
+    request: Request,
     authorization: Optional[str] = Header(None),
     db: AsyncSession = Depends(get_db),
 ) -> User:
-    if not authorization or not authorization.startswith("Bearer "):
+    token: Optional[str] = None
+
+    # 1) Ưu tiên Authorization: Bearer <token>
+    if authorization and authorization.startswith("Bearer "):
+        token = authorization.split(" ", 1)[1].strip()
+
+    # 2) Fallback: lấy từ cookie (Swagger/UI đang gửi cookie access_token)
+    if not token:
+        token = request.cookies.get("access_token")
+
+    if not token:
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
-            detail="Thiếu hoặc sai định dạng Authorization header",
+            detail="Thiếu token (Authorization: Bearer ... hoặc cookie access_token)",
+            headers={"WWW-Authenticate": "Bearer"},
         )
 
-    token = authorization.split(" ", 1)[1].strip()
-    payload = decode_access_token(token)
+    # Decode + validate
+    try:
+        payload = decode_access_token(token)
+    except Exception:
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Token không hợp lệ hoặc đã hết hạn",
+            headers={"WWW-Authenticate": "Bearer"},
+        )
 
     user_id = payload.get("user_id")
     if user_id is None:
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Token thiếu user_id")
 
-    # user_id trong token thường là string, convert sang int vì DB là INTEGER
     try:
         user_id_int = int(user_id)
     except Exception:
@@ -129,13 +147,13 @@ async def get_current_user(
     user = result.scalar_one_or_none()
 
     if not user:
-        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Không tìm thấy người dùng")
+        # 401 hợp lý hơn 404 cho “token hợp lệ nhưng user không tồn tại”
+        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Người dùng không tồn tại")
 
     if not getattr(user, "is_active", True):
         raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail="Tài khoản đã bị khóa")
 
     return user
-
 
 def require_admin() -> Callable:
     """

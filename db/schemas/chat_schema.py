@@ -11,7 +11,7 @@ from datetime import datetime
 class ChatRequest(BaseModel):
     question: str = Field(..., min_length=2, max_length=2000)
     # Không nhận user_id từ client (lấy từ JWT/current_user ở backend)
-
+    conversation_id: Optional[int] = None
 
 class RetrievedContext(BaseModel):
     doc_id: str
