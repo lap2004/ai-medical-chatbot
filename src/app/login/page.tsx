@@ -76,7 +76,7 @@ const LoginPage: React.FC = () => {
         setForcePasswordChange(true);
 
         // ✅ Đi vào hệ thống; popup sẽ mở ở Home/Admin
-        navigate(data.role === "admin" ? "/admin/dashboard" : "/", {
+        navigate(data.role === "admin" ? "/dashboard" : "/", {
           replace: true,
         });
         return;
@@ -86,7 +86,7 @@ const LoginPage: React.FC = () => {
       toast.success("Đăng nhập thành công!");
       setForcePasswordChange(false); // (khuyến nghị) clear flag nếu trước đó còn
 
-      navigate(data.role === "admin" ? "/admin/dashboard" : "/", {
+      navigate(data.role === "admin" ? "/dashboard" : "/", {
         replace: true,
       });
     } catch (err: any) {

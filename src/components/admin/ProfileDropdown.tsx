@@ -3,8 +3,12 @@ import { ChevronDown, X, LogOut, KeyRound, Shield } from "lucide-react";
 
 export default function ProfileDropdown({
   onLogout,
+  userInfo,
+  onChangePassword,
 }: {
   onLogout: () => void;
+  userInfo?: any;
+  onChangePassword: () => void;
 }) {
   const [open, setOpen] = React.useState(false);
   const ref = React.useRef<HTMLDivElement | null>(null);
@@ -42,21 +46,21 @@ export default function ProfileDropdown({
             <div className="relative">
               <div className="w-16 h-16 rounded-full bg-slate-200 overflow-hidden" />
               <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full text-[10px] font-extrabold bg-teal-600 text-white">
-                ADMIN
+                {userInfo?.role || "ADMIN"}
               </div>
             </div>
 
             <div className="mt-4 text-[18px] font-black text-slate-900">
-              Alex Johnson
+              {userInfo?.full_name || "Guest User"}
             </div>
             <div className="text-[12px] text-slate-400 -mt-0.5">
-              alex.j@example.com
+              {userInfo?.email || "guest@example.com"}
             </div>
 
             <div className="mt-3 inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-teal-50 text-teal-700 border border-teal-100">
               <Shield className="w-4 h-4" />
               <span className="text-[11px] font-extrabold">
-                Admin ID: #AD-99201
+                ID: {userInfo?.id || "N/A"}
               </span>
             </div>
           </div>
@@ -67,7 +71,7 @@ export default function ProfileDropdown({
             className="w-full flex items-center justify-between px-4 py-3 rounded-2xl hover:bg-slate-50"
             onClick={() => {
               setOpen(false);
-              // TODO: route / modal change password
+              onChangePassword();
             }}
           >
             <div className="flex items-center gap-3">

@@ -7,7 +7,7 @@ const timeOut = 600_000;
 
 export const restTransport = () => {
   const client = axios.create({
-    baseURL: "https://portrait-secret-voltage-jon.trycloudflare.com",
+    baseURL: import.meta.env.VITE_API_BACKEND_DOMAIN,
     timeout: timeOut,
   });
 

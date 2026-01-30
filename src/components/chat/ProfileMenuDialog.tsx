@@ -1,6 +1,7 @@
 import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { useNavigate } from "react-router-dom";
+import { X, ShieldCheck, KeyRound, ChevronRight } from "lucide-react";
 
 type Props = {
   open: boolean;
@@ -8,6 +9,7 @@ type Props = {
   onSignOut?: () => void;
   onChangePassword?: () => void;
   anchorRef: React.RefObject<HTMLElement>;
+  userInfo?: any;
 };
 
 export const ProfileMenuDialog: React.FC<Props> = ({
@@ -16,6 +18,7 @@ export const ProfileMenuDialog: React.FC<Props> = ({
   onSignOut,
   onChangePassword,
   anchorRef,
+  userInfo,
 }) => {
   const GAP = 10;
   const EDGE = 12;
@@ -114,7 +117,7 @@ export const ProfileMenuDialog: React.FC<Props> = ({
               aria-label="Close"
               title="Close"
             >
-              <span className="material-icons-round text-[18px]">close</span>
+              <X className="w-5 h-5" />
             </button>
           </div>
 
@@ -133,16 +136,16 @@ export const ProfileMenuDialog: React.FC<Props> = ({
 
             <div className="mt-4">
               <div className="text-[18px] font-extrabold text-slate-900 leading-tight">
-                Alex Johnson
+                {userInfo?.full_name || "Guest User"}
               </div>
               <div className="mt-0.5 text-xs text-slate-500">
-                alex.j@example.com
+                {userInfo?.email || "guest@example.com"}
               </div>
             </div>
 
             <div className="mt-3 inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-[11px] font-semibold bg-primary/10 text-primary">
-              <span className="material-icons-round text-[14px]">badge</span>
-              Patient ID: #PA-99201
+              <ShieldCheck className="w-4 h-4" />
+              ID: {userInfo?.id || "N/A"}
             </div>
           </div>
 
@@ -157,17 +160,13 @@ export const ProfileMenuDialog: React.FC<Props> = ({
           >
             <div className="flex items-center gap-3">
               <div className="w-9 h-9 rounded-xl bg-slate-100 flex items-center justify-center text-slate-600">
-                <span className="material-icons-round text-[18px]">
-                  lock_reset
-                </span>
+                <KeyRound className="w-5 h-5" />
               </div>
               <div className="text-sm font-semibold text-slate-800">
                 Change Password
               </div>
             </div>
-            <span className="material-icons-round text-slate-300">
-              chevron_right
-            </span>
+            <ChevronRight className="w-5 h-5 text-slate-300" />
           </button>
 
           <button

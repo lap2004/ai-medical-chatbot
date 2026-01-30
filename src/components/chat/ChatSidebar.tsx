@@ -1,5 +1,5 @@
 import React from "react";
-import { MoreHorizontal, Pencil, Trash2, X } from "lucide-react";
+import { MoreHorizontal, Pencil, Trash2, X, Stethoscope, ChevronLeft, Menu, Plus } from "lucide-react";
 import { Conversation } from "../../types/chat";
 import { Button } from "../ui/Button";
 
@@ -113,7 +113,7 @@ export const ChatSidebar: React.FC<SidebarProps> = ({
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 bg-primary rounded-xl flex items-center justify-center text-white">
                 {/* giữ icon cũ của bạn nếu muốn */}
-                <span className="material-icons-round">medical_services</span>
+                <Stethoscope className="w-6 h-6" />
               </div>
               <h1 className="text-xl font-bold text-primary tracking-tight">
                 HealthAssist
@@ -124,9 +124,7 @@ export const ChatSidebar: React.FC<SidebarProps> = ({
               onClick={() => setCollapsed(true)}
               className="p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800"
             >
-              <span className="material-icons-round text-slate-400">
-                chevron_left
-              </span>
+              <ChevronLeft className="w-6 h-6 text-slate-400" />
             </button>
           </div>
         )}
@@ -137,11 +135,11 @@ export const ChatSidebar: React.FC<SidebarProps> = ({
               onClick={() => setCollapsed(false)}
               className="p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800"
             >
-              <span className="material-icons-round text-slate-400">menu</span>
+              <Menu className="w-6 h-6 text-slate-400" />
             </button>
 
             <div className="w-10 h-10 bg-primary rounded-xl flex items-center justify-center text-white">
-              <span className="material-icons-round">medical_services</span>
+              <Stethoscope className="w-6 h-6" />
             </div>
 
             <button
@@ -149,7 +147,7 @@ export const ChatSidebar: React.FC<SidebarProps> = ({
               className="w-10 h-10 rounded-full bg-purple-600 shadow-purple-500/20 hover:bg-purple-700 text-white flex items-center justify-center"
               title="New Consultation"
             >
-              <span className="material-icons-round">add</span>
+              <Plus className="w-6 h-6" />
             </button>
           </div>
         )}
@@ -161,8 +159,8 @@ export const ChatSidebar: React.FC<SidebarProps> = ({
               className="w-full py-3 flex items-center justify-center text-sm"
               onClick={onNew}
             >
-              <span className="material-icons-round">add</span>
-              <span className="ml-2">New Consultation</span>
+              <Plus className="w-5 h-5 mr-2" />
+              <span>New Consultation</span>
             </Button>
           </div>
         )}
@@ -191,10 +189,9 @@ export const ChatSidebar: React.FC<SidebarProps> = ({
                   onClick={() => onSelect(conv.id)}
                   className={`
                     w-full text-left p-4 pr-12 rounded-2xl transition-all relative
-                    ${
-                      isActive
-                        ? "bg-primary/5 border-l-4 border-primary"
-                        : "hover:bg-slate-50 dark:hover:bg-slate-800 border-l-4 border-transparent"
+                    ${isActive
+                      ? "bg-primary/5 border-l-4 border-primary"
+                      : "hover:bg-slate-50 dark:hover:bg-slate-800 border-l-4 border-transparent"
                     }
                   `}
                 >
@@ -267,141 +264,145 @@ export const ChatSidebar: React.FC<SidebarProps> = ({
       </div>
 
       {/* ================= RENAME DIALOG ================= */}
-      {renameId && (
-        <div
-          className="fixed inset-0 z-[80] flex items-center justify-center"
-          role="dialog"
-          aria-modal="true"
-          onClick={() => !renameBusy && setRenameId(null)}
-        >
-          <div className="absolute inset-0 bg-black/40" />
-
+      {
+        renameId && (
           <div
-            className="
+            className="fixed inset-0 z-[80] flex items-center justify-center"
+            role="dialog"
+            aria-modal="true"
+            onClick={() => !renameBusy && setRenameId(null)}
+          >
+            <div className="absolute inset-0 bg-black/40" />
+
+            <div
+              className="
               relative w-[92vw] max-w-md
               rounded-2xl bg-white dark:bg-slate-900
               border border-slate-200 dark:border-slate-800
               shadow-2xl p-5
             "
-            onClick={(e) => e.stopPropagation()}
-          >
-            <div className="flex items-center justify-between mb-3">
-              <h2 className="text-base font-bold">Rename session</h2>
-              <button
-                className="p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800"
-                onClick={() => !renameBusy && setRenameId(null)}
-                aria-label="Close"
-              >
-                <X className="w-5 h-5 text-slate-400" />
-              </button>
-            </div>
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="flex items-center justify-between mb-3">
+                <h2 className="text-base font-bold">Rename session</h2>
+                <button
+                  className="p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800"
+                  onClick={() => !renameBusy && setRenameId(null)}
+                  aria-label="Close"
+                >
+                  <X className="w-5 h-5 text-slate-400" />
+                </button>
+              </div>
 
-            <p className="text-sm text-slate-500 mb-3">
-              Rename{" "}
-              <span className="font-semibold text-slate-700 dark:text-slate-200">
-                {renameConv?.title ?? "this session"}
-              </span>
-            </p>
+              <p className="text-sm text-slate-500 mb-3">
+                Rename{" "}
+                <span className="font-semibold text-slate-700 dark:text-slate-200">
+                  {renameConv?.title ?? "this session"}
+                </span>
+              </p>
 
-            <input
-              value={renameValue}
-              onChange={(e) => setRenameValue(e.target.value)}
-              onKeyDown={(e) => {
-                if (e.key === "Enter") submitRename();
-                if (e.key === "Escape" && !renameBusy) setRenameId(null);
-              }}
-              autoFocus
-              className="
+              <input
+                value={renameValue}
+                onChange={(e) => setRenameValue(e.target.value)}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") submitRename();
+                  if (e.key === "Escape" && !renameBusy) setRenameId(null);
+                }}
+                autoFocus
+                className="
                 w-full rounded-xl px-3 py-2
                 border border-slate-200 dark:border-slate-700
                 bg-white dark:bg-slate-950
                 outline-none focus:ring-2 focus:ring-primary/30
               "
-              placeholder="New name..."
-              disabled={renameBusy}
-            />
-
-            <div className="mt-4 flex items-center justify-end gap-2">
-              <Button
-                variant="ghost"
-                onClick={() => setRenameId(null)}
+                placeholder="New name..."
                 disabled={renameBusy}
-              >
-                Cancel
-              </Button>
-              <Button
-                variant="secondary"
-                onClick={submitRename}
-                disabled={renameBusy || !renameValue.trim()}
-              >
-                {renameBusy ? "Saving..." : "Save"}
-              </Button>
+              />
+
+              <div className="mt-4 flex items-center justify-end gap-2">
+                <Button
+                  variant="ghost"
+                  onClick={() => setRenameId(null)}
+                  disabled={renameBusy}
+                >
+                  Cancel
+                </Button>
+                <Button
+                  variant="secondary"
+                  onClick={submitRename}
+                  disabled={renameBusy || !renameValue.trim()}
+                >
+                  {renameBusy ? "Saving..." : "Save"}
+                </Button>
+              </div>
             </div>
           </div>
-        </div>
-      )}
+        )
+      }
 
       {/* ================= DELETE CONFIRM DIALOG ================= */}
-      {deleteId && (
-        <div
-          className="fixed inset-0 z-[80] flex items-center justify-center"
-          role="dialog"
-          aria-modal="true"
-          onClick={() => !deleteBusy && setDeleteId(null)}
-        >
-          <div className="absolute inset-0 bg-black/40" />
-
+      {
+        deleteId && (
           <div
-            className="
+            className="fixed inset-0 z-[80] flex items-center justify-center"
+            role="dialog"
+            aria-modal="true"
+            onClick={() => !deleteBusy && setDeleteId(null)}
+          >
+            <div className="absolute inset-0 bg-black/40" />
+
+            <div
+              className="
               relative w-[92vw] max-w-md
               rounded-2xl bg-white dark:bg-slate-900
               border border-slate-200 dark:border-slate-800
               shadow-2xl p-5
             "
-            onClick={(e) => e.stopPropagation()}
-          >
-            <div className="flex items-center justify-between mb-2">
-              <h2 className="text-base font-bold text-red-600">
-                Delete session?
-              </h2>
-              <button
-                className="p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800"
-                onClick={() => !deleteBusy && setDeleteId(null)}
-                aria-label="Close"
-              >
-                <X className="w-5 h-5 text-slate-400" />
-              </button>
-            </div>
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="flex items-center justify-between mb-2">
+                <h2 className="text-base font-bold text-red-600">
+                  Delete session?
+                </h2>
+                <button
+                  className="p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800"
+                  onClick={() => !deleteBusy && setDeleteId(null)}
+                  aria-label="Close"
+                >
+                  <X className="w-5 h-5 text-slate-400" />
+                </button>
+              </div>
 
-            <p className="text-sm text-slate-500">
-              This will permanently delete{" "}
-              <span className="font-semibold text-slate-700 dark:text-slate-200">
-                {deleteConv?.title ?? "this session"}
-              </span>
-              . You can’t undo this action.
-            </p>
+              <p className="text-sm text-slate-500">
+                This will permanently delete{" "}
+                <span className="font-semibold text-slate-700 dark:text-slate-200">
+                  {deleteConv?.title ?? "this session"}
+                </span>
+                . You can’t undo this action.
+              </p>
 
-            <div className="mt-4 flex items-center justify-end gap-2">
-              <Button
-                variant="ghost"
-                onClick={() => setDeleteId(null)}
-                disabled={deleteBusy}
-              >
-                Cancel
-              </Button>
+              <div className="mt-4 flex items-center justify-end gap-2">
+                <Button
+                  variant="ghost"
+                  onClick={() => setDeleteId(null)}
+                  disabled={deleteBusy}
+                >
+                  Cancel
+                </Button>
 
-              <Button
-                variant="secondary"
-                className="bg-red-600 hover:bg-red-700 text-white"
-                onClick={confirmDelete}
-                disabled={deleteBusy}
-              >
-                {deleteBusy ? "Deleting..." : "Delete"}
-              </Button>
+                <Button
+                  variant="secondary"
+                  className="bg-red-600 hover:bg-red-700 text-white"
+                  onClick={confirmDelete}
+                  disabled={deleteBusy}
+                >
+                  {deleteBusy ? "Deleting..." : "Delete"}
+                </Button>
+              </div>
             </div>
           </div>
-        </div>
-      )}
+        )
+      }
     </aside>
   );
 };

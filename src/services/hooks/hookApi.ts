@@ -46,7 +46,8 @@ const useGetAPI = (action: any) => {
   const [loading, setLoading] = useState<boolean>(false);
 
   const get = useCallback(
-    async ({ searchOption, pagination }: any) => {
+    async (params: any = {}) => {
+      const { searchOption, pagination } = params;
       try {
         setLoading(true);
         setError(null);

@@ -3,12 +3,33 @@ import { useNavigate } from "react-router-dom";
 import { ProfileMenuDialog } from "./ProfileMenuDialog";
 import { ResetPasswordDialog } from "../auth/ResetPasswordDialog";
 import { removeAuthCookies } from "@/lib/helper/token";
+import { Home, MessageSquare, Mic } from "lucide-react";
 
-export const ChatHeader: React.FC = () => {
+import { useUserMe } from "@/services/hooks/hookAuth";
+import { isLogin } from "@/lib/helper";
+
+type Props = {
+  tab: "chat" | "voice";
+  onTabChange: (t: "chat" | "voice") => void;
+};
+
+export const ChatHeader: React.FC<Props> = ({ tab, onTabChange }) => {
   const navigate = useNavigate();
   const [resetOpen, setResetOpen] = React.useState(false);
   const [profileOpen, setProfileOpen] = React.useState(false);
   const profileAnchorRef = React.useRef<HTMLButtonElement>(null);
+
+  const { getuserMe } = useUserMe();
+  const [userInfo, setUserInfo] = React.useState<any>(null);
+
+  React.useEffect(() => {
+    if (isLogin()) {
+      getuserMe().then((data) => {
+        if (data) setUserInfo(data);
+      });
+    }
+  }, []);
+
   const handleLogout = () => {
     try {
       removeAuthCookies();
@@ -34,7 +55,7 @@ export const ChatHeader: React.FC = () => {
           title="Back to Home"
           aria-label="Back to Home"
         >
-          <span className="material-icons-round text-[24px]">home</span>
+          <Home className="w-6 h-6" />
         </button>
 
         <div className="relative">
@@ -62,42 +83,50 @@ export const ChatHeader: React.FC = () => {
       <div className="flex items-center space-x-4">
         <div className="inline-flex items-center rounded-2xl bg-slate-100 dark:bg-slate-800 p-1">
           {/* Active: Chat */}
+          {/* Active: Chat */}
           <button
             type="button"
-            className="
+            onClick={() => onTabChange("chat")}
+            className={`
               inline-flex items-center gap-2
               rounded-xl
-              bg-white dark:bg-slate-700
               px-6 py-2
               text-sm font-bold
-              text-slate-900 dark:text-white
               shadow-sm
               transition
-            "
+              ${tab === "chat"
+                ? "bg-white dark:bg-slate-700 text-slate-900 dark:text-white"
+                : "bg-transparent text-slate-500 dark:text-slate-300 hover:text-slate-700 dark:hover:text-white shadow-none"
+              }
+            `}
           >
-            <span className="material-icons-round text-[18px] text-primary">
-              chat_bubble_outline
-            </span>
+            <MessageSquare
+              className={`w-[18px] h-[18px] ${tab === "chat" ? "text-primary" : "opacity-80"
+                }`}
+            />
             <span>Chat</span>
           </button>
 
-          {/* Inactive: Voice */}
+          {/* Tab: Voice */}
           <button
             type="button"
-            className="
+            onClick={() => onTabChange("voice")}
+            className={`
               inline-flex items-center gap-2
               rounded-xl
-              bg-transparent
               px-6 py-2
               text-sm font-bold
-              text-slate-500 dark:text-slate-300
-              hover:text-slate-700 dark:hover:text-white
               transition
-            "
+              ${tab === "voice"
+                ? "bg-white dark:bg-slate-700 text-slate-900 dark:text-white shadow-sm"
+                : "bg-transparent text-slate-500 dark:text-slate-300 hover:text-slate-700 dark:hover:text-white"
+              }
+            `}
           >
-            <span className="material-icons-round text-[18px] opacity-80">
-              mic_none
-            </span>
+            <Mic
+              className={`w-[18px] h-[18px] ${tab === "voice" ? "text-primary" : "opacity-80"
+                }`}
+            />
             <span>Voice</span>
           </button>
         </div>
@@ -113,12 +142,12 @@ export const ChatHeader: React.FC = () => {
           title="Profile"
         >
           <img
-            alt="Alex Johnson"
+            alt={userInfo?.full_name || "User"}
             className="w-9 h-9 rounded-full border border-slate-200 dark:border-slate-700 object-cover"
             src="https://picsum.photos/seed/alex/100/100"
           />
           <span className="hidden md:inline text-sm font-bold text-slate-700 dark:text-white truncate max-w-[140px]">
-            Alex Johnson
+            {userInfo?.full_name || "Guest"}
           </span>
         </button>
 
@@ -127,6 +156,7 @@ export const ChatHeader: React.FC = () => {
           open={profileOpen}
           onClose={() => setProfileOpen(false)}
           anchorRef={profileAnchorRef}
+          userInfo={userInfo}
           onChangePassword={() => setResetOpen(true)}
           onSignOut={() => {
             handleLogout();
@@ -139,6 +169,6 @@ export const ChatHeader: React.FC = () => {
           onSuccess={() => navigate("/login", { replace: true })}
         />
       </div>
-    </header>
+    </header >
   );
 };

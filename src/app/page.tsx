@@ -1,12 +1,15 @@
 import React, { useState } from "react";
+import { Stethoscope, Moon, Sun, ArrowRight, PlayCircle, BadgeCheck, MessageSquare, Mic, History, MessageCircle, FileEdit, Brain, Lightbulb, Image, Microscope, CheckCircle, Shield } from "lucide-react";
 import { Button } from "../components/ui/Button";
 import { DoctorWidget } from "../components/widget/DoctorWidget";
 import { removeAuthCookies } from "@/lib/helper/token";
 import { useNavigate } from "react-router-dom";
-import { isLogin } from "../lib/helper";
+import { isLogin, getUserRole } from "../lib/helper";
 import { useAuthUIStore } from "@/store";
 import { ResetPasswordDialog } from "@/components/auth/ResetPasswordDialog";
 import { ProfileMenuDialog } from "@/components/chat/ProfileMenuDialog";
+import { useUserMe } from "@/services/hooks/hookAuth";
+
 const HomePage: React.FC = () => {
   const [isWidgetOpen, setIsWidgetOpen] = useState(false);
   const navigate = useNavigate();
@@ -14,6 +17,16 @@ const HomePage: React.FC = () => {
   const [openReset, setOpenReset] = useState(false);
   const [profileOpen, setProfileOpen] = React.useState(false);
   const profileAnchorRef = React.useRef<HTMLButtonElement>(null);
+  const { getuserMe } = useUserMe();
+  const [userInfo, setUserInfo] = React.useState<any>(null);
+
+  React.useEffect(() => {
+    if (isLogin()) {
+      getuserMe().then((data) => {
+        if (data) setUserInfo(data);
+      });
+    }
+  }, []);
 
   const handleLogout = () => {
     try {
@@ -35,7 +48,7 @@ const HomePage: React.FC = () => {
           <div className="flex justify-between items-center h-20">
             <div className="flex items-center gap-2">
               <div className="w-10 h-10 bg-primary rounded-xl flex items-center justify-center text-white">
-                <span className="material-icons-round">health_and_safety</span>
+                <Stethoscope className="w-6 h-6" />
               </div>
               <span className="text-xl font-bold tracking-tight text-slate-900 dark:text-white">
                 Docter AI
@@ -48,6 +61,14 @@ const HomePage: React.FC = () => {
               >
                 Home
               </a>
+              {getUserRole() === "admin" && (
+                <a
+                  href="/dashboard"
+                  className="text-sm font-medium hover:text-primary transition-colors"
+                >
+                  Dashboard
+                </a>
+              )}
               <a
                 href="/chat"
                 className="text-sm font-medium hover:text-primary transition-colors"
@@ -66,12 +87,8 @@ const HomePage: React.FC = () => {
                   document.documentElement.classList.toggle("dark")
                 }
               >
-                <span className="material-icons-round dark:hidden">
-                  dark_mode
-                </span>
-                <span className="material-icons-round hidden dark:block">
-                  light_mode
-                </span>
+                <Moon className="w-5 h-5 dark:hidden" />
+                <Sun className="w-5 h-5 hidden dark:block" />
               </button>
               <button
                 ref={profileAnchorRef}
@@ -81,12 +98,12 @@ const HomePage: React.FC = () => {
                 title="Profile"
               >
                 <img
-                  alt="Alex Johnson"
+                  alt={userInfo?.full_name || "User"}
                   className="w-9 h-9 rounded-full border border-slate-200 dark:border-slate-700 object-cover"
                   src="https://picsum.photos/seed/alex/100/100"
                 />
                 <span className="hidden md:inline text-sm font-bold text-slate-700 dark:text-white truncate max-w-[140px]">
-                  Alex Johnson
+                  {userInfo?.full_name || "Guest"}
                 </span>
               </button>
             </div>
@@ -118,15 +135,11 @@ const HomePage: React.FC = () => {
                 <a href="#/chat">
                   <Button size="lg" className="px-10">
                     Get Started Free{" "}
-                    <span className="material-icons-round ml-2">
-                      arrow_forward
-                    </span>
+                    <ArrowRight className="ml-2 w-5 h-5" />
                   </Button>
                 </a>
                 <Button variant="outline" size="lg" className="px-10">
-                  <span className="material-icons-round text-primary mr-2">
-                    play_circle
-                  </span>{" "}
+                  <PlayCircle className="text-primary mr-2 w-5 h-5" />{" "}
                   Watch Demo
                 </Button>
               </div>
@@ -165,7 +178,7 @@ const HomePage: React.FC = () => {
               <div className="absolute -bottom-10 -left-10 bg-white dark:bg-slate-800 p-6 rounded-2xl shadow-xl border border-slate-100 dark:border-slate-700 z-20">
                 <div className="flex items-center gap-4">
                   <div className="p-3 bg-green-100 dark:bg-green-900/30 text-green-600 rounded-xl">
-                    <span className="material-icons-round">verified</span>
+                    <BadgeCheck className="w-6 h-6" />
                   </div>
                   <div>
                     <p className="text-xs text-slate-500">Accuracy Rate</p>
@@ -191,17 +204,17 @@ const HomePage: React.FC = () => {
           <div className="grid md:grid-cols-3 gap-8">
             {[
               {
-                icon: "chat",
+                icon: <MessageSquare className="w-8 h-8" />,
                 title: "Instant Consultation",
                 desc: "Chat with our AI anytime for immediate answers.",
               },
               {
-                icon: "mic",
+                icon: <Mic className="w-8 h-8" />,
                 title: "Voice Interaction",
                 desc: "Speak naturally for hands-free guidance.",
               },
               {
-                icon: "history",
+                icon: <History className="w-8 h-8" />,
                 title: "Health Tracking",
                 desc: "Securely store and track your history.",
               },
@@ -211,7 +224,7 @@ const HomePage: React.FC = () => {
                 className="p-8 rounded-3xl border border-slate-100 dark:border-slate-800 hover:border-primary transition-all group bg-white dark:bg-slate-900 shadow-sm"
               >
                 <div className="w-14 h-14 rounded-2xl bg-primary/10 text-primary flex items-center justify-center mb-6 group-hover:bg-primary group-hover:text-white transition-colors">
-                  <span className="material-icons-round">{sol.icon}</span>
+                  {sol.icon}
                 </div>
                 <h3 className="text-xl font-bold mb-4 dark:text-white">
                   {sol.title}
@@ -238,7 +251,7 @@ const HomePage: React.FC = () => {
                  hover:scale-105 transition-all"
           >
             <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center">
-              <span className="material-icons-round">chat</span>
+              <MessageCircle className="w-6 h-6" />
             </div>
             <span className="font-bold">Chat with AI</span>
           </button>
@@ -261,19 +274,19 @@ const HomePage: React.FC = () => {
             {[
               {
                 step: "1",
-                icon: "edit_note",
+                icon: <FileEdit className="w-6 h-6" />,
                 title: "Input Information",
                 desc: "Enter your symptoms, questions, or context in the chat.",
               },
               {
                 step: "2",
-                icon: "psychology",
+                icon: <Brain className="w-6 h-6" />,
                 title: "AI Analysis",
                 desc: "Our AI evaluates and references relevant clinical signals.",
               },
               {
                 step: "3",
-                icon: "tips_and_updates",
+                icon: <Lightbulb className="w-6 h-6" />,
                 title: "Suggested Results",
                 desc: "Get guidance, next steps, and supportive explanations.",
               },
@@ -283,7 +296,7 @@ const HomePage: React.FC = () => {
                 className="rounded-2xl bg-white border border-slate-200 shadow-sm p-6 text-center"
               >
                 <div className="mx-auto h-12 w-12 rounded-full bg-[#0F766E]/10 text-[#0F766E] flex items-center justify-center">
-                  <span className="material-icons-round">{s.icon}</span>
+                  {s.icon}
                 </div>
                 <div className="mt-4 font-bold">
                   {s.step}. {s.title}
@@ -311,9 +324,7 @@ const HomePage: React.FC = () => {
 
               <div className="absolute bottom-4 right-4 rounded-2xl bg-white border border-slate-200 shadow-sm px-4 py-3 flex items-center gap-3">
                 <div className="h-9 w-9 rounded-xl bg-[#0F766E]/10 text-[#0F766E] flex items-center justify-center">
-                  <span className="material-icons-round text-[20px]">
-                    image_search
-                  </span>
+                  <Image className="w-5 h-5" />
                 </div>
                 <div>
                   <div className="text-sm font-bold leading-none">
@@ -331,12 +342,12 @@ const HomePage: React.FC = () => {
               <div className="mt-5 space-y-4">
                 {[
                   {
-                    icon: "biotech",
+                    icon: <Microscope className="w-5 h-5" />,
                     title: "Clinical Image Analysis",
                     desc: "Upload images for supportive insights and general guidance.",
                   },
                   {
-                    icon: "tips_and_updates",
+                    icon: <Lightbulb className="w-5 h-5" />,
                     title: "Medical Education Highlights",
                     desc: "Personalized learning summaries based on symptoms and context.",
                   },
@@ -346,7 +357,7 @@ const HomePage: React.FC = () => {
                     className="rounded-2xl bg-white border border-slate-200 shadow-sm p-5 flex items-start gap-4"
                   >
                     <div className="h-10 w-10 rounded-xl bg-[#0F766E]/10 text-[#0F766E] flex items-center justify-center shrink-0">
-                      <span className="material-icons-round">{a.icon}</span>
+                      {a.icon}
                     </div>
                     <div>
                       <div className="font-bold">{a.title}</div>
@@ -381,9 +392,7 @@ const HomePage: React.FC = () => {
                     "Human-in-the-loop QA",
                   ].map((t) => (
                     <div key={t} className="flex items-center gap-2">
-                      <span className="material-icons-round text-[#0F766E] text-[18px]">
-                        check_circle
-                      </span>
+                      <CheckCircle className="text-[#0F766E] w-[18px] h-[18px]" />
                       <span className="text-slate-700">{t}</span>
                     </div>
                   ))}
@@ -393,9 +402,7 @@ const HomePage: React.FC = () => {
               <div className="flex justify-center lg:justify-end">
                 <div className="h-32 w-32 rounded-full bg-[#0F766E]/10 flex items-center justify-center">
                   <div className="h-20 w-20 rounded-full bg-[#0F766E] flex items-center justify-center text-white">
-                    <span className="material-icons-round text-[34px]">
-                      shield
-                    </span>
+                    <Shield className="w-[34px] h-[34px]" />
                   </div>
                 </div>
               </div>
@@ -431,6 +438,7 @@ const HomePage: React.FC = () => {
         open={profileOpen}
         onClose={() => setProfileOpen(false)}
         anchorRef={profileAnchorRef}
+        userInfo={userInfo}
         onChangePassword={() => setOpenReset(true)}
         onSignOut={() => {
           handleLogout();
