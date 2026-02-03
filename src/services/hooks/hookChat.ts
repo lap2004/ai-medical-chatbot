@@ -138,7 +138,9 @@ export function useChat() {
     // Load messages từ backend nếu chưa có
     try {
       const conv = conversations.find(c => c.id === id);
+      // Chỉ load nếu chưa có messages
       if (conv && conv.messages.length === 0) {
+        setLoading(true); // Show loading UI
         const backendMessages = await apiGetMessages(id);
 
         // Filter và convert messages (chỉ giữ user và assistant)
@@ -160,8 +162,20 @@ export function useChat() {
       }
     } catch (error) {
       console.error("Error loading messages:", error);
+    } finally {
+      setLoading(false);
     }
   }, [conversations]);
+
+  // ✅ Auto-load messages khi activeId thay đổi hoặc conversations init xong
+  useEffect(() => {
+    if (activeId && conversations.length > 0) {
+      const conv = conversations.find(c => c.id === activeId);
+      if (conv && conv.messages.length === 0) {
+        selectConversation(activeId);
+      }
+    }
+  }, [activeId, conversations, selectConversation]);
 
   const deleteConversation = useCallback(async (id: string) => {
     try {
