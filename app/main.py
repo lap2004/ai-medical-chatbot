@@ -32,7 +32,7 @@ app.add_middleware(RequestLogMiddleware)
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
-        "https://integrated-sunshine-feels-brilliant.trycloudflare.com",
+        "https://eyed-particularly-fin-beginner.trycloudflare.com",
         "http://localhost:3000",
         "http://127.0.1.8:8000",
         "http://192.168.1.12:3000"
@@ -84,12 +84,8 @@ async def info():
 # -----------------------
 # Admin router
 # -----------------------
-admin_router = APIRouter(prefix="/admin", tags=["admin"])
-
-@admin_router.get("/dashboard")
-async def admin_dashboard(admin: User = Depends(require_admin())):
-    return {"ok": True, "admin_email": admin.email}
-
+from app.routers.admin import router as admin_router
+  
 app.include_router(admin_router)
 
 

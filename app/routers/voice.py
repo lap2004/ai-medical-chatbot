@@ -17,6 +17,7 @@ from app.rag.chat_pipeline import run as run_rag_pipeline
 
 from app.services.chat_service import handle_chat_request
 from app.utils.security import get_current_user
+from db.models.conversation_model import Conversation
 from db.models.user_model import User
 from db.schemas.chat_schema import ChatRequest, ChatResponse
 from db.database import get_db
@@ -242,9 +243,12 @@ async def voice_chat(
         pass
     
     
+from uuid import UUID
+
 @router.post("/voice")
 async def voice_voice(
     file: UploadFile = File(...),
+    conversation_id: Optional[str] = Form(default=None),  # ✅ thêm vào
     stt_language: Optional[str] = Form(default=None),
     tts: bool = Form(default=False),
     tts_language: Optional[str] = Form(default=None),
@@ -252,7 +256,10 @@ async def voice_voice(
     current_user: User = Depends(get_current_user),
 ):
     """
-    Audio -> STT (Whisper) -> Chat (giống /chat: lưu DB + schema ChatResponse) -> optional TTS
+    Audio -> STT -> Chat (lưu DB theo schema messages_012026) -> optional TTS
+
+    Nếu client không truyền conversation_id:
+      - tự tạo conversation mới cho user
     """
     tmp_path: Optional[str] = None
     try:
@@ -267,17 +274,37 @@ async def voice_voice(
         if not transcript:
             raise HTTPException(status_code=400, detail="Không nhận diện được lời nói.")
 
-        # 3) Chat chuẩn như /chat
+        # 3) Resolve conversation_id (UUID). Auto-create nếu thiếu.
+        conv_id: Optional[UUID] = None
+        if conversation_id:
+            try:
+                conv_id = UUID(conversation_id)
+            except Exception:
+                raise HTTPException(status_code=400, detail="conversation_id không hợp lệ (phải là UUID).")
+
+        if conv_id is None:
+            # ✅ tự tạo conversation mới
+            conv = Conversation(
+                user_id=int(current_user.id),
+                title="New chat",
+            )
+            db.add(conv)
+            await db.flush()  # lấy conv.id
+            conv_id = conv.id
+            await db.commit()  # commit để chắc chắn tồn tại
+
+        # 4) Chat chuẩn như /chat (lưu DB user + assistant)
         chat_resp: ChatResponse = await handle_chat_request(
             ChatRequest(question=transcript),
             db,
             current_user,
+            conv_id,   # ✅ truyền conversation_id
         )
 
-        # 4) optional TTS
+        # 5) optional TTS
         tts_audio_path = None
         if tts:
-            answer_text = (chat_resp.answer.answer or "").strip()
+            answer_text = (chat_resp.answer.answer or "").strip() if chat_resp.answer else ""
             if not answer_text:
                 answer_text = "Xin lỗi, tôi chưa có câu trả lời phù hợp."
 
@@ -292,8 +319,9 @@ async def voice_voice(
             tts_audio_path = f"/static/audio/{filename}"
 
         return {
+            "conversation_id": str(conv_id),   # ✅ trả về để client reuse cho lần sau
             "transcript": transcript,
-            "chat": chat_resp.model_dump(),   # pydantic v2
+            "chat": chat_resp.model_dump(),    # pydantic v2
             "tts_audio_path": tts_audio_path,
         }
 

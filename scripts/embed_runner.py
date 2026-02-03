@@ -49,7 +49,7 @@ except Exception:
 
 # ========= ENV / CONFIG =========
 DATABASE_URL = os.getenv("DATABASE_URL", "")
-RAG_TABLE = os.getenv("RAG_TABLE", "medical")
+RAG_TABLE = os.getenv("RAG_TABLE", "medical_012026")
 EMBEDDING_MODEL = os.getenv("EMBEDDING_MODEL", "BAAI/bge-m3")
 EMBEDDING_DIM = int(os.getenv("EMBEDDING_DIM", "1024"))
 USE_FAKE_EMBEDDER = os.getenv("USE_FAKE_EMBEDDER", "0") in ("1", "true", "True")
@@ -243,7 +243,7 @@ def main(path: str, batch_size: int = 64, truncate: bool = False, dry_run: bool 
 
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Embed JSON y khoa vào bảng pgvector (medical).")
+    parser = argparse.ArgumentParser(description="Embed JSON y khoa vào bảng pgvector (medical_012026).")
     parser.add_argument("--path", default="data/data.json", help="Đường dẫn file JSON.")
     parser.add_argument("--batch-size", type=int, default=64, help="Batch size khi encode.")
     parser.add_argument("--truncate", action="store_true", help="TRUNCATE bảng trước khi nạp.")

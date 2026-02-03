@@ -42,7 +42,7 @@ class Settings(BaseSettings):
     embedding_model: str = Field(default="BAAI/bge-m3")
     embedding_dim: int = Field(default=1024)
     use_fake_embedder: bool = Field(default=False)
-    rag_table: str = Field(default="medical")
+    rag_table: str = Field(default="medical_012026")
     qa_topk: int = Field(default=5)
 
     # -------------------------
