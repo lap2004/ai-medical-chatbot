@@ -5,6 +5,7 @@ import { VoiceMode } from "../../components/chat/VoiceMode";
 import { useChat } from "@/services/hooks/hookChat";
 import { ChatMessageList } from "../../components/chat/ChatMessageList";
 import { ChatComposer } from "../../components/chat/ChatComposer";
+import { toast } from "sonner";
 
 const ChatPage: React.FC = () => {
   const [tab, setTab] = React.useState<"chat" | "voice">("chat");
@@ -15,9 +16,35 @@ const ChatPage: React.FC = () => {
     sendMessage,
     createNewConversation,
     selectConversation,
+    deleteConversation,
+    renameConversation,
+    submitFeedback,
     activeId,
     loading,
   } = useChat();
+
+  // Handle feedback reactions (like/dislike)
+  const handleReact = async (messageId: string, reaction: "none" | "like" | "dislike") => {
+    if (reaction === "none") return; // User toggled off
+    await submitFeedback(messageId, reaction);
+  };
+
+  // Handle report
+  const handleReport = async (messageId: string, payload: { reason: string; note?: string }) => {
+    // Check if already reported
+    const message = activeConversation?.messages.find(m => m.id === messageId);
+    if (message?.is_reported) {
+      toast.success("Bạn đã report message này rồi!");
+      return;
+    }
+
+    await submitFeedback(messageId, "report", {
+      category: payload.reason,
+      details: payload.note,
+    });
+
+    toast.success("Report thành công, cảm ơn bạn rất nhiều");
+  };
 
   return (
     <div className="flex h-screen bg-background-light dark:bg-background-dark overflow-hidden">
@@ -26,6 +53,8 @@ const ChatPage: React.FC = () => {
         activeId={activeId}
         onSelect={selectConversation}
         onNew={createNewConversation}
+        onRename={renameConversation}
+        onDelete={deleteConversation}
       />
 
       <main className="flex-1 flex flex-col relative bg-white dark:bg-slate-900">
@@ -48,6 +77,8 @@ const ChatPage: React.FC = () => {
                 messages={activeConversation.messages}
                 loading={loading}
                 onSelectTriage={(ans) => sendMessage(ans)}
+                onReact={handleReact}
+                onReport={handleReport}
               />
             )}
             <ChatComposer loading={loading} onSend={sendMessage} />

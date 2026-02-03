@@ -1,41 +1,59 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { storage } from "@/lib/storage";
 import { Conversation, Message } from "@/types/chat";
-import { chat } from "../apis/chat";
-
-function getOrCreateUserId() {
-  const key = "chat_user_id";
-  const existing = localStorage.getItem(key);
-  if (existing) return existing;
-
-  const id =
-    typeof crypto !== "undefined" && "randomUUID" in crypto
-      ? crypto.randomUUID()
-      : `${Date.now()}_${Math.random().toString(16).slice(2)}`;
-
-  localStorage.setItem(key, id);
-  return id;
-}
+import {
+  chat,
+  getConversations as apiGetConversations,
+  createConversation as apiCreateConversation,
+  getMessages as apiGetMessages,
+  deleteConversation as apiDeleteConversation,
+  renameConversation as apiRenameConversation,
+  submitMessageFeedback as apiSubmitMessageFeedback,
+} from "../apis/chat";
 
 export function useChat() {
   const [conversations, setConversations] = useState<Conversation[]>([]);
   const [activeId, setActiveId] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
-
-  // user_id dùng cho API
-  const userIdRef = useRef<string>("");
+  const [loadingConversations, setLoadingConversations] = useState(false);
 
   // chống setLoading sai khi có nhiều request (spam send)
   const reqSeqRef = useRef(0);
 
+  // Load conversations từ backend khi component mount
   useEffect(() => {
-    const convs = storage.getConversations();
-    const act = storage.getActiveId();
+    loadConversationsFromBackend();
+  }, []);
 
-    setConversations(convs);
-    setActiveId(act);
+  const loadConversationsFromBackend = useCallback(async () => {
+    try {
+      setLoadingConversations(true);
+      const backendConvs = await apiGetConversations();
 
-    userIdRef.current = getOrCreateUserId();
+      // Convert backend format sang local format
+      const localConvs: Conversation[] = backendConvs.map(conv => ({
+        id: conv.id,
+        title: conv.title,
+        createdAt: new Date(conv.updated_at).getTime(),
+        messages: [], // Messages sẽ được load khi cần
+      }));
+
+      setConversations(localConvs);
+
+      // Restore active conversation từ localStorage
+      const savedActiveId = storage.getActiveId();
+      if (savedActiveId && localConvs.some(c => c.id === savedActiveId)) {
+        setActiveId(savedActiveId);
+      }
+    } catch (error) {
+      console.error("Error loading conversations from backend:", error);
+      // Fallback to localStorage nếu backend fail
+      const localConvs = storage.getConversations();
+      setConversations(localConvs);
+      setActiveId(storage.getActiveId());
+    } finally {
+      setLoadingConversations(false);
+    }
   }, []);
 
   const persist = useCallback(
@@ -51,43 +69,109 @@ export function useChat() {
     [],
   );
 
-  const createNewConversation = useCallback(() => {
-    const id = Date.now().toString();
-    const now = Date.now();
+  const createNewConversation = useCallback(async () => {
+    try {
+      // Tạo conversation trên backend
+      const newConv = await apiCreateConversation();
 
-    const newConv: Conversation = {
-      id,
-      title: "New Consultation",
-      createdAt: now,
-      messages: [
-        {
-          id: `welcome_${id}`,
-          role: "assistant",
-          content:
-            "Xin chào, tôi là trợ lý ảo của trường Đại học Văn Lang. Tôi có thể giúp gì cho bạn?",
-          createdAt: now,
-        },
-      ],
-    };
+      const localConv: Conversation = {
+        id: newConv.id,
+        title: newConv.title,
+        createdAt: new Date(newConv.created_at).getTime(),
+        messages: [
+          {
+            id: `welcome_${newConv.id}`,
+            role: "assistant",
+            content: "Xin chào, tôi là trợ lý sức khỏe AI. Tôi có thể giúp gì cho bạn?",
+            createdAt: Date.now(),
+          },
+        ],
+      };
 
-    setConversations((prev) => {
-      const updated = [newConv, ...prev];
-      storage.saveConversations(updated);
-      return updated;
-    });
+      setConversations((prev) => {
+        const updated = [localConv, ...prev];
+        storage.saveConversations(updated);
+        return updated;
+      });
 
+      setActiveId(newConv.id);
+      storage.setActiveId(newConv.id);
+
+      return newConv.id;
+    } catch (error) {
+      console.error("Error creating conversation:", error);
+      // Fallback: tạo local conversation
+      const id = Date.now().toString();
+      const now = Date.now();
+
+      const newConv: Conversation = {
+        id,
+        title: "New Consultation",
+        createdAt: now,
+        messages: [
+          {
+            id: `welcome_${id}`,
+            role: "assistant",
+            content: "Xin chào, tôi là trợ lý sức khỏe AI. Tôi có thể giúp gì cho bạn?",
+            createdAt: now,
+          },
+        ],
+      };
+
+      setConversations((prev) => {
+        const updated = [newConv, ...prev];
+        storage.saveConversations(updated);
+        return updated;
+      });
+
+      setActiveId(id);
+      storage.setActiveId(id);
+
+      return id;
+    }
+  }, []);
+
+  const selectConversation = useCallback(async (id: string) => {
     setActiveId(id);
     storage.setActiveId(id);
 
-    return id;
-  }, []);
+    // Load messages từ backend nếu chưa có
+    try {
+      const conv = conversations.find(c => c.id === id);
+      if (conv && conv.messages.length === 0) {
+        const backendMessages = await apiGetMessages(id);
 
-  const selectConversation = useCallback((id: string) => {
-    setActiveId(id);
-    storage.setActiveId(id);
-  }, []);
+        // Filter và convert messages (chỉ giữ user và assistant)
+        const localMessages: Message[] = backendMessages
+          .filter(msg => msg.role === "user" || msg.role === "assistant")
+          .map(msg => ({
+            id: msg.id,
+            role: msg.role as "user" | "assistant",
+            content: msg.content,
+            createdAt: new Date(msg.created_at).getTime(),
+            // Map feedback từ backend response
+            feedback: msg.feedback?.value as "like" | "dislike" | undefined,
+            is_reported: msg.is_reported || false,
+          }));
 
-  const deleteConversation = useCallback((id: string) => {
+        setConversations(prev => prev.map(c =>
+          c.id === id ? { ...c, messages: localMessages } : c
+        ));
+      }
+    } catch (error) {
+      console.error("Error loading messages:", error);
+    }
+  }, [conversations]);
+
+  const deleteConversation = useCallback(async (id: string) => {
+    try {
+      // Xóa trên backend
+      await apiDeleteConversation(id);
+    } catch (error) {
+      console.error("Error deleting conversation on backend:", error);
+    }
+
+    // Xóa local
     setConversations((prev) => {
       const updated = prev.filter((c) => c.id !== id);
       storage.saveConversations(updated);
@@ -103,6 +187,67 @@ export function useChat() {
     });
   }, []);
 
+  const renameConversation = useCallback(async (id: string, newTitle: string) => {
+    try {
+      // Đổi tên trên backend
+      await apiRenameConversation(id, newTitle);
+
+      // Cập nhật local
+      setConversations((prev) => {
+        const updated = prev.map((c) =>
+          c.id === id ? { ...c, title: newTitle } : c
+        );
+        storage.saveConversations(updated);
+        return updated;
+      });
+
+      return true;
+    } catch (error) {
+      console.error("Error renaming conversation on backend:", error);
+      return false;
+    }
+  }, []);
+
+  const submitFeedback = useCallback(async (
+    messageId: string,
+    action: "like" | "dislike" | "report",
+    options?: { reason?: string; category?: string; details?: string }
+  ) => {
+    try {
+      await apiSubmitMessageFeedback(messageId, {
+        action,
+        ...options
+      });
+
+      // Cập nhật local state
+      // Cập nhật local state
+      setConversations(prev => {
+        const updated = prev.map(conv => ({
+          ...conv,
+          messages: conv.messages.map(msg => {
+            if (msg.id !== messageId) return msg;
+
+            // Report: update is_reported field
+            if (action === "report") {
+              return { ...msg, is_reported: true };
+            }
+
+            // Like/Dislike: update feedback field
+            return { ...msg, feedback: action };
+          })
+        }));
+
+        // Save UPDATED state to storage immediately
+        storage.saveConversations(updated);
+        return updated;
+      });
+      return true;
+    } catch (error) {
+      console.error("Error submitting feedback:", error);
+      return false;
+    }
+  }, [conversations]);
+
   const sendMessage = useCallback(
     async (content: string) => {
       const text = content.trim();
@@ -113,7 +258,9 @@ export function useChat() {
 
       // đảm bảo có active conversation
       let currentId = activeId;
-      if (!currentId) currentId = createNewConversation();
+      if (!currentId) {
+        currentId = await createNewConversation();
+      }
 
       const now = Date.now();
       const userMsg: Message = {
@@ -142,30 +289,26 @@ export function useChat() {
         return updated;
       });
 
-      // 2) call API
+      // 2) call API với conversation_id
       setLoading(true);
       const mySeq = ++reqSeqRef.current;
 
       try {
         const res = await chat({
           question: text,
-          user_id: userIdRef.current,
+          conversation_id: currentId,
+          parent_message_id: null,
         });
 
-        // restTransport có thể trả payload trực tiếp hoặc { data: payload }
-        const data: any = (res as any)?.data ?? res;
-
         const aiText: string =
-          data?.answer?.answer ??
+          res?.assistant_answer?.answer ??
           "Xin lỗi, tôi chưa nhận được câu trả lời từ hệ thống.";
 
         const aiMsg: Message = {
-          id: `${Date.now()}_ai`,
+          id: res?.assistant_message_id ?? `${Date.now()}_ai`,
           role: "assistant",
           content: aiText,
-          createdAt: Date.now(),
-          // nếu bạn đã mở rộng type Message có contexts thì giữ lại dòng này
-          // contexts: data?.contexts || [],
+          createdAt: new Date(res?.created_at ?? Date.now()).getTime(),
         };
 
         setConversations((prev) => {
@@ -176,6 +319,7 @@ export function useChat() {
           return updated;
         });
       } catch (err) {
+        console.error("Chat error:", err);
         const aiMsg: Message = {
           id: `${Date.now()}_err`,
           role: "assistant",
@@ -211,10 +355,15 @@ export function useChat() {
     createNewConversation,
     selectConversation,
     deleteConversation,
+    renameConversation,
+    submitFeedback,
     loading,
+    loadingConversations,
     activeId,
+    refreshConversations: loadConversationsFromBackend,
   };
 }
+
 
 
 

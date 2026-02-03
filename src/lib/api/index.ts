@@ -25,6 +25,10 @@ export const restTransport = () => {
     return await client.put(url, data, { headers: { ...config } });
   };
 
+  const patch = async (url: string, data?: any, config = {}) => {
+    return await client.patch(url, data, { headers: { ...config } });
+  };
+
   const _delete = async (url: string, data?: any, config = {}) => {
     return await client.delete(url, {
       data,
@@ -71,5 +75,5 @@ export const restTransport = () => {
     },
   );
 
-  return { get, post, put, _delete, rootUrl };
+  return { get, post, put, patch, _delete, rootUrl };
 };

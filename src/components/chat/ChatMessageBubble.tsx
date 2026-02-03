@@ -110,14 +110,11 @@ export const ChatMessageBubble: React.FC<Props> = ({
             visible={visible}
             disabled={!!loading}
             reaction={localReaction}
-            saved={localSaved}
+            isReported={msg.is_reported}  // ✅ Pass this
             onLike={handleLike}
             onDislike={handleDislike}
             onReport={() => setReportOpen(true)}
             onCopy={handleCopy}
-            onSave={handleSave}
-            onRegenerate={handleRegenerate}
-            onImprove={handleImprove}
           />
         )}
 

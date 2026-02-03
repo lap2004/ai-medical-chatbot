@@ -13,12 +13,16 @@ type Props = {
   messages: Message[];
   loading: boolean;
   onSelectTriage: (answer: string) => void;
+  onReact?: (messageId: string, reaction: ReactionState) => void | Promise<void>;
+  onReport?: (messageId: string, payload: { reason: string; note?: string }) => void | Promise<void>;
 };
 
 export const ChatMessageList: React.FC<Props> = ({
   messages,
   loading,
   onSelectTriage,
+  onReact: onReactProp,
+  onReport: onReportProp,
 }) => {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [stickToBottom, setStickToBottom] = useState(true);
@@ -35,6 +39,17 @@ export const ChatMessageList: React.FC<Props> = ({
     return first ? new Date(first) : new Date();
   }, [messages]);
 
+  // ✅ Sync reactionsById from messages.feedback (for persistence after reload)
+  useEffect(() => {
+    const newReactions: Record<string, ReactionState> = {};
+    messages.forEach(msg => {
+      if (msg.feedback) {
+        newReactions[msg.id] = msg.feedback;
+      }
+    });
+    setReactionsById(newReactions);
+  }, [messages]);
+
   // theo dõi user có đang ở gần đáy không
   useEffect(() => {
     const el = scrollRef.current;
@@ -45,12 +60,12 @@ export const ChatMessageList: React.FC<Props> = ({
       setStickToBottom(dist < 120);
     };
 
-    el.addEventListener("scroll", onScroll, { passive: true });
+    el.addEventListener("scroll", onScroll);
     onScroll();
     return () => el.removeEventListener("scroll", onScroll);
   }, []);
 
-  // auto-scroll chỉ khi stickToBottom
+  // auto-scroll khi có tin mới
   useEffect(() => {
     const el = scrollRef.current;
     if (!el) return;
@@ -61,12 +76,13 @@ export const ChatMessageList: React.FC<Props> = ({
     });
   }, [messages, loading, stickToBottom]);
 
-  // ✅ handlers (tạm log; sau nối API trong services)
+  // ✅ handlers
   const onReact = useCallback(async (id: string, next: ReactionState) => {
     setReactionsById((p) => ({ ...p, [id]: next })); // optimistic
-    // TODO: call API here
-    console.log("[chat] react", id, next);
-  }, []);
+    if (onReactProp) {
+      await onReactProp(id, next);
+    }
+  }, [onReactProp]);
 
   const onSave = useCallback(async (id: string, next: boolean) => {
     setSavedById((p) => ({ ...p, [id]: next }));
@@ -76,10 +92,11 @@ export const ChatMessageList: React.FC<Props> = ({
 
   const onReport = useCallback(
     async (id: string, payload: { reason: string; note?: string }) => {
-      // TODO: call API here
-      console.log("[chat] report", id, payload);
+      if (onReportProp) {
+        await onReportProp(id, payload);
+      }
     },
-    [],
+    [onReportProp],
   );
 
   const onRegenerate = useCallback(async (id: string) => {
@@ -115,9 +132,8 @@ export const ChatMessageList: React.FC<Props> = ({
         return (
           <div
             key={msg.id}
-            className={`flex items-start ${
-              isUser ? "justify-end" : "justify-start"
-            } space-x-4`}
+            className={`flex items-start ${isUser ? "justify-end" : "justify-start"
+              } space-x-4`}
           >
             {isAssistant && (
               <div className="w-9 h-9 rounded-full bg-primary flex items-center justify-center shrink-0">
@@ -150,11 +166,10 @@ export const ChatMessageList: React.FC<Props> = ({
               ) : (
                 // ✅ user message giữ nguyên UI cũ
                 <div
-                  className={`p-5 shadow-sm border ${
-                    isUser
-                      ? "bg-primary text-white border-primary rounded-3xl rounded-tr-none max-w-xl"
-                      : "bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 border-slate-100 dark:border-slate-700 rounded-3xl rounded-tl-none max-w-3xl"
-                  }`}
+                  className={`p-5 shadow-sm border ${isUser
+                    ? "bg-primary text-white border-primary rounded-3xl rounded-tr-none max-w-xl"
+                    : "bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 border-slate-100 dark:border-slate-700 rounded-3xl rounded-tl-none max-w-3xl"
+                    }`}
                 >
                   <p className="text-[15px] leading-relaxed whitespace-pre-wrap">
                     {msg.content}
@@ -163,9 +178,8 @@ export const ChatMessageList: React.FC<Props> = ({
               )}
 
               <div
-                className={`flex items-center space-x-2 ${
-                  isUser ? "justify-end mr-1" : "ml-1"
-                }`}
+                className={`flex items-center space-x-2 ${isUser ? "justify-end mr-1" : "ml-1"
+                  }`}
               >
                 {isUser && (
                   <span className="material-icons-round text-[12px] text-green-500">

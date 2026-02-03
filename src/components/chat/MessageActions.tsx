@@ -6,6 +6,7 @@ type Props = {
   visible: boolean;
   disabled?: boolean;
   reaction: ReactionState;
+  isReported?: boolean;  // ✅ Add this
 
   onLike: () => void;
   onDislike: () => void;
@@ -17,6 +18,7 @@ export const MessageActions: React.FC<Props> = ({
   visible,
   disabled,
   reaction,
+  isReported,  // ✅ Add this
   onLike,
   onDislike,
   onReport,
@@ -50,10 +52,9 @@ export const MessageActions: React.FC<Props> = ({
             w-8 h-8 rounded-lg
             flex items-center justify-center
             transition
-            ${
-              reaction === "like"
-                ? "bg-primary/10 text-primary"
-                : "text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800"
+            ${reaction === "like"
+              ? "bg-primary/10 text-primary"
+              : "text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800"
             }
           `}
         >
@@ -70,10 +71,9 @@ export const MessageActions: React.FC<Props> = ({
             w-8 h-8 rounded-lg
             flex items-center justify-center
             transition
-            ${
-              reaction === "dislike"
-                ? "bg-red-500/10 text-red-600"
-                : "text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800"
+            ${reaction === "dislike"
+              ? "bg-red-500/10 text-red-600"
+              : "text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800"
             }
           `}
         >
@@ -99,22 +99,24 @@ export const MessageActions: React.FC<Props> = ({
           </span>
         </button>
 
-        {/* Report */}
-        <button
-          disabled={disabled}
-          onClick={onReport}
-          className="
-            w-8 h-8 rounded-lg
-            flex items-center justify-center
-            text-slate-500
-            hover:bg-slate-100 dark:hover:bg-slate-800
-            transition
-          "
-        >
-          <span className="material-icons-round text-[18px] leading-none">
-            flag
-          </span>
-        </button>
+        {/* Report - Only show if not already reported */}
+        {!isReported && (
+          <button
+            disabled={disabled}
+            onClick={onReport}
+            className="
+              w-8 h-8 rounded-lg
+              flex items-center justify-center
+              text-slate-500
+              hover:bg-slate-100 dark:hover:bg-slate-800
+              transition
+            "
+          >
+            <span className="material-icons-round text-[18px] leading-none">
+              flag
+            </span>
+          </button>
+        )}
       </div>
     </div>
   );

@@ -3,6 +3,8 @@ export interface Message {
   role: "user" | "assistant";
   content: string;
   createdAt: number;
+  feedback?: "like" | "dislike";  // Like/Dislike only
+  is_reported?: boolean;  // Separate field for report status
   triage?: {
     questions: string[];
     suggestedAnswers: string[];
@@ -33,4 +35,5 @@ export type ChatMsg = {
   content: string;
   createdAt?: number;
   fromApi?: boolean;
+  is_reported?: boolean;  // For report prevention
 };
