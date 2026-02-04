@@ -15,17 +15,6 @@ def synthesize_speech(
     out_dir: str | Path = DEFAULT_OUT_DIR,
     lang: str = "vi",
 ) -> str:
-    """
-    Text-to-Speech (gTTS)
-
-    ✅ 1 text -> 1 file mp3 DUY NHẤT
-    ❌ Không chia segment
-    ❌ Không realtime
-    ❌ Không sinh nhiều file
-
-    Trả về:
-        đường dẫn tuyệt đối tới file mp3
-    """
     text = (text or "").strip()
     if not text:
         raise ValueError("TTS text is empty")

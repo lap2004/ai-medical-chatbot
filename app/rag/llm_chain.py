@@ -1,8 +1,3 @@
-"""
-app/rag/llm_chain.py
-Prompt y tế + gọi Gemini, trả JSON (theo schema ChatAnswer).
-"""
-
 import json
 import re
 from typing import List, Dict, Any
@@ -145,9 +140,6 @@ def call_gemini(prompt: str) -> str:
 
 
 def parse_json_safely(raw: str) -> Dict[str, Any]:
-    """
-    Cố gắng bóc JSON từ câu trả lời (trường hợp model trả thừa chữ).
-    """
     raw = raw.strip()
     # Nếu đã là JSON hợp lệ
     try:

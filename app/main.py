@@ -32,7 +32,7 @@ app.add_middleware(RequestLogMiddleware)
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
-        "https://eyed-particularly-fin-beginner.trycloudflare.com",
+        "https://vacations-dual-lane-heart.trycloudflare.com",
         "http://localhost:3000",
         "http://127.0.1.8:8000",
         "http://192.168.1.12:3000"

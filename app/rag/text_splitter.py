@@ -1,10 +1,4 @@
-"""
-app/rag/text_splitter.py
-Chia nhỏ văn bản theo độ dài ký tự, có overlap nhẹ để giữ ngữ cảnh.
-"""
-
 from typing import List, Dict
-
 
 def split_text(doc_text: str, chunk_chars: int = 900, overlap: int = 120) -> List[Dict]:
     chunks: List[Dict] = []

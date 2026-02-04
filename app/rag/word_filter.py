@@ -1,8 +1,3 @@
-"""
-app/rag/word_filter.py
-Lọc từ cấm trước khi gửi câu hỏi lên LLM.
-"""
-
 import json
 from pathlib import Path
 from typing import Tuple

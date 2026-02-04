@@ -1,8 +1,3 @@
-"""
-app/rag/embedder.py
-Tạo embedding bằng Sentence-Transformers (BGE) và upsert vào bảng 'medical' (pgvector).
-"""
-
 import os
 from typing import List, Dict, Any
 
