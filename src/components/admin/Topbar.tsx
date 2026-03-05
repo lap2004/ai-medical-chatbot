@@ -6,10 +6,12 @@ export default function Topbar({
   onLogout,
   userInfo,
   onChangePassword,
+  onAvatarChange,
 }: {
   onLogout: () => void;
   userInfo?: any;
   onChangePassword: () => void;
+  onAvatarChange?: (newUrl: string) => void;
 }) {
   return (
     <header className="h-14 border-b border-slate-100 px-7 flex items-center justify-between bg-white">
@@ -24,6 +26,7 @@ export default function Topbar({
           onLogout={onLogout}
           userInfo={userInfo}
           onChangePassword={onChangePassword}
+          onAvatarChange={onAvatarChange}
         />
       </div>
     </header>

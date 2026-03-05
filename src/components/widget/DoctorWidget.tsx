@@ -21,7 +21,7 @@ export const DoctorWidget: React.FC<{ onClose: () => void }> = ({ onClose }) => 
     w-auto sm:w-full sm:max-w-[380px]
     h-[75vh] sm:h-[580px]
     bg-white dark:bg-slate-900
-    rounded-3xl shadow-2xl
+    rounded-3xl
     border border-slate-200 dark:border-slate-800
     flex flex-col
     animate-in fade-in slide-in-from-bottom-4 duration-300

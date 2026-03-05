@@ -4,7 +4,7 @@ import Topbar from "./Topbar";
 import { NavKey } from "@/types/admin";
 import Sidebar from "./SidebarAdmin";
 
-import { useUserMe } from "@/services/hooks/hookAuth";
+import { useUserStore } from "@/store/userStore";
 
 import { ResetPasswordDialog } from "@/components/auth/ResetPasswordDialog";
 import { useNavigate } from "react-router-dom";
@@ -20,16 +20,13 @@ export default function AdminLayout({
   onLogout: () => void;
   children: React.ReactNode;
 }) {
-  const { getuserMe } = useUserMe();
-  const [userInfo, setUserInfo] = React.useState<any>(null);
+  const { userInfo, fetchUserInfo, updateAvatarUrl } = useUserStore();
   const [openReset, setOpenReset] = React.useState(false);
   const navigate = useNavigate();
 
   React.useEffect(() => {
-    getuserMe().then((data) => {
-      if (data) setUserInfo(data);
-    });
-  }, []);
+    fetchUserInfo();
+  }, [fetchUserInfo]);
   return (
     <div className="min-h-screen bg-white text-slate-900">
       <div className="flex">
@@ -39,6 +36,7 @@ export default function AdminLayout({
             onLogout={onLogout}
             userInfo={userInfo}
             onChangePassword={() => setOpenReset(true)}
+            onAvatarChange={updateAvatarUrl}
           />
           {children}
         </main>

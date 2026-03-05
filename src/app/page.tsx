@@ -8,7 +8,7 @@ import { isLogin, getUserRole } from "../lib/helper";
 import { useAuthUIStore } from "@/store";
 import { ResetPasswordDialog } from "@/components/auth/ResetPasswordDialog";
 import { ProfileMenuDialog } from "@/components/chat/ProfileMenuDialog";
-import { useUserMe } from "@/services/hooks/hookAuth";
+import { useUserStore } from "@/store/userStore";
 
 const HomePage: React.FC = () => {
   const [isWidgetOpen, setIsWidgetOpen] = useState(false);
@@ -17,16 +17,11 @@ const HomePage: React.FC = () => {
   const [openReset, setOpenReset] = useState(false);
   const [profileOpen, setProfileOpen] = React.useState(false);
   const profileAnchorRef = React.useRef<HTMLButtonElement>(null);
-  const { getuserMe } = useUserMe();
-  const [userInfo, setUserInfo] = React.useState<any>(null);
+  const { userInfo, fetchUserInfo, updateAvatarUrl } = useUserStore();
 
   React.useEffect(() => {
-    if (isLogin()) {
-      getuserMe().then((data) => {
-        if (data) setUserInfo(data);
-      });
-    }
-  }, []);
+    fetchUserInfo();
+  }, [fetchUserInfo]);
 
   const handleLogout = () => {
     try {
@@ -97,11 +92,17 @@ const HomePage: React.FC = () => {
                 aria-label="Open profile menu"
                 title="Profile"
               >
-                <img
-                  alt={userInfo?.full_name || "User"}
-                  className="w-9 h-9 rounded-full border border-slate-200 dark:border-slate-700 object-cover"
-                  src="https://picsum.photos/seed/alex/100/100"
-                />
+                {userInfo?.avatar_url ? (
+                  <img
+                    alt={userInfo?.full_name || "User"}
+                    className="w-9 h-9 rounded-full border border-slate-200 dark:border-slate-700 object-cover"
+                    src={`${import.meta.env.VITE_API_BACKEND_DOMAIN || ""}${userInfo.avatar_url}`}
+                  />
+                ) : (
+                  <div className="w-9 h-9 rounded-full border border-slate-200 dark:border-slate-700 bg-primary/10 flex items-center justify-center text-primary font-bold text-sm uppercase">
+                    {(userInfo?.full_name || "U").charAt(0)}
+                  </div>
+                )}
                 <span className="hidden md:inline text-sm font-bold text-slate-700 dark:text-white truncate max-w-[140px]">
                   {userInfo?.full_name || "Guest"}
                 </span>
@@ -146,7 +147,7 @@ const HomePage: React.FC = () => {
             </div>
 
             <div className="relative hidden lg:flex items-center justify-center">
-              <div className="relative w-full max-w-md bg-white dark:bg-slate-800 rounded-3xl shadow-2xl border border-slate-100 dark:border-slate-700 overflow-hidden transform rotate-2 z-10 floating">
+              <div className="relative w-full max-w-md bg-white dark:bg-slate-800 rounded-3xl border border-slate-100 dark:border-slate-700 overflow-hidden transform rotate-2 z-10 floating">
                 <div className="p-6 bg-primary text-white flex items-center justify-between">
                   <div className="flex items-center gap-3">
                     <img
@@ -175,7 +176,7 @@ const HomePage: React.FC = () => {
                 </div>
               </div>
               <div className="absolute top-0 right-0 w-64 h-64 bg-primary/10 rounded-full blur-3xl -z-0"></div>
-              <div className="absolute -bottom-10 -left-10 bg-white dark:bg-slate-800 p-6 rounded-2xl shadow-xl border border-slate-100 dark:border-slate-700 z-20">
+              <div className="absolute -bottom-10 -left-10 bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-100 dark:border-slate-700 z-20">
                 <div className="flex items-center gap-4">
                   <div className="p-3 bg-green-100 dark:bg-green-900/30 text-green-600 rounded-xl">
                     <BadgeCheck className="w-6 h-6" />
@@ -247,7 +248,7 @@ const HomePage: React.FC = () => {
                  bg-primary text-white
                  pl-4 pr-6 py-4
                  rounded-full
-                 shadow-2xl shadow-primary/40
+                 shadow-primary/40
                  hover:scale-105 transition-all"
           >
             <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center">
@@ -440,6 +441,7 @@ const HomePage: React.FC = () => {
         anchorRef={profileAnchorRef}
         userInfo={userInfo}
         onChangePassword={() => setOpenReset(true)}
+        onAvatarChange={updateAvatarUrl}
         onSignOut={() => {
           handleLogout();
           setProfileOpen(false);

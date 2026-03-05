@@ -54,7 +54,7 @@ const ForgotPasswordPage: React.FC = () => {
       <div className="w-full max-w-md">
         {/* Header */}
         <div className="text-center mb-10">
-          <div className="inline-flex items-center justify-center w-16 h-16 rounded-3xl bg-primary mb-4 shadow-xl shadow-primary/20 text-white">
+          <div className="inline-flex items-center justify-center w-16 h-16 rounded-3xl bg-primary mb-4 shadow-primary/20 text-white">
             <KeyRound className="w-8 h-8" />
           </div>
 
@@ -67,7 +67,7 @@ const ForgotPasswordPage: React.FC = () => {
         </div>
 
         {/* Card */}
-        <div className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border border-white dark:border-slate-800 shadow-2xl rounded-[32px] p-8">
+        <div className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border border-white dark:border-slate-800 rounded-[32px] p-8">
           {submitted ? (
             <div className="space-y-6 text-center">
               <div className="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-emerald-800/10 text-emerald-800 dark:text-emerald-300">

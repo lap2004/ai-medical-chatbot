@@ -279,7 +279,7 @@ export const ChatSidebar: React.FC<SidebarProps> = ({
               relative w-[92vw] max-w-md
               rounded-2xl bg-white dark:bg-slate-900
               border border-slate-200 dark:border-slate-800
-              shadow-2xl p-5
+              p-5
             "
               onClick={(e) => e.stopPropagation()}
             >
@@ -356,7 +356,7 @@ export const ChatSidebar: React.FC<SidebarProps> = ({
               relative w-[92vw] max-w-md
               rounded-2xl bg-white dark:bg-slate-900
               border border-slate-200 dark:border-slate-800
-              shadow-2xl p-5
+              p-5
             "
               onClick={(e) => e.stopPropagation()}
             >

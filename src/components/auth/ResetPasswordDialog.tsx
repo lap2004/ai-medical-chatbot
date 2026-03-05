@@ -167,7 +167,7 @@ export const ResetPasswordDialog: React.FC<ResetPasswordPopupProps> = ({
           <div
             ref={panelRef}
             tabIndex={-1}
-            className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border border-white dark:border-slate-800 shadow-2xl rounded-[32px] p-8 outline-none"
+            className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border border-white dark:border-slate-800 rounded-[32px] p-8 outline-none"
             role="dialog"
             aria-modal="true"
           >
@@ -288,15 +288,14 @@ export const ResetPasswordDialog: React.FC<ResetPasswordPopupProps> = ({
                     PASSWORD STRENGTH
                   </span>
                   <span
-                    className={`font-bold ${
-                      strength.label === "STRONG"
+                    className={`font-bold ${strength.label === "STRONG"
                         ? "text-emerald-800"
                         : strength.label === "GOOD"
                           ? "text-emerald-700"
                           : strength.label === "FAIR"
                             ? "text-slate-500"
                             : "text-slate-400"
-                    }`}
+                      }`}
                   >
                     {strength.label}
                   </span>
@@ -308,11 +307,10 @@ export const ResetPasswordDialog: React.FC<ResetPasswordPopupProps> = ({
                     return (
                       <div
                         key={i}
-                        className={`h-2 w-full rounded-full transition-colors ${
-                          filled
+                        className={`h-2 w-full rounded-full transition-colors ${filled
                             ? "bg-emerald-800"
                             : "bg-slate-200 dark:bg-slate-800"
-                        }`}
+                          }`}
                       />
                     );
                   })}
@@ -320,11 +318,10 @@ export const ResetPasswordDialog: React.FC<ResetPasswordPopupProps> = ({
 
                 <div className="flex items-center gap-2 text-[12px]">
                   <CheckCircle2
-                    className={`w-4 h-4 ${
-                      strength.passed
+                    className={`w-4 h-4 ${strength.passed
                         ? "text-emerald-800"
                         : "text-slate-300 dark:text-slate-700"
-                    }`}
+                      }`}
                   />
                   <span
                     className={

@@ -94,7 +94,7 @@ export const ChatMessageBubble: React.FC<Props> = ({
     <div className="w-full flex">
       <div
         className={[
-          "relative max-w-[85%] rounded-2xl px-4 py-3 group",
+          "relative w-max max-w-[85%] rounded-2xl px-4 py-3 group",
           bubbleClass,
           isAssistant ? "mr-auto" : "ml-auto",
         ].join(" ")}

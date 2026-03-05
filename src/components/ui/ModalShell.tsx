@@ -24,7 +24,7 @@ export default function ModalShell({
     >
       <div className="absolute inset-0 bg-black/40" />
       <div
-        className="relative w-[92vw] max-w-md rounded-2xl bg-white border border-slate-200 shadow-2xl p-5"
+        className="relative w-[92vw] max-w-md rounded-2xl bg-white border border-slate-200 p-5"
         onMouseDown={(e) => e.stopPropagation()}
       >
         <div className="flex items-start justify-between gap-3 mb-3">

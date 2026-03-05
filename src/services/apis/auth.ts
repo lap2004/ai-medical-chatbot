@@ -1,6 +1,6 @@
 import { restTransport } from "@/lib/api";
 import Cookies from "js-cookie";
-const { post, get } = restTransport();
+const { post, get, put } = restTransport();
 
 export const userLogin = async (body: any) => {
   return await post("/login", body);
@@ -42,4 +42,29 @@ export const userGoogleLogin = async (idToken: string) => {
   return await post("/auth/google", {
     id_token: idToken,
   });
+};
+
+export const updateProfile = async (fullName: string) => {
+  return await put("/update-profile", {
+    full_name: fullName,
+  });
+};
+
+export const uploadAvatar = async (file: File): Promise<{ avatar_url: string }> => {
+  const token = Cookies.get("access_token");
+  const formData = new FormData();
+  formData.append("file", file);
+  const base = import.meta.env.VITE_API_BACKEND_DOMAIN || "http://localhost:8000";
+  const res = await fetch(`${base}/upload-avatar`, {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+    body: formData,
+  });
+  if (!res.ok) {
+    const err = await res.json().catch(() => ({}));
+    throw new Error(err.detail || "Upload avatar thất bại");
+  }
+  return res.json();
 };

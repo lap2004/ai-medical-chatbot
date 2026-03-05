@@ -26,7 +26,7 @@ export const ReportDialog: React.FC<Props> = ({ open, onClose, onSubmit }) => {
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center">
       <div className="absolute inset-0 bg-black/40" onClick={onClose} />
-      <div className="relative w-[92vw] max-w-md rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 shadow-2xl p-4">
+      <div className="relative w-[92vw] max-w-md rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 p-4">
         <div className="flex items-center justify-between">
           <h3 className="text-base font-bold text-slate-800 dark:text-slate-100">
             Report message

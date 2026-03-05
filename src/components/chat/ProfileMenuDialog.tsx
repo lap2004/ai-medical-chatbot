@@ -1,7 +1,11 @@
 import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { useNavigate } from "react-router-dom";
-import { X, ShieldCheck, KeyRound, ChevronRight } from "lucide-react";
+import { X, ShieldCheck, KeyRound, ChevronRight, Camera, Image as ImageIcon, UserCircle } from "lucide-react";
+import { toast } from "sonner";
+import { uploadAvatar } from "@/services/apis/auth";
+import ImageCropModal from "../ui/ImageCropModal";
+import { ChangeNameDialog } from "../ui/ChangeNameDialog";
 
 type Props = {
   open: boolean;
@@ -10,7 +14,10 @@ type Props = {
   onChangePassword?: () => void;
   anchorRef: React.RefObject<HTMLElement>;
   userInfo?: any;
+  onAvatarChange?: (newUrl: string) => void;
 };
+
+const BASE_URL = import.meta.env.VITE_API_BACKEND_DOMAIN || "";
 
 export const ProfileMenuDialog: React.FC<Props> = ({
   open,
@@ -19,12 +26,23 @@ export const ProfileMenuDialog: React.FC<Props> = ({
   onChangePassword,
   anchorRef,
   userInfo,
+  onAvatarChange,
 }) => {
   const GAP = 10;
   const EDGE = 12;
   const PANEL_W = 320;
 
   const panelRef = useRef<HTMLDivElement>(null);
+  const fileInputRef = useRef<HTMLInputElement>(null);
+  const [uploading, setUploading] = useState(false);
+  const [uploadError, setUploadError] = useState<string | null>(null);
+
+  // Modal Crop state
+  const [cropModalOpen, setCropModalOpen] = useState(false);
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+
+  // Modal Change Name state
+  const [nameModalOpen, setNameModalOpen] = useState(false);
 
   const [pos, setPos] = useState<{
     left: number;
@@ -88,6 +106,43 @@ export const ProfileMenuDialog: React.FC<Props> = ({
     };
   }, [open, anchorRef]);
 
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    setUploadError(null);
+
+    // Đọc file thành DataURL để render vào Cropper
+    const reader = new FileReader();
+    reader.addEventListener("load", () => {
+      setSelectedImage(reader.result as string);
+      setCropModalOpen(true);
+    });
+    reader.readAsDataURL(file);
+    e.target.value = "";
+  };
+
+  const handleCropComplete = async (croppedBlob: Blob) => {
+    setCropModalOpen(false);
+    setSelectedImage(null);
+    setUploading(true);
+    try {
+      // Chuyển Blob thành File để tương thích với API upload
+      const file = new File([croppedBlob], "avatar.jpg", { type: "image/jpeg" });
+      const { avatar_url } = await uploadAvatar(file);
+      onAvatarChange?.(avatar_url);
+      toast.success("Thay đổi ảnh đại diện thành công!");
+    } catch (err: any) {
+      const msg = err.message || "Đã có lỗi xảy ra khi đổi ảnh!";
+      setUploadError(msg);
+      toast.error(msg);
+    } finally {
+      setUploading(false);
+    }
+  };
+
+  const avatarSrc = userInfo?.avatar_url ? `${BASE_URL}${userInfo.avatar_url}` : null;
+  const initials = (userInfo?.full_name || "U").charAt(0).toUpperCase();
+
   if (!open) return null;
 
   // ✅ Portal ra body để KHÔNG bị cắt bởi overflow/transform của layout
@@ -103,7 +158,7 @@ export const ProfileMenuDialog: React.FC<Props> = ({
       {/* Panel */}
       <div
         ref={panelRef}
-        className="fixed w-[320px] rounded-[28px] bg-white shadow-2xl border border-slate-200/70 overflow-hidden"
+        className="fixed w-[320px] rounded-[28px] bg-white border border-slate-200/70 overflow-hidden"
         style={
           pos ? { left: pos.left, top: pos.top } : { right: EDGE, top: 72 } // fallback
         }
@@ -123,16 +178,46 @@ export const ProfileMenuDialog: React.FC<Props> = ({
 
           {/* Profile */}
           <div className="-mt-2 flex flex-col items-center text-center">
-            <div className="relative">
-              <img
-                src="https://picsum.photos/seed/alex/120/120"
-                alt="Alex Johnson"
-                className="w-[84px] h-[84px] rounded-full object-cover ring-4 ring-white shadow-md"
+            <div className="relative group">
+              {/* Avatar */}
+              {avatarSrc ? (
+                <img
+                  src={avatarSrc}
+                  alt={userInfo?.full_name || "User"}
+                  className="w-[84px] h-[84px] rounded-full object-cover ring-4 ring-white shadow-md"
+                />
+              ) : (
+                <div className="w-[84px] h-[84px] rounded-full ring-4 ring-white shadow-md bg-primary/10 flex items-center justify-center text-primary font-extrabold text-3xl">
+                  {initials}
+                </div>
+              )}
+
+              {/* Camera overlay — click to upload */}
+              <button
+                onClick={() => fileInputRef.current?.click()}
+                disabled={uploading}
+                className="absolute inset-0 rounded-full bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center"
+                title="Đổi ảnh đại diện"
+              >
+                <Camera className="w-6 h-6 text-white" />
+              </button>
+
+              <input
+                ref={fileInputRef}
+                type="file"
+                accept="image/*"
+                className="hidden"
+                onChange={handleFileChange}
               />
+
               <span className="absolute -bottom-2 left-1/2 -translate-x-1/2 px-3 py-1 text-[10px] font-extrabold tracking-wide rounded-full bg-primary text-white shadow">
-                PREMIUM
+                {uploading ? "..." : "PREMIUM"}
               </span>
             </div>
+
+            {uploadError && (
+              <p className="mt-3 text-xs text-red-500">{uploadError}</p>
+            )}
 
             <div className="mt-4">
               <div className="text-[18px] font-extrabold text-slate-900 leading-tight">
@@ -152,11 +237,44 @@ export const ProfileMenuDialog: React.FC<Props> = ({
           <div className="my-5 h-px bg-slate-100" />
 
           <button
+            onClick={() => fileInputRef.current?.click()}
+            disabled={uploading}
+            className="w-full flex items-center justify-between rounded-2xl px-4 py-3 hover:bg-slate-50 transition"
+          >
+            <div className="flex items-center gap-3">
+              <div className="w-9 h-9 rounded-xl bg-slate-100 flex items-center justify-center text-slate-600">
+                <ImageIcon className="w-5 h-5" />
+              </div>
+              <div className="text-sm font-semibold text-slate-800">
+                Change Avatar
+              </div>
+            </div>
+            <ChevronRight className="w-5 h-5 text-slate-300" />
+          </button>
+
+          <button
+            onClick={() => {
+              setNameModalOpen(true);
+            }}
+            className="mt-2 w-full flex items-center justify-between rounded-2xl px-4 py-3 hover:bg-slate-50 transition"
+          >
+            <div className="flex items-center gap-3">
+              <div className="w-9 h-9 rounded-xl bg-slate-100 flex items-center justify-center text-slate-600">
+                <UserCircle className="w-5 h-5" />
+              </div>
+              <div className="text-sm font-semibold text-slate-800">
+                Change Name
+              </div>
+            </div>
+            <ChevronRight className="w-5 h-5 text-slate-300" />
+          </button>
+
+          <button
             onClick={() => {
               onChangePassword?.();
               onClose();
             }}
-            className="w-full flex items-center justify-between rounded-2xl px-4 py-3 hover:bg-slate-50 transition"
+            className="mt-2 w-full flex items-center justify-between rounded-2xl px-4 py-3 hover:bg-slate-50 transition"
           >
             <div className="flex items-center gap-3">
               <div className="w-9 h-9 rounded-xl bg-slate-100 flex items-center justify-center text-slate-600">
@@ -177,6 +295,26 @@ export const ProfileMenuDialog: React.FC<Props> = ({
           </button>
         </div>
       </div>
+
+      {selectedImage && (
+        <ImageCropModal
+          open={cropModalOpen}
+          imageSrc={selectedImage}
+          onClose={() => {
+            setCropModalOpen(false);
+            setSelectedImage(null);
+          }}
+          onCropCompleteAction={handleCropComplete}
+        />
+      )}
+
+      {nameModalOpen && (
+        <ChangeNameDialog
+          open={nameModalOpen}
+          onClose={() => setNameModalOpen(false)}
+          currentName={userInfo?.full_name}
+        />
+      )}
     </div>,
     document.body,
   );

@@ -1,4 +1,4 @@
-export type Role = "ADMIN" | "DOCTOR" | "USER";
+export type Role = "ADMIN" | "USER";
 export type Status = "Active" | "Inactive";
 
 export type UserRow = {

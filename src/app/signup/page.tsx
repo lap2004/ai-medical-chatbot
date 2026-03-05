@@ -19,9 +19,9 @@ const SignupPage: React.FC = () => {
 
   const handleChange =
     (key: "full_name" | "email" | "password") =>
-    (e: React.ChangeEvent<HTMLInputElement>) => {
-      setForm((prev) => ({ ...prev, [key]: e.target.value }));
-    };
+      (e: React.ChangeEvent<HTMLInputElement>) => {
+        setForm((prev) => ({ ...prev, [key]: e.target.value }));
+      };
 
   const validate = () => {
     if (!form.full_name.trim()) {
@@ -72,7 +72,7 @@ const SignupPage: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-slate-950 flex items-center justify-center p-4">
-      <div className="w-full max-w-5xl bg-white dark:bg-slate-900 rounded-[40px] shadow-2xl overflow-hidden grid md:grid-cols-2">
+      <div className="w-full max-w-5xl bg-white dark:bg-slate-900 rounded-[40px] overflow-hidden grid md:grid-cols-2">
         {/* Left Side */}
         <div className="hidden md:flex flex-col justify-between p-16 bg-primary relative overflow-hidden">
           <div className="z-10">
@@ -129,7 +129,7 @@ const SignupPage: React.FC = () => {
               </label>
               <input
                 type="text"
-                placeholder="Dr. John Doe"
+                placeholder="Thái Viết Lập"
                 className="w-full px-5 py-4 bg-slate-50 dark:bg-slate-800 border-none rounded-2xl focus:ring-2 focus:ring-primary transition-all"
                 value={form.full_name}
                 onChange={handleChange("full_name")}
@@ -143,7 +143,7 @@ const SignupPage: React.FC = () => {
               </label>
               <input
                 type="email"
-                placeholder="john@example.com"
+                placeholder="lap@gmail.com"
                 className="w-full px-5 py-4 bg-slate-50 dark:bg-slate-800 border-none rounded-2xl focus:ring-2 focus:ring-primary transition-all"
                 value={form.email}
                 onChange={handleChange("email")}

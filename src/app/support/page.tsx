@@ -274,7 +274,7 @@ const SupportPage: React.FC = () => {
                         </div>
 
                         {/* Contact Form */}
-                        <div className="bg-white dark:bg-slate-900 shadow-xl shadow-slate-200/50 dark:shadow-none p-10 rounded-3xl border border-slate-200 dark:border-slate-800">
+                        <div className="bg-white dark:bg-slate-900 shadow-slate-200/50 dark:shadow-none p-10 rounded-3xl border border-slate-200 dark:border-slate-800">
                             <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-6">Send us a message</h2>
                             <form className="grid gap-6 md:grid-cols-2" onSubmit={(e) => e.preventDefault()}>
                                 <div className="space-y-2">

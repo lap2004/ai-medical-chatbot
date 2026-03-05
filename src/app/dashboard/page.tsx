@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import UsersTab from "./UsersTab";
 import DashboardView from "./DashboardView";
 import AnalyticsView from "./AnalyticsView";
+import SettingsView from "./SettingsView";
 
 export default function UserManagementDashboard() {
   const navigate = useNavigate();
@@ -22,11 +23,7 @@ export default function UserManagementDashboard() {
       case "analytics":
         return <AnalyticsView />;
       case "settings":
-        return (
-          <div className="p-10 text-center text-slate-500">
-            Settings feature coming soon...
-          </div>
-        );
+        return <SettingsView />;
       default:
         return <DashboardView />;
     }

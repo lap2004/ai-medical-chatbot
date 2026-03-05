@@ -5,8 +5,7 @@ import { ResetPasswordDialog } from "../auth/ResetPasswordDialog";
 import { removeAuthCookies } from "@/lib/helper/token";
 import { Home, MessageSquare, Mic } from "lucide-react";
 
-import { useUserMe } from "@/services/hooks/hookAuth";
-import { isLogin } from "@/lib/helper";
+import { useUserStore } from "@/store/userStore";
 
 type Props = {
   tab: "chat" | "voice";
@@ -19,16 +18,11 @@ export const ChatHeader: React.FC<Props> = ({ tab, onTabChange }) => {
   const [profileOpen, setProfileOpen] = React.useState(false);
   const profileAnchorRef = React.useRef<HTMLButtonElement>(null);
 
-  const { getuserMe } = useUserMe();
-  const [userInfo, setUserInfo] = React.useState<any>(null);
+  const { userInfo, fetchUserInfo, updateAvatarUrl } = useUserStore();
 
   React.useEffect(() => {
-    if (isLogin()) {
-      getuserMe().then((data) => {
-        if (data) setUserInfo(data);
-      });
-    }
-  }, []);
+    fetchUserInfo();
+  }, [fetchUserInfo]);
 
   const handleLogout = () => {
     try {
@@ -141,11 +135,17 @@ export const ChatHeader: React.FC<Props> = ({ tab, onTabChange }) => {
           aria-label="Open profile menu"
           title="Profile"
         >
-          <img
-            alt={userInfo?.full_name || "User"}
-            className="w-9 h-9 rounded-full border border-slate-200 dark:border-slate-700 object-cover"
-            src="https://picsum.photos/seed/alex/100/100"
-          />
+          {userInfo?.avatar_url ? (
+            <img
+              alt={userInfo?.full_name || "User"}
+              className="w-9 h-9 rounded-full border border-slate-200 dark:border-slate-700 object-cover"
+              src={`${import.meta.env.VITE_API_BACKEND_DOMAIN || ""}${userInfo.avatar_url}`}
+            />
+          ) : (
+            <div className="w-9 h-9 rounded-full border border-slate-200 dark:border-slate-700 bg-primary/10 flex items-center justify-center text-primary font-bold text-sm uppercase">
+              {(userInfo?.full_name || "U").charAt(0)}
+            </div>
+          )}
           <span className="hidden md:inline text-sm font-bold text-slate-700 dark:text-white truncate max-w-[140px]">
             {userInfo?.full_name || "Guest"}
           </span>
@@ -158,6 +158,7 @@ export const ChatHeader: React.FC<Props> = ({ tab, onTabChange }) => {
           anchorRef={profileAnchorRef}
           userInfo={userInfo}
           onChangePassword={() => setResetOpen(true)}
+          onAvatarChange={updateAvatarUrl}
           onSignOut={() => {
             handleLogout();
             setProfileOpen(false);

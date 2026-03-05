@@ -21,7 +21,17 @@ const ChatPage: React.FC = () => {
     submitFeedback,
     activeId,
     loading,
+    chatError,
+    clearChatError,
   } = useChat();
+
+  // Show toast when chat error occurs
+  React.useEffect(() => {
+    if (chatError) {
+      toast.error(chatError, { duration: 5000 });
+      clearChatError();
+    }
+  }, [chatError, clearChatError]);
 
   // Handle feedback reactions (like/dislike)
   const handleReact = async (messageId: string, reaction: "none" | "like" | "dislike") => {

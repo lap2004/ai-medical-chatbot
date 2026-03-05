@@ -75,7 +75,6 @@ export default function UsersToolbar({
                   >
                     <option value="ALL">All</option>
                     <option value="ADMIN">Admin</option>
-                    <option value="DOCTOR">Doctor</option>
                     <option value="USER">User</option>
                   </select>
                 </div>

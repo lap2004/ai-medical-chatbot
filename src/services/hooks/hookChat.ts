@@ -16,6 +16,7 @@ export function useChat() {
   const [activeId, setActiveId] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
   const [loadingConversations, setLoadingConversations] = useState(false);
+  const [chatError, setChatError] = useState<string | null>(null);
 
   // chống setLoading sai khi có nhiều request (spam send)
   const reqSeqRef = useRef(0);
@@ -332,13 +333,25 @@ export function useChat() {
           storage.saveConversations(updated);
           return updated;
         });
-      } catch (err) {
-        console.error("Chat error:", err);
+      } catch (err: any) {
+
+        // Try to extract API error detail (axios HTTP error has .response.data.detail)
+        // Fallback to err.message (network/timeout), then generic string
+        const apiDetail: string | undefined =
+          err?.response?.data?.detail ??
+          (typeof err?.response?.data === "string" ? err.response.data : undefined) ??
+          (err?.message && err.message !== "Network Error" ? err.message : undefined);
+
+        const errorContent = apiDetail
+          ? apiDetail
+          : "Không kết nối được tới hệ thống chat. Bạn thử lại sau hoặc kiểm tra API giúp mình nhé.";
+
+        setChatError(errorContent);
+
         const aiMsg: Message = {
           id: `${Date.now()}_err`,
           role: "assistant",
-          content:
-            "Không kết nối được tới hệ thống chat. Bạn thử lại sau hoặc kiểm tra API giúp mình nhé.",
+          content: "Vui lòng thử lại.",
           createdAt: Date.now(),
         };
 
@@ -374,6 +387,8 @@ export function useChat() {
     loading,
     loadingConversations,
     activeId,
+    chatError,
+    clearChatError: () => setChatError(null),
     refreshConversations: loadConversationsFromBackend,
   };
 }

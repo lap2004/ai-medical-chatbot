@@ -4,16 +4,19 @@ import React from "react";
 export default function UserFormFields({
   form,
   setForm,
+  mode,
 }: {
-  form: { name: string; email: string; role: Role; status: Status };
+  form: { name: string; email: string; password?: string; role: Role; status: Status };
   setForm: React.Dispatch<
     React.SetStateAction<{
       name: string;
       email: string;
+      password?: string;
       role: Role;
       status: Status;
     }>
   >;
+  mode: "add" | "edit";
 }) {
   return (
     <div className="space-y-3">
@@ -38,8 +41,24 @@ export default function UserFormFields({
           onChange={(e) => setForm((p) => ({ ...p, email: e.target.value }))}
           className="w-full h-10 px-3 rounded-xl border border-slate-200 outline-none focus:ring-2 focus:ring-teal-100 text-[12px] font-semibold"
           placeholder="email@example.com"
+          type="email"
         />
       </div>
+
+      {mode === "add" && (
+        <div>
+          <div className="text-[10px] font-extrabold text-slate-400 uppercase tracking-widest mb-1">
+            Password
+          </div>
+          <input
+            value={form.password ?? ""}
+            onChange={(e) => setForm((p) => ({ ...p, password: e.target.value }))}
+            className="w-full h-10 px-3 rounded-xl border border-slate-200 outline-none focus:ring-2 focus:ring-teal-100 text-[12px] font-semibold"
+            placeholder="Minimum 6 characters"
+            type="password"
+          />
+        </div>
+      )}
 
       <div className="grid grid-cols-2 gap-3">
         <div>
@@ -54,7 +73,6 @@ export default function UserFormFields({
             className="w-full h-10 px-3 rounded-xl border border-slate-200 text-[12px] font-semibold"
           >
             <option value="ADMIN">Admin</option>
-            <option value="DOCTOR">Doctor</option>
             <option value="USER">User</option>
           </select>
         </div>
