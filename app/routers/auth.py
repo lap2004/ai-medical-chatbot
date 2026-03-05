@@ -1,8 +1,12 @@
 from __future__ import annotations
 
-from fastapi import APIRouter, HTTPException, Depends, Response, status
+import os
+import uuid
+from pathlib import Path
+
+from fastapi import APIRouter, HTTPException, Depends, Response, status, UploadFile, File
 from fastapi.responses import JSONResponse
-from pydantic import BaseModel, EmailStr
+from pydantic import BaseModel, EmailStr, Field
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select
 
@@ -18,6 +22,8 @@ from db.database import get_db
 from db.models.user_model import User
 from db.schemas.auth_schema import TokenResponse
 from db.schemas.user_schema import ChangePasswordSchema, GoogleLoginRequest, UserCreate, UserLogin, UserOut
+
+from app.config import settings as app_settings
 
 router = APIRouter(tags=["Auth"])
 
@@ -43,6 +49,8 @@ async def get_me(user: User = Depends(get_current_user)):
 
 @router.post("/signup", response_model=TokenResponse, status_code=status.HTTP_201_CREATED)
 async def signup(user: UserCreate, db: AsyncSession = Depends(get_db)):
+    if not app_settings.allow_signup:
+        raise HTTPException(status_code=403, detail="Đăng ký tài khoản hiện đang bị tắt.")
     # email unique check
     result = await db.execute(select(User).where(User.email == user.email))
     if result.scalar_one_or_none():
@@ -213,3 +221,62 @@ async def login_google(data: GoogleLoginRequest, db: AsyncSession = Depends(get_
         secure=False,
     )
     return response
+
+
+ALLOWED_IMAGE_TYPES = {"image/jpeg", "image/png", "image/webp", "image/gif"}
+UPLOAD_DIR = Path("data/uploads")
+
+
+@router.post("/upload-avatar")
+async def upload_avatar(
+    file: UploadFile = File(...),
+    user: User = Depends(get_current_user),
+    db: AsyncSession = Depends(get_db),
+):
+    """Upload ảnh đại diện cho user đang đăng nhập."""
+    if file.content_type not in ALLOWED_IMAGE_TYPES:
+        raise HTTPException(
+            status_code=400,
+            detail="Chỉ chấp nhận file ảnh (JPEG, PNG, WEBP, GIF).",
+        )
+
+    # Giới hạn 5MB
+    content = await file.read()
+    if len(content) > 5 * 1024 * 1024:
+        raise HTTPException(status_code=400, detail="File ảnh tối đa 5MB.")
+
+    UPLOAD_DIR.mkdir(parents=True, exist_ok=True)
+
+    ext = Path(file.filename or "avatar").suffix or ".jpg"
+    filename = f"user_{user.id}_{uuid.uuid4().hex[:8]}{ext}"
+    save_path = UPLOAD_DIR / filename
+
+    with open(save_path, "wb") as f:
+        f.write(content)
+
+    avatar_url = f"/uploads/{filename}"
+    user.avatar_url = avatar_url
+    db.add(user)
+    await db.commit()
+    await db.refresh(user)
+
+    return {"avatar_url": avatar_url}
+
+
+class UpdateProfileRequest(BaseModel):
+    full_name: str = Field(min_length=1, max_length=255)
+
+
+@router.put("/update-profile")
+async def update_profile(
+    body: UpdateProfileRequest,
+    user: User = Depends(get_current_user),
+    db: AsyncSession = Depends(get_db),
+):
+    """Cập nhật thông tin cá nhân (hiện tại là full_name)."""
+    user.full_name = body.full_name
+    db.add(user)
+    await db.commit()
+    await db.refresh(user)
+
+    return {"message": "Cập nhật thành công"}

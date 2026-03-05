@@ -62,5 +62,6 @@ class UserOut(BaseModel):
     is_active: bool
     force_password_change: bool
     created_at: datetime
+    avatar_url: Optional[str] = None
 
     model_config = {"from_attributes": True}

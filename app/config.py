@@ -52,6 +52,10 @@ class Settings(BaseSettings):
     gemini_model: str = Field(default_factory=lambda: os.getenv("GEMINI_MODEL", "models/gemini-2.5-flash"))
 
     # -------------------------
+    # Runtime-mutable settings (can be changed by admin at runtime)
+    # -------------------------
+    allow_signup: bool = Field(default=True)   # Toggle user self-registration
+    # -------------------------
     # API / CORS
     # -------------------------
     allowed_origins: Union[str, List[str]] = Field(default_factory=lambda: os.getenv("ALLOWED_ORIGINS", "*"))

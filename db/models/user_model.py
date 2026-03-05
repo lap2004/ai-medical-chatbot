@@ -22,6 +22,8 @@ class User(Base):
 
     created_at = Column(DateTime(timezone=True), nullable=False, server_default=func.now())
 
+    avatar_url = Column(String, nullable=True)
+
     # 1 user có nhiều conversations (FK: conversations_012026.user_id ON DELETE CASCADE)
     conversations = relationship(
         "Conversation",

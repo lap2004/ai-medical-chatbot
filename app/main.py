@@ -5,9 +5,9 @@ from fastapi import FastAPI, APIRouter, Depends
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 
+
 from db.database import SessionLocal
 from db.models.user_model import User
-
 from app.config import settings
 from app.logger import setup_logger
 from app.middleware.log_request import RequestLogMiddleware
@@ -32,7 +32,7 @@ app.add_middleware(RequestLogMiddleware)
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
-        "https://vacations-dual-lane-heart.trycloudflare.com",
+        "https://dui-assumes-reviewer-controls.trycloudflare.com",
         "http://localhost:3000",
         "http://127.0.1.8:8000",
         "http://192.168.1.12:3000"
@@ -50,6 +50,10 @@ Path("data/audio").mkdir(parents=True, exist_ok=True)
 
 # mount /static -> settings.static_dir (nhớ config settings.static_dir đúng)
 app.mount("/static", StaticFiles(directory=settings.static_dir), name="static")
+
+# mount /uploads -> settings.uploads_dir để hỗ trợ avatar /uploads/...
+Path(settings.uploads_dir).mkdir(parents=True, exist_ok=True)
+app.mount("/uploads", StaticFiles(directory=settings.uploads_dir), name="uploads")
 
 # -----------------------
 # Routers

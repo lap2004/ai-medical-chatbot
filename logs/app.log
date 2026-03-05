@@ -1,2 +1,1835 @@
 2026-02-04 21:04:39 | INFO | ✅ Logger initialized (level=INFO, file=logs/app.log)
 2026-02-04 21:04:39 | INFO | Startup completed: admin ensured.
+2026-02-11 00:12:53 | INFO | ✅ Logger initialized (level=INFO, file=logs/app.log)
+2026-02-11 00:12:53 | INFO | Startup completed: admin ensured.
+2026-02-11 00:21:13 | INFO | ✅ Logger initialized (level=INFO, file=logs/app.log)
+2026-02-11 00:21:13 | INFO | Startup completed: admin ensured.
+2026-02-11 00:21:17 | INFO | GET /docs -> 200 (0.5 ms)
+2026-02-11 00:21:17 | INFO | GET /openapi.json -> 200 (38.8 ms)
+2026-02-11 01:06:24 | INFO | GET /me -> 200 (168.1 ms)
+2026-02-11 01:06:24 | INFO | GET /conversations -> 200 (237.7 ms)
+2026-02-11 01:06:24 | INFO | GET /me -> 200 (2.9 ms)
+2026-02-11 01:06:24 | INFO | GET /conversations -> 200 (3.6 ms)
+2026-02-11 01:06:24 | INFO | GET /conversations/8a706c60-11ed-4504-9f3c-7b2a24e952ba/messages -> 200 (49.0 ms)
+2026-02-11 01:06:25 | INFO | GET /conversations/8a706c60-11ed-4504-9f3c-7b2a24e952ba/messages -> 200 (24.3 ms)
+2026-02-11 07:03:56 | INFO | ✅ Logger initialized (level=INFO, file=logs/app.log)
+2026-02-11 07:03:56 | INFO | Startup completed: admin ensured.
+2026-02-11 07:07:48 | INFO | ✅ Logger initialized (level=INFO, file=logs/app.log)
+2026-02-11 07:07:48 | INFO | Startup completed: admin ensured.
+2026-02-11 17:40:01 | INFO | ✅ Logger initialized (level=INFO, file=logs/app.log)
+2026-02-11 17:40:01 | INFO | Startup completed: admin ensured.
+2026-02-11 17:44:29 | INFO | ✅ Logger initialized (level=INFO, file=logs/app.log)
+2026-02-11 17:44:29 | INFO | Startup completed: admin ensured.
+2026-02-12 09:02:23 | INFO | ✅ Logger initialized (level=INFO, file=logs/app.log)
+2026-02-12 09:02:23 | INFO | Startup completed: admin ensured.
+2026-02-12 09:02:31 | INFO | GET /me -> 200 (105.2 ms)
+2026-02-12 09:02:31 | INFO | GET /me -> 200 (2.9 ms)
+2026-02-12 09:02:33 | INFO | GET /me -> 200 (3.6 ms)
+2026-02-12 09:02:33 | INFO | GET /me -> 200 (2.8 ms)
+2026-02-12 09:02:35 | INFO | GET /conversations -> 200 (16.4 ms)
+2026-02-12 09:02:35 | INFO | GET /conversations -> 200 (4.7 ms)
+2026-02-12 09:02:36 | INFO | GET /conversations/8a706c60-11ed-4504-9f3c-7b2a24e952ba/messages -> 200 (70.3 ms)
+2026-02-12 09:02:36 | INFO | GET /conversations/8a706c60-11ed-4504-9f3c-7b2a24e952ba/messages -> 200 (8.0 ms)
+2026-02-12 09:02:43 | INFO | Loading query embedding model: BAAI/bge-m3
+2026-02-12 09:02:53 | INFO | POST /chat -> 200 (12861.7 ms)
+2026-02-12 09:03:05 | INFO | POST /chat -> 200 (2634.2 ms)
+2026-02-12 09:03:13 | INFO | POST /chat -> 200 (3169.2 ms)
+2026-02-12 09:03:21 | INFO | GET /me -> 200 (3.1 ms)
+2026-02-12 09:03:21 | INFO | GET /conversations -> 200 (3.6 ms)
+2026-02-12 09:03:21 | INFO | GET /me -> 200 (2.7 ms)
+2026-02-12 09:03:21 | INFO | GET /conversations -> 200 (3.1 ms)
+2026-02-12 09:03:22 | INFO | GET /conversations/8a706c60-11ed-4504-9f3c-7b2a24e952ba/messages -> 200 (11.8 ms)
+2026-02-12 09:03:22 | INFO | GET /conversations/8a706c60-11ed-4504-9f3c-7b2a24e952ba/messages -> 200 (9.6 ms)
+2026-02-12 09:03:23 | INFO | POST /conversations -> 201 (8.1 ms)
+2026-02-12 09:03:28 | INFO | DELETE /conversations/5259db36-40df-4d5d-a3cb-b5d693a84258 -> 200 (4.9 ms)
+2026-02-12 09:03:55 | INFO | POST /chat -> 200 (2316.4 ms)
+2026-02-12 09:04:15 | INFO | POST /chat -> 200 (9096.6 ms)
+2026-02-12 09:04:26 | INFO | POST /chat/messages/9deb2aac-2547-421c-ae2d-32e179051e3e/feedback -> 200 (10.3 ms)
+2026-02-12 09:04:39 | INFO | GET /me -> 200 (3.4 ms)
+2026-02-12 09:04:40 | INFO | GET /me -> 200 (2.3 ms)
+2026-02-12 09:05:12 | INFO | GET /me -> 200 (6.7 ms)
+2026-02-12 09:05:12 | INFO | GET /conversations -> 200 (69.4 ms)
+2026-02-12 09:05:12 | INFO | GET /me -> 200 (3.0 ms)
+2026-02-12 09:05:12 | INFO | GET /conversations -> 200 (3.3 ms)
+2026-02-12 09:05:12 | INFO | GET /conversations/49952f8a-e8dd-4c51-a63d-48936873a837/messages -> 200 (8.5 ms)
+2026-02-12 09:05:12 | INFO | GET /conversations/49952f8a-e8dd-4c51-a63d-48936873a837/messages -> 200 (23.9 ms)
+2026-02-12 09:05:15 | INFO | GET /me -> 200 (2.2 ms)
+2026-02-12 09:05:15 | INFO | GET /me -> 200 (2.4 ms)
+2026-02-12 09:34:10 | INFO | POST /login -> 401 (31.8 ms)
+2026-02-12 09:34:17 | INFO | POST /login -> 401 (4.7 ms)
+2026-02-12 09:34:22 | INFO | POST /login -> 401 (2.7 ms)
+2026-02-28 14:07:07 | INFO | ✅ Logger initialized (level=INFO, file=logs/app.log)
+2026-02-28 14:07:08 | INFO | Startup completed: admin ensured.
+2026-02-28 14:07:08 | INFO | GET / -> 200 (1.0 ms)
+2026-02-28 14:07:08 | INFO | GET /favicon.ico -> 404 (0.7 ms)
+2026-02-28 14:07:13 | INFO | GET /docs -> 200 (0.6 ms)
+2026-02-28 14:07:13 | INFO | GET /openapi.json -> 200 (68.3 ms)
+2026-02-28 14:08:14 | INFO | GET /docs -> 200 (0.6 ms)
+2026-02-28 14:10:57 | INFO | GET /openapi.json -> 200 (0.9 ms)
+2026-02-28 14:11:09 | INFO | ✅ Logger initialized (level=INFO, file=logs/app.log)
+2026-02-28 14:11:09 | INFO | Startup completed: admin ensured.
+2026-02-28 14:53:19 | INFO | ✅ Logger initialized (level=INFO, file=logs/app.log)
+2026-02-28 14:53:20 | INFO | Startup completed: admin ensured.
+2026-02-28 14:54:05 | INFO | POST /login -> 401 (100.3 ms)
+2026-02-28 14:54:23 | INFO | POST /login -> 200 (17.6 ms)
+2026-02-28 14:54:24 | INFO | GET /admin/analytics -> 200 (58.1 ms)
+2026-02-28 14:54:24 | INFO | GET /me -> 200 (77.6 ms)
+2026-02-28 14:54:24 | INFO | GET /admin/analytics -> 200 (7.9 ms)
+2026-02-28 14:54:24 | INFO | GET /me -> 200 (2.8 ms)
+2026-02-28 14:54:29 | INFO | GET /me -> 200 (3.0 ms)
+2026-02-28 14:54:29 | INFO | GET /me -> 200 (2.7 ms)
+2026-02-28 14:54:33 | INFO | GET /me -> 200 (2.6 ms)
+2026-02-28 14:54:34 | INFO | GET /me -> 200 (3.5 ms)
+2026-02-28 14:54:34 | INFO | GET /conversations -> 200 (10.1 ms)
+2026-02-28 14:54:34 | INFO | GET /conversations -> 200 (4.3 ms)
+2026-02-28 14:59:50 | INFO | GET /me -> 200 (4.8 ms)
+2026-02-28 14:59:50 | INFO | GET /conversations -> 200 (6.3 ms)
+2026-02-28 14:59:50 | INFO | GET /conversations -> 200 (4.7 ms)
+2026-02-28 14:59:50 | INFO | GET /me -> 200 (3.5 ms)
+2026-02-28 15:01:01 | INFO | GET /me -> 200 (4.1 ms)
+2026-02-28 15:01:01 | INFO | GET /conversations -> 200 (7.8 ms)
+2026-02-28 15:01:01 | INFO | GET /me -> 200 (3.7 ms)
+2026-02-28 15:01:01 | INFO | GET /conversations -> 200 (4.8 ms)
+2026-02-28 15:08:10 | INFO | GET /me -> 200 (4.4 ms)
+2026-02-28 15:08:10 | INFO | GET /conversations -> 200 (5.1 ms)
+2026-02-28 15:08:10 | INFO | GET /me -> 200 (2.6 ms)
+2026-02-28 15:08:11 | INFO | GET /conversations -> 200 (3.2 ms)
+2026-02-28 15:19:15 | INFO | GET /me -> 200 (3.2 ms)
+2026-02-28 15:19:15 | INFO | GET /conversations -> 200 (3.3 ms)
+2026-02-28 15:19:15 | INFO | GET /me -> 200 (3.1 ms)
+2026-02-28 15:19:15 | INFO | GET /conversations -> 200 (4.4 ms)
+2026-03-04 01:04:05 | INFO | ✅ Logger initialized (level=INFO, file=logs/app.log)
+2026-03-04 01:04:05 | INFO | Startup completed: admin ensured.
+2026-03-04 01:04:58 | INFO | ✅ Logger initialized (level=INFO, file=logs/app.log)
+2026-03-04 01:04:58 | INFO | Startup completed: admin ensured.
+2026-03-04 01:07:05 | INFO | POST /login -> 401 (102.3 ms)
+2026-03-04 01:07:42 | INFO | POST /login -> 401 (3.6 ms)
+2026-03-04 01:07:53 | INFO | GET / -> 200 (0.8 ms)
+2026-03-04 01:07:53 | INFO | GET /favicon.ico -> 404 (1.5 ms)
+2026-03-04 01:07:57 | INFO | GET / -> 200 (1.0 ms)
+2026-03-04 01:07:58 | INFO | GET /favicon.ico -> 404 (0.9 ms)
+2026-03-04 01:08:02 | INFO | GET /docs -> 200 (0.3 ms)
+2026-03-04 01:08:03 | INFO | GET /openapi.json -> 200 (56.5 ms)
+2026-03-04 01:08:22 | INFO | POST /login -> 401 (4.0 ms)
+2026-03-04 01:08:38 | INFO | POST /forgot-password -> 200 (4967.1 ms)
+2026-03-04 01:09:07 | INFO | POST /login -> 401 (3.7 ms)
+2026-03-04 01:12:29 | INFO | POST /login -> 401 (2.9 ms)
+2026-03-04 01:12:49 | INFO | POST /login -> 200 (24.2 ms)
+2026-03-04 01:12:49 | INFO | GET /me -> 200 (10.2 ms)
+2026-03-04 01:12:49 | INFO | GET /me -> 200 (2.7 ms)
+2026-03-04 01:13:38 | INFO | POST /change-password -> 200 (8.8 ms)
+2026-03-04 01:13:44 | INFO | GET /me -> 200 (2.7 ms)
+2026-03-04 01:13:44 | INFO | GET /conversations -> 200 (11.6 ms)
+2026-03-04 01:13:44 | INFO | GET /me -> 200 (3.8 ms)
+2026-03-04 01:13:44 | INFO | GET /conversations -> 200 (3.8 ms)
+2026-03-04 01:13:45 | INFO | GET /conversations/49952f8a-e8dd-4c51-a63d-48936873a837/messages -> 200 (59.6 ms)
+2026-03-04 01:13:45 | INFO | GET /conversations/49952f8a-e8dd-4c51-a63d-48936873a837/messages -> 200 (8.8 ms)
+2026-03-04 01:13:47 | INFO | POST /conversations -> 201 (11.2 ms)
+2026-03-04 01:13:51 | INFO | DELETE /conversations/49952f8a-e8dd-4c51-a63d-48936873a837 -> 200 (8.0 ms)
+2026-03-04 01:14:09 | INFO | Loading query embedding model: BAAI/bge-m3
+2026-03-04 01:14:21 | INFO | POST /chat -> 200 (17548.6 ms)
+2026-03-04 01:15:30 | INFO | GET /conversations -> 200 (10.0 ms)
+2026-03-04 01:15:30 | INFO | GET /me -> 200 (85.0 ms)
+2026-03-04 01:15:31 | INFO | GET /me -> 200 (3.8 ms)
+2026-03-04 01:15:31 | INFO | GET /conversations -> 200 (5.1 ms)
+2026-03-04 01:15:31 | INFO | GET /conversations/3887eb62-6907-4c80-824c-a4c09d4fc695/messages -> 200 (14.5 ms)
+2026-03-04 01:15:31 | INFO | GET /conversations/3887eb62-6907-4c80-824c-a4c09d4fc695/messages -> 200 (27.5 ms)
+2026-03-04 01:17:01 | INFO | GET /me -> 200 (8.4 ms)
+2026-03-04 01:17:01 | INFO | GET /conversations -> 200 (11.6 ms)
+2026-03-04 01:17:01 | INFO | GET /me -> 200 (2.8 ms)
+2026-03-04 01:17:02 | INFO | GET /conversations -> 200 (5.1 ms)
+2026-03-04 01:17:02 | INFO | GET /conversations/3887eb62-6907-4c80-824c-a4c09d4fc695/messages -> 200 (11.4 ms)
+2026-03-04 01:17:02 | INFO | GET /conversations/3887eb62-6907-4c80-824c-a4c09d4fc695/messages -> 200 (8.4 ms)
+2026-03-04 01:19:06 | INFO | GET /me -> 200 (4.5 ms)
+2026-03-04 01:19:06 | INFO | GET /conversations -> 200 (5.4 ms)
+2026-03-04 01:19:06 | INFO | GET /conversations/3887eb62-6907-4c80-824c-a4c09d4fc695/messages -> 200 (8.1 ms)
+2026-03-05 10:08:33 | INFO | ✅ Logger initialized (level=INFO, file=logs/app.log)
+2026-03-05 10:08:33 | INFO | Startup completed: admin ensured.
+2026-03-05 10:08:40 | INFO | GET /me -> 200 (100.3 ms)
+2026-03-05 10:08:41 | INFO | GET /me -> 200 (3.2 ms)
+2026-03-05 10:08:42 | INFO | GET /me -> 200 (4.0 ms)
+2026-03-05 10:08:42 | INFO | GET /me -> 200 (3.1 ms)
+2026-03-05 10:08:44 | INFO | GET /me -> 200 (4.0 ms)
+2026-03-05 10:08:44 | INFO | GET /me -> 200 (4.6 ms)
+2026-03-05 10:08:45 | INFO | GET /me -> 200 (5.3 ms)
+2026-03-05 10:08:46 | INFO | GET /me -> 200 (2.8 ms)
+2026-03-05 10:08:51 | INFO | GET /me -> 200 (3.2 ms)
+2026-03-05 10:08:51 | INFO | GET /me -> 200 (3.5 ms)
+2026-03-05 10:08:52 | INFO | GET /me -> 200 (3.1 ms)
+2026-03-05 10:08:52 | INFO | GET /me -> 200 (5.0 ms)
+2026-03-05 10:08:52 | INFO | GET /me -> 200 (2.8 ms)
+2026-03-05 10:08:53 | INFO | GET /me -> 200 (2.7 ms)
+2026-03-05 10:08:53 | INFO | GET /me -> 200 (4.5 ms)
+2026-03-05 10:08:55 | INFO | GET /me -> 200 (3.7 ms)
+2026-03-05 10:08:55 | INFO | GET /me -> 200 (2.5 ms)
+2026-03-05 10:08:56 | INFO | GET /me -> 200 (5.0 ms)
+2026-03-05 10:08:56 | INFO | GET /me -> 200 (3.4 ms)
+2026-03-05 10:08:57 | INFO | GET /me -> 200 (5.1 ms)
+2026-03-05 10:08:57 | INFO | GET /me -> 200 (3.2 ms)
+2026-03-05 10:09:00 | INFO | GET /me -> 200 (4.7 ms)
+2026-03-05 10:09:00 | INFO | GET /me -> 200 (4.5 ms)
+2026-03-05 10:09:02 | INFO | GET /me -> 200 (2.9 ms)
+2026-03-05 10:09:02 | INFO | GET /me -> 200 (2.5 ms)
+2026-03-05 10:09:03 | INFO | GET /me -> 200 (4.8 ms)
+2026-03-05 10:09:03 | INFO | GET /me -> 200 (3.2 ms)
+2026-03-05 10:09:14 | INFO | GET /me -> 200 (2.4 ms)
+2026-03-05 10:09:15 | INFO | GET /me -> 200 (3.5 ms)
+2026-03-05 10:09:38 | INFO | GET /me -> 200 (3.8 ms)
+2026-03-05 10:09:38 | INFO | GET /conversations -> 200 (15.5 ms)
+2026-03-05 10:09:38 | INFO | GET /me -> 200 (3.8 ms)
+2026-03-05 10:09:39 | INFO | GET /conversations -> 200 (3.1 ms)
+2026-03-05 10:09:39 | INFO | GET /conversations/3887eb62-6907-4c80-824c-a4c09d4fc695/messages -> 200 (58.0 ms)
+2026-03-05 10:09:39 | INFO | GET /conversations/3887eb62-6907-4c80-824c-a4c09d4fc695/messages -> 200 (7.8 ms)
+2026-03-05 10:09:43 | INFO | DELETE /conversations/3887eb62-6907-4c80-824c-a4c09d4fc695 -> 200 (12.2 ms)
+2026-03-05 10:09:45 | INFO | DELETE /conversations/8a706c60-11ed-4504-9f3c-7b2a24e952ba -> 200 (4.7 ms)
+2026-03-05 10:09:47 | INFO | DELETE /conversations/06ff0a08-d1ab-438a-829e-0b5205813260 -> 200 (4.8 ms)
+2026-03-05 10:09:49 | INFO | DELETE /conversations/fdb3a65b-99cc-4c27-bcd0-596fb2013cd5 -> 200 (4.2 ms)
+2026-03-05 10:09:51 | INFO | DELETE /conversations/bc0e8767-3771-47d5-914a-7c5ab0576037 -> 200 (5.2 ms)
+2026-03-05 10:09:53 | INFO | DELETE /conversations/67235e54-5d15-4f1d-bc1d-1a711ce626c5 -> 200 (4.6 ms)
+2026-03-05 10:09:55 | INFO | DELETE /conversations/79cfca17-f259-4bd5-a1d7-141794b5993a -> 200 (6.8 ms)
+2026-03-05 10:09:58 | INFO | GET /me -> 200 (2.6 ms)
+2026-03-05 10:09:58 | INFO | GET /me -> 200 (3.2 ms)
+2026-03-05 10:26:22 | INFO | POST /login -> 200 (10.6 ms)
+2026-03-05 10:26:22 | INFO | GET /me -> 200 (6.8 ms)
+2026-03-05 10:26:23 | INFO | GET /me -> 200 (2.7 ms)
+2026-03-05 10:29:47 | INFO | GET /me -> 200 (2.9 ms)
+2026-03-05 10:29:47 | INFO | GET /me -> 200 (2.3 ms)
+2026-03-05 10:33:38 | INFO | GET /me -> 200 (2.8 ms)
+2026-03-05 10:33:39 | INFO | GET /me -> 200 (2.6 ms)
+2026-03-05 10:33:45 | INFO | GET /me -> 200 (2.6 ms)
+2026-03-05 10:33:45 | INFO | GET /conversations -> 200 (4.6 ms)
+2026-03-05 10:33:45 | INFO | GET /me -> 200 (3.0 ms)
+2026-03-05 10:33:45 | INFO | GET /conversations -> 200 (2.8 ms)
+2026-03-05 10:33:46 | INFO | GET /me -> 200 (2.7 ms)
+2026-03-05 10:33:47 | INFO | GET /me -> 200 (2.7 ms)
+2026-03-05 10:33:49 | INFO | GET /me -> 200 (6.8 ms)
+2026-03-05 10:33:49 | INFO | GET /me -> 200 (3.1 ms)
+2026-03-05 10:33:52 | INFO | GET /me -> 200 (3.0 ms)
+2026-03-05 10:33:52 | INFO | GET /me -> 200 (3.5 ms)
+2026-03-05 10:33:53 | INFO | GET /conversations -> 200 (3.5 ms)
+2026-03-05 10:33:53 | INFO | GET /conversations -> 200 (4.1 ms)
+2026-03-05 10:34:01 | INFO | POST /conversations -> 201 (12.5 ms)
+2026-03-05 10:34:06 | INFO | Loading query embedding model: BAAI/bge-m3
+2026-03-05 10:34:17 | INFO | POST /chat -> 200 (16313.6 ms)
+2026-03-05 10:36:20 | INFO | GET /conversations -> 200 (4.3 ms)
+2026-03-05 10:36:21 | INFO | GET /conversations -> 200 (4.3 ms)
+2026-03-05 10:36:21 | INFO | GET /conversations/d58b1afa-db44-48bf-84f7-328343bf6d91/messages -> 200 (10.6 ms)
+2026-03-05 10:36:21 | INFO | GET /conversations/d58b1afa-db44-48bf-84f7-328343bf6d91/messages -> 200 (9.8 ms)
+2026-03-05 10:38:27 | INFO | GET /conversations -> 200 (5.4 ms)
+2026-03-05 10:38:28 | INFO | GET /me -> 200 (3.5 ms)
+2026-03-05 10:38:28 | INFO | GET /conversations -> 200 (3.6 ms)
+2026-03-05 10:38:28 | INFO | GET /conversations/d58b1afa-db44-48bf-84f7-328343bf6d91/messages -> 200 (9.2 ms)
+2026-03-05 10:38:28 | INFO | GET /me -> 200 (2.8 ms)
+2026-03-05 10:38:28 | INFO | GET /conversations/d58b1afa-db44-48bf-84f7-328343bf6d91/messages -> 200 (7.3 ms)
+2026-03-05 10:38:54 | INFO | GET /me -> 200 (3.7 ms)
+2026-03-05 10:38:54 | INFO | GET /me -> 200 (3.2 ms)
+2026-03-05 10:39:00 | INFO | GET /me -> 200 (7.0 ms)
+2026-03-05 10:39:00 | INFO | GET /conversations -> 200 (91.9 ms)
+2026-03-05 10:39:00 | INFO | GET /me -> 200 (3.7 ms)
+2026-03-05 10:39:00 | INFO | GET /conversations -> 200 (4.5 ms)
+2026-03-05 10:39:01 | INFO | GET /conversations/d58b1afa-db44-48bf-84f7-328343bf6d91/messages -> 200 (10.3 ms)
+2026-03-05 10:39:01 | INFO | GET /conversations/d58b1afa-db44-48bf-84f7-328343bf6d91/messages -> 200 (26.8 ms)
+2026-03-05 10:41:22 | INFO | POST /chat -> 200 (14972.6 ms)
+2026-03-05 10:42:22 | INFO | POST /conversations -> 201 (5.5 ms)
+2026-03-05 10:42:27 | INFO | DELETE /conversations/0c749ce7-32b7-426b-860c-5bc351306dec -> 200 (5.0 ms)
+2026-03-05 10:43:04 | INFO | POST /conversations -> 201 (6.1 ms)
+2026-03-05 10:43:07 | INFO | POST /chat -> 200 (3450.0 ms)
+2026-03-05 10:43:10 | INFO | DELETE /conversations/ac0783f2-99f0-4b5a-95db-59dd937952e8 -> 200 (4.9 ms)
+2026-03-05 10:43:12 | INFO | POST /conversations -> 201 (4.4 ms)
+2026-03-05 10:43:34 | INFO | POST /chat -> 200 (4819.9 ms)
+2026-03-05 10:44:30 | INFO | GET /me -> 200 (2.6 ms)
+2026-03-05 10:44:30 | INFO | GET /me -> 200 (2.9 ms)
+2026-03-05 10:44:38 | INFO | GET /me -> 200 (2.6 ms)
+2026-03-05 10:44:38 | INFO | GET /me -> 200 (3.4 ms)
+2026-03-05 10:45:10 | INFO | GET /me -> 200 (4.8 ms)
+2026-03-05 10:45:10 | INFO | GET /me -> 200 (3.4 ms)
+2026-03-05 10:46:01 | INFO | POST /login -> 200 (2.6 ms)
+2026-03-05 10:46:01 | INFO | GET /me -> 200 (3.1 ms)
+2026-03-05 10:46:01 | INFO | GET /admin/analytics -> 200 (20.5 ms)
+2026-03-05 10:46:01 | INFO | GET /me -> 200 (3.2 ms)
+2026-03-05 10:46:01 | INFO | GET /admin/analytics -> 200 (10.2 ms)
+2026-03-05 10:46:41 | INFO | GET /admin/analytics -> 200 (11.9 ms)
+2026-03-05 10:46:41 | INFO | GET /admin/analytics -> 200 (16.2 ms)
+2026-03-05 10:47:02 | INFO | GET /admin/analytics -> 200 (6.5 ms)
+2026-03-05 10:47:02 | INFO | GET /admin/analytics -> 200 (8.5 ms)
+2026-03-05 10:47:08 | INFO | GET /admin/analytics -> 200 (6.6 ms)
+2026-03-05 10:47:08 | INFO | GET /admin/analytics -> 200 (7.5 ms)
+2026-03-05 10:48:21 | INFO | GET /admin/analytics -> 200 (8.8 ms)
+2026-03-05 10:48:21 | INFO | GET /admin/analytics -> 200 (9.9 ms)
+2026-03-05 19:37:50 | INFO | ✅ Logger initialized (level=INFO, file=logs/app.log)
+2026-03-05 19:37:50 | INFO | Startup completed: admin ensured.
+2026-03-05 19:43:57 | INFO | POST /login -> 200 (120.4 ms)
+2026-03-05 19:43:57 | INFO | GET /me -> 200 (9.9 ms)
+2026-03-05 19:43:57 | INFO | GET /me -> 200 (2.7 ms)
+2026-03-05 19:44:12 | INFO | GET /me -> 200 (4.0 ms)
+2026-03-05 19:44:12 | INFO | GET /me -> 200 (10.1 ms)
+2026-03-05 19:44:12 | INFO | GET /conversations -> 200 (188.7 ms)
+2026-03-05 19:44:13 | INFO | GET /conversations -> 200 (4.7 ms)
+2026-03-05 19:44:13 | INFO | GET /conversations/76fb52b5-ab59-48dc-940e-ab364b7cf0e7/messages -> 200 (47.2 ms)
+2026-03-05 19:44:13 | INFO | GET /conversations/76fb52b5-ab59-48dc-940e-ab364b7cf0e7/messages -> 200 (31.1 ms)
+2026-03-05 19:44:19 | INFO | Loading query embedding model: BAAI/bge-m3
+2026-03-05 19:44:31 | INFO | POST /chat -> 200 (16530.9 ms)
+2026-03-05 19:50:31 | INFO | GET / -> 200 (0.4 ms)
+2026-03-05 20:22:49 | INFO | GET / -> 200 (0.5 ms)
+2026-03-05 21:03:03 | INFO | POST /login -> 200 (33.0 ms)
+2026-03-05 21:03:03 | INFO | GET /me -> 200 (25.0 ms)
+2026-03-05 21:03:03 | INFO | GET /admin/analytics -> 200 (42.6 ms)
+2026-03-05 21:03:04 | INFO | GET /me -> 200 (2.2 ms)
+2026-03-05 21:03:04 | INFO | GET /admin/analytics -> 200 (10.9 ms)
+2026-03-05 21:21:29 | INFO | GET /admin/analytics -> 200 (16.3 ms)
+2026-03-05 21:21:31 | INFO | GET /admin/analytics -> 200 (9.0 ms)
+2026-03-05 21:21:31 | INFO | GET /admin/analytics -> 200 (7.8 ms)
+2026-03-05 21:21:32 | INFO | GET /admin/analytics -> 200 (11.1 ms)
+2026-03-05 21:25:52 | INFO | GET /docs -> 200 (1.7 ms)
+2026-03-05 21:25:54 | INFO | GET /openapi.json -> 200 (103.1 ms)
+2026-03-05 21:26:30 | INFO | GET /admin/analytics -> 200 (13.2 ms)
+2026-03-05 21:26:31 | INFO | GET /admin/analytics -> 200 (10.6 ms)
+2026-03-05 21:26:38 | INFO | GET /admin/analytics -> 200 (8.5 ms)
+2026-03-05 21:26:38 | INFO | GET /admin/analytics -> 200 (11.0 ms)
+2026-03-05 21:26:45 | INFO | GET /admin/analytics -> 200 (10.5 ms)
+2026-03-05 21:26:45 | INFO | GET /admin/analytics -> 200 (11.2 ms)
+2026-03-05 21:38:43 | INFO | GET /docs -> 200 (0.6 ms)
+2026-03-05 21:39:16 | INFO | ✅ Logger initialized (level=INFO, file=logs/app.log)
+2026-03-05 21:42:15 | INFO | ✅ Logger initialized (level=INFO, file=logs/app.log)
+2026-03-05 21:42:15 | INFO | Startup completed: admin ensured.
+2026-03-05 21:42:15 | INFO | GET /openapi.json -> 200 (36.1 ms)
+2026-03-05 21:42:18 | INFO | GET /docs -> 200 (0.4 ms)
+2026-03-05 21:42:22 | INFO | GET /openapi.json -> 200 (2.1 ms)
+2026-03-05 21:43:34 | INFO | POST /login -> 200 (86.6 ms)
+2026-03-05 21:44:06 | ERROR | Unhandled error while processing request
+Traceback (most recent call last):
+
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\anyio\streams\memory.py", line 97, in receive
+    return self.receive_nowait()
+           │    └ <function MemoryObjectReceiveStream.receive_nowait at 0x00000251F80B1C60>
+           └ MemoryObjectReceiveStream(_state=MemoryObjectStreamState(max_buffer_size=0, buffer=deque([]), open_send_channels=0, open_rece...
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\anyio\streams\memory.py", line 92, in receive_nowait
+    raise WouldBlock
+          └ <class 'anyio.WouldBlock'>
+
+anyio.WouldBlock
+
+
+During handling of the above exception, another exception occurred:
+
+
+Traceback (most recent call last):
+
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\starlette\middleware\base.py", line 157, in call_next
+    message = await recv_stream.receive()
+                    │           └ <function MemoryObjectReceiveStream.receive at 0x00000251F80B1D00>
+                    └ MemoryObjectReceiveStream(_state=MemoryObjectStreamState(max_buffer_size=0, buffer=deque([]), open_send_channels=0, open_rece...
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\anyio\streams\memory.py", line 112, in receive
+    raise EndOfStream
+          └ <class 'anyio.EndOfStream'>
+
+anyio.EndOfStream
+
+
+During handling of the above exception, another exception occurred:
+
+
+Traceback (most recent call last):
+
+  File "<string>", line 1, in <module>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\multiprocessing\spawn.py", line 122, in spawn_main
+    exitcode = _main(fd, parent_sentinel)
+               │     │   └ 324
+               │     └ 3
+               └ <function _main at 0x00000251F5B5DE40>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\multiprocessing\spawn.py", line 135, in _main
+    return self._bootstrap(parent_sentinel)
+           │    │          └ 324
+           │    └ <function BaseProcess._bootstrap at 0x00000251F5A74900>
+           └ <SpawnProcess name='SpawnProcess-7' parent=22924 started>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\multiprocessing\process.py", line 314, in _bootstrap
+    self.run()
+    │    └ <function BaseProcess.run at 0x00000251F595BE20>
+    └ <SpawnProcess name='SpawnProcess-7' parent=22924 started>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\multiprocessing\process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+    │    │        │    │        │    └ {'config': <uvicorn.config.Config object at 0x00000251F5B37A10>, 'target': <bound method Server.run of <uvicorn.server.Server...
+    │    │        │    │        └ <SpawnProcess name='SpawnProcess-7' parent=22924 started>
+    │    │        │    └ ()
+    │    │        └ <SpawnProcess name='SpawnProcess-7' parent=22924 started>
+    │    └ <function subprocess_started at 0x00000251F7FB67A0>
+    └ <SpawnProcess name='SpawnProcess-7' parent=22924 started>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\uvicorn\_subprocess.py", line 80, in subprocess_started
+    target(sockets=sockets)
+    │              └ [<socket.socket fd=808, family=2, type=1, proto=6, laddr=('127.0.1.8', 8000)>]
+    └ <bound method Server.run of <uvicorn.server.Server object at 0x00000251F80CF5D0>>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\uvicorn\server.py", line 65, in run
+    return asyncio.run(self.serve(sockets=sockets))
+           │       │   │    │             └ [<socket.socket fd=808, family=2, type=1, proto=6, laddr=('127.0.1.8', 8000)>]
+           │       │   │    └ <function Server.serve at 0x00000251F7FB5440>
+           │       │   └ <uvicorn.server.Server object at 0x00000251F80CF5D0>
+           │       └ <function run at 0x00000251F7854900>
+           └ <module 'asyncio' from 'C:\\Users\\lapth\\anaconda3\\envs\\aibacsi\\Lib\\asyncio\\__init__.py'>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\asyncio\runners.py", line 190, in run
+    return runner.run(main)
+           │      │   └ <coroutine object Server.serve at 0x00000251F805E3E0>
+           │      └ <function Runner.run at 0x00000251F7858AE0>
+           └ <asyncio.runners.Runner object at 0x00000251F5599790>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\asyncio\runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           │    │     │                  └ <Task pending name='Task-1' coro=<Server.serve() running at C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\uvicorn\s...
+           │    │     └ <function BaseEventLoop.run_until_complete at 0x00000251F7856700>
+           │    └ <_WindowsSelectorEventLoop running=True closed=False debug=False>
+           └ <asyncio.runners.Runner object at 0x00000251F5599790>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\asyncio\base_events.py", line 641, in run_until_complete
+    self.run_forever()
+    │    └ <function BaseEventLoop.run_forever at 0x00000251F7856660>
+    └ <_WindowsSelectorEventLoop running=True closed=False debug=False>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\asyncio\base_events.py", line 608, in run_forever
+    self._run_once()
+    │    └ <function BaseEventLoop._run_once at 0x00000251F78584A0>
+    └ <_WindowsSelectorEventLoop running=True closed=False debug=False>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\asyncio\base_events.py", line 1936, in _run_once
+    handle._run()
+    │      └ <function Handle._run at 0x00000251F779E8E0>
+    └ <Handle Task.task_wakeup(<Future finished result=True>)>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\asyncio\events.py", line 84, in _run
+    self._context.run(self._callback, *self._args)
+    │    │            │    │           │    └ <member '_args' of 'Handle' objects>
+    │    │            │    │           └ <Handle Task.task_wakeup(<Future finished result=True>)>
+    │    │            │    └ <member '_callback' of 'Handle' objects>
+    │    │            └ <Handle Task.task_wakeup(<Future finished result=True>)>
+    │    └ <member '_context' of 'Handle' objects>
+    └ <Handle Task.task_wakeup(<Future finished result=True>)>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\uvicorn\protocols\http\httptools_impl.py", line 401, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+                   └ <uvicorn.middleware.proxy_headers.ProxyHeadersMiddleware object at 0x000002519404AF90>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\uvicorn\middleware\proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+                 │    │   │      │        └ <bound method RequestResponseCycle.send of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x000002519E...
+                 │    │   │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x0000025...
+                 │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.1.8', 8000), 'cl...
+                 │    └ <fastapi.applications.FastAPI object at 0x000002519DE900D0>
+                 └ <uvicorn.middleware.proxy_headers.ProxyHeadersMiddleware object at 0x000002519404AF90>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\fastapi\applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+                           │      │        └ <bound method RequestResponseCycle.send of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x000002519E...
+                           │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x0000025...
+                           └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.1.8', 8000), 'cl...
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\starlette\applications.py", line 113, in __call__
+    await self.middleware_stack(scope, receive, send)
+          │    │                │      │        └ <bound method RequestResponseCycle.send of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x000002519E...
+          │    │                │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x0000025...
+          │    │                └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.1.8', 8000), 'cl...
+          │    └ <starlette.middleware.errors.ServerErrorMiddleware object at 0x000002519DB7FD90>
+          └ <fastapi.applications.FastAPI object at 0x000002519DE900D0>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+          │    │   │      │        └ <function ServerErrorMiddleware.__call__.<locals>._send at 0x000002519E04AA20>
+          │    │   │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x0000025...
+          │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.1.8', 8000), 'cl...
+          │    └ <starlette.middleware.cors.CORSMiddleware object at 0x000002519A930C50>
+          └ <starlette.middleware.errors.ServerErrorMiddleware object at 0x000002519DB7FD90>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\starlette\middleware\cors.py", line 85, in __call__
+    await self.app(scope, receive, send)
+          │    │   │      │        └ <function ServerErrorMiddleware.__call__.<locals>._send at 0x000002519E04AA20>
+          │    │   │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x0000025...
+          │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.1.8', 8000), 'cl...
+          │    └ <app.middleware.log_request.RequestLogMiddleware object at 0x000002519DE83CD0>
+          └ <starlette.middleware.cors.CORSMiddleware object at 0x000002519A930C50>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\starlette\middleware\base.py", line 187, in __call__
+    response = await self.dispatch_func(request, call_next)
+                     │    │             │        └ <function BaseHTTPMiddleware.__call__.<locals>.call_next at 0x000002519E09E840>
+                     │    │             └ <starlette.middleware.base._CachedRequest object at 0x000002519E0CA6D0>
+                     │    └ <bound method RequestLogMiddleware.dispatch of <app.middleware.log_request.RequestLogMiddleware object at 0x000002519DE83CD0>>
+                     └ <app.middleware.log_request.RequestLogMiddleware object at 0x000002519DE83CD0>
+
+> File "E:\KLTN\chatbot\backend\app\middleware\log_request.py", line 17, in dispatch
+    response: Response = await call_next(request)
+                               │         └ <starlette.middleware.base._CachedRequest object at 0x000002519E0CA6D0>
+                               └ <function BaseHTTPMiddleware.__call__.<locals>.call_next at 0x000002519E09E840>
+
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\starlette\middleware\base.py", line 163, in call_next
+    raise app_exc
+          └ AttributeError("'User' object has no attribute 'role'")
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\starlette\middleware\base.py", line 149, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+          │    │   │      │                      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.send_no_error at 0x000002519E09E0C0>
+          │    │   │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x000002519E09E160>
+          │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.1.8', 8000), 'cl...
+          │    └ <starlette.middleware.exceptions.ExceptionMiddleware object at 0x000002519D935E90>
+          └ <app.middleware.log_request.RequestLogMiddleware object at 0x000002519DE83CD0>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+          │                            │    │    │     │      │        └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.send_no_error at 0x000002519E09E0C0>
+          │                            │    │    │     │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x000002519E09E160>
+          │                            │    │    │     └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.1.8', 8000), 'cl...
+          │                            │    │    └ <starlette.requests.Request object at 0x000002519E0A2050>
+          │                            │    └ <fastapi.routing.APIRouter object at 0x000002519DEE5CD0>
+          │                            └ <starlette.middleware.exceptions.ExceptionMiddleware object at 0x000002519D935E90>
+          └ <function wrap_app_handling_exceptions at 0x00000251FA14C680>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\starlette\_exception_handler.py", line 62, in wrapped_app
+    raise exc
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\starlette\_exception_handler.py", line 51, in wrapped_app
+    await app(scope, receive, sender)
+          │   │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x000002519E09C0E0>
+          │   │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x000002519E09E160>
+          │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.1.8', 8000), 'cl...
+          └ <fastapi.routing.APIRouter object at 0x000002519DEE5CD0>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\starlette\routing.py", line 715, in __call__
+    await self.middleware_stack(scope, receive, send)
+          │    │                │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x000002519E09C0E0>
+          │    │                │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x000002519E09E160>
+          │    │                └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.1.8', 8000), 'cl...
+          │    └ <bound method Router.app of <fastapi.routing.APIRouter object at 0x000002519DEE5CD0>>
+          └ <fastapi.routing.APIRouter object at 0x000002519DEE5CD0>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\starlette\routing.py", line 735, in app
+    await route.handle(scope, receive, send)
+          │     │      │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x000002519E09C0E0>
+          │     │      │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x000002519E09E160>
+          │     │      └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.1.8', 8000), 'cl...
+          │     └ <function Route.handle at 0x00000251FA14DE40>
+          └ APIRoute(path='/admin/users', name='list_users', methods=['GET'])
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\starlette\routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+          │    │   │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x000002519E09C0E0>
+          │    │   │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x000002519E09E160>
+          │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.1.8', 8000), 'cl...
+          │    └ <function request_response.<locals>.app at 0x000002519DF95580>
+          └ APIRoute(path='/admin/users', name='list_users', methods=['GET'])
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\starlette\routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+          │                            │    │        │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x000002519E09C0E0>
+          │                            │    │        │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x000002519E09E160>
+          │                            │    │        └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.1.8', 8000), 'cl...
+          │                            │    └ <starlette.requests.Request object at 0x000002519E0A7D10>
+          │                            └ <function request_response.<locals>.app.<locals>.app at 0x000002519E09E2A0>
+          └ <function wrap_app_handling_exceptions at 0x00000251FA14C680>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\starlette\_exception_handler.py", line 62, in wrapped_app
+    raise exc
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\starlette\_exception_handler.py", line 51, in wrapped_app
+    await app(scope, receive, sender)
+          │   │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x000002519E09E3E0>
+          │   │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x000002519E09E160>
+          │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.1.8', 8000), 'cl...
+          └ <function request_response.<locals>.app.<locals>.app at 0x000002519E09E2A0>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\starlette\routing.py", line 73, in app
+    response = await f(request)
+                     │ └ <starlette.requests.Request object at 0x000002519E0A7D10>
+                     └ <function get_request_handler.<locals>.app at 0x000002519DF57F60>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\fastapi\routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+                         └ <function run_endpoint_function at 0x00000251FA14FC40>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\fastapi\routing.py", line 212, in run_endpoint_function
+    return await dependant.call(**values)
+                 │         │      └ {'db': <sqlalchemy.orm.session.AsyncSession object at 0x000002519E237990>, 'admin': <db.models.user_model.User object at 0x00...
+                 │         └ <function list_users at 0x00000251FB235A80>
+                 └ Dependant(path_params=[], query_params=[ModelField(field_info=Query(), name='query', mode='validation'), ModelField(field_inf...
+
+  File "E:\KLTN\chatbot\backend\app\routers\admin_users.py", line 105, in list_users
+    "items": [user_to_row(u) for u in users],
+              │                       └ [<db.models.user_model.User object at 0x000002519E255A10>, <db.models.user_model.User object at 0x000002519E2462D0>]
+              └ <function user_to_row at 0x00000251FB2358A0>
+
+  File "E:\KLTN\chatbot\backend\app\routers\admin_users.py", line 105, in <listcomp>
+    "items": [user_to_row(u) for u in users],
+              │           │      └ <db.models.user_model.User object at 0x000002519E255A10>
+              │           └ <db.models.user_model.User object at 0x000002519E255A10>
+              └ <function user_to_row at 0x00000251FB2358A0>
+
+  File "E:\KLTN\chatbot\backend\app\routers\admin_users.py", line 47, in user_to_row
+    role=u.role,
+         └ <db.models.user_model.User object at 0x000002519E255A10>
+
+AttributeError: 'User' object has no attribute 'role'
+2026-03-05 21:44:06 | INFO | GET /admin/users -> 500 (37.4 ms)
+2026-03-05 21:55:31 | INFO | GET /docs -> 200 (0.8 ms)
+2026-03-05 21:55:40 | INFO | ✅ Logger initialized (level=INFO, file=logs/app.log)
+2026-03-05 21:55:40 | INFO | Startup completed: admin ensured.
+2026-03-05 21:55:48 | INFO | ✅ Logger initialized (level=INFO, file=logs/app.log)
+2026-03-05 21:55:48 | INFO | Startup completed: admin ensured.
+2026-03-05 21:55:53 | INFO | GET /docs -> 200 (0.7 ms)
+2026-03-05 21:55:53 | INFO | GET /openapi.json -> 200 (59.8 ms)
+2026-03-05 21:56:01 | INFO | GET /admin/users -> 200 (83.9 ms)
+2026-03-05 22:07:44 | INFO | GET /admin/users -> 200 (4.8 ms)
+2026-03-05 22:07:46 | INFO | GET /admin/users -> 200 (4.7 ms)
+2026-03-05 22:07:48 | INFO | GET /admin/analytics -> 200 (33.8 ms)
+2026-03-05 22:07:50 | INFO | GET /admin/analytics -> 200 (7.8 ms)
+2026-03-05 22:07:50 | INFO | GET /admin/analytics -> 200 (8.0 ms)
+2026-03-05 22:07:50 | INFO | GET /admin/analytics -> 200 (8.5 ms)
+2026-03-05 22:07:51 | INFO | GET /admin/analytics -> 200 (7.2 ms)
+2026-03-05 22:07:51 | INFO | GET /admin/analytics -> 200 (9.1 ms)
+2026-03-05 22:07:52 | INFO | GET /admin/users -> 200 (5.8 ms)
+2026-03-05 22:07:53 | INFO | GET /admin/users -> 200 (3.6 ms)
+2026-03-05 22:07:54 | INFO | GET /admin/analytics -> 200 (8.4 ms)
+2026-03-05 22:07:54 | INFO | GET /admin/analytics -> 200 (9.0 ms)
+2026-03-05 22:07:55 | INFO | GET /admin/users -> 200 (5.5 ms)
+2026-03-05 22:07:55 | INFO | GET /admin/users -> 200 (5.2 ms)
+2026-03-05 22:08:23 | ERROR | Unhandled error while processing request
+Traceback (most recent call last):
+
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\anyio\streams\memory.py", line 97, in receive
+    return self.receive_nowait()
+           │    └ <function MemoryObjectReceiveStream.receive_nowait at 0x00000286A0071C60>
+           └ MemoryObjectReceiveStream(_state=MemoryObjectStreamState(max_buffer_size=0, buffer=deque([]), open_send_channels=0, open_rece...
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\anyio\streams\memory.py", line 92, in receive_nowait
+    raise WouldBlock
+          └ <class 'anyio.WouldBlock'>
+
+anyio.WouldBlock
+
+
+During handling of the above exception, another exception occurred:
+
+
+Traceback (most recent call last):
+
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\starlette\middleware\base.py", line 157, in call_next
+    message = await recv_stream.receive()
+                    │           └ <function MemoryObjectReceiveStream.receive at 0x00000286A0071D00>
+                    └ MemoryObjectReceiveStream(_state=MemoryObjectStreamState(max_buffer_size=0, buffer=deque([]), open_send_channels=0, open_rece...
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\anyio\streams\memory.py", line 112, in receive
+    raise EndOfStream
+          └ <class 'anyio.EndOfStream'>
+
+anyio.EndOfStream
+
+
+During handling of the above exception, another exception occurred:
+
+
+Traceback (most recent call last):
+
+  File "<string>", line 1, in <module>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\multiprocessing\spawn.py", line 122, in spawn_main
+    exitcode = _main(fd, parent_sentinel)
+               │     │   └ 360
+               │     └ 3
+               └ <function _main at 0x000002869DAEDE40>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\multiprocessing\spawn.py", line 135, in _main
+    return self._bootstrap(parent_sentinel)
+           │    │          └ 360
+           │    └ <function BaseProcess._bootstrap at 0x000002869DA04900>
+           └ <SpawnProcess name='SpawnProcess-9' parent=22924 started>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\multiprocessing\process.py", line 314, in _bootstrap
+    self.run()
+    │    └ <function BaseProcess.run at 0x000002869D8EBE20>
+    └ <SpawnProcess name='SpawnProcess-9' parent=22924 started>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\multiprocessing\process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+    │    │        │    │        │    └ {'config': <uvicorn.config.Config object at 0x000002869DAC7A10>, 'target': <bound method Server.run of <uvicorn.server.Server...
+    │    │        │    │        └ <SpawnProcess name='SpawnProcess-9' parent=22924 started>
+    │    │        │    └ ()
+    │    │        └ <SpawnProcess name='SpawnProcess-9' parent=22924 started>
+    │    └ <function subprocess_started at 0x000002869FF667A0>
+    └ <SpawnProcess name='SpawnProcess-9' parent=22924 started>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\uvicorn\_subprocess.py", line 80, in subprocess_started
+    target(sockets=sockets)
+    │              └ [<socket.socket fd=396, family=2, type=1, proto=6, laddr=('127.0.1.8', 8000)>]
+    └ <bound method Server.run of <uvicorn.server.Server object at 0x00000286A008F5D0>>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\uvicorn\server.py", line 65, in run
+    return asyncio.run(self.serve(sockets=sockets))
+           │       │   │    │             └ [<socket.socket fd=396, family=2, type=1, proto=6, laddr=('127.0.1.8', 8000)>]
+           │       │   │    └ <function Server.serve at 0x000002869FF65440>
+           │       │   └ <uvicorn.server.Server object at 0x00000286A008F5D0>
+           │       └ <function run at 0x000002869F794900>
+           └ <module 'asyncio' from 'C:\\Users\\lapth\\anaconda3\\envs\\aibacsi\\Lib\\asyncio\\__init__.py'>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\asyncio\runners.py", line 190, in run
+    return runner.run(main)
+           │      │   └ <coroutine object Server.serve at 0x00000286A001E3E0>
+           │      └ <function Runner.run at 0x000002869F798AE0>
+           └ <asyncio.runners.Runner object at 0x000002869D519790>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\asyncio\runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           │    │     │                  └ <Task pending name='Task-1' coro=<Server.serve() running at C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\uvicorn\s...
+           │    │     └ <function BaseEventLoop.run_until_complete at 0x000002869F796700>
+           │    └ <_WindowsSelectorEventLoop running=True closed=False debug=False>
+           └ <asyncio.runners.Runner object at 0x000002869D519790>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\asyncio\base_events.py", line 641, in run_until_complete
+    self.run_forever()
+    │    └ <function BaseEventLoop.run_forever at 0x000002869F796660>
+    └ <_WindowsSelectorEventLoop running=True closed=False debug=False>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\asyncio\base_events.py", line 608, in run_forever
+    self._run_once()
+    │    └ <function BaseEventLoop._run_once at 0x000002869F7984A0>
+    └ <_WindowsSelectorEventLoop running=True closed=False debug=False>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\asyncio\base_events.py", line 1936, in _run_once
+    handle._run()
+    │      └ <function Handle._run at 0x000002869E11E8E0>
+    └ <Handle Task.task_wakeup(<Future finished result=True>)>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\asyncio\events.py", line 84, in _run
+    self._context.run(self._callback, *self._args)
+    │    │            │    │           │    └ <member '_args' of 'Handle' objects>
+    │    │            │    │           └ <Handle Task.task_wakeup(<Future finished result=True>)>
+    │    │            │    └ <member '_callback' of 'Handle' objects>
+    │    │            └ <Handle Task.task_wakeup(<Future finished result=True>)>
+    │    └ <member '_context' of 'Handle' objects>
+    └ <Handle Task.task_wakeup(<Future finished result=True>)>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\uvicorn\protocols\http\httptools_impl.py", line 401, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+                   └ <uvicorn.middleware.proxy_headers.ProxyHeadersMiddleware object at 0x00000286C5D83AD0>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\uvicorn\middleware\proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+                 │    │   │      │        └ <bound method RequestResponseCycle.send of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x00000286C6...
+                 │    │   │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x0000028...
+                 │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.1.8', 8000), 'cl...
+                 │    └ <fastapi.applications.FastAPI object at 0x00000286C5D90490>
+                 └ <uvicorn.middleware.proxy_headers.ProxyHeadersMiddleware object at 0x00000286C5D83AD0>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\fastapi\applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+                           │      │        └ <bound method RequestResponseCycle.send of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x00000286C6...
+                           │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x0000028...
+                           └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.1.8', 8000), 'cl...
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\starlette\applications.py", line 113, in __call__
+    await self.middleware_stack(scope, receive, send)
+          │    │                │      │        └ <bound method RequestResponseCycle.send of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x00000286C6...
+          │    │                │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x0000028...
+          │    │                └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.1.8', 8000), 'cl...
+          │    └ <starlette.middleware.errors.ServerErrorMiddleware object at 0x00000286C5D44850>
+          └ <fastapi.applications.FastAPI object at 0x00000286C5D90490>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+          │    │   │      │        └ <function ServerErrorMiddleware.__call__.<locals>._send at 0x00000286C60F3F60>
+          │    │   │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x0000028...
+          │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.1.8', 8000), 'cl...
+          │    └ <starlette.middleware.cors.CORSMiddleware object at 0x00000286C5DB2510>
+          └ <starlette.middleware.errors.ServerErrorMiddleware object at 0x00000286C5D44850>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\starlette\middleware\cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+          │    │               │      │        │                     └ Headers({'host': 'specifies-considerations-fingers-themes.trycloudflare.com', 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Wi...
+          │    │               │      │        └ <function ServerErrorMiddleware.__call__.<locals>._send at 0x00000286C60F3F60>
+          │    │               │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x0000028...
+          │    │               └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.1.8', 8000), 'cl...
+          │    └ <function CORSMiddleware.simple_response at 0x00000286A21D09A0>
+          └ <starlette.middleware.cors.CORSMiddleware object at 0x00000286C5DB2510>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\starlette\middleware\cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+          │    │   │      │        └ functools.partial(<bound method CORSMiddleware.send of <starlette.middleware.cors.CORSMiddleware object at 0x00000286C5DB2510...
+          │    │   │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x0000028...
+          │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.1.8', 8000), 'cl...
+          │    └ <app.middleware.log_request.RequestLogMiddleware object at 0x00000286C5DB2090>
+          └ <starlette.middleware.cors.CORSMiddleware object at 0x00000286C5DB2510>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\starlette\middleware\base.py", line 187, in __call__
+    response = await self.dispatch_func(request, call_next)
+                     │    │             │        └ <function BaseHTTPMiddleware.__call__.<locals>.call_next at 0x00000286C5F6EC00>
+                     │    │             └ <starlette.middleware.base._CachedRequest object at 0x00000286C6137450>
+                     │    └ <bound method RequestLogMiddleware.dispatch of <app.middleware.log_request.RequestLogMiddleware object at 0x00000286C5DB2090>>
+                     └ <app.middleware.log_request.RequestLogMiddleware object at 0x00000286C5DB2090>
+
+> File "E:\KLTN\chatbot\backend\app\middleware\log_request.py", line 17, in dispatch
+    response: Response = await call_next(request)
+                               │         └ <starlette.middleware.base._CachedRequest object at 0x00000286C6137450>
+                               └ <function BaseHTTPMiddleware.__call__.<locals>.call_next at 0x00000286C5F6EC00>
+
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\starlette\middleware\base.py", line 163, in call_next
+    raise app_exc
+          └ TypeError("'name' is an invalid keyword argument for User")
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\starlette\middleware\base.py", line 149, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+          │    │   │      │                      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.send_no_error at 0x00000286C5F6E5C0>
+          │    │   │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x00000286C5F6ED40>
+          │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.1.8', 8000), 'cl...
+          │    └ <starlette.middleware.exceptions.ExceptionMiddleware object at 0x00000286C5D30210>
+          └ <app.middleware.log_request.RequestLogMiddleware object at 0x00000286C5DB2090>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+          │                            │    │    │     │      │        └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.send_no_error at 0x00000286C5F6E5C0>
+          │                            │    │    │     │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x00000286C5F6ED40>
+          │                            │    │    │     └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.1.8', 8000), 'cl...
+          │                            │    │    └ <starlette.requests.Request object at 0x00000286C612B010>
+          │                            │    └ <fastapi.routing.APIRouter object at 0x00000286C5D81C10>
+          │                            └ <starlette.middleware.exceptions.ExceptionMiddleware object at 0x00000286C5D30210>
+          └ <function wrap_app_handling_exceptions at 0x00000286A212C5E0>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\starlette\_exception_handler.py", line 62, in wrapped_app
+    raise exc
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\starlette\_exception_handler.py", line 51, in wrapped_app
+    await app(scope, receive, sender)
+          │   │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x00000286C5F6E660>
+          │   │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x00000286C5F6ED40>
+          │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.1.8', 8000), 'cl...
+          └ <fastapi.routing.APIRouter object at 0x00000286C5D81C10>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\starlette\routing.py", line 715, in __call__
+    await self.middleware_stack(scope, receive, send)
+          │    │                │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x00000286C5F6E660>
+          │    │                │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x00000286C5F6ED40>
+          │    │                └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.1.8', 8000), 'cl...
+          │    └ <bound method Router.app of <fastapi.routing.APIRouter object at 0x00000286C5D81C10>>
+          └ <fastapi.routing.APIRouter object at 0x00000286C5D81C10>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\starlette\routing.py", line 735, in app
+    await route.handle(scope, receive, send)
+          │     │      │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x00000286C5F6E660>
+          │     │      │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x00000286C5F6ED40>
+          │     │      └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.1.8', 8000), 'cl...
+          │     └ <function Route.handle at 0x00000286A212DDA0>
+          └ APIRoute(path='/admin/users', name='create_user', methods=['POST'])
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\starlette\routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+          │    │   │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x00000286C5F6E660>
+          │    │   │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x00000286C5F6ED40>
+          │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.1.8', 8000), 'cl...
+          │    └ <function request_response.<locals>.app at 0x00000286C5E34C20>
+          └ APIRoute(path='/admin/users', name='create_user', methods=['POST'])
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\starlette\routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+          │                            │    │        │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x00000286C5F6E660>
+          │                            │    │        │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x00000286C5F6ED40>
+          │                            │    │        └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.1.8', 8000), 'cl...
+          │                            │    └ <starlette.requests.Request object at 0x00000286C6129AD0>
+          │                            └ <function request_response.<locals>.app.<locals>.app at 0x00000286C5F6E700>
+          └ <function wrap_app_handling_exceptions at 0x00000286A212C5E0>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\starlette\_exception_handler.py", line 62, in wrapped_app
+    raise exc
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\starlette\_exception_handler.py", line 51, in wrapped_app
+    await app(scope, receive, sender)
+          │   │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x00000286C5F6C220>
+          │   │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x00000286C5F6ED40>
+          │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.1.8', 8000), 'cl...
+          └ <function request_response.<locals>.app.<locals>.app at 0x00000286C5F6E700>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\starlette\routing.py", line 73, in app
+    response = await f(request)
+                     │ └ <starlette.requests.Request object at 0x00000286C6129AD0>
+                     └ <function get_request_handler.<locals>.app at 0x00000286C5E349A0>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\fastapi\routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+                         └ <function run_endpoint_function at 0x00000286A212FBA0>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\fastapi\routing.py", line 212, in run_endpoint_function
+    return await dependant.call(**values)
+                 │         │      └ {'db': <sqlalchemy.orm.session.AsyncSession object at 0x00000286C61324D0>, 'admin': <db.models.user_model.User object at 0x00...
+                 │         └ <function create_user at 0x00000286A321B880>
+                 └ Dependant(path_params=[], query_params=[], header_params=[], cookie_params=[], body_params=[ModelField(field_info=Body(Pydant...
+
+  File "E:\KLTN\chatbot\backend\app\routers\admin_users.py", line 200, in create_user
+    u = User(
+        └ <class 'db.models.user_model.User'>
+
+  File "<string>", line 4, in __init__
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\sqlalchemy\orm\state.py", line 571, in _initialize_instance
+    with util.safe_reraise():
+         │    └ <class 'sqlalchemy.util.langhelpers.safe_reraise'>
+         └ <module 'sqlalchemy.util' from 'C:\\Users\\lapth\\anaconda3\\envs\\aibacsi\\Lib\\site-packages\\sqlalchemy\\util\\__init__.py'>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+          │         │              └ <traceback object at 0x00000286C60EE6C0>
+          │         └ <method 'with_traceback' of 'BaseException' objects>
+          └ TypeError("'name' is an invalid keyword argument for User")
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\sqlalchemy\orm\state.py", line 569, in _initialize_instance
+    manager.original_init(*mixed[1:], **kwargs)
+    │       │              │            └ {'name': 'phu', 'email': 'phu@gmail.com'}
+    │       │              └ (<sqlalchemy.orm.state.InstanceState object at 0x00000286C60EAED0>, <db.models.user_model.User object at 0x00000286C5F65510>)
+    │       └ <function _declarative_constructor at 0x00000286A2BCEB60>
+    └ <ClassManager of <class 'db.models.user_model.User'> at 286a31a71d0>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\sqlalchemy\orm\decl_base.py", line 2177, in _declarative_constructor
+    raise TypeError(
+
+TypeError: 'name' is an invalid keyword argument for User
+2026-03-05 22:08:23 | INFO | POST /admin/users -> 500 (29.9 ms)
+2026-03-05 22:08:35 | ERROR | Unhandled error while processing request
+Traceback (most recent call last):
+
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\anyio\streams\memory.py", line 97, in receive
+    return self.receive_nowait()
+           │    └ <function MemoryObjectReceiveStream.receive_nowait at 0x00000286A0071C60>
+           └ MemoryObjectReceiveStream(_state=MemoryObjectStreamState(max_buffer_size=0, buffer=deque([]), open_send_channels=0, open_rece...
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\anyio\streams\memory.py", line 92, in receive_nowait
+    raise WouldBlock
+          └ <class 'anyio.WouldBlock'>
+
+anyio.WouldBlock
+
+
+During handling of the above exception, another exception occurred:
+
+
+Traceback (most recent call last):
+
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\starlette\middleware\base.py", line 157, in call_next
+    message = await recv_stream.receive()
+                    │           └ <function MemoryObjectReceiveStream.receive at 0x00000286A0071D00>
+                    └ MemoryObjectReceiveStream(_state=MemoryObjectStreamState(max_buffer_size=0, buffer=deque([]), open_send_channels=0, open_rece...
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\anyio\streams\memory.py", line 112, in receive
+    raise EndOfStream
+          └ <class 'anyio.EndOfStream'>
+
+anyio.EndOfStream
+
+
+During handling of the above exception, another exception occurred:
+
+
+Traceback (most recent call last):
+
+  File "<string>", line 1, in <module>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\multiprocessing\spawn.py", line 122, in spawn_main
+    exitcode = _main(fd, parent_sentinel)
+               │     │   └ 360
+               │     └ 3
+               └ <function _main at 0x000002869DAEDE40>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\multiprocessing\spawn.py", line 135, in _main
+    return self._bootstrap(parent_sentinel)
+           │    │          └ 360
+           │    └ <function BaseProcess._bootstrap at 0x000002869DA04900>
+           └ <SpawnProcess name='SpawnProcess-9' parent=22924 started>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\multiprocessing\process.py", line 314, in _bootstrap
+    self.run()
+    │    └ <function BaseProcess.run at 0x000002869D8EBE20>
+    └ <SpawnProcess name='SpawnProcess-9' parent=22924 started>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\multiprocessing\process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+    │    │        │    │        │    └ {'config': <uvicorn.config.Config object at 0x000002869DAC7A10>, 'target': <bound method Server.run of <uvicorn.server.Server...
+    │    │        │    │        └ <SpawnProcess name='SpawnProcess-9' parent=22924 started>
+    │    │        │    └ ()
+    │    │        └ <SpawnProcess name='SpawnProcess-9' parent=22924 started>
+    │    └ <function subprocess_started at 0x000002869FF667A0>
+    └ <SpawnProcess name='SpawnProcess-9' parent=22924 started>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\uvicorn\_subprocess.py", line 80, in subprocess_started
+    target(sockets=sockets)
+    │              └ [<socket.socket fd=396, family=2, type=1, proto=6, laddr=('127.0.1.8', 8000)>]
+    └ <bound method Server.run of <uvicorn.server.Server object at 0x00000286A008F5D0>>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\uvicorn\server.py", line 65, in run
+    return asyncio.run(self.serve(sockets=sockets))
+           │       │   │    │             └ [<socket.socket fd=396, family=2, type=1, proto=6, laddr=('127.0.1.8', 8000)>]
+           │       │   │    └ <function Server.serve at 0x000002869FF65440>
+           │       │   └ <uvicorn.server.Server object at 0x00000286A008F5D0>
+           │       └ <function run at 0x000002869F794900>
+           └ <module 'asyncio' from 'C:\\Users\\lapth\\anaconda3\\envs\\aibacsi\\Lib\\asyncio\\__init__.py'>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\asyncio\runners.py", line 190, in run
+    return runner.run(main)
+           │      │   └ <coroutine object Server.serve at 0x00000286A001E3E0>
+           │      └ <function Runner.run at 0x000002869F798AE0>
+           └ <asyncio.runners.Runner object at 0x000002869D519790>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\asyncio\runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           │    │     │                  └ <Task pending name='Task-1' coro=<Server.serve() running at C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\uvicorn\s...
+           │    │     └ <function BaseEventLoop.run_until_complete at 0x000002869F796700>
+           │    └ <_WindowsSelectorEventLoop running=True closed=False debug=False>
+           └ <asyncio.runners.Runner object at 0x000002869D519790>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\asyncio\base_events.py", line 641, in run_until_complete
+    self.run_forever()
+    │    └ <function BaseEventLoop.run_forever at 0x000002869F796660>
+    └ <_WindowsSelectorEventLoop running=True closed=False debug=False>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\asyncio\base_events.py", line 608, in run_forever
+    self._run_once()
+    │    └ <function BaseEventLoop._run_once at 0x000002869F7984A0>
+    └ <_WindowsSelectorEventLoop running=True closed=False debug=False>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\asyncio\base_events.py", line 1936, in _run_once
+    handle._run()
+    │      └ <function Handle._run at 0x000002869E11E8E0>
+    └ <Handle Task.task_wakeup(<Future finished result=True>)>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\asyncio\events.py", line 84, in _run
+    self._context.run(self._callback, *self._args)
+    │    │            │    │           │    └ <member '_args' of 'Handle' objects>
+    │    │            │    │           └ <Handle Task.task_wakeup(<Future finished result=True>)>
+    │    │            │    └ <member '_callback' of 'Handle' objects>
+    │    │            └ <Handle Task.task_wakeup(<Future finished result=True>)>
+    │    └ <member '_context' of 'Handle' objects>
+    └ <Handle Task.task_wakeup(<Future finished result=True>)>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\uvicorn\protocols\http\httptools_impl.py", line 401, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+                   └ <uvicorn.middleware.proxy_headers.ProxyHeadersMiddleware object at 0x00000286C5D83AD0>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\uvicorn\middleware\proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+                 │    │   │      │        └ <bound method RequestResponseCycle.send of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x00000286C6...
+                 │    │   │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x0000028...
+                 │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.1.8', 8000), 'cl...
+                 │    └ <fastapi.applications.FastAPI object at 0x00000286C5D90490>
+                 └ <uvicorn.middleware.proxy_headers.ProxyHeadersMiddleware object at 0x00000286C5D83AD0>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\fastapi\applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+                           │      │        └ <bound method RequestResponseCycle.send of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x00000286C6...
+                           │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x0000028...
+                           └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.1.8', 8000), 'cl...
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\starlette\applications.py", line 113, in __call__
+    await self.middleware_stack(scope, receive, send)
+          │    │                │      │        └ <bound method RequestResponseCycle.send of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x00000286C6...
+          │    │                │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x0000028...
+          │    │                └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.1.8', 8000), 'cl...
+          │    └ <starlette.middleware.errors.ServerErrorMiddleware object at 0x00000286C5D44850>
+          └ <fastapi.applications.FastAPI object at 0x00000286C5D90490>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+          │    │   │      │        └ <function ServerErrorMiddleware.__call__.<locals>._send at 0x00000286C5F6F6A0>
+          │    │   │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x0000028...
+          │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.1.8', 8000), 'cl...
+          │    └ <starlette.middleware.cors.CORSMiddleware object at 0x00000286C5DB2510>
+          └ <starlette.middleware.errors.ServerErrorMiddleware object at 0x00000286C5D44850>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\starlette\middleware\cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+          │    │               │      │        │                     └ Headers({'host': 'specifies-considerations-fingers-themes.trycloudflare.com', 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Wi...
+          │    │               │      │        └ <function ServerErrorMiddleware.__call__.<locals>._send at 0x00000286C5F6F6A0>
+          │    │               │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x0000028...
+          │    │               └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.1.8', 8000), 'cl...
+          │    └ <function CORSMiddleware.simple_response at 0x00000286A21D09A0>
+          └ <starlette.middleware.cors.CORSMiddleware object at 0x00000286C5DB2510>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\starlette\middleware\cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+          │    │   │      │        └ functools.partial(<bound method CORSMiddleware.send of <starlette.middleware.cors.CORSMiddleware object at 0x00000286C5DB2510...
+          │    │   │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x0000028...
+          │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.1.8', 8000), 'cl...
+          │    └ <app.middleware.log_request.RequestLogMiddleware object at 0x00000286C5DB2090>
+          └ <starlette.middleware.cors.CORSMiddleware object at 0x00000286C5DB2510>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\starlette\middleware\base.py", line 187, in __call__
+    response = await self.dispatch_func(request, call_next)
+                     │    │             │        └ <function BaseHTTPMiddleware.__call__.<locals>.call_next at 0x00000286C61C5620>
+                     │    │             └ <starlette.middleware.base._CachedRequest object at 0x00000286C62C2D50>
+                     │    └ <bound method RequestLogMiddleware.dispatch of <app.middleware.log_request.RequestLogMiddleware object at 0x00000286C5DB2090>>
+                     └ <app.middleware.log_request.RequestLogMiddleware object at 0x00000286C5DB2090>
+
+> File "E:\KLTN\chatbot\backend\app\middleware\log_request.py", line 17, in dispatch
+    response: Response = await call_next(request)
+                               │         └ <starlette.middleware.base._CachedRequest object at 0x00000286C62C2D50>
+                               └ <function BaseHTTPMiddleware.__call__.<locals>.call_next at 0x00000286C61C5620>
+
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\starlette\middleware\base.py", line 163, in call_next
+    raise app_exc
+          └ TypeError("'name' is an invalid keyword argument for User")
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\starlette\middleware\base.py", line 149, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+          │    │   │      │                      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.send_no_error at 0x00000286C61C5300>
+          │    │   │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x00000286C61C56C0>
+          │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.1.8', 8000), 'cl...
+          │    └ <starlette.middleware.exceptions.ExceptionMiddleware object at 0x00000286C5D30210>
+          └ <app.middleware.log_request.RequestLogMiddleware object at 0x00000286C5DB2090>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+          │                            │    │    │     │      │        └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.send_no_error at 0x00000286C61C5300>
+          │                            │    │    │     │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x00000286C61C56C0>
+          │                            │    │    │     └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.1.8', 8000), 'cl...
+          │                            │    │    └ <starlette.requests.Request object at 0x00000286C62C30D0>
+          │                            │    └ <fastapi.routing.APIRouter object at 0x00000286C5D81C10>
+          │                            └ <starlette.middleware.exceptions.ExceptionMiddleware object at 0x00000286C5D30210>
+          └ <function wrap_app_handling_exceptions at 0x00000286A212C5E0>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\starlette\_exception_handler.py", line 62, in wrapped_app
+    raise exc
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\starlette\_exception_handler.py", line 51, in wrapped_app
+    await app(scope, receive, sender)
+          │   │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x00000286C61C58A0>
+          │   │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x00000286C61C56C0>
+          │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.1.8', 8000), 'cl...
+          └ <fastapi.routing.APIRouter object at 0x00000286C5D81C10>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\starlette\routing.py", line 715, in __call__
+    await self.middleware_stack(scope, receive, send)
+          │    │                │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x00000286C61C58A0>
+          │    │                │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x00000286C61C56C0>
+          │    │                └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.1.8', 8000), 'cl...
+          │    └ <bound method Router.app of <fastapi.routing.APIRouter object at 0x00000286C5D81C10>>
+          └ <fastapi.routing.APIRouter object at 0x00000286C5D81C10>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\starlette\routing.py", line 735, in app
+    await route.handle(scope, receive, send)
+          │     │      │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x00000286C61C58A0>
+          │     │      │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x00000286C61C56C0>
+          │     │      └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.1.8', 8000), 'cl...
+          │     └ <function Route.handle at 0x00000286A212DDA0>
+          └ APIRoute(path='/admin/users', name='create_user', methods=['POST'])
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\starlette\routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+          │    │   │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x00000286C61C58A0>
+          │    │   │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x00000286C61C56C0>
+          │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.1.8', 8000), 'cl...
+          │    └ <function request_response.<locals>.app at 0x00000286C5E34C20>
+          └ APIRoute(path='/admin/users', name='create_user', methods=['POST'])
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\starlette\routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+          │                            │    │        │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x00000286C61C58A0>
+          │                            │    │        │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x00000286C61C56C0>
+          │                            │    │        └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.1.8', 8000), 'cl...
+          │                            │    └ <starlette.requests.Request object at 0x00000286C62C3150>
+          │                            └ <function request_response.<locals>.app.<locals>.app at 0x00000286C61C5940>
+          └ <function wrap_app_handling_exceptions at 0x00000286A212C5E0>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\starlette\_exception_handler.py", line 62, in wrapped_app
+    raise exc
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\starlette\_exception_handler.py", line 51, in wrapped_app
+    await app(scope, receive, sender)
+          │   │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x00000286C61C5A80>
+          │   │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x00000286C61C56C0>
+          │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.1.8', 8000), 'cl...
+          └ <function request_response.<locals>.app.<locals>.app at 0x00000286C61C5940>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\starlette\routing.py", line 73, in app
+    response = await f(request)
+                     │ └ <starlette.requests.Request object at 0x00000286C62C3150>
+                     └ <function get_request_handler.<locals>.app at 0x00000286C5E349A0>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\fastapi\routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+                         └ <function run_endpoint_function at 0x00000286A212FBA0>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\fastapi\routing.py", line 212, in run_endpoint_function
+    return await dependant.call(**values)
+                 │         │      └ {'db': <sqlalchemy.orm.session.AsyncSession object at 0x00000286C62C3B90>, 'admin': <db.models.user_model.User object at 0x00...
+                 │         └ <function create_user at 0x00000286A321B880>
+                 └ Dependant(path_params=[], query_params=[], header_params=[], cookie_params=[], body_params=[ModelField(field_info=Body(Pydant...
+
+  File "E:\KLTN\chatbot\backend\app\routers\admin_users.py", line 200, in create_user
+    u = User(
+        └ <class 'db.models.user_model.User'>
+
+  File "<string>", line 4, in __init__
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\sqlalchemy\orm\state.py", line 571, in _initialize_instance
+    with util.safe_reraise():
+         │    └ <class 'sqlalchemy.util.langhelpers.safe_reraise'>
+         └ <module 'sqlalchemy.util' from 'C:\\Users\\lapth\\anaconda3\\envs\\aibacsi\\Lib\\site-packages\\sqlalchemy\\util\\__init__.py'>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+          │         │              └ <traceback object at 0x00000286C62C33C0>
+          │         └ <method 'with_traceback' of 'BaseException' objects>
+          └ TypeError("'name' is an invalid keyword argument for User")
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\sqlalchemy\orm\state.py", line 569, in _initialize_instance
+    manager.original_init(*mixed[1:], **kwargs)
+    │       │              │            └ {'name': 'phunew', 'email': 'phu@gmail.com'}
+    │       │              └ (<sqlalchemy.orm.state.InstanceState object at 0x00000286C62DFF50>, <db.models.user_model.User object at 0x00000286C60EF550>)
+    │       └ <function _declarative_constructor at 0x00000286A2BCEB60>
+    └ <ClassManager of <class 'db.models.user_model.User'> at 286a31a71d0>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\sqlalchemy\orm\decl_base.py", line 2177, in _declarative_constructor
+    raise TypeError(
+
+TypeError: 'name' is an invalid keyword argument for User
+2026-03-05 22:08:35 | INFO | POST /admin/users -> 500 (16.0 ms)
+2026-03-05 22:08:37 | ERROR | Unhandled error while processing request
+Traceback (most recent call last):
+
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\anyio\streams\memory.py", line 97, in receive
+    return self.receive_nowait()
+           │    └ <function MemoryObjectReceiveStream.receive_nowait at 0x00000286A0071C60>
+           └ MemoryObjectReceiveStream(_state=MemoryObjectStreamState(max_buffer_size=0, buffer=deque([]), open_send_channels=0, open_rece...
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\anyio\streams\memory.py", line 92, in receive_nowait
+    raise WouldBlock
+          └ <class 'anyio.WouldBlock'>
+
+anyio.WouldBlock
+
+
+During handling of the above exception, another exception occurred:
+
+
+Traceback (most recent call last):
+
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\starlette\middleware\base.py", line 157, in call_next
+    message = await recv_stream.receive()
+                    │           └ <function MemoryObjectReceiveStream.receive at 0x00000286A0071D00>
+                    └ MemoryObjectReceiveStream(_state=MemoryObjectStreamState(max_buffer_size=0, buffer=deque([]), open_send_channels=0, open_rece...
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\anyio\streams\memory.py", line 112, in receive
+    raise EndOfStream
+          └ <class 'anyio.EndOfStream'>
+
+anyio.EndOfStream
+
+
+During handling of the above exception, another exception occurred:
+
+
+Traceback (most recent call last):
+
+  File "<string>", line 1, in <module>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\multiprocessing\spawn.py", line 122, in spawn_main
+    exitcode = _main(fd, parent_sentinel)
+               │     │   └ 360
+               │     └ 3
+               └ <function _main at 0x000002869DAEDE40>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\multiprocessing\spawn.py", line 135, in _main
+    return self._bootstrap(parent_sentinel)
+           │    │          └ 360
+           │    └ <function BaseProcess._bootstrap at 0x000002869DA04900>
+           └ <SpawnProcess name='SpawnProcess-9' parent=22924 started>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\multiprocessing\process.py", line 314, in _bootstrap
+    self.run()
+    │    └ <function BaseProcess.run at 0x000002869D8EBE20>
+    └ <SpawnProcess name='SpawnProcess-9' parent=22924 started>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\multiprocessing\process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+    │    │        │    │        │    └ {'config': <uvicorn.config.Config object at 0x000002869DAC7A10>, 'target': <bound method Server.run of <uvicorn.server.Server...
+    │    │        │    │        └ <SpawnProcess name='SpawnProcess-9' parent=22924 started>
+    │    │        │    └ ()
+    │    │        └ <SpawnProcess name='SpawnProcess-9' parent=22924 started>
+    │    └ <function subprocess_started at 0x000002869FF667A0>
+    └ <SpawnProcess name='SpawnProcess-9' parent=22924 started>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\uvicorn\_subprocess.py", line 80, in subprocess_started
+    target(sockets=sockets)
+    │              └ [<socket.socket fd=396, family=2, type=1, proto=6, laddr=('127.0.1.8', 8000)>]
+    └ <bound method Server.run of <uvicorn.server.Server object at 0x00000286A008F5D0>>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\uvicorn\server.py", line 65, in run
+    return asyncio.run(self.serve(sockets=sockets))
+           │       │   │    │             └ [<socket.socket fd=396, family=2, type=1, proto=6, laddr=('127.0.1.8', 8000)>]
+           │       │   │    └ <function Server.serve at 0x000002869FF65440>
+           │       │   └ <uvicorn.server.Server object at 0x00000286A008F5D0>
+           │       └ <function run at 0x000002869F794900>
+           └ <module 'asyncio' from 'C:\\Users\\lapth\\anaconda3\\envs\\aibacsi\\Lib\\asyncio\\__init__.py'>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\asyncio\runners.py", line 190, in run
+    return runner.run(main)
+           │      │   └ <coroutine object Server.serve at 0x00000286A001E3E0>
+           │      └ <function Runner.run at 0x000002869F798AE0>
+           └ <asyncio.runners.Runner object at 0x000002869D519790>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\asyncio\runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           │    │     │                  └ <Task pending name='Task-1' coro=<Server.serve() running at C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\uvicorn\s...
+           │    │     └ <function BaseEventLoop.run_until_complete at 0x000002869F796700>
+           │    └ <_WindowsSelectorEventLoop running=True closed=False debug=False>
+           └ <asyncio.runners.Runner object at 0x000002869D519790>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\asyncio\base_events.py", line 641, in run_until_complete
+    self.run_forever()
+    │    └ <function BaseEventLoop.run_forever at 0x000002869F796660>
+    └ <_WindowsSelectorEventLoop running=True closed=False debug=False>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\asyncio\base_events.py", line 608, in run_forever
+    self._run_once()
+    │    └ <function BaseEventLoop._run_once at 0x000002869F7984A0>
+    └ <_WindowsSelectorEventLoop running=True closed=False debug=False>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\asyncio\base_events.py", line 1936, in _run_once
+    handle._run()
+    │      └ <function Handle._run at 0x000002869E11E8E0>
+    └ <Handle Task.task_wakeup(<Future finished result=True>)>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\asyncio\events.py", line 84, in _run
+    self._context.run(self._callback, *self._args)
+    │    │            │    │           │    └ <member '_args' of 'Handle' objects>
+    │    │            │    │           └ <Handle Task.task_wakeup(<Future finished result=True>)>
+    │    │            │    └ <member '_callback' of 'Handle' objects>
+    │    │            └ <Handle Task.task_wakeup(<Future finished result=True>)>
+    │    └ <member '_context' of 'Handle' objects>
+    └ <Handle Task.task_wakeup(<Future finished result=True>)>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\uvicorn\protocols\http\httptools_impl.py", line 401, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+                   └ <uvicorn.middleware.proxy_headers.ProxyHeadersMiddleware object at 0x00000286C5D83AD0>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\uvicorn\middleware\proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+                 │    │   │      │        └ <bound method RequestResponseCycle.send of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x00000286C6...
+                 │    │   │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x0000028...
+                 │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.1.8', 8000), 'cl...
+                 │    └ <fastapi.applications.FastAPI object at 0x00000286C5D90490>
+                 └ <uvicorn.middleware.proxy_headers.ProxyHeadersMiddleware object at 0x00000286C5D83AD0>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\fastapi\applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+                           │      │        └ <bound method RequestResponseCycle.send of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x00000286C6...
+                           │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x0000028...
+                           └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.1.8', 8000), 'cl...
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\starlette\applications.py", line 113, in __call__
+    await self.middleware_stack(scope, receive, send)
+          │    │                │      │        └ <bound method RequestResponseCycle.send of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x00000286C6...
+          │    │                │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x0000028...
+          │    │                └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.1.8', 8000), 'cl...
+          │    └ <starlette.middleware.errors.ServerErrorMiddleware object at 0x00000286C5D44850>
+          └ <fastapi.applications.FastAPI object at 0x00000286C5D90490>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+          │    │   │      │        └ <function ServerErrorMiddleware.__call__.<locals>._send at 0x00000286C6125440>
+          │    │   │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x0000028...
+          │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.1.8', 8000), 'cl...
+          │    └ <starlette.middleware.cors.CORSMiddleware object at 0x00000286C5DB2510>
+          └ <starlette.middleware.errors.ServerErrorMiddleware object at 0x00000286C5D44850>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\starlette\middleware\cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+          │    │               │      │        │                     └ Headers({'host': 'specifies-considerations-fingers-themes.trycloudflare.com', 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Wi...
+          │    │               │      │        └ <function ServerErrorMiddleware.__call__.<locals>._send at 0x00000286C6125440>
+          │    │               │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x0000028...
+          │    │               └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.1.8', 8000), 'cl...
+          │    └ <function CORSMiddleware.simple_response at 0x00000286A21D09A0>
+          └ <starlette.middleware.cors.CORSMiddleware object at 0x00000286C5DB2510>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\starlette\middleware\cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+          │    │   │      │        └ functools.partial(<bound method CORSMiddleware.send of <starlette.middleware.cors.CORSMiddleware object at 0x00000286C5DB2510...
+          │    │   │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x0000028...
+          │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.1.8', 8000), 'cl...
+          │    └ <app.middleware.log_request.RequestLogMiddleware object at 0x00000286C5DB2090>
+          └ <starlette.middleware.cors.CORSMiddleware object at 0x00000286C5DB2510>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\starlette\middleware\base.py", line 187, in __call__
+    response = await self.dispatch_func(request, call_next)
+                     │    │             │        └ <function BaseHTTPMiddleware.__call__.<locals>.call_next at 0x00000286C6125DA0>
+                     │    │             └ <starlette.middleware.base._CachedRequest object at 0x00000286C62EE450>
+                     │    └ <bound method RequestLogMiddleware.dispatch of <app.middleware.log_request.RequestLogMiddleware object at 0x00000286C5DB2090>>
+                     └ <app.middleware.log_request.RequestLogMiddleware object at 0x00000286C5DB2090>
+
+> File "E:\KLTN\chatbot\backend\app\middleware\log_request.py", line 17, in dispatch
+    response: Response = await call_next(request)
+                               │         └ <starlette.middleware.base._CachedRequest object at 0x00000286C62EE450>
+                               └ <function BaseHTTPMiddleware.__call__.<locals>.call_next at 0x00000286C6125DA0>
+
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\starlette\middleware\base.py", line 163, in call_next
+    raise app_exc
+          └ TypeError("'name' is an invalid keyword argument for User")
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\starlette\middleware\base.py", line 149, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+          │    │   │      │                      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.send_no_error at 0x00000286C6124C20>
+          │    │   │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x00000286C61263E0>
+          │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.1.8', 8000), 'cl...
+          │    └ <starlette.middleware.exceptions.ExceptionMiddleware object at 0x00000286C5D30210>
+          └ <app.middleware.log_request.RequestLogMiddleware object at 0x00000286C5DB2090>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+          │                            │    │    │     │      │        └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.send_no_error at 0x00000286C6124C20>
+          │                            │    │    │     │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x00000286C61263E0>
+          │                            │    │    │     └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.1.8', 8000), 'cl...
+          │                            │    │    └ <starlette.requests.Request object at 0x00000286C62EE710>
+          │                            │    └ <fastapi.routing.APIRouter object at 0x00000286C5D81C10>
+          │                            └ <starlette.middleware.exceptions.ExceptionMiddleware object at 0x00000286C5D30210>
+          └ <function wrap_app_handling_exceptions at 0x00000286A212C5E0>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\starlette\_exception_handler.py", line 62, in wrapped_app
+    raise exc
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\starlette\_exception_handler.py", line 51, in wrapped_app
+    await app(scope, receive, sender)
+          │   │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x00000286C6125B20>
+          │   │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x00000286C61263E0>
+          │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.1.8', 8000), 'cl...
+          └ <fastapi.routing.APIRouter object at 0x00000286C5D81C10>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\starlette\routing.py", line 715, in __call__
+    await self.middleware_stack(scope, receive, send)
+          │    │                │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x00000286C6125B20>
+          │    │                │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x00000286C61263E0>
+          │    │                └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.1.8', 8000), 'cl...
+          │    └ <bound method Router.app of <fastapi.routing.APIRouter object at 0x00000286C5D81C10>>
+          └ <fastapi.routing.APIRouter object at 0x00000286C5D81C10>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\starlette\routing.py", line 735, in app
+    await route.handle(scope, receive, send)
+          │     │      │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x00000286C6125B20>
+          │     │      │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x00000286C61263E0>
+          │     │      └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.1.8', 8000), 'cl...
+          │     └ <function Route.handle at 0x00000286A212DDA0>
+          └ APIRoute(path='/admin/users', name='create_user', methods=['POST'])
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\starlette\routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+          │    │   │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x00000286C6125B20>
+          │    │   │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x00000286C61263E0>
+          │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.1.8', 8000), 'cl...
+          │    └ <function request_response.<locals>.app at 0x00000286C5E34C20>
+          └ APIRoute(path='/admin/users', name='create_user', methods=['POST'])
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\starlette\routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+          │                            │    │        │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x00000286C6125B20>
+          │                            │    │        │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x00000286C61263E0>
+          │                            │    │        └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.1.8', 8000), 'cl...
+          │                            │    └ <starlette.requests.Request object at 0x00000286C62EE790>
+          │                            └ <function request_response.<locals>.app.<locals>.app at 0x00000286C6125300>
+          └ <function wrap_app_handling_exceptions at 0x00000286A212C5E0>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\starlette\_exception_handler.py", line 62, in wrapped_app
+    raise exc
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\starlette\_exception_handler.py", line 51, in wrapped_app
+    await app(scope, receive, sender)
+          │   │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x00000286C6124F40>
+          │   │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x00000286C61263E0>
+          │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'server': ('127.0.1.8', 8000), 'cl...
+          └ <function request_response.<locals>.app.<locals>.app at 0x00000286C6125300>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\starlette\routing.py", line 73, in app
+    response = await f(request)
+                     │ └ <starlette.requests.Request object at 0x00000286C62EE790>
+                     └ <function get_request_handler.<locals>.app at 0x00000286C5E349A0>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\fastapi\routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+                         └ <function run_endpoint_function at 0x00000286A212FBA0>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\fastapi\routing.py", line 212, in run_endpoint_function
+    return await dependant.call(**values)
+                 │         │      └ {'db': <sqlalchemy.orm.session.AsyncSession object at 0x00000286C62EC950>, 'admin': <db.models.user_model.User object at 0x00...
+                 │         └ <function create_user at 0x00000286A321B880>
+                 └ Dependant(path_params=[], query_params=[], header_params=[], cookie_params=[], body_params=[ModelField(field_info=Body(Pydant...
+
+  File "E:\KLTN\chatbot\backend\app\routers\admin_users.py", line 200, in create_user
+    u = User(
+        └ <class 'db.models.user_model.User'>
+
+  File "<string>", line 4, in __init__
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\sqlalchemy\orm\state.py", line 571, in _initialize_instance
+    with util.safe_reraise():
+         │    └ <class 'sqlalchemy.util.langhelpers.safe_reraise'>
+         └ <module 'sqlalchemy.util' from 'C:\\Users\\lapth\\anaconda3\\envs\\aibacsi\\Lib\\site-packages\\sqlalchemy\\util\\__init__.py'>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+          │         │              └ <traceback object at 0x00000286C62EF800>
+          │         └ <method 'with_traceback' of 'BaseException' objects>
+          └ TypeError("'name' is an invalid keyword argument for User")
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\sqlalchemy\orm\state.py", line 569, in _initialize_instance
+    manager.original_init(*mixed[1:], **kwargs)
+    │       │              │            └ {'name': 'phunew', 'email': 'phu@gmail.com'}
+    │       │              └ (<sqlalchemy.orm.state.InstanceState object at 0x00000286C61AC530>, <db.models.user_model.User object at 0x00000286C627A510>)
+    │       └ <function _declarative_constructor at 0x00000286A2BCEB60>
+    └ <ClassManager of <class 'db.models.user_model.User'> at 286a31a71d0>
+  File "C:\Users\lapth\anaconda3\envs\aibacsi\Lib\site-packages\sqlalchemy\orm\decl_base.py", line 2177, in _declarative_constructor
+    raise TypeError(
+
+TypeError: 'name' is an invalid keyword argument for User
+2026-03-05 22:08:37 | INFO | POST /admin/users -> 500 (16.3 ms)
+2026-03-05 22:08:43 | INFO | GET /admin/analytics -> 200 (6.6 ms)
+2026-03-05 22:08:43 | INFO | GET /admin/analytics -> 200 (10.2 ms)
+2026-03-05 22:08:44 | INFO | GET /admin/users -> 200 (3.6 ms)
+2026-03-05 22:08:44 | INFO | GET /admin/users -> 200 (4.1 ms)
+2026-03-05 22:10:56 | INFO | GET /admin/users -> 200 (3.6 ms)
+2026-03-05 22:11:00 | INFO | GET /docs -> 200 (0.3 ms)
+2026-03-05 22:11:01 | INFO | GET /openapi.json -> 200 (1.2 ms)
+2026-03-05 22:11:26 | INFO | POST /login -> 200 (7.7 ms)
+2026-03-05 22:11:37 | INFO | GET /admin/analytics -> 200 (6.3 ms)
+2026-03-05 22:11:37 | INFO | GET /admin/analytics -> 200 (10.3 ms)
+2026-03-05 22:11:37 | INFO | GET /admin/users -> 200 (3.7 ms)
+2026-03-05 22:11:37 | INFO | GET /admin/users -> 200 (3.6 ms)
+2026-03-05 22:11:39 | INFO | GET /admin/analytics -> 200 (6.6 ms)
+2026-03-05 22:11:39 | INFO | GET /admin/analytics -> 200 (8.3 ms)
+2026-03-05 22:11:39 | INFO | GET /admin/users -> 200 (3.5 ms)
+2026-03-05 22:11:39 | INFO | GET /admin/users -> 200 (3.5 ms)
+2026-03-05 22:12:03 | INFO | GET /admin/users -> 200 (3.5 ms)
+2026-03-05 22:13:53 | INFO | GET /admin/users -> 200 (4.1 ms)
+2026-03-05 22:16:51 | INFO | GET /admin/analytics -> 200 (7.3 ms)
+2026-03-05 22:16:51 | INFO | GET /me -> 200 (2.7 ms)
+2026-03-05 22:16:51 | INFO | GET /admin/analytics -> 200 (7.6 ms)
+2026-03-05 22:16:53 | INFO | GET /admin/analytics -> 200 (16.4 ms)
+2026-03-05 22:16:53 | INFO | GET /me -> 200 (83.7 ms)
+2026-03-05 22:16:53 | INFO | GET /admin/analytics -> 200 (12.5 ms)
+2026-03-05 22:16:53 | INFO | GET /me -> 200 (4.6 ms)
+2026-03-05 22:16:55 | INFO | GET /me -> 200 (3.7 ms)
+2026-03-05 22:16:55 | INFO | GET /admin/analytics -> 200 (12.4 ms)
+2026-03-05 22:16:55 | INFO | GET /me -> 200 (7.0 ms)
+2026-03-05 22:16:55 | INFO | GET /admin/analytics -> 200 (15.7 ms)
+2026-03-05 22:17:01 | INFO | GET /me -> 200 (5.0 ms)
+2026-03-05 22:17:01 | INFO | GET /admin/analytics -> 200 (10.8 ms)
+2026-03-05 22:17:01 | INFO | GET /me -> 200 (2.9 ms)
+2026-03-05 22:17:01 | INFO | GET /admin/analytics -> 200 (51.1 ms)
+2026-03-05 22:17:08 | INFO | GET /me -> 200 (2.7 ms)
+2026-03-05 22:17:08 | INFO | GET /me -> 200 (2.9 ms)
+2026-03-05 22:17:11 | INFO | GET /me -> 200 (4.6 ms)
+2026-03-05 22:17:11 | INFO | GET /me -> 200 (2.3 ms)
+2026-03-05 22:17:15 | INFO | GET /me -> 200 (2.2 ms)
+2026-03-05 22:17:16 | INFO | GET /me -> 200 (2.6 ms)
+2026-03-05 22:17:34 | INFO | GET /me -> 200 (4.8 ms)
+2026-03-05 22:17:34 | INFO | GET /me -> 200 (3.2 ms)
+2026-03-05 22:17:45 | INFO | GET /me -> 200 (6.7 ms)
+2026-03-05 22:17:45 | INFO | GET /admin/analytics -> 200 (16.8 ms)
+2026-03-05 22:17:45 | INFO | GET /me -> 200 (3.1 ms)
+2026-03-05 22:17:45 | INFO | GET /admin/analytics -> 200 (11.2 ms)
+2026-03-05 22:17:46 | INFO | GET /admin/users -> 200 (4.1 ms)
+2026-03-05 22:17:47 | INFO | GET /admin/users -> 200 (4.6 ms)
+2026-03-05 22:17:53 | INFO | GET /admin/analytics -> 200 (9.2 ms)
+2026-03-05 22:17:53 | INFO | GET /admin/analytics -> 200 (9.3 ms)
+2026-03-05 22:17:54 | INFO | GET /admin/users -> 200 (4.2 ms)
+2026-03-05 22:17:54 | INFO | GET /admin/users -> 200 (3.5 ms)
+2026-03-05 22:18:13 | INFO | GET /admin/analytics -> 200 (7.8 ms)
+2026-03-05 22:18:13 | INFO | GET /admin/analytics -> 200 (10.5 ms)
+2026-03-05 22:18:14 | INFO | GET /admin/users -> 200 (3.8 ms)
+2026-03-05 22:18:14 | INFO | GET /admin/users -> 200 (4.3 ms)
+2026-03-06 08:24:43 | INFO | ✅ Logger initialized (level=INFO, file=logs/app.log)
+2026-03-06 08:24:44 | INFO | Startup completed: admin ensured.
+2026-03-06 08:24:50 | INFO | GET / -> 200 (0.6 ms)
+2026-03-06 08:24:51 | INFO | GET /favicon.ico -> 404 (0.7 ms)
+2026-03-06 08:24:56 | INFO | GET /docs -> 200 (0.4 ms)
+2026-03-06 08:24:56 | INFO | GET /openapi.json -> 200 (43.2 ms)
+2026-03-06 08:29:38 | INFO | ✅ Logger initialized (level=INFO, file=logs/app.log)
+2026-03-06 08:29:38 | INFO | Startup completed: admin ensured.
+2026-03-06 08:34:39 | INFO | ✅ Logger initialized (level=INFO, file=logs/app.log)
+2026-03-06 08:34:39 | INFO | Startup completed: admin ensured.
+2026-03-06 08:34:47 | INFO | ✅ Logger initialized (level=INFO, file=logs/app.log)
+2026-03-06 08:34:47 | INFO | Startup completed: admin ensured.
+2026-03-06 08:39:15 | INFO | GET /docs -> 200 (0.8 ms)
+2026-03-06 08:39:16 | INFO | GET /openapi.json -> 200 (62.5 ms)
+2026-03-06 08:42:11 | INFO | ✅ Logger initialized (level=INFO, file=logs/app.log)
+2026-03-06 08:42:11 | INFO | Startup completed: admin ensured.
+2026-03-06 08:42:18 | INFO | ✅ Logger initialized (level=INFO, file=logs/app.log)
+2026-03-06 08:42:18 | INFO | Startup completed: admin ensured.
+2026-03-06 08:42:55 | INFO | GET /docs -> 200 (0.5 ms)
+2026-03-06 08:42:56 | INFO | GET /openapi.json -> 200 (40.2 ms)
+2026-03-06 08:43:05 | INFO | GET /admin/users -> 200 (109.6 ms)
+2026-03-06 08:43:05 | INFO | GET /admin/users -> 200 (8.7 ms)
+2026-03-06 08:43:43 | INFO | POST /admin/users -> 201 (30.9 ms)
+2026-03-06 08:43:43 | INFO | GET /admin/users -> 200 (4.8 ms)
+2026-03-06 08:43:50 | INFO | GET /me -> 200 (7.3 ms)
+2026-03-06 08:43:50 | INFO | GET /me -> 200 (2.6 ms)
+2026-03-06 08:43:59 | INFO | POST /login -> 200 (5.7 ms)
+2026-03-06 08:43:59 | INFO | GET /me -> 200 (4.7 ms)
+2026-03-06 08:43:59 | INFO | GET /me -> 200 (67.5 ms)
+2026-03-06 08:43:59 | INFO | GET /admin/analytics -> 200 (93.4 ms)
+2026-03-06 08:43:59 | INFO | GET /admin/analytics -> 200 (28.6 ms)
+2026-03-06 08:44:01 | INFO | GET /admin/users -> 200 (5.0 ms)
+2026-03-06 08:44:02 | INFO | GET /admin/users -> 200 (6.1 ms)
+2026-03-06 08:44:09 | INFO | PATCH /admin/users/3 -> 200 (18.8 ms)
+2026-03-06 08:44:09 | INFO | GET /admin/users -> 403 (2.2 ms)
+2026-03-06 08:44:29 | INFO | PATCH /admin/users/3 -> 403 (2.5 ms)
+2026-03-06 08:44:32 | INFO | GET /me -> 200 (4.0 ms)
+2026-03-06 08:44:32 | INFO | GET /me -> 200 (3.2 ms)
+2026-03-06 08:44:37 | INFO | GET /admin/analytics -> 403 (6.8 ms)
+2026-03-06 08:44:37 | INFO | GET /me -> 200 (5.8 ms)
+2026-03-06 08:44:37 | INFO | GET /admin/analytics -> 403 (5.9 ms)
+2026-03-06 08:44:37 | INFO | GET /me -> 200 (6.1 ms)
+2026-03-06 08:44:38 | INFO | GET /admin/users -> 403 (3.4 ms)
+2026-03-06 08:44:39 | INFO | GET /admin/users -> 403 (3.3 ms)
+2026-03-06 08:44:42 | INFO | GET /admin/analytics -> 403 (3.8 ms)
+2026-03-06 08:44:42 | INFO | GET /admin/analytics -> 403 (2.4 ms)
+2026-03-06 08:44:42 | INFO | GET /admin/users -> 403 (2.7 ms)
+2026-03-06 08:44:42 | INFO | GET /admin/users -> 403 (3.3 ms)
+2026-03-06 08:44:48 | INFO | GET /admin/analytics -> 403 (6.0 ms)
+2026-03-06 08:44:48 | INFO | GET /me -> 200 (7.9 ms)
+2026-03-06 08:44:48 | INFO | GET /me -> 200 (5.5 ms)
+2026-03-06 08:44:48 | INFO | GET /admin/analytics -> 403 (5.0 ms)
+2026-03-06 08:44:50 | INFO | GET /admin/users -> 403 (3.2 ms)
+2026-03-06 08:44:50 | INFO | GET /admin/users -> 403 (2.2 ms)
+2026-03-06 08:44:59 | INFO | GET /me -> 200 (3.0 ms)
+2026-03-06 08:44:59 | INFO | GET /me -> 200 (2.8 ms)
+2026-03-06 08:45:05 | INFO | GET /me -> 200 (2.5 ms)
+2026-03-06 08:45:05 | INFO | GET /me -> 200 (2.7 ms)
+2026-03-06 08:45:11 | INFO | GET /me -> 200 (4.0 ms)
+2026-03-06 08:45:11 | INFO | GET /admin/analytics -> 403 (4.7 ms)
+2026-03-06 08:45:12 | INFO | GET /me -> 200 (4.1 ms)
+2026-03-06 08:45:12 | INFO | GET /admin/analytics -> 403 (2.5 ms)
+2026-03-06 08:45:13 | INFO | GET /admin/users -> 403 (2.2 ms)
+2026-03-06 08:45:13 | INFO | GET /admin/users -> 403 (2.3 ms)
+2026-03-06 08:45:14 | INFO | GET /admin/analytics -> 403 (2.4 ms)
+2026-03-06 08:45:14 | INFO | GET /admin/analytics -> 403 (2.4 ms)
+2026-03-06 08:45:15 | INFO | GET /admin/users -> 403 (3.3 ms)
+2026-03-06 08:45:15 | INFO | GET /admin/users -> 403 (2.2 ms)
+2026-03-06 08:45:16 | INFO | GET /admin/analytics -> 403 (2.2 ms)
+2026-03-06 08:45:16 | INFO | GET /admin/analytics -> 403 (2.4 ms)
+2026-03-06 08:45:18 | INFO | GET /me -> 200 (3.4 ms)
+2026-03-06 08:45:19 | INFO | GET /me -> 200 (2.7 ms)
+2026-03-06 08:45:51 | INFO | POST /login -> 200 (3.3 ms)
+2026-03-06 08:45:51 | INFO | GET /me -> 200 (3.4 ms)
+2026-03-06 08:45:51 | INFO | GET /admin/analytics -> 200 (12.7 ms)
+2026-03-06 08:45:52 | INFO | GET /admin/analytics -> 200 (12.8 ms)
+2026-03-06 08:45:52 | INFO | GET /me -> 200 (2.7 ms)
+2026-03-06 08:45:54 | INFO | GET /admin/users -> 200 (5.2 ms)
+2026-03-06 08:45:54 | INFO | GET /admin/users -> 200 (4.1 ms)
+2026-03-06 08:46:12 | INFO | PATCH /admin/users/3 -> 200 (8.9 ms)
+2026-03-06 08:46:12 | INFO | GET /admin/users -> 200 (3.8 ms)
+2026-03-06 08:46:16 | INFO | GET /me -> 200 (2.7 ms)
+2026-03-06 08:46:16 | INFO | GET /me -> 200 (3.1 ms)
+2026-03-06 08:46:22 | INFO | POST /login -> 403 (3.5 ms)
+2026-03-06 08:46:37 | INFO | POST /login -> 200 (3.1 ms)
+2026-03-06 08:46:37 | INFO | GET /me -> 200 (5.0 ms)
+2026-03-06 08:46:37 | INFO | GET /admin/analytics -> 200 (12.4 ms)
+2026-03-06 08:46:37 | INFO | GET /me -> 200 (3.4 ms)
+2026-03-06 08:46:37 | INFO | GET /admin/analytics -> 200 (7.3 ms)
+2026-03-06 08:46:39 | INFO | GET /admin/users -> 200 (3.8 ms)
+2026-03-06 08:46:39 | INFO | GET /admin/users -> 200 (4.3 ms)
+2026-03-06 08:46:51 | INFO | PATCH /admin/users/1 -> 200 (9.1 ms)
+2026-03-06 08:46:51 | INFO | GET /admin/users -> 200 (3.5 ms)
+2026-03-06 08:47:00 | INFO | GET /admin/users -> 200 (7.7 ms)
+2026-03-06 08:47:03 | INFO | GET /admin/users -> 200 (7.6 ms)
+2026-03-06 08:47:05 | INFO | GET /admin/users -> 200 (3.6 ms)
+2026-03-06 08:47:09 | INFO | GET /admin/users -> 200 (11.0 ms)
+2026-03-06 08:47:09 | INFO | GET /admin/users -> 200 (6.5 ms)
+2026-03-06 08:47:10 | INFO | GET /admin/users -> 200 (6.3 ms)
+2026-03-06 08:47:11 | INFO | GET /admin/users -> 200 (6.3 ms)
+2026-03-06 08:47:11 | INFO | GET /admin/users -> 200 (4.3 ms)
+2026-03-06 08:47:12 | INFO | GET /admin/users -> 200 (4.7 ms)
+2026-03-06 08:47:42 | INFO | GET /admin/analytics -> 200 (7.7 ms)
+2026-03-06 08:47:42 | INFO | GET /admin/analytics -> 200 (9.1 ms)
+2026-03-06 08:47:43 | INFO | GET /admin/analytics -> 200 (7.9 ms)
+2026-03-06 08:47:43 | INFO | GET /admin/analytics -> 200 (7.5 ms)
+2026-03-06 08:47:58 | INFO | GET /admin/users -> 200 (3.7 ms)
+2026-03-06 08:47:58 | INFO | GET /admin/users -> 200 (3.7 ms)
+2026-03-06 08:47:59 | INFO | GET /admin/analytics -> 200 (8.0 ms)
+2026-03-06 08:47:59 | INFO | GET /admin/analytics -> 200 (8.5 ms)
+2026-03-06 08:48:02 | INFO | GET /admin/analytics -> 200 (8.4 ms)
+2026-03-06 08:48:02 | INFO | GET /admin/analytics -> 200 (8.7 ms)
+2026-03-06 08:48:02 | INFO | GET /admin/users -> 200 (5.5 ms)
+2026-03-06 08:48:03 | INFO | GET /admin/users -> 200 (4.5 ms)
+2026-03-06 08:48:03 | INFO | GET /admin/analytics -> 200 (7.8 ms)
+2026-03-06 08:48:03 | INFO | GET /admin/analytics -> 200 (8.1 ms)
+2026-03-06 08:51:38 | INFO | GET /admin/analytics -> 200 (7.7 ms)
+2026-03-06 08:51:49 | INFO | ✅ Logger initialized (level=INFO, file=logs/app.log)
+2026-03-06 08:51:49 | INFO | Startup completed: admin ensured.
+2026-03-06 08:51:49 | INFO | GET /me -> 200 (397.7 ms)
+2026-03-06 08:51:49 | INFO | GET /me -> 200 (434.5 ms)
+2026-03-06 08:51:49 | INFO | GET /conversations -> 200 (341.6 ms)
+2026-03-06 08:51:49 | INFO | POST /conversations -> 201 (295.4 ms)
+2026-03-06 08:51:49 | INFO | POST /conversations -> 201 (298.4 ms)
+2026-03-06 08:51:49 | INFO | POST /conversations -> 201 (303.1 ms)
+2026-03-06 08:51:49 | INFO | POST /conversations -> 201 (305.5 ms)
+2026-03-06 08:51:49 | INFO | POST /conversations -> 201 (306.2 ms)
+2026-03-06 08:51:49 | INFO | GET /admin/analytics -> 200 (506.9 ms)
+2026-03-06 08:51:50 | INFO | GET /me -> 200 (3.0 ms)
+2026-03-06 08:51:50 | INFO | GET /conversations -> 200 (6.2 ms)
+2026-03-06 08:51:50 | INFO | GET /conversations/442732ce-02d6-4ec2-9c54-752c175c5d9f/messages -> 200 (24.8 ms)
+2026-03-06 08:51:50 | INFO | GET /conversations/442732ce-02d6-4ec2-9c54-752c175c5d9f/messages -> 200 (22.1 ms)
+2026-03-06 08:51:51 | INFO | GET /conversations/442732ce-02d6-4ec2-9c54-752c175c5d9f/messages -> 200 (21.5 ms)
+2026-03-06 08:51:51 | INFO | GET /conversations/442732ce-02d6-4ec2-9c54-752c175c5d9f/messages -> 200 (24.2 ms)
+2026-03-06 08:51:51 | INFO | GET /conversations/442732ce-02d6-4ec2-9c54-752c175c5d9f/messages -> 200 (21.6 ms)
+2026-03-06 08:51:51 | INFO | GET /conversations/442732ce-02d6-4ec2-9c54-752c175c5d9f/messages -> 200 (7.0 ms)
+2026-03-06 08:51:51 | INFO | GET /conversations/442732ce-02d6-4ec2-9c54-752c175c5d9f/messages -> 200 (5.3 ms)
+2026-03-06 08:51:51 | INFO | GET /conversations/442732ce-02d6-4ec2-9c54-752c175c5d9f/messages -> 200 (5.5 ms)
+2026-03-06 08:51:52 | INFO | GET /conversations/442732ce-02d6-4ec2-9c54-752c175c5d9f/messages -> 200 (4.3 ms)
+2026-03-06 08:51:52 | INFO | GET /conversations/442732ce-02d6-4ec2-9c54-752c175c5d9f/messages -> 200 (4.7 ms)
+2026-03-06 08:51:52 | INFO | GET /conversations/442732ce-02d6-4ec2-9c54-752c175c5d9f/messages -> 200 (5.1 ms)
+2026-03-06 08:51:52 | INFO | GET /conversations/442732ce-02d6-4ec2-9c54-752c175c5d9f/messages -> 200 (5.5 ms)
+2026-03-06 08:51:52 | INFO | GET /conversations/442732ce-02d6-4ec2-9c54-752c175c5d9f/messages -> 200 (4.1 ms)
+2026-03-06 08:51:52 | INFO | GET /conversations/442732ce-02d6-4ec2-9c54-752c175c5d9f/messages -> 200 (5.8 ms)
+2026-03-06 08:51:53 | INFO | GET /conversations/442732ce-02d6-4ec2-9c54-752c175c5d9f/messages -> 200 (4.4 ms)
+2026-03-06 08:51:53 | INFO | GET /conversations/442732ce-02d6-4ec2-9c54-752c175c5d9f/messages -> 200 (5.8 ms)
+2026-03-06 08:51:53 | INFO | GET /conversations/442732ce-02d6-4ec2-9c54-752c175c5d9f/messages -> 200 (4.6 ms)
+2026-03-06 08:51:53 | INFO | GET /conversations/442732ce-02d6-4ec2-9c54-752c175c5d9f/messages -> 200 (5.3 ms)
+2026-03-06 08:51:53 | INFO | GET /conversations/442732ce-02d6-4ec2-9c54-752c175c5d9f/messages -> 200 (6.2 ms)
+2026-03-06 08:51:53 | INFO | GET /conversations/442732ce-02d6-4ec2-9c54-752c175c5d9f/messages -> 200 (4.9 ms)
+2026-03-06 08:51:54 | INFO | GET /conversations/442732ce-02d6-4ec2-9c54-752c175c5d9f/messages -> 200 (4.7 ms)
+2026-03-06 08:51:54 | INFO | GET /conversations/442732ce-02d6-4ec2-9c54-752c175c5d9f/messages -> 200 (5.4 ms)
+2026-03-06 08:51:54 | INFO | GET /conversations/442732ce-02d6-4ec2-9c54-752c175c5d9f/messages -> 200 (6.0 ms)
+2026-03-06 08:51:54 | INFO | GET /conversations/442732ce-02d6-4ec2-9c54-752c175c5d9f/messages -> 200 (4.5 ms)
+2026-03-06 08:51:54 | INFO | GET /conversations/442732ce-02d6-4ec2-9c54-752c175c5d9f/messages -> 200 (5.3 ms)
+2026-03-06 08:51:54 | INFO | GET /conversations/442732ce-02d6-4ec2-9c54-752c175c5d9f/messages -> 200 (4.9 ms)
+2026-03-06 08:51:55 | INFO | GET /conversations/442732ce-02d6-4ec2-9c54-752c175c5d9f/messages -> 200 (5.7 ms)
+2026-03-06 08:51:55 | INFO | GET /conversations/442732ce-02d6-4ec2-9c54-752c175c5d9f/messages -> 200 (4.1 ms)
+2026-03-06 08:51:55 | INFO | GET /conversations/442732ce-02d6-4ec2-9c54-752c175c5d9f/messages -> 200 (4.8 ms)
+2026-03-06 08:51:55 | INFO | GET /conversations/442732ce-02d6-4ec2-9c54-752c175c5d9f/messages -> 200 (4.6 ms)
+2026-03-06 08:51:55 | INFO | GET /conversations/442732ce-02d6-4ec2-9c54-752c175c5d9f/messages -> 200 (4.2 ms)
+2026-03-06 08:51:55 | INFO | GET /conversations/442732ce-02d6-4ec2-9c54-752c175c5d9f/messages -> 200 (6.1 ms)
+2026-03-06 08:51:56 | INFO | GET /conversations/442732ce-02d6-4ec2-9c54-752c175c5d9f/messages -> 200 (4.7 ms)
+2026-03-06 08:51:56 | INFO | GET /conversations/442732ce-02d6-4ec2-9c54-752c175c5d9f/messages -> 200 (4.5 ms)
+2026-03-06 08:51:56 | INFO | GET /conversations/442732ce-02d6-4ec2-9c54-752c175c5d9f/messages -> 200 (4.9 ms)
+2026-03-06 08:51:56 | INFO | GET /conversations/442732ce-02d6-4ec2-9c54-752c175c5d9f/messages -> 200 (5.0 ms)
+2026-03-06 08:51:56 | INFO | GET /conversations/442732ce-02d6-4ec2-9c54-752c175c5d9f/messages -> 200 (3.8 ms)
+2026-03-06 08:51:56 | INFO | GET /conversations/442732ce-02d6-4ec2-9c54-752c175c5d9f/messages -> 200 (4.3 ms)
+2026-03-06 08:51:56 | INFO | GET /conversations/442732ce-02d6-4ec2-9c54-752c175c5d9f/messages -> 200 (4.2 ms)
+2026-03-06 08:51:57 | INFO | GET /conversations/442732ce-02d6-4ec2-9c54-752c175c5d9f/messages -> 200 (4.9 ms)
+2026-03-06 08:51:57 | INFO | GET /conversations/442732ce-02d6-4ec2-9c54-752c175c5d9f/messages -> 200 (4.7 ms)
+2026-03-06 08:51:57 | INFO | GET /conversations/442732ce-02d6-4ec2-9c54-752c175c5d9f/messages -> 200 (5.1 ms)
+2026-03-06 08:51:57 | INFO | GET /conversations/442732ce-02d6-4ec2-9c54-752c175c5d9f/messages -> 200 (4.4 ms)
+2026-03-06 08:51:57 | INFO | GET /conversations/442732ce-02d6-4ec2-9c54-752c175c5d9f/messages -> 200 (5.4 ms)
+2026-03-06 08:51:57 | INFO | GET /conversations/442732ce-02d6-4ec2-9c54-752c175c5d9f/messages -> 200 (5.7 ms)
+2026-03-06 08:51:58 | INFO | GET /conversations/442732ce-02d6-4ec2-9c54-752c175c5d9f/messages -> 200 (7.4 ms)
+2026-03-06 08:51:58 | INFO | GET /conversations/442732ce-02d6-4ec2-9c54-752c175c5d9f/messages -> 200 (5.0 ms)
+2026-03-06 08:51:58 | INFO | GET /conversations/442732ce-02d6-4ec2-9c54-752c175c5d9f/messages -> 200 (5.8 ms)
+2026-03-06 08:51:58 | INFO | GET /conversations/442732ce-02d6-4ec2-9c54-752c175c5d9f/messages -> 200 (5.5 ms)
+2026-03-06 08:51:58 | INFO | GET /conversations/442732ce-02d6-4ec2-9c54-752c175c5d9f/messages -> 200 (4.8 ms)
+2026-03-06 08:51:58 | INFO | GET /conversations/442732ce-02d6-4ec2-9c54-752c175c5d9f/messages -> 200 (4.7 ms)
+2026-03-06 08:51:59 | INFO | GET /conversations/442732ce-02d6-4ec2-9c54-752c175c5d9f/messages -> 200 (5.2 ms)
+2026-03-06 08:51:59 | INFO | GET /conversations/442732ce-02d6-4ec2-9c54-752c175c5d9f/messages -> 200 (5.0 ms)
+2026-03-06 08:51:59 | INFO | GET /conversations/442732ce-02d6-4ec2-9c54-752c175c5d9f/messages -> 200 (5.3 ms)
+2026-03-06 08:51:59 | INFO | GET /conversations/442732ce-02d6-4ec2-9c54-752c175c5d9f/messages -> 200 (4.0 ms)
+2026-03-06 08:51:59 | INFO | GET /conversations/442732ce-02d6-4ec2-9c54-752c175c5d9f/messages -> 200 (3.8 ms)
+2026-03-06 08:51:59 | INFO | GET /conversations/442732ce-02d6-4ec2-9c54-752c175c5d9f/messages -> 200 (5.1 ms)
+2026-03-06 08:52:00 | INFO | GET /conversations/442732ce-02d6-4ec2-9c54-752c175c5d9f/messages -> 200 (5.1 ms)
+2026-03-06 08:52:00 | INFO | GET /conversations/442732ce-02d6-4ec2-9c54-752c175c5d9f/messages -> 200 (4.3 ms)
+2026-03-06 08:52:00 | INFO | GET /conversations/442732ce-02d6-4ec2-9c54-752c175c5d9f/messages -> 200 (5.0 ms)
+2026-03-06 08:52:00 | INFO | GET /conversations/442732ce-02d6-4ec2-9c54-752c175c5d9f/messages -> 200 (5.2 ms)
+2026-03-06 08:52:00 | INFO | GET /conversations/442732ce-02d6-4ec2-9c54-752c175c5d9f/messages -> 200 (3.8 ms)
+2026-03-06 08:52:00 | INFO | GET /conversations/442732ce-02d6-4ec2-9c54-752c175c5d9f/messages -> 200 (5.2 ms)
+2026-03-06 08:52:01 | INFO | GET /conversations/442732ce-02d6-4ec2-9c54-752c175c5d9f/messages -> 200 (5.6 ms)
+2026-03-06 08:52:01 | INFO | GET /conversations/442732ce-02d6-4ec2-9c54-752c175c5d9f/messages -> 200 (6.7 ms)
+2026-03-06 08:52:01 | INFO | GET /conversations/442732ce-02d6-4ec2-9c54-752c175c5d9f/messages -> 200 (5.0 ms)
+2026-03-06 08:52:01 | INFO | GET /conversations/442732ce-02d6-4ec2-9c54-752c175c5d9f/messages -> 200 (4.8 ms)
+2026-03-06 08:52:01 | INFO | GET /conversations/442732ce-02d6-4ec2-9c54-752c175c5d9f/messages -> 200 (5.6 ms)
+2026-03-06 08:52:01 | INFO | GET /conversations/442732ce-02d6-4ec2-9c54-752c175c5d9f/messages -> 200 (6.4 ms)
+2026-03-06 08:52:02 | INFO | GET /conversations/442732ce-02d6-4ec2-9c54-752c175c5d9f/messages -> 200 (7.8 ms)
+2026-03-06 08:52:12 | INFO | ✅ Logger initialized (level=INFO, file=logs/app.log)
+2026-03-06 08:52:12 | INFO | Startup completed: admin ensured.
+2026-03-06 08:52:12 | INFO | GET /conversations/442732ce-02d6-4ec2-9c54-752c175c5d9f/messages -> 200 (107.8 ms)
+2026-03-06 08:52:12 | INFO | GET /conversations/7b4dfbd4-c8b0-4922-9d10-82088ddf32c8/messages -> 200 (11.1 ms)
+2026-03-06 08:52:12 | INFO | POST /conversations -> 201 (82.5 ms)
+2026-03-06 08:52:12 | INFO | GET /conversations/442732ce-02d6-4ec2-9c54-752c175c5d9f/messages -> 200 (19.4 ms)
+2026-03-06 08:52:13 | INFO | GET /conversations/442732ce-02d6-4ec2-9c54-752c175c5d9f/messages -> 200 (6.8 ms)
+2026-03-06 08:52:13 | INFO | GET /conversations/7b4dfbd4-c8b0-4922-9d10-82088ddf32c8/messages -> 200 (5.6 ms)
+2026-03-06 08:52:13 | INFO | GET /conversations/442732ce-02d6-4ec2-9c54-752c175c5d9f/messages -> 200 (4.6 ms)
+2026-03-06 08:52:20 | INFO | Loading query embedding model: BAAI/bge-m3
+2026-03-06 08:52:31 | INFO | POST /chat -> 200 (16586.0 ms)
+2026-03-06 08:52:33 | INFO | POST /chat -> 400 (8.0 ms)
+2026-03-06 08:55:32 | INFO | POST /chat -> 200 (5255.1 ms)
+2026-03-06 08:57:29 | INFO | POST /chat -> 400 (7.1 ms)
+2026-03-06 08:57:42 | INFO | POST /chat -> 200 (3668.3 ms)
+2026-03-06 09:00:12 | INFO | POST /chat -> 400 (4.2 ms)
+2026-03-06 09:00:25 | INFO | ✅ Logger initialized (level=INFO, file=logs/app.log)
+2026-03-06 09:00:25 | INFO | Startup completed: admin ensured.
+2026-03-06 09:02:16 | INFO | GET /me -> 200 (105.9 ms)
+2026-03-06 09:02:16 | INFO | GET /conversations -> 200 (115.3 ms)
+2026-03-06 09:02:16 | INFO | GET /me -> 200 (2.6 ms)
+2026-03-06 09:02:16 | INFO | GET /conversations -> 200 (8.4 ms)
+2026-03-06 09:02:16 | INFO | GET /conversations/4826d2c1-f85c-49a8-b21b-e88bf2226322/messages -> 200 (70.6 ms)
+2026-03-06 09:02:17 | INFO | GET /conversations/4826d2c1-f85c-49a8-b21b-e88bf2226322/messages -> 200 (54.9 ms)
+2026-03-06 09:05:19 | INFO | GET /conversations/d4b28280-2fd3-4fd7-a311-4b800166a483/messages -> 200 (6.0 ms)
+2026-03-06 09:05:20 | INFO | GET /conversations/d4b28280-2fd3-4fd7-a311-4b800166a483/messages -> 200 (6.7 ms)
+2026-03-06 09:05:20 | INFO | GET /conversations/d4b28280-2fd3-4fd7-a311-4b800166a483/messages -> 200 (6.0 ms)
+2026-03-06 09:05:20 | INFO | GET /conversations/d4b28280-2fd3-4fd7-a311-4b800166a483/messages -> 200 (6.5 ms)
+2026-03-06 09:05:20 | INFO | GET /conversations/d4b28280-2fd3-4fd7-a311-4b800166a483/messages -> 200 (5.8 ms)
+2026-03-06 09:05:21 | INFO | GET /conversations/d4b28280-2fd3-4fd7-a311-4b800166a483/messages -> 200 (4.5 ms)
+2026-03-06 09:05:21 | INFO | GET /conversations/d4b28280-2fd3-4fd7-a311-4b800166a483/messages -> 200 (5.3 ms)
+2026-03-06 09:05:21 | INFO | GET /conversations/d4b28280-2fd3-4fd7-a311-4b800166a483/messages -> 200 (5.0 ms)
+2026-03-06 09:05:21 | INFO | GET /conversations/d4b28280-2fd3-4fd7-a311-4b800166a483/messages -> 200 (3.9 ms)
+2026-03-06 09:05:21 | INFO | GET /conversations/d4b28280-2fd3-4fd7-a311-4b800166a483/messages -> 200 (4.2 ms)
+2026-03-06 09:05:21 | INFO | GET /conversations/d4b28280-2fd3-4fd7-a311-4b800166a483/messages -> 200 (5.1 ms)
+2026-03-06 09:05:22 | INFO | GET /conversations/d4b28280-2fd3-4fd7-a311-4b800166a483/messages -> 200 (3.9 ms)
+2026-03-06 09:05:22 | INFO | GET /conversations/d4b28280-2fd3-4fd7-a311-4b800166a483/messages -> 200 (4.3 ms)
+2026-03-06 09:05:22 | INFO | GET /conversations/d4b28280-2fd3-4fd7-a311-4b800166a483/messages -> 200 (5.7 ms)
+2026-03-06 09:05:22 | INFO | GET /conversations/d4b28280-2fd3-4fd7-a311-4b800166a483/messages -> 200 (3.6 ms)
+2026-03-06 09:05:22 | INFO | GET /conversations/d4b28280-2fd3-4fd7-a311-4b800166a483/messages -> 200 (4.0 ms)
+2026-03-06 09:05:22 | INFO | GET /conversations/d4b28280-2fd3-4fd7-a311-4b800166a483/messages -> 200 (3.8 ms)
+2026-03-06 09:05:23 | INFO | GET /conversations/d4b28280-2fd3-4fd7-a311-4b800166a483/messages -> 200 (4.7 ms)
+2026-03-06 09:05:23 | INFO | DELETE /conversations/d4b28280-2fd3-4fd7-a311-4b800166a483 -> 200 (9.4 ms)
+2026-03-06 09:05:23 | INFO | GET /conversations/d4b28280-2fd3-4fd7-a311-4b800166a483/messages -> 404 (5.7 ms)
+2026-03-06 09:05:26 | INFO | DELETE /conversations/fb7647dd-824f-425c-b9d7-eab601130a44 -> 200 (6.8 ms)
+2026-03-06 09:09:04 | INFO | GET /me -> 200 (4.5 ms)
+2026-03-06 09:09:04 | INFO | GET /conversations -> 200 (8.4 ms)
+2026-03-06 09:09:04 | INFO | GET /me -> 200 (5.1 ms)
+2026-03-06 09:09:04 | INFO | GET /conversations -> 200 (6.3 ms)
+2026-03-06 09:09:04 | INFO | GET /conversations/4826d2c1-f85c-49a8-b21b-e88bf2226322/messages -> 200 (9.7 ms)
+2026-03-06 09:09:05 | INFO | GET /conversations/4826d2c1-f85c-49a8-b21b-e88bf2226322/messages -> 200 (7.4 ms)
+2026-03-06 09:09:15 | INFO | Loading query embedding model: BAAI/bge-m3
+2026-03-06 09:09:27 | INFO | POST /chat -> 200 (15955.4 ms)
+2026-03-06 09:09:32 | INFO | POST /chat -> 400 (5.0 ms)
+2026-03-06 09:11:34 | INFO | POST /chat -> 400 (6.0 ms)
+2026-03-06 10:23:37 | INFO | ✅ Logger initialized (level=INFO, file=logs/app.log)
+2026-03-06 10:23:37 | INFO | Startup completed: admin ensured.
+2026-03-06 10:26:51 | INFO | ✅ Logger initialized (level=INFO, file=logs/app.log)
+2026-03-06 10:26:51 | INFO | Startup completed: admin ensured.
+2026-03-06 10:40:54 | INFO | GET /me -> 200 (139.4 ms)
+2026-03-06 10:40:54 | INFO | GET /conversations -> 200 (169.9 ms)
+2026-03-06 10:40:55 | INFO | GET /conversations -> 200 (7.2 ms)
+2026-03-06 10:40:55 | INFO | GET /me -> 200 (3.9 ms)
+2026-03-06 10:40:55 | INFO | GET /conversations/4826d2c1-f85c-49a8-b21b-e88bf2226322/messages -> 200 (66.8 ms)
+2026-03-06 10:40:55 | INFO | GET /conversations/4826d2c1-f85c-49a8-b21b-e88bf2226322/messages -> 200 (33.8 ms)
+2026-03-06 10:41:01 | INFO | GET /me -> 200 (2.7 ms)
+2026-03-06 10:41:01 | INFO | GET /me -> 200 (3.1 ms)
+2026-03-06 10:41:03 | INFO | GET /me -> 200 (4.0 ms)
+2026-03-06 10:41:03 | INFO | GET /me -> 200 (7.0 ms)
+2026-03-06 10:41:03 | INFO | GET /admin/analytics -> 200 (33.0 ms)
+2026-03-06 10:41:03 | INFO | GET /admin/analytics -> 200 (13.7 ms)
+2026-03-06 10:41:05 | INFO | GET /admin/users -> 200 (6.7 ms)
+2026-03-06 10:41:05 | INFO | GET /admin/users -> 200 (4.9 ms)
+2026-03-06 10:41:13 | INFO | GET /admin/analytics -> 200 (10.6 ms)
+2026-03-06 10:41:13 | INFO | GET /admin/analytics -> 200 (12.7 ms)
+2026-03-06 10:41:14 | INFO | GET /admin/users -> 200 (3.8 ms)
+2026-03-06 10:41:14 | INFO | GET /admin/users -> 200 (4.6 ms)
+2026-03-06 10:42:15 | INFO | GET /admin/me -> 200 (4.4 ms)
+2026-03-06 10:42:15 | INFO | GET /admin/settings -> 200 (4.0 ms)
+2026-03-06 10:42:15 | INFO | GET /admin/settings -> 200 (2.9 ms)
+2026-03-06 10:42:15 | INFO | GET /admin/me -> 200 (2.9 ms)
+2026-03-06 10:52:33 | INFO | ✅ Logger initialized (level=INFO, file=logs/app.log)
+2026-03-06 10:52:33 | INFO | Startup completed: admin ensured.
+2026-03-06 10:52:42 | INFO | ✅ Logger initialized (level=INFO, file=logs/app.log)
+2026-03-06 10:52:42 | INFO | Startup completed: admin ensured.
+2026-03-06 10:52:42 | INFO | GET /admin/users -> 200 (93.2 ms)
+2026-03-06 10:52:42 | INFO | GET /admin/analytics -> 200 (216.8 ms)
+2026-03-06 10:52:42 | INFO | GET /admin/analytics -> 200 (222.1 ms)
+2026-03-06 10:52:43 | INFO | GET /admin/analytics -> 200 (30.0 ms)
+2026-03-06 10:52:43 | INFO | GET /admin/analytics -> 200 (10.7 ms)
+2026-03-06 10:52:43 | INFO | GET /admin/users -> 200 (9.7 ms)
+2026-03-06 10:52:43 | INFO | GET /admin/users -> 200 (4.0 ms)
+2026-03-06 10:52:43 | INFO | GET /admin/users -> 200 (5.1 ms)
+2026-03-06 10:53:04 | INFO | GET /admin/analytics -> 200 (8.9 ms)
+2026-03-06 10:53:04 | INFO | GET /admin/analytics -> 200 (9.0 ms)
+2026-03-06 10:53:05 | INFO | GET /admin/settings -> 200 (2.5 ms)
+2026-03-06 10:53:05 | INFO | GET /admin/me -> 200 (2.8 ms)
+2026-03-06 10:53:06 | INFO | GET /admin/settings -> 200 (2.3 ms)
+2026-03-06 10:53:06 | INFO | GET /admin/me -> 200 (2.8 ms)
+2026-03-06 10:53:08 | INFO | GET /admin/analytics -> 200 (7.1 ms)
+2026-03-06 10:53:08 | INFO | GET /admin/analytics -> 200 (8.3 ms)
+2026-03-06 10:53:13 | INFO | GET /admin/users -> 200 (4.0 ms)
+2026-03-06 10:53:13 | INFO | GET /admin/users -> 200 (3.9 ms)
+2026-03-06 10:54:04 | INFO | GET /admin/analytics -> 200 (10.2 ms)
+2026-03-06 10:54:04 | INFO | GET /admin/analytics -> 200 (8.7 ms)
+2026-03-06 10:54:05 | INFO | GET /admin/users -> 200 (4.8 ms)
+2026-03-06 10:54:05 | INFO | GET /admin/users -> 200 (4.2 ms)
+2026-03-06 10:54:06 | INFO | GET /admin/analytics -> 200 (8.1 ms)
+2026-03-06 10:54:07 | INFO | GET /admin/analytics -> 200 (7.5 ms)
+2026-03-06 10:54:07 | INFO | GET /admin/users -> 200 (5.3 ms)
+2026-03-06 10:54:07 | INFO | GET /admin/users -> 200 (4.4 ms)
+2026-03-06 10:56:18 | INFO | GET /admin/analytics -> 200 (10.8 ms)
+2026-03-06 10:56:18 | INFO | GET /me -> 200 (8.3 ms)
+2026-03-06 10:56:18 | INFO | GET /admin/analytics -> 200 (12.7 ms)
+2026-03-06 10:56:18 | INFO | GET /me -> 200 (3.2 ms)
+2026-03-06 10:56:20 | INFO | GET /admin/users -> 200 (8.0 ms)
+2026-03-06 10:56:20 | INFO | GET /admin/users -> 200 (3.7 ms)
+2026-03-06 10:56:20 | INFO | GET /uploads/user_1.jpg -> 404 (1.4 ms)
+2026-03-06 10:56:20 | INFO | GET /uploads/user_2.jpg -> 404 (2.3 ms)
+2026-03-06 10:56:20 | INFO | GET /uploads/user_3.jpg -> 404 (1.1 ms)
+2026-03-06 10:56:33 | INFO | GET /me -> 200 (6.7 ms)
+2026-03-06 10:56:33 | INFO | GET /admin/analytics -> 200 (13.1 ms)
+2026-03-06 10:56:33 | INFO | GET /me -> 200 (7.0 ms)
+2026-03-06 10:56:33 | INFO | GET /admin/analytics -> 200 (15.2 ms)
+2026-03-06 10:56:35 | INFO | GET /admin/users -> 200 (4.7 ms)
+2026-03-06 10:56:35 | INFO | GET /admin/users -> 200 (6.7 ms)
+2026-03-06 10:56:35 | INFO | GET /uploads/user_1.jpg -> 404 (0.9 ms)
+2026-03-06 10:56:35 | INFO | GET /uploads/user_2.jpg -> 404 (1.7 ms)
+2026-03-06 10:56:35 | INFO | GET /uploads/user_3.jpg -> 404 (0.4 ms)
+2026-03-06 10:58:32 | INFO | GET /me -> 200 (4.8 ms)
+2026-03-06 10:58:32 | INFO | GET /admin/analytics -> 200 (12.1 ms)
+2026-03-06 10:58:42 | INFO | ✅ Logger initialized (level=INFO, file=logs/app.log)
+2026-03-06 10:58:42 | INFO | Startup completed: admin ensured.
+2026-03-06 10:58:51 | INFO | ✅ Logger initialized (level=INFO, file=logs/app.log)
+2026-03-06 10:58:51 | INFO | Startup completed: admin ensured.
+2026-03-06 10:58:52 | INFO | GET /admin/users -> 200 (160.4 ms)
+2026-03-06 10:58:52 | INFO | GET /admin/users -> 200 (162.2 ms)
+2026-03-06 10:58:52 | INFO | GET /admin/analytics -> 200 (195.0 ms)
+2026-03-06 10:58:52 | INFO | GET /admin/users -> 200 (4.5 ms)
+2026-03-06 10:58:52 | INFO | GET /uploads/user_1.jpg -> 200 (5.7 ms)
+2026-03-06 10:58:52 | INFO | GET /uploads/user_2.jpg -> 200 (6.5 ms)
+2026-03-06 10:58:52 | INFO | GET /uploads/user_3.jpg -> 200 (1.9 ms)
+2026-03-06 10:58:52 | INFO | GET /admin/analytics -> 200 (36.3 ms)
+2026-03-06 10:58:52 | INFO | GET /admin/users -> 200 (5.8 ms)
+2026-03-06 11:07:54 | INFO | GET /me -> 200 (8.9 ms)
+2026-03-06 11:07:55 | INFO | GET /me -> 200 (3.0 ms)
+2026-03-06 11:08:01 | INFO | GET /me -> 200 (2.8 ms)
+2026-03-06 11:08:02 | INFO | GET /me -> 200 (4.8 ms)
+2026-03-06 11:08:02 | INFO | GET /admin/analytics -> 200 (38.1 ms)
+2026-03-06 11:08:02 | INFO | GET /admin/analytics -> 200 (13.3 ms)
+2026-03-06 11:08:04 | INFO | GET /admin/users -> 200 (4.0 ms)
+2026-03-06 11:08:04 | INFO | GET /admin/users -> 200 (4.9 ms)
+2026-03-06 11:08:09 | INFO | GET /admin/analytics -> 200 (7.3 ms)
+2026-03-06 11:08:09 | INFO | GET /admin/analytics -> 200 (8.9 ms)
+2026-03-06 11:08:10 | INFO | GET /admin/analytics -> 200 (7.6 ms)
+2026-03-06 11:08:10 | INFO | GET /admin/analytics -> 200 (9.5 ms)
+2026-03-06 11:08:12 | INFO | GET /admin/settings -> 200 (3.7 ms)
+2026-03-06 11:08:12 | INFO | GET /admin/me -> 200 (3.7 ms)
+2026-03-06 11:08:12 | INFO | GET /admin/me -> 200 (2.9 ms)
+2026-03-06 11:08:12 | INFO | GET /admin/settings -> 200 (2.2 ms)
+2026-03-06 11:08:17 | INFO | GET /admin/analytics -> 200 (9.8 ms)
+2026-03-06 11:08:17 | INFO | GET /admin/analytics -> 200 (8.5 ms)
+2026-03-06 11:08:27 | INFO | POST /upload-avatar -> 200 (95.4 ms)
+2026-03-06 11:08:27 | INFO | GET /uploads/user_1_2ae0cd66.jpg -> 200 (1.5 ms)
+2026-03-06 11:08:32 | INFO | POST /upload-avatar -> 200 (22.2 ms)
+2026-03-06 11:08:32 | INFO | GET /uploads/user_1_223bcec7.jpg -> 200 (1.4 ms)
+2026-03-06 11:09:45 | INFO | POST /upload-avatar -> 200 (13.6 ms)
+2026-03-06 11:09:45 | INFO | GET /uploads/user_1_9867f65b.jpg -> 200 (1.2 ms)
+2026-03-06 11:09:51 | INFO | POST /upload-avatar -> 200 (19.2 ms)
+2026-03-06 11:09:51 | INFO | GET /uploads/user_1_96f1b2db.jpg -> 200 (1.5 ms)
+2026-03-06 11:09:58 | INFO | GET /me -> 200 (2.7 ms)
+2026-03-06 11:09:58 | INFO | GET /admin/analytics -> 200 (8.3 ms)
+2026-03-06 11:09:59 | INFO | GET /me -> 200 (2.5 ms)
+2026-03-06 11:09:59 | INFO | GET /admin/analytics -> 200 (9.8 ms)
+2026-03-06 11:10:01 | INFO | GET /uploads/user_1_96f1b2db.jpg -> 304 (1.3 ms)
+2026-03-06 11:10:03 | INFO | GET /admin/users -> 200 (4.0 ms)
+2026-03-06 11:10:03 | INFO | GET /admin/users -> 200 (6.9 ms)
+2026-03-06 11:14:25 | INFO | GET /me -> 200 (6.1 ms)
+2026-03-06 11:14:25 | INFO | GET /admin/analytics -> 200 (16.0 ms)
+2026-03-06 11:14:26 | INFO | GET /me -> 200 (2.7 ms)
+2026-03-06 11:14:26 | INFO | GET /admin/analytics -> 200 (10.8 ms)
+2026-03-06 11:14:26 | INFO | GET /uploads/user_1_96f1b2db.jpg -> 304 (1.4 ms)
+2026-03-06 11:15:17 | INFO | GET /admin/users -> 200 (5.1 ms)
+2026-03-06 11:15:18 | INFO | GET /admin/users -> 200 (6.4 ms)
+2026-03-06 11:15:21 | INFO | GET /admin/analytics -> 200 (7.0 ms)
+2026-03-06 11:15:21 | INFO | GET /admin/analytics -> 200 (7.5 ms)
+2026-03-06 11:15:22 | INFO | GET /admin/me -> 200 (4.4 ms)
+2026-03-06 11:15:22 | INFO | GET /admin/settings -> 200 (3.9 ms)
+2026-03-06 11:15:22 | INFO | GET /admin/settings -> 200 (2.4 ms)
+2026-03-06 11:15:22 | INFO | GET /admin/me -> 200 (3.7 ms)
+2026-03-06 11:15:22 | INFO | GET /admin/analytics -> 200 (9.1 ms)
+2026-03-06 11:15:22 | INFO | GET /admin/analytics -> 200 (7.8 ms)
+2026-03-06 11:15:23 | INFO | GET /admin/users -> 200 (4.3 ms)
+2026-03-06 11:15:23 | INFO | GET /admin/analytics -> 200 (7.3 ms)
+2026-03-06 11:15:23 | INFO | GET /admin/users -> 200 (4.5 ms)
+2026-03-06 11:15:23 | INFO | GET /admin/analytics -> 200 (7.7 ms)
+2026-03-06 11:15:39 | INFO | POST /upload-avatar -> 200 (10.0 ms)
+2026-03-06 11:15:39 | INFO | GET /uploads/user_1_9b527aab.jpg -> 200 (1.4 ms)
+2026-03-06 11:15:51 | INFO | GET /admin/users -> 200 (5.7 ms)
+2026-03-06 11:15:51 | INFO | GET /admin/users -> 200 (5.4 ms)
+2026-03-06 11:15:58 | INFO | GET /me -> 200 (2.5 ms)
+2026-03-06 11:15:59 | INFO | GET /me -> 200 (2.5 ms)
+2026-03-06 11:16:00 | INFO | GET /uploads/user_1_9b527aab.jpg -> 304 (1.7 ms)
+2026-03-06 11:16:07 | INFO | POST /login -> 403 (6.6 ms)
+2026-03-06 11:16:18 | INFO | POST /login -> 200 (3.6 ms)
+2026-03-06 11:16:18 | INFO | GET /me -> 200 (4.0 ms)
+2026-03-06 11:16:18 | INFO | GET /admin/analytics -> 200 (11.2 ms)
+2026-03-06 11:16:18 | INFO | GET /me -> 200 (2.4 ms)
+2026-03-06 11:16:18 | INFO | GET /admin/analytics -> 200 (7.7 ms)
+2026-03-06 11:16:18 | INFO | GET /uploads/user_1_9b527aab.jpg -> 304 (1.4 ms)
+2026-03-06 11:16:23 | INFO | GET /admin/users -> 200 (3.6 ms)
+2026-03-06 11:16:23 | INFO | GET /admin/users -> 200 (4.4 ms)
+2026-03-06 11:16:28 | INFO | PATCH /admin/users/3 -> 200 (15.8 ms)
+2026-03-06 11:16:28 | INFO | GET /admin/users -> 200 (4.1 ms)
+2026-03-06 11:16:32 | INFO | GET /me -> 200 (2.5 ms)
+2026-03-06 11:16:33 | INFO | GET /me -> 200 (2.7 ms)
+2026-03-06 11:16:39 | INFO | POST /login -> 200 (3.2 ms)
+2026-03-06 11:16:39 | INFO | GET /me -> 200 (2.4 ms)
+2026-03-06 11:16:39 | INFO | GET /me -> 200 (2.3 ms)
+2026-03-06 11:17:07 | INFO | POST /upload-avatar -> 200 (62.4 ms)
+2026-03-06 11:17:23 | INFO | POST /upload-avatar -> 200 (35.3 ms)
+2026-03-06 11:17:29 | INFO | POST /upload-avatar -> 200 (26.4 ms)
+2026-03-06 11:17:50 | INFO | POST /upload-avatar -> 200 (6.3 ms)
+2026-03-06 11:18:00 | INFO | POST /login -> 200 (2.9 ms)
+2026-03-06 11:18:01 | INFO | GET /me -> 200 (2.8 ms)
+2026-03-06 11:18:01 | INFO | GET /me -> 200 (2.8 ms)
+2026-03-06 11:18:08 | INFO | GET /uploads/user_3_05c24db9.jpg -> 200 (1.3 ms)
+2026-03-06 11:24:46 | INFO | GET /me -> 200 (2.9 ms)
+2026-03-06 11:24:47 | INFO | GET /me -> 200 (2.8 ms)
+2026-03-06 11:24:48 | INFO | GET /uploads/user_3_05c24db9.jpg -> 304 (1.7 ms)
+2026-03-06 11:24:54 | INFO | GET /me -> 200 (3.2 ms)
+2026-03-06 11:24:54 | INFO | GET /conversations -> 200 (8.3 ms)
+2026-03-06 11:24:54 | INFO | GET /me -> 200 (3.2 ms)
+2026-03-06 11:24:55 | INFO | GET /conversations -> 200 (4.9 ms)
+2026-03-06 11:25:01 | INFO | GET /me -> 200 (3.3 ms)
+2026-03-06 11:25:01 | INFO | GET /me -> 200 (2.4 ms)
+2026-03-06 11:25:48 | INFO | POST /upload-avatar -> 200 (17.5 ms)
+2026-03-06 11:25:54 | INFO | GET /uploads/user_3_05c24db9.jpg -> 304 (1.5 ms)
+2026-03-06 11:26:02 | INFO | GET /me -> 200 (3.6 ms)
+2026-03-06 11:26:03 | INFO | GET /uploads/user_3_68a6416f.jpg -> 200 (1.1 ms)
+2026-03-06 11:26:54 | INFO | GET /me -> 200 (4.2 ms)
+2026-03-06 11:27:08 | INFO | POST /upload-avatar -> 200 (18.3 ms)
+2026-03-06 11:27:08 | INFO | GET /uploads/user_3_5eb5d791.jpg -> 200 (1.2 ms)
+2026-03-06 11:29:00 | INFO | GET /me -> 200 (2.7 ms)
