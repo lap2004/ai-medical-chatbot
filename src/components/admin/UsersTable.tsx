@@ -8,10 +8,12 @@ export default function UsersTable({
   rows,
   onEdit,
   onDelete,
+  currentUserId,
 }: {
   rows: UserRow[];
   onEdit: (r: UserRow) => void;
   onDelete: (r: UserRow) => void;
+  currentUserId?: string | number;
 }) {
   return (
     <table className="w-full border-collapse">
@@ -64,18 +66,34 @@ export default function UsersTable({
             <td className="py-3">
               <div className="flex items-center justify-end gap-2">
                 <button
-                  className="p-2 rounded-lg hover:bg-slate-50"
-                  onClick={() => onEdit(r)}
+                  className={`p-2 rounded-lg ${r.id === `#${currentUserId}` || r.id === currentUserId?.toString()
+                    ? "opacity-50 cursor-not-allowed text-slate-300"
+                    : "hover:bg-slate-50 text-slate-400"
+                    }`}
+                  onClick={() => {
+                    if (r.id !== `#${currentUserId}` && r.id !== currentUserId?.toString()) {
+                      onEdit(r);
+                    }
+                  }}
+                  disabled={r.id === `#${currentUserId}` || r.id === currentUserId?.toString()}
                   title="Edit"
                 >
-                  <Pencil className="w-4 h-4 text-slate-400" />
+                  <Pencil className="w-4 h-4" />
                 </button>
                 <button
-                  className="p-2 rounded-lg hover:bg-slate-50"
-                  onClick={() => onDelete(r)}
+                  className={`p-2 rounded-lg ${r.id === `#${currentUserId}` || r.id === currentUserId?.toString()
+                    ? "opacity-50 cursor-not-allowed text-slate-300"
+                    : "hover:bg-slate-50 text-slate-400"
+                    }`}
+                  onClick={() => {
+                    if (r.id !== `#${currentUserId}` && r.id !== currentUserId?.toString()) {
+                      onDelete(r);
+                    }
+                  }}
+                  disabled={r.id === `#${currentUserId}` || r.id === currentUserId?.toString()}
                   title="Delete"
                 >
-                  <Trash2 className="w-4 h-4 text-slate-400" />
+                  <Trash2 className="w-4 h-4" />
                 </button>
               </div>
             </td>

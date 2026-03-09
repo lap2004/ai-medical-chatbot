@@ -257,8 +257,8 @@ const SupportPage: React.FC = () => {
                         <div className="grid md:grid-cols-3 gap-6">
                             {[
                                 { icon: MessageCircle, title: "Live Chat", desc: "Chat with our support team real-time.", action: "Start Chat" },
-                                { icon: Mail, title: "Email Support", desc: "Send us a detailed message.", action: "support@doctorai.com" },
-                                { icon: Phone, title: "Phone Line", desc: "Call us for urgent inquiries.", action: "+1 (800) 123-4567" },
+                                { icon: Mail, title: "Email Support", desc: "Send us a detailed message.", action: "chatbot@vlu.vn" },
+                                { icon: Phone, title: "Phone Line", desc: "Call us for urgent inquiries.", action: "+84 (077) 339 6195" },
                             ].map((item, idx) => (
                                 <div key={idx} className="bg-white dark:bg-slate-900 p-8 rounded-3xl border border-slate-200 dark:border-slate-800 hover:border-primary/50 transition-all shadow-sm">
                                     <div className="w-12 h-12 bg-primary/10 text-primary rounded-xl flex items-center justify-center mb-4">
@@ -279,11 +279,11 @@ const SupportPage: React.FC = () => {
                             <form className="grid gap-6 md:grid-cols-2" onSubmit={(e) => e.preventDefault()}>
                                 <div className="space-y-2">
                                     <label className="text-sm font-semibold text-slate-700 dark:text-slate-300">Your Name</label>
-                                    <input type="text" placeholder="John Doe" className="w-full p-4 rounded-xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 text-sm outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all" />
+                                    <input type="text" placeholder="Thai Viet Lap" className="w-full p-4 rounded-xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 text-sm outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all" />
                                 </div>
                                 <div className="space-y-2">
                                     <label className="text-sm font-semibold text-slate-700 dark:text-slate-300">Email Address</label>
-                                    <input type="email" placeholder="john@example.com" className="w-full p-4 rounded-xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 text-sm outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all" />
+                                    <input type="email" placeholder="lap@gmail.com" className="w-full p-4 rounded-xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 text-sm outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all" />
                                 </div>
                                 <div className="md:col-span-2 space-y-2">
                                     <label className="text-sm font-semibold text-slate-700 dark:text-slate-300">Subject</label>

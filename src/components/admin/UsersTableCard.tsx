@@ -30,6 +30,7 @@ export default function UsersTableCard(props: {
 
   onEdit: (r: UserRow) => void;
   onDelete: (r: UserRow) => void;
+  currentUserId?: string | number;
 }) {
   return (
     <div className="rounded-2xl border border-slate-100 bg-white">
@@ -50,6 +51,7 @@ export default function UsersTableCard(props: {
           rows={props.rows}
           onEdit={props.onEdit}
           onDelete={props.onDelete}
+          currentUserId={props.currentUserId}
         />
         <PaginationFooter
           page={props.page}

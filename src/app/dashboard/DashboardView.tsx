@@ -92,7 +92,7 @@ export default function DashboardView() {
                     <div className="bg-white dark:bg-slate-800 rounded-xl p-6 shadow-sm border border-slate-200 dark:border-slate-700">
                         <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-4">Recent Activity</h3>
                         <div className="space-y-4">
-                            {stats?.recent_activities?.map((activity, idx) => (
+                            {stats?.recent_activities?.slice().reverse().map((activity, idx) => (
                                 <div key={idx} className="flex items-start gap-3 p-3 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-900/50 transition">
                                     <div className={`mt-0.5 min-w-[32px] w-8 h-8 rounded-full flex items-center justify-center ${activity.type === 'feedback'
                                         ? (activity.value === 'like' ? 'bg-emerald-100 text-emerald-600' : 'bg-rose-100 text-rose-600')

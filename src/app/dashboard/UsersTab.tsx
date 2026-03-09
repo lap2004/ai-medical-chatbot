@@ -9,10 +9,14 @@ import {
     updateUser,
     deleteUser,
 } from "@/services/apis/admin";
+import { useUserStore } from "@/store/userStore";
 
 const PAGE_SIZE = 5;
 
 export default function UsersTab() {
+    // ── Current User Store ─────────────────────────────────────
+    const { userInfo } = useUserStore();
+
     // ── Filter / search state ─────────────────────────────────
     const [query, setQuery] = React.useState("");
     const [roleFilter, setRoleFilter] = React.useState<Role | "ALL">("ALL");
@@ -213,6 +217,7 @@ export default function UsersTab() {
                 onGoToPage={(p) => setPage(p)}
                 onEdit={openEdit}
                 onDelete={openDelete}
+                currentUserId={userInfo?.id}
             />
 
             {/* Modals */}
