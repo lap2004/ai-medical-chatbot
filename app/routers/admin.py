@@ -214,7 +214,7 @@ async def list_users(
     total = await db.scalar(count_stmt)
 
     # Paginate
-    stmt = stmt.order_by(User.id.desc()).offset((page - 1) * page_size).limit(page_size)
+    stmt = stmt.order_by(User.id.asc()).offset((page - 1) * page_size).limit(page_size)
     result = await db.execute(stmt)
     users = result.scalars().all()
 
