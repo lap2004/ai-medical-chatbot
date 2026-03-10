@@ -37,6 +37,7 @@ export function useChat() {
         title: conv.title,
         createdAt: new Date(conv.updated_at).getTime(),
         messages: [], // Messages sẽ được load khi cần
+        isLoaded: false,
       }));
 
       setConversations(localConvs);
@@ -87,6 +88,7 @@ export function useChat() {
             createdAt: Date.now(),
           },
         ],
+        isLoaded: true,
       };
 
       setConversations((prev) => {
@@ -117,6 +119,7 @@ export function useChat() {
             createdAt: now,
           },
         ],
+        isLoaded: true,
       };
 
       setConversations((prev) => {
@@ -140,7 +143,7 @@ export function useChat() {
     try {
       const conv = conversations.find(c => c.id === id);
       // Chỉ load nếu chưa có messages
-      if (conv && conv.messages.length === 0) {
+      if (conv && !conv.isLoaded) {
         setLoading(true); // Show loading UI
         const backendMessages = await apiGetMessages(id);
 
@@ -158,7 +161,7 @@ export function useChat() {
           }));
 
         setConversations(prev => prev.map(c =>
-          c.id === id ? { ...c, messages: localMessages } : c
+          c.id === id ? { ...c, messages: localMessages, isLoaded: true } : c
         ));
       }
     } catch (error) {
@@ -172,7 +175,7 @@ export function useChat() {
   useEffect(() => {
     if (activeId && conversations.length > 0) {
       const conv = conversations.find(c => c.id === activeId);
-      if (conv && conv.messages.length === 0) {
+      if (conv && !conv.isLoaded) {
         selectConversation(activeId);
       }
     }

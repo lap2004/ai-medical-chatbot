@@ -58,7 +58,7 @@ export default function UsersToolbar({
           </button>
 
           {filterOpen && (
-            <div className="absolute right-0 mt-2 w-[240px] rounded-2xl border border-slate-100 bg-white shadow-xl p-3 z-50">
+            <div className="absolute right-0 mt-2 w-[240px] rounded-2xl border border-slate-100 bg-white p-3 z-50">
               <div className="text-[11px] font-extrabold text-slate-700 mb-2">
                 Filters
               </div>

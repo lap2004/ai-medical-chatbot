@@ -16,6 +16,7 @@ export interface Conversation {
   title: string;
   createdAt: number;
   messages: Message[];
+  isLoaded?: boolean;
 }
 
 export type MsgRole = "user" | "assistant";
