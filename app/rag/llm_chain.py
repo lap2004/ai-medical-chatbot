@@ -103,17 +103,23 @@ RESPONSE_JSON_SCHEMA = {
 }
 
 
-def _format_prompt(question: str, contexts: List[Dict[str, Any]]) -> str:
+def _format_prompt(question: str, contexts: List[Dict[str, Any]], history: List[Dict[str, Any]] = None) -> str:
     ctx_block = "\n\n".join([
         f"[CTX {i+1}]\n{c['text']}\n(source: {c['doc_id']}#{c['chunk_id']})"
         for i, c in enumerate(contexts)
     ]) or "(không có ngữ cảnh)"
+    
+    history_block = ""
+    if history:
+        history_text = "\n".join([f"{msg['role'].capitalize()}: {msg['content']}" for msg in history])
+        history_block = f"LỊCH SỬ CHAT (ĐỂ THAM KHẢO NGỮ CẢNH):\n{history_text}\n\n"
 
     return (
         "SYSTEM\n"
         f"{SYSTEM_INSTRUCTIONS}\n\n"
         "JSON_SCHEMA\n"
         f"{json.dumps(RESPONSE_JSON_SCHEMA, ensure_ascii=False)}\n\n"
+        f"{history_block}"
         "CONTEXT (trích dẫn theo từng đoạn):\n"
         f"{ctx_block}\n\n"
         "USER QUESTION:\n"
@@ -164,8 +170,39 @@ def parse_json_safely(raw: str) -> Dict[str, Any]:
     }
 
 
-def build_answer(question: str, contexts: List[Dict[str, Any]]) -> Dict[str, Any]:
-    prompt = _format_prompt(question, contexts)
+def contextualize_query(question: str, history: List[Dict[str, Any]]) -> str:
+    if not history:
+        return question
+        
+    history_text = "\n".join([f"{msg['role'].capitalize()}: {msg['content']}" for msg in history])
+    
+    REWRITE_SYSTEM_PROMPT = """Bạn là một trợ lý ngôn ngữ AI.
+Nhiệm vụ của bạn là xem xét LỊCH SỬ CHAT và CÂU HỎI MỚI của người dùng.
+Nếu câu hỏi mới của người dùng có chứa các đại từ (ví dụ: nó, bác sĩ đó, thuốc này, triệu chứng này, bệnh đó...) hoặc bị thiếu ngữ cảnh,
+hãy viết lại câu hỏi đó thành một câu hỏi ĐỘC LẬP (Standalone Query) có đầy đủ ý nghĩa, thay thế các đại từ bằng thực thể cụ thể từ lịch sử chat.
+Nếu câu hỏi mới đã đầy đủ ý nghĩa hoặc không liên quan đến lịch sử chat, hãy giữ nguyên câu hỏi gốc.
+Tuyệt đối KHÔNG trả lời câu hỏi, CHỈ trả về câu hỏi đã được viết lại. KHÔNG CÓ BẤT KỲ VĂN BẢN NÀO KHÁC BÊN NGOÀI CÂU HỎI.
+"""
+
+    prompt = (
+        f"LỊCH SỬ CHAT:\n{history_text}\n\n"
+        f"CÂU HỎI MỚI:\nUser: {question}\n\n"
+        f"HƯỚNG DẪN:\n{REWRITE_SYSTEM_PROMPT}\n"
+        f"-> CÂU HỎI ĐỘC LẬP:"
+    )
+    
+    rewritten = call_gemini(prompt)
+    if not rewritten.strip():
+        return question
+        
+    # Remove any quotes around the rewritten question if Gemini outputs them
+    clean_rewritten = rewritten.strip().strip('"').strip("'")
+    logger.info(f"O-Query: {question} | Rewritten: {clean_rewritten}")
+    return clean_rewritten
+
+
+def build_answer(question: str, contexts: List[Dict[str, Any]], history: List[Dict[str, Any]] = None) -> Dict[str, Any]:
+    prompt = _format_prompt(question, contexts, history)
     raw = call_gemini(prompt)
     parsed = parse_json_safely(raw)
 

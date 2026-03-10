@@ -138,6 +138,22 @@ async def _touch_conversation(db: AsyncSession, conversation_id: UUID, now: Opti
     )
 
 
+async def _get_recent_messages(db: AsyncSession, conversation_id: UUID, exclude_id: Optional[UUID] = None, limit: int = 10) -> List[dict]:
+    from sqlalchemy import desc
+    stmt = select(ChatMessage).where(
+        ChatMessage.conversation_id == conversation_id,
+        ChatMessage.deleted_at.is_(None)
+    )
+    if exclude_id:
+        stmt = stmt.where(ChatMessage.id != exclude_id)
+        
+    result = await db.execute(stmt.order_by(desc(ChatMessage.created_at)).limit(limit))
+    messages = result.scalars().all()
+    # Reverse to chronological order (oldest first in the sliding window)
+    messages = list(reversed(messages))
+    return [{"role": m.role, "content": m.content} for m in messages]
+
+
 def _extract_assistant_text(pipeline_out: dict) -> str:
     """
     pipeline_out: {"answer": {...} or str, "contexts": [...]}
@@ -338,8 +354,9 @@ async def create_message(
             await db.refresh(user_msg)
             return user_msg
 
-        # RAG + LLM
-        out = await run_pipeline(content, db)
+        # RAG + LLM (with recent 5 pairs / limit=10 sliding window memory)
+        recent_history = await _get_recent_messages(db, conversation_id, exclude_id=user_msg.id, limit=10)
+        out = await run_pipeline(content, db, history=recent_history)
         contexts = out.get("contexts") or []
         raw_answer = out.get("answer") or {}
 
@@ -679,8 +696,9 @@ async def handle_chat_request(
         # (đơn giản, bạn có thể bỏ qua title cho voice)
         # -> nếu bạn muốn title: hãy query conv và set nếu title == "New chat"...
 
-        # 2) pipeline
-        out = await run_pipeline(question, db)
+        # 2) pipeline (with recent 5 pairs / limit=10 sliding window memory)
+        recent_history = await _get_recent_messages(db, conversation_id, exclude_id=user_msg.id, limit=10)
+        out = await run_pipeline(question, db, history=recent_history)
         assistant_text = _extract_assistant_text(out)
         if not assistant_text:
             assistant_text = "Xin lỗi, mình chưa có câu trả lời phù hợp."
