@@ -3,18 +3,20 @@ import { useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
 import { toast } from "sonner";
 import { Mail, Lock, Stethoscope, Apple, Eye, EyeOff } from "lucide-react";
+import { useGoogleLogin } from "@react-oauth/google";
 
 import { Button } from "@/components/ui/Button";
 import { SocialButton } from "@/components/ui/SocialButton";
 import { TextInput } from "@/components/ui/TextInput";
 
-import { useUserLogin } from "@/services/hooks/hookAuth";
+import { useUserLogin, useUserGoogleLogin } from "@/services/hooks/hookAuth";
 import { setAuthCookies } from "@/lib/helper/token";
 import { ROLE_VALUE } from "@/services/config/const";
 import { useAuthUIStore } from "@/store";
 
 const LoginPage: React.FC = () => {
   const { postUserLogin } = useUserLogin();
+  const { postUserGoogleLogin } = useUserGoogleLogin();
   const navigate = useNavigate();
 
   const [form, setForm] = useState({ email: "", password: "" });
@@ -95,6 +97,40 @@ const LoginPage: React.FC = () => {
       setIsLoading(false);
     }
   };
+
+  const handleGoogleLoginSuccess = async (tokenResponse: any) => {
+    setIsLoading(true);
+    try {
+      // Backend expects {id_token: token} but useGoogleLogin gives access_token in implicit flow.
+      // If the backend is designed for Google Sign-In (Official), it might expect id_token.
+      // However, typical SPA integrations with access_token are also common.
+      // Sending access_token to postUserGoogleLogin which then sends it as id_token to backend.
+      const res = await postUserGoogleLogin(tokenResponse.access_token);
+      const data = res?.data;
+
+      if (!data?.access_token) {
+        toast.error(data?.detail || "Đăng nhập Google thất bại!");
+        return;
+      }
+
+      setAuthCookies(data.access_token, data.refresh_token);
+      if (data?.role) {
+        Cookies.set(ROLE_VALUE, data.role);
+      }
+
+      toast.success("Đăng nhập Google thành công!");
+      navigate(data.role === "admin" ? "/dashboard" : "/", { replace: true });
+    } catch (err: any) {
+      toast.error(err?.response?.data?.detail || "Đăng nhập Google thất bại!");
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const loginWithGoogle = useGoogleLogin({
+    onSuccess: handleGoogleLoginSuccess,
+    onError: () => toast.error("Google Login Failed"),
+  });
 
   const onSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -208,7 +244,7 @@ const LoginPage: React.FC = () => {
                   alt="Google"
                 />
               }
-              onClick={() => toast.info("Google login chưa được tích hợp.")}
+              onClick={() => loginWithGoogle()}
             />
 
             <SocialButton

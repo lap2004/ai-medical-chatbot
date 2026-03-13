@@ -17,7 +17,7 @@ type ChatItem = {
   text: string;
   ts: number;
 };
-
+const VOICE_DOMAIN = import.meta.env.VITE_VOICE_DOMAIN;
 function uid() {
   return `${Date.now()}_${Math.random().toString(16).slice(2)}`;
 }
@@ -88,8 +88,8 @@ export const VoiceMode: React.FC = () => {
   const [sendBps, setSendBps] = useState(0);
 
   // config
-  const WS_URL = "wss://attorney-gregory-diff-wives.trycloudflare.com/ws-call";
-
+  // const WS_URL = "wss://attorney-gregory-diff-wives.trycloudflare.com/ws-call";
+const WS_URL = `wss://${VOICE_DOMAIN}/ws-call`;
   // refs
   const wsRef = useRef<WebSocket | null>(null);
   const audioCtxRef = useRef<AudioContext | null>(null);
