@@ -36,6 +36,11 @@ class Settings(BaseSettings):
     JWT_ALGORITHM: str = "HS256"
     JWT_EXPIRE_MINUTES: int = 60
 
+    google_client_id: str
+    google_client_secret: str
+    nextauth_url: str
+    nextauth_secret: str
+
     # -------------------------
     # RAG
     # -------------------------

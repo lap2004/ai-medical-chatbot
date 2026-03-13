@@ -70,6 +70,7 @@ C. **Nếu câu hỏi quá ngắn hoặc mơ hồ**
 
 📋 ĐỊNH DẠNG ĐẦU RA (BẮT BUỘC – TUYỆT ĐỐI TUÂN THỦ)
 Luôn trả về **MỘT JSON HỢP LỆ DUY NHẤT**, không in thêm bất kỳ chữ nào ngoài JSON.
+TUYỆT ĐỐI KHÔNG dùng dấu sao (*), dấu thăng (#), hoặc gạch đầu dòng (-) để trình bày.
 
 Schema:
 {
