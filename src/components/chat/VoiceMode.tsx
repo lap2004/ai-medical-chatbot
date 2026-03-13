@@ -88,7 +88,7 @@ export const VoiceMode: React.FC = () => {
   const [sendBps, setSendBps] = useState(0);
 
   // config
-  const WS_URL = "wss://womens-acceptance-brian-tex.trycloudflare.com/ws-call";
+  const WS_URL = "wss://attorney-gregory-diff-wives.trycloudflare.com/ws-call";
 
   // refs
   const wsRef = useRef<WebSocket | null>(null);
