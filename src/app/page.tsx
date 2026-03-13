@@ -133,17 +133,20 @@ const HomePage: React.FC = () => {
                 medication info powered by advanced AI.
               </p>
               <div className="flex flex-wrap gap-4">
-                <a href="#/chat">
-                  <Button size="lg" className="px-10">
-                    Get Started Free{" "}
-                    <ArrowRight className="ml-2 w-5 h-5" />
-                  </Button>
-                </a>
-                <Button variant="outline" size="lg" className="px-10">
-                  <PlayCircle className="text-primary mr-2 w-5 h-5" />{" "}
-                  Watch Demo
+              {/* Nút Get Started */}
+              <a href="/chat">
+                <Button size="lg" className="px-10">
+                  Get Started Free <ArrowRight className="ml-2 w-5 h-5" />
                 </Button>
-              </div>
+              </a>
+
+              {/* Nút Watch Demo - Bọc thêm thẻ <a> */}
+              <a href="/chat">
+                <Button variant="outline" size="lg" className="px-10">
+                  <PlayCircle className="text-primary mr-2 w-5 h-5" /> Watch Demo
+                </Button>
+              </a>
+            </div>
             </div>
 
             <div className="relative hidden lg:flex items-center justify-center">
@@ -183,7 +186,7 @@ const HomePage: React.FC = () => {
                   </div>
                   <div>
                     <p className="text-xs text-slate-500">Accuracy Rate</p>
-                    <p className="text-xl font-bold dark:text-white">98.4%</p>
+                    <p className="text-xl font-bold dark:text-white">96.76%</p>
                   </div>
                 </div>
               </div>
