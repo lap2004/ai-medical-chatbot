@@ -31,7 +31,7 @@ app = FastAPI(title="AI Bác sĩ (RAG)", version="1.0.0")
 app.add_middleware(RequestLogMiddleware)
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["https://including-acrobat-photograph-moving.trycloudflare.com","http://localhost:3000","https://kltn-vlu.vercel.app"],
+    allow_origins=["https://competitive-deployment-trying-works.trycloudflare.com","http://localhost:3000","https://kltn-vlu.vercel.app"],
     allow_credentials=True,  # nếu bạn dùng cookie token -> True
     allow_methods=["*"],
     allow_headers=["*"],

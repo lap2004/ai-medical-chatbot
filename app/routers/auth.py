@@ -169,19 +169,32 @@ async def change_password(
     return {"message": "Đổi mật khẩu thành công"}
 
 
-@router.post("/google")
+@router.post("/auth/google")
 async def login_google(data: GoogleLoginRequest, db: AsyncSession = Depends(get_db)):
     from google.oauth2 import id_token as google_id_token
     from google.auth.transport import requests as google_requests
+    import requests
 
     try:
-        id_info = google_id_token.verify_oauth2_token(data.id_token, google_requests.Request())
+        # Kiểm tra nếu là access_token (thường bắt đầu bằng ya29.) hay id_token (JWT)
+        if data.id_token.startswith("ya29."):
+            # Đây là access_token, gọi userinfo endpoint
+            resp = requests.get(f"https://www.googleapis.com/oauth2/v3/userinfo?access_token={data.id_token}")
+            if resp.status_code != 200:
+                raise HTTPException(status_code=401, detail="access_token không hợp lệ")
+            id_info = resp.json()
+        else:
+            # Đây là id_token, verify bằng thư viện google
+            id_info = google_id_token.verify_oauth2_token(data.id_token, google_requests.Request())
+        
         email = id_info.get("email")
         name = id_info.get("name", "")
         if not email:
             raise ValueError("Token không chứa email")
-    except Exception:
-        raise HTTPException(status_code=401, detail="id_token không hợp lệ")
+    except Exception as e:
+        logger.error(f"Google auth error: {str(e)}")
+        raise HTTPException(status_code=401, detail=f"Token không hợp lệ: {str(e)}")
+
 
     result = await db.execute(select(User).where(User.email == email))
     db_user: User | None = result.scalar_one_or_none()
