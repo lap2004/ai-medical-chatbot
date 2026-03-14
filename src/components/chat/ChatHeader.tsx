@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { ProfileMenuDialog } from "./ProfileMenuDialog";
 import { ResetPasswordDialog } from "../auth/ResetPasswordDialog";
 import { removeAuthCookies } from "@/lib/helper/token";
-import { Home, MessageSquare, Mic } from "lucide-react";
+import { Home, MessageSquare, Mic, Moon, Sun } from "lucide-react";
 import { LanguageSwitcher } from "../ui/LanguageSwitcher";
 
 import { useUserStore } from "@/store/userStore";
@@ -34,7 +34,7 @@ export const ChatHeader: React.FC<Props> = ({ tab, onTabChange }) => {
     }
   };
   return (
-    <header className="glass-effect border-b border-slate-200 dark:border-slate-800 px-8 py-4 flex items-center justify-between sticky top-0 z-20">
+    <header className="glass-effect bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 px-8 py-4 flex items-center justify-between sticky top-0 z-20">
       <div className="flex items-center space-x-4">
         <button
           onClick={() => navigate("/")}
@@ -129,6 +129,17 @@ export const ChatHeader: React.FC<Props> = ({ tab, onTabChange }) => {
         <div className="h-8 w-[1px] bg-slate-200 dark:bg-slate-700 mx-2" />
 
         <LanguageSwitcher />
+
+        {/* Dark Mode Toggle */}
+        <button
+          className="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+          onClick={() => document.documentElement.classList.toggle("dark")}
+          title="Toggle dark mode"
+          aria-label="Toggle dark mode"
+        >
+          <Moon className="w-5 h-5 dark:hidden text-slate-600" />
+          <Sun className="w-5 h-5 hidden dark:block text-slate-300" />
+        </button>
 
         {/* USER TRIGGER (neo dialog ở đây) */}
         <button

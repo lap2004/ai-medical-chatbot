@@ -15,14 +15,14 @@ export default function Sidebar({
   const { t } = useTranslation();
 
   return (
-    <aside className="w-[240px] border-r border-slate-100 min-h-screen bg-white relative">
+    <aside className="w-[240px] border-r border-slate-100 dark:border-slate-800 min-h-screen bg-white dark:bg-slate-900 relative">
       <div className="px-5 pt-5">
         <div className="flex items-center gap-2">
           <div className="w-7 h-7 rounded-lg bg-teal-500 flex items-center justify-center">
             <span className="text-white text-xs font-black">AI</span>
           </div>
           <div>
-            <div className="text-[13px] font-extrabold leading-4">
+            <div className="text-[13px] font-extrabold leading-4 text-slate-900 dark:text-white">
               AI Doctor
             </div>
             <div className="text-[10px] text-slate-400">{t('admin.adminPanel', 'Admin Panel')}</div>
@@ -58,7 +58,7 @@ export default function Sidebar({
       </nav>
 
       <div className="absolute bottom-0 left-0 w-[240px] p-4">
-        <button className="w-full text-left text-[12px] text-slate-500 hover:text-slate-700">
+        <button className="w-full text-left text-[12px] text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-white">
           {t('admin.helpCenter', 'Help Center')}
         </button>
       </div>

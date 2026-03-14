@@ -87,7 +87,7 @@ export const ChatMessageBubble: React.FC<Props> = ({
   );
 
   const bubbleClass = isAssistant
-    ? "bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-100"
+    ? "bg-slate-100 dark:bg-slate-900 border border-transparent dark:border-slate-800 text-slate-800 dark:text-slate-100"
     : "bg-primary text-white";
 
   return (

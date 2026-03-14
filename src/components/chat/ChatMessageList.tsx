@@ -112,7 +112,7 @@ export const ChatMessageList: React.FC<Props> = ({
   return (
     <div
       ref={scrollRef}
-      className="flex-1 overflow-y-auto p-8 space-y-8 bg-slate-50/50 dark:bg-slate-950/20 custom-scrollbar"
+      className="flex-1 overflow-y-auto p-8 space-y-8 bg-slate-50/50 dark:bg-transparent custom-scrollbar"
     >
       <div className="text-center py-4">
         <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-400 px-4 py-1.5 border border-slate-200 dark:border-slate-800 rounded-full">

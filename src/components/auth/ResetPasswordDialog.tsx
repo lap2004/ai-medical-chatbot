@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/Button";
 import { TextInput } from "@/components/ui/TextInput";
 import { useUserResetPassword } from "@/services/hooks/hookAuth";
 import { useAuthUIStore } from "@/store";
+import { useTranslation } from "react-i18next";
 
 function getPasswordStrength(pw: string) {
   const password = pw ?? "";
@@ -50,6 +51,7 @@ export const ResetPasswordDialog: React.FC<ResetPasswordPopupProps> = ({
 }) => {
   const accessToken = Cookies.get("access_token");
   const { postUserResetPassword } = useUserResetPassword();
+  const { t } = useTranslation();
   const panelRef = useRef<HTMLDivElement>(null);
 
   const [currentPassword, setCurrentPassword] = useState("");
@@ -198,20 +200,19 @@ export const ResetPasswordDialog: React.FC<ResetPasswordPopupProps> = ({
                 {forcePasswordChange ? (
                   <>
                     <h2 className="text-xl font-extrabold text-slate-900 dark:text-white">
-                      Password Update Required
+                      {t('common.profile.resetPasswordRequired', 'Password Update Required')}
                     </h2>
-                    <p className="text-sm text-slate-500">
-                      For security reasons, you must update your password before
-                      continuing.
+                    <p className="text-sm text-slate-500 dark:text-slate-400">
+                      {t('common.profile.resetPasswordRequiredDesc', 'For security reasons, you must update your password before continuing.')}
                     </p>
                   </>
                 ) : (
                   <>
                     <h2 className="text-xl font-extrabold text-slate-900 dark:text-white">
-                      Change Password
+                      {t('common.profile.resetPassword', 'Change Password')}
                     </h2>
-                    <p className="text-sm text-slate-500">
-                      Update your password to keep your account secure.
+                    <p className="text-sm text-slate-500 dark:text-slate-400">
+                      {t('common.profile.resetPasswordDesc', 'Update your password to keep your account secure.')}
                     </p>
                   </>
                 )}
@@ -222,7 +223,7 @@ export const ResetPasswordDialog: React.FC<ResetPasswordPopupProps> = ({
               {/* Current password */}
               <div>
                 <label className="block text-sm font-semibold dark:text-slate-300 mb-2 ml-1">
-                  Current Password
+                  {t('common.profile.currentPassword', 'Current Password')}
                 </label>
                 <div className="relative">
                   <TextInput
@@ -253,7 +254,7 @@ export const ResetPasswordDialog: React.FC<ResetPasswordPopupProps> = ({
               {/* New password */}
               <div>
                 <label className="block text-sm font-semibold dark:text-slate-300 mb-2 ml-1">
-                  New Password
+                  {t('common.profile.newPassword', 'New Password')}
                 </label>
                 <div className="relative">
                   <TextInput
@@ -285,7 +286,7 @@ export const ResetPasswordDialog: React.FC<ResetPasswordPopupProps> = ({
               <div className="space-y-2">
                 <div className="flex items-center justify-between text-[11px]">
                   <span className="text-slate-400 font-semibold tracking-widest">
-                    PASSWORD STRENGTH
+                    {t('common.profile.passwordStrength', 'PASSWORD STRENGTH')}
                   </span>
                   <span
                     className={`font-bold ${strength.label === "STRONG"
@@ -327,8 +328,8 @@ export const ResetPasswordDialog: React.FC<ResetPasswordPopupProps> = ({
                     className={
                       strength.passed ? "text-slate-500" : "text-slate-400"
                     }
-                  >
-                    Use at least 8 characters with numbers and symbols
+                   >
+                    {t('common.profile.passwordHint', 'Use at least 8 characters with numbers and symbols')}
                   </span>
                 </div>
               </div>
@@ -336,7 +337,7 @@ export const ResetPasswordDialog: React.FC<ResetPasswordPopupProps> = ({
               {/* Confirm */}
               <div>
                 <label className="block text-sm font-semibold dark:text-slate-300 mb-2 ml-1">
-                  Confirm New Password
+                  {t('common.profile.confirmNewPassword', 'Confirm New Password')}
                 </label>
                 <div className="relative">
                   <TextInput
@@ -372,7 +373,7 @@ export const ResetPasswordDialog: React.FC<ResetPasswordPopupProps> = ({
                 className="w-full !rounded-2xl !py-4"
                 disabled={isLoading}
               >
-                {isLoading ? "Updating..." : "Change Password"}
+                {isLoading ? t('common.profile.updating', 'Updating...') : t('common.profile.resetPassword', 'Change Password')}
               </Button>
             </div>
           </div>

@@ -6,6 +6,7 @@ import { toast } from "sonner";
 import { uploadAvatar } from "@/services/apis/auth";
 import ImageCropModal from "../ui/ImageCropModal";
 import { ChangeNameDialog } from "../ui/ChangeNameDialog";
+import { useTranslation } from "react-i18next";
 
 type Props = {
   open: boolean;
@@ -28,6 +29,7 @@ export const ProfileMenuDialog: React.FC<Props> = ({
   userInfo,
   onAvatarChange,
 }) => {
+  const { t } = useTranslation();
   const GAP = 10;
   const EDGE = 12;
   const PANEL_W = 320;
@@ -130,9 +132,9 @@ export const ProfileMenuDialog: React.FC<Props> = ({
       const file = new File([croppedBlob], "avatar.jpg", { type: "image/jpeg" });
       const { avatar_url } = await uploadAvatar(file);
       onAvatarChange?.(avatar_url);
-      toast.success("Thay đổi ảnh đại diện thành công!");
+      toast.success(t('common.profile.uploadSuccess'));
     } catch (err: any) {
-      const msg = err.message || "Đã có lỗi xảy ra khi đổi ảnh!";
+      const msg = err.message || t('common.profile.uploadError');
       setUploadError(msg);
       toast.error(msg);
     } finally {
@@ -158,7 +160,7 @@ export const ProfileMenuDialog: React.FC<Props> = ({
       {/* Panel */}
       <div
         ref={panelRef}
-        className="fixed w-[320px] rounded-[28px] bg-white border border-slate-200/70 overflow-hidden"
+        className="fixed w-[320px] rounded-[28px] bg-white dark:bg-slate-900 border border-slate-200/70 dark:border-slate-700 overflow-hidden shadow-2xl"
         style={
           pos ? { left: pos.left, top: pos.top } : { right: EDGE, top: 72 } // fallback
         }
@@ -168,7 +170,7 @@ export const ProfileMenuDialog: React.FC<Props> = ({
           <div className="flex justify-end">
             <button
               onClick={onClose}
-              className="p-2 rounded-xl hover:bg-slate-100 text-slate-500 transition-colors"
+              className="p-2 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-500 dark:text-slate-400 transition-colors"
               aria-label="Close"
               title="Close"
             >
@@ -220,10 +222,10 @@ export const ProfileMenuDialog: React.FC<Props> = ({
             )}
 
             <div className="mt-4">
-              <div className="text-[18px] font-extrabold text-slate-900 leading-tight">
+              <div className="text-[18px] font-extrabold text-slate-900 dark:text-white leading-tight">
                 {userInfo?.full_name || "Guest User"}
               </div>
-              <div className="mt-0.5 text-xs text-slate-500">
+              <div className="mt-0.5 text-xs text-slate-500 dark:text-slate-400">
                 {userInfo?.email || "guest@example.com"}
               </div>
             </div>
@@ -234,39 +236,39 @@ export const ProfileMenuDialog: React.FC<Props> = ({
             </div>
           </div>
 
-          <div className="my-5 h-px bg-slate-100" />
+          <div className="my-5 h-px bg-slate-100 dark:bg-slate-800" />
 
           <button
             onClick={() => fileInputRef.current?.click()}
             disabled={uploading}
-            className="w-full flex items-center justify-between rounded-2xl px-4 py-3 hover:bg-slate-50 transition"
+            className="w-full flex items-center justify-between rounded-2xl px-4 py-3 hover:bg-slate-50 dark:hover:bg-slate-800 transition"
           >
             <div className="flex items-center gap-3">
-              <div className="w-9 h-9 rounded-xl bg-slate-100 flex items-center justify-center text-slate-600">
+              <div className="w-9 h-9 rounded-xl bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-600 dark:text-slate-300">
                 <ImageIcon className="w-5 h-5" />
               </div>
-              <div className="text-sm font-semibold text-slate-800">
-                Change Avatar
+              <div className="text-sm font-semibold text-slate-800 dark:text-white">
+                {t('common.profile.changeAvatar')}
               </div>
             </div>
-            <ChevronRight className="w-5 h-5 text-slate-300" />
+            <ChevronRight className="w-5 h-5 text-slate-300 dark:text-slate-600" />
           </button>
 
           <button
             onClick={() => {
               setNameModalOpen(true);
             }}
-            className="mt-2 w-full flex items-center justify-between rounded-2xl px-4 py-3 hover:bg-slate-50 transition"
+            className="mt-2 w-full flex items-center justify-between rounded-2xl px-4 py-3 hover:bg-slate-50 dark:hover:bg-slate-800 transition"
           >
             <div className="flex items-center gap-3">
-              <div className="w-9 h-9 rounded-xl bg-slate-100 flex items-center justify-center text-slate-600">
+              <div className="w-9 h-9 rounded-xl bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-600 dark:text-slate-300">
                 <UserCircle className="w-5 h-5" />
               </div>
-              <div className="text-sm font-semibold text-slate-800">
-                Change Name
+              <div className="text-sm font-semibold text-slate-800 dark:text-white">
+                {t('common.profile.changeName')}
               </div>
             </div>
-            <ChevronRight className="w-5 h-5 text-slate-300" />
+            <ChevronRight className="w-5 h-5 text-slate-300 dark:text-slate-600" />
           </button>
 
           <button
@@ -274,24 +276,24 @@ export const ProfileMenuDialog: React.FC<Props> = ({
               onChangePassword?.();
               onClose();
             }}
-            className="mt-2 w-full flex items-center justify-between rounded-2xl px-4 py-3 hover:bg-slate-50 transition"
+            className="mt-2 w-full flex items-center justify-between rounded-2xl px-4 py-3 hover:bg-slate-50 dark:hover:bg-slate-800 transition"
           >
             <div className="flex items-center gap-3">
-              <div className="w-9 h-9 rounded-xl bg-slate-100 flex items-center justify-center text-slate-600">
+              <div className="w-9 h-9 rounded-xl bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-600 dark:text-slate-300">
                 <KeyRound className="w-5 h-5" />
               </div>
-              <div className="text-sm font-semibold text-slate-800">
-                Change Password
+              <div className="text-sm font-semibold text-slate-800 dark:text-white">
+                {t('common.profile.changePassword')}
               </div>
             </div>
-            <ChevronRight className="w-5 h-5 text-slate-300" />
+            <ChevronRight className="w-5 h-5 text-slate-300 dark:text-slate-600" />
           </button>
 
           <button
             onClick={onSignOut}
-            className="mt-4 w-full rounded-2xl py-3 bg-red-50 text-red-600 font-extrabold hover:bg-red-100 active:bg-red-100 transition-colors flex items-center justify-center gap-2"
+            className="mt-4 w-full rounded-2xl py-3 bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400 font-extrabold hover:bg-red-100 dark:hover:bg-red-900/30 active:bg-red-100 transition-colors flex items-center justify-center gap-2"
           >
-            Logout
+            {t('common.profile.logout')}
           </button>
         </div>
       </div>

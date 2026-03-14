@@ -22,7 +22,7 @@ export const WidgetChat: React.FC<ReturnType<typeof useChat>> = ({
   };
 
   return (
-    <div className="flex flex-col h-full bg-slate-50 dark:bg-slate-950/20">
+    <div className="flex flex-col h-full bg-slate-50 dark:bg-slate-950">
       <div
         ref={scrollRef}
         className="flex-1 p-4 space-y-4 overflow-y-auto custom-scrollbar"
@@ -36,7 +36,7 @@ export const WidgetChat: React.FC<ReturnType<typeof useChat>> = ({
               className={`max-w-[85%] p-3 rounded-2xl text-sm ${
                 msg.role === "user"
                   ? "bg-primary text-white rounded-tr-none"
-                  : "bg-white dark:bg-slate-800 shadow-sm border border-slate-100 dark:border-slate-700 rounded-tl-none"
+                  : "bg-white dark:bg-slate-900 shadow-sm border border-slate-100 dark:border-slate-800 rounded-tl-none text-slate-700 dark:text-slate-100"
               }`}
             >
               {msg.content}
@@ -45,7 +45,7 @@ export const WidgetChat: React.FC<ReturnType<typeof useChat>> = ({
         ))}
         {loading && (
           <div className="flex justify-start">
-            <div className="bg-white dark:bg-slate-800 p-3 rounded-2xl rounded-tl-none border border-slate-100 dark:border-slate-700">
+            <div className="bg-white dark:bg-slate-900 p-3 rounded-2xl rounded-tl-none border border-slate-100 dark:border-slate-800">
               <span className="flex gap-1">
                 <span className="w-1.5 h-1.5 bg-slate-400 rounded-full animate-bounce"></span>
                 <span className="w-1.5 h-1.5 bg-slate-400 rounded-full animate-bounce delay-100"></span>
@@ -56,7 +56,7 @@ export const WidgetChat: React.FC<ReturnType<typeof useChat>> = ({
         )}
       </div>
 
-      <div className="p-4 bg-white dark:bg-slate-900 border-t border-slate-100 dark:border-slate-800">
+      <div className="p-4 bg-white dark:bg-slate-950/50 backdrop-blur-sm border-t border-slate-100 dark:border-slate-800">
         <div className="relative flex items-center">
           <input
             type="text"
@@ -64,7 +64,7 @@ export const WidgetChat: React.FC<ReturnType<typeof useChat>> = ({
             onChange={(e) => setInput(e.target.value)}
             onKeyDown={(e) => e.key === "Enter" && handleSend()}
             placeholder="Describe your symptoms..."
-            className="w-full pl-4 pr-12 py-3 bg-slate-100 dark:bg-slate-800 border-none rounded-2xl focus:ring-2 focus:ring-primary/50 text-sm"
+            className="w-full pl-4 pr-12 py-3 bg-slate-100 dark:bg-slate-800 border-none rounded-2xl focus:ring-2 focus:ring-primary/50 text-sm text-slate-700 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-500"
           />
           <button
             onClick={handleSend}

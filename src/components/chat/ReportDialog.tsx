@@ -26,7 +26,7 @@ export const ReportDialog: React.FC<Props> = ({ open, onClose, onSubmit }) => {
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center">
       <div className="absolute inset-0 bg-black/40" onClick={onClose} />
-      <div className="relative w-[92vw] max-w-md rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 p-4">
+      <div className="relative w-[92vw] max-w-md rounded-2xl bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 p-4">
         <div className="flex items-center justify-between">
           <h3 className="text-base font-bold text-slate-800 dark:text-slate-100">
             Report message
@@ -47,7 +47,7 @@ export const ReportDialog: React.FC<Props> = ({ open, onClose, onSubmit }) => {
           <select
             value={reason}
             onChange={(e) => setReason(e.target.value)}
-            className="w-full rounded-xl bg-slate-100 dark:bg-slate-800 px-3 py-2 text-sm outline-none"
+            className="w-full rounded-xl bg-slate-100 dark:bg-slate-900 border border-transparent dark:border-slate-800 px-3 py-2 text-sm outline-none text-slate-700 dark:text-slate-200"
           >
             {reasons.map((r) => (
               <option key={r} value={r}>
@@ -63,7 +63,7 @@ export const ReportDialog: React.FC<Props> = ({ open, onClose, onSubmit }) => {
             value={note}
             onChange={(e) => setNote(e.target.value)}
             rows={3}
-            className="w-full rounded-xl bg-slate-100 dark:bg-slate-800 px-3 py-2 text-sm outline-none"
+            className="w-full rounded-xl bg-slate-100 dark:bg-slate-900 border border-transparent dark:border-slate-800 px-3 py-2 text-sm outline-none text-slate-700 dark:text-slate-200"
             placeholder="Mô tả thêm (nếu cần)..."
           />
         </div>

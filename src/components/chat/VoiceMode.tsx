@@ -419,10 +419,10 @@ return (
             <img
               src="https://picsum.photos/seed/rebecca/200/200"
               alt="Doctor AI"
-              className="w-full h-full rounded-full object-cover border-4 border-white dark:border-slate-900"
+              className="w-full h-full rounded-full object-cover border-4 border-white dark:border-slate-950"
             />
           </div>
-          <div className={`absolute bottom-1 right-1 w-4 h-4 sm:w-5 sm:h-5 ${dotClass} border-4 border-white dark:border-slate-900 rounded-full`} />
+          <div className={`absolute bottom-1 right-1 w-4 h-4 sm:w-5 sm:h-5 ${dotClass} border-4 border-white dark:border-slate-950 rounded-full`} />
         </div>
 
         <div className="text-center">
@@ -463,7 +463,7 @@ return (
         {/* IMPORTANT: max height by viewport so laptop never cut; page can still scroll */}
         <div
           ref={listRef}
-          className="rounded-2xl px-2 py-2 overflow-y-auto
+           className="rounded-2xl px-2 py-2 overflow-y-auto bg-slate-50/30 dark:bg-slate-900/30 backdrop-blur-sm
                      max-h-[calc(100vh-360px)] sm:max-h-[calc(100vh-420px)]"
         >
           <div className="flex flex-col gap-3">
@@ -486,8 +486,8 @@ return (
                       "max-w-[82%] p-3 sm:p-4 shadow-sm",
                       isYou
                         ? "bg-[#0F5A50] text-white rounded-2xl rounded-tr-none"
-                        : "bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-700 text-slate-700 dark:text-slate-300 rounded-3xl",
-                    ].join(" ")}
+                        : "bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 text-slate-700 dark:text-slate-300 rounded-3xl",
+                    ].join(" ")}  
                   >
                     <p className={isYou ? "font-medium italic text-base sm:text-lg leading-relaxed" : "text-base sm:text-lg leading-relaxed"}>
                       {`"${m.text}"`}
@@ -517,8 +517,8 @@ return (
             onClick={() => setIsMuted(!isMuted)}
             className={`w-14 h-14 rounded-full flex items-center justify-center transition-all ${
               isMuted
-                ? "bg-slate-200 text-slate-900"
-                : "bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700"
+                ? "bg-slate-200 dark:bg-slate-700 text-slate-900 dark:text-white"
+                : "bg-slate-100 dark:bg-slate-950 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-800"
             }`}
           >
             {isMuted ? <MicOff className="w-6 h-6" /> : <Mic className="w-6 h-6" />}
@@ -555,8 +555,8 @@ return (
             onClick={() => setIsSpeakerOn(!isSpeakerOn)}
             className={`w-14 h-14 rounded-full flex items-center justify-center transition-all ${
               !isSpeakerOn
-                ? "bg-slate-200 text-slate-900"
-                : "bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700"
+                ? "bg-slate-200 dark:bg-slate-700 text-slate-900 dark:text-white"
+                : "bg-slate-100 dark:bg-slate-950 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-800"
             }`}
           >
             {isSpeakerOn ? <Volume2 className="w-6 h-6" /> : <VolumeX className="w-6 h-6" />}

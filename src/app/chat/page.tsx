@@ -57,7 +57,7 @@ const ChatPage: React.FC = () => {
   };
 
   return (
-    <div className="flex h-screen bg-background-light dark:bg-background-dark overflow-hidden">
+    <div className="flex h-screen bg-slate-50 dark:bg-slate-950 transition-colors duration-300 overflow-hidden">
       <ChatSidebar
         conversations={conversations}
         activeId={activeId}
@@ -67,7 +67,7 @@ const ChatPage: React.FC = () => {
         onDelete={deleteConversation}
       />
 
-      <main className="flex-1 flex flex-col relative bg-white dark:bg-slate-900">
+      <main className="flex-1 flex flex-col relative bg-white dark:bg-slate-950">
         <ChatHeader tab={tab} onTabChange={setTab} />
 
         {tab === "chat" ? (

@@ -1,4 +1,5 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 import AdminLayout from "@/components/admin/AdminLayout";
 import { NavKey } from "@/types/admin";
 import { useNavigate } from "react-router-dom";
@@ -8,6 +9,7 @@ import AnalyticsView from "./AnalyticsView";
 import SettingsView from "./SettingsView";
 
 export default function UserManagementDashboard() {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const [nav, setNav] = React.useState<NavKey>("dashboard"); // Default to Dashboard
 
@@ -39,7 +41,7 @@ export default function UserManagementDashboard() {
         </div>
 
         <div className="text-center text-[10px] text-slate-300 mt-8">
-          © 2026 AI Doctor Assistant Management System. All rights reserved.
+          {t('admin.copyright', '© 2026 AI Doctor Assistant Management System. All rights reserved.')}
         </div>
       </div>
     </AdminLayout>

@@ -1,5 +1,6 @@
 import { Role, Status } from "@/types/admin";
 import React from "react";
+import { useTranslation } from "react-i18next";
 
 export default function UserFormFields({
   form,
@@ -18,43 +19,44 @@ export default function UserFormFields({
   >;
   mode: "add" | "edit";
 }) {
+  const { t } = useTranslation();
   return (
     <div className="space-y-3">
       <div>
-        <div className="text-[10px] font-extrabold text-slate-400 uppercase tracking-widest mb-1">
-          Name
+        <div className="text-[10px] font-extrabold text-slate-400 dark:text-slate-500 uppercase tracking-widest mb-1">
+          {t('admin.users.nameLabel', 'Name')}
         </div>
         <input
           value={form.name}
           onChange={(e) => setForm((p) => ({ ...p, name: e.target.value }))}
-          className="w-full h-10 px-3 rounded-xl border border-slate-200 outline-none focus:ring-2 focus:ring-teal-100 text-[12px] font-semibold"
-          placeholder="Full name"
+          className="w-full h-10 px-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-500 outline-none focus:ring-2 focus:ring-teal-100 dark:focus:ring-teal-900 text-[12px] font-semibold transition-colors"
+          placeholder={t('admin.users.fullNamePlaceholder', 'Full name')}
         />
       </div>
 
       <div>
-        <div className="text-[10px] font-extrabold text-slate-400 uppercase tracking-widest mb-1">
-          Email
+        <div className="text-[10px] font-extrabold text-slate-400 dark:text-slate-500 uppercase tracking-widest mb-1">
+          {t('admin.users.email', 'Email')}
         </div>
         <input
           value={form.email}
           onChange={(e) => setForm((p) => ({ ...p, email: e.target.value }))}
-          className="w-full h-10 px-3 rounded-xl border border-slate-200 outline-none focus:ring-2 focus:ring-teal-100 text-[12px] font-semibold"
-          placeholder="email@example.com"
+          className="w-full h-10 px-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-500 outline-none focus:ring-2 focus:ring-teal-100 dark:focus:ring-teal-900 text-[12px] font-semibold transition-colors"
+          placeholder={t('admin.users.emailPlaceholder', 'email@example.com')}
           type="email"
         />
       </div>
 
       {mode === "add" && (
         <div>
-          <div className="text-[10px] font-extrabold text-slate-400 uppercase tracking-widest mb-1">
-            Password
+          <div className="text-[10px] font-extrabold text-slate-400 dark:text-slate-500 uppercase tracking-widest mb-1">
+            {t('admin.users.passwordLabel', 'Password')}
           </div>
           <input
             value={form.password ?? ""}
             onChange={(e) => setForm((p) => ({ ...p, password: e.target.value }))}
-            className="w-full h-10 px-3 rounded-xl border border-slate-200 outline-none focus:ring-2 focus:ring-teal-100 text-[12px] font-semibold"
-            placeholder="Minimum 6 characters"
+            className="w-full h-10 px-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-500 outline-none focus:ring-2 focus:ring-teal-100 dark:focus:ring-teal-900 text-[12px] font-semibold transition-colors"
+            placeholder={t('admin.users.passwordPlaceholder', 'Minimum 6 characters')}
             type="password"
           />
         </div>
@@ -62,34 +64,34 @@ export default function UserFormFields({
 
       <div className="grid grid-cols-2 gap-3">
         <div>
-          <div className="text-[10px] font-extrabold text-slate-400 uppercase tracking-widest mb-1">
-            Role
+          <div className="text-[10px] font-extrabold text-slate-400 dark:text-slate-500 uppercase tracking-widest mb-1">
+            {t('admin.users.role', 'Role')}
           </div>
           <select
             value={form.role}
             onChange={(e) =>
               setForm((p) => ({ ...p, role: e.target.value as Role }))
             }
-            className="w-full h-10 px-3 rounded-xl border border-slate-200 text-[12px] font-semibold"
+            className="w-full h-10 px-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white text-[12px] font-semibold transition-colors"
           >
-            <option value="ADMIN">Admin</option>
-            <option value="USER">User</option>
+            <option value="ADMIN">{t('admin.users.admin', 'Admin')}</option>
+            <option value="USER">{t('admin.users.user', 'User')}</option>
           </select>
         </div>
 
         <div>
-          <div className="text-[10px] font-extrabold text-slate-400 uppercase tracking-widest mb-1">
-            Status
+          <div className="text-[10px] font-extrabold text-slate-400 dark:text-slate-500 uppercase tracking-widest mb-1">
+            {t('admin.users.status', 'Status')}
           </div>
           <select
             value={form.status}
             onChange={(e) =>
               setForm((p) => ({ ...p, status: e.target.value as Status }))
             }
-            className="w-full h-10 px-3 rounded-xl border border-slate-200 text-[12px] font-semibold"
+            className="w-full h-10 px-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white text-[12px] font-semibold transition-colors"
           >
-            <option value="Active">Active</option>
-            <option value="Inactive">Inactive</option>
+            <option value="Active">{t('admin.users.active', 'Active')}</option>
+            <option value="Inactive">{t('admin.users.inactive', 'Inactive')}</option>
           </select>
         </div>
       </div>

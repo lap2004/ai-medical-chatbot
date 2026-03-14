@@ -197,7 +197,7 @@ export const ChatSidebar: React.FC<SidebarProps> = ({
                     }
                   `}
                 >
-                  <p className="text-sm font-bold truncate">{conv.title}</p>
+                  <p className="text-sm font-bold truncate text-slate-900 dark:text-white">{conv.title}</p>
 
                   {/* 3 dots (hover show) */}
                   <span
@@ -230,8 +230,8 @@ export const ChatSidebar: React.FC<SidebarProps> = ({
                     onClick={(e) => e.stopPropagation()}
                     className="
                       absolute right-3 top-[54px] z-50 w-44
-                      rounded-xl border border-slate-200 dark:border-slate-700
-                      bg-white dark:bg-slate-900 shadow-lg overflow-hidden
+                      rounded-xl border border-slate-200 dark:border-slate-800
+                      bg-white dark:bg-slate-950 shadow-lg overflow-hidden
                     "
                   >
                     <button
@@ -286,7 +286,7 @@ export const ChatSidebar: React.FC<SidebarProps> = ({
               onClick={(e) => e.stopPropagation()}
             >
               <div className="flex items-center justify-between mb-3">
-                <h2 className="text-base font-bold">{t('chatSidebar.renameSession', 'Rename session')}</h2>
+                <h2 className="text-base font-bold text-slate-900 dark:text-white">{t('chatSidebar.renameSession', 'Rename session')}</h2>
                 <button
                   className="p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800"
                   onClick={() => !renameBusy && setRenameId(null)}

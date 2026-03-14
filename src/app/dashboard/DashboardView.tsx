@@ -18,8 +18,10 @@ const StatCard = ({
     icon: any;
     color: string;
     trend?: string;
-}) => (
-    <div className="bg-white dark:bg-slate-800 rounded-xl p-6 shadow-sm border border-slate-200 dark:border-slate-700">
+}) => {
+    const { t } = useTranslation();
+    return (
+    <div className="bg-white dark:bg-slate-900 rounded-xl p-6 shadow-sm border border-slate-200 dark:border-slate-800">
         <div className="flex justify-between items-start">
             <div>
                 <p className="text-sm font-medium text-slate-500 dark:text-slate-400">{title}</p>
@@ -32,11 +34,12 @@ const StatCard = ({
         {trend && (
             <div className="mt-4 flex items-center text-sm">
                 <span className="text-emerald-500 font-medium">{trend}</span>
-                <span className="ml-2 text-slate-400">vs last month</span>
+                <span className="ml-2 text-slate-400">{t('dashboard.vsLastMonth', 'vs last month')}</span>
             </div>
         )}
     </div>
 );
+};
 
 export default function DashboardView() {
     const { t } = useTranslation();
@@ -91,11 +94,11 @@ export default function DashboardView() {
                     <GrowthChartCard data={CHART_DATA} />
 
                     {/* Recent Activity */}
-                    <div className="bg-white dark:bg-slate-800 rounded-xl p-6 shadow-sm border border-slate-200 dark:border-slate-700">
+                    <div className="bg-white dark:bg-slate-900 rounded-xl p-6 shadow-sm border border-slate-200 dark:border-slate-800">
                         <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-4">{t('dashboard.recentActivity', 'Recent Activity')}</h3>
                         <div className="space-y-4">
                             {stats?.recent_activities?.slice().reverse().map((activity, idx) => (
-                                <div key={idx} className="flex items-start gap-3 p-3 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-900/50 transition">
+                                <div key={idx} className="flex items-start gap-3 p-3 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-800/50 transition">
                                     <div className={`mt-0.5 min-w-[32px] w-8 h-8 rounded-full flex items-center justify-center ${activity.type === 'feedback'
                                         ? (activity.value === 'like' ? 'bg-emerald-100 text-emerald-600' : 'bg-rose-100 text-rose-600')
                                         : 'bg-orange-100 text-orange-600'
@@ -112,8 +115,8 @@ export default function DashboardView() {
                                             <span className="font-semibold">{activity.user}</span>
                                             <span className="text-slate-500 font-normal">
                                                 {activity.type === 'feedback'
-                                                    ? ` ${activity.value}d a message`
-                                                    : ` reported a message for `}
+                                                    ? (activity.value === 'like' ? t('dashboard.likedMessage', ' liked a message') : t('dashboard.dislikedMessage', ' disliked a message'))
+                                                    : t('dashboard.reportedMessage', ' reported a message for ')}
                                                 {activity.category && <span className="font-medium text-orange-500">{activity.category}</span>}
                                             </span>
                                         </p>
@@ -131,7 +134,7 @@ export default function DashboardView() {
                 </div>
 
                 {/* Feedback Summary Card */}
-                <div className="bg-white dark:bg-slate-800 rounded-xl p-6 shadow-sm border border-slate-200 dark:border-slate-700">
+                <div className="bg-white dark:bg-slate-900 rounded-xl p-6 shadow-sm border border-slate-200 dark:border-slate-800">
                     <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-4">{t('dashboard.feedbackSummary', 'Feedback Summary')}</h3>
                     <div className="space-y-4">
                         <div className="flex items-center justify-between">

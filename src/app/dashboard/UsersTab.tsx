@@ -10,10 +10,13 @@ import {
     deleteUser,
 } from "@/services/apis/admin";
 import { useUserStore } from "@/store/userStore";
+import { useTranslation } from "react-i18next";
+import { notify } from "@/utils/notify";
 
 const PAGE_SIZE = 5;
 
 export default function UsersTab() {
+    const { t } = useTranslation();
     // ── Current User Store ─────────────────────────────────────
     const { userInfo } = useUserStore();
 
@@ -73,7 +76,7 @@ export default function UsersTab() {
                     }))
                 );
             } catch (e: any) {
-                setError(e?.response?.data?.detail ?? "Failed to load users.");
+                setError(e?.response?.data?.detail ?? t('admin.users.failedToLoad', "Failed to load users."));
             } finally {
                 setLoading(false);
             }
@@ -116,8 +119,15 @@ export default function UsersTab() {
             setAddOpen(false);
             setPage(1);
             fetchUsers(1);
+            notify(
+                t('admin.users.userCreated', 'User Created'),
+                t('admin.users.userCreatedDesc', { name: form.name.trim(), defaultValue: `Successfully created user ${form.name.trim()}` }),
+                'success'
+            );
         } catch (e: any) {
-            setError(e?.response?.data?.detail ?? "Failed to create user.");
+            const errorMsg = e?.response?.data?.detail ?? t('admin.users.failedToCreate', "Failed to create user.");
+            setError(errorMsg);
+            notify(t('admin.users.createFailed', 'Creation Failed'), errorMsg, 'error');
         } finally {
             setSaving(false);
         }
@@ -145,8 +155,15 @@ export default function UsersTab() {
             setEditOpen(false);
             setActiveRow(null);
             fetchUsers(page);
+            notify(
+                t('admin.users.userUpdated', 'User Updated'),
+                t('admin.users.userUpdatedDesc', { name: form.name.trim(), defaultValue: `Successfully updated user ${form.name.trim()}` }),
+                'success'
+            );
         } catch (e: any) {
-            setError(e?.response?.data?.detail ?? "Failed to update user.");
+            const errorMsg = e?.response?.data?.detail ?? t('admin.users.failedToUpdate', "Failed to update user.");
+            setError(errorMsg);
+            notify(t('admin.users.updateFailed', 'Update Failed'), errorMsg, 'error');
         } finally {
             setSaving(false);
         }
@@ -173,8 +190,15 @@ export default function UsersTab() {
             const newPage = Math.min(page, newTotalPages);
             setPage(newPage);
             fetchUsers(newPage);
+            notify(
+                t('admin.users.userDeleted', 'User Deleted'),
+                t('admin.users.userDeletedDesc', { name: activeRow.name, defaultValue: `Successfully deleted user ${activeRow.name}` }),
+                'success'
+            );
         } catch (e: any) {
-            setError(e?.response?.data?.detail ?? "Failed to delete user.");
+            const errorMsg = e?.response?.data?.detail ?? t('admin.users.failedToDelete', "Failed to delete user.");
+            setError(errorMsg);
+            notify(t('admin.users.deleteFailed', 'Delete Failed'), errorMsg, 'error');
         } finally {
             setSaving(false);
         }
@@ -193,7 +217,7 @@ export default function UsersTab() {
             {/* Loading Overlay */}
             {loading && (
                 <div className="mb-2 text-[11px] text-slate-400 font-semibold animate-pulse">
-                    Loading users...
+                    {t('admin.users.loadingUsers', 'Loading users...')}
                 </div>
             )}
 
@@ -224,26 +248,26 @@ export default function UsersTab() {
             <AddEditUserModal
                 mode="add"
                 open={addOpen}
-                title="Add New User"
-                subtitle="Create a new account for the system"
+                title={t('admin.users.addNewUserTitle', "Add New User")}
+                subtitle={t('admin.users.addNewUserDesc', "Create a new account for the system")}
                 form={form}
                 setForm={setForm}
                 onClose={() => setAddOpen(false)}
                 onSubmit={submitAdd}
-                submitLabel="Create"
+                submitLabel={t('admin.users.create', "Create")}
                 loading={saving}
             />
 
             <AddEditUserModal
                 mode="edit"
                 open={editOpen}
-                title="Edit User"
-                subtitle={activeRow ? `Editing ${activeRow.name}` : undefined}
+                title={t('admin.users.editUserTitle', "Edit User")}
+                subtitle={activeRow ? t('admin.users.editUserDesc', { name: activeRow.name, defaultValue: `Editing ${activeRow.name}` }) : undefined}
                 form={form}
                 setForm={setForm}
                 onClose={() => setEditOpen(false)}
                 onSubmit={submitEdit}
-                submitLabel="Save"
+                submitLabel={t('admin.users.save', "Save")}
                 loading={saving}
             />
 

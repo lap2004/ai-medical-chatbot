@@ -39,9 +39,9 @@ const HomePage: React.FC = () => {
     if (forcePasswordChange) setOpenReset(true);
   }, [forcePasswordChange]);
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-slate-50 dark:bg-slate-950 transition-colors duration-300">
       {/* Navigation */}
-      <nav className="fixed top-0 w-full z-50 glass-effect border-b border-slate-200 dark:border-slate-800">
+      <nav className="fixed top-0 w-full z-50 glass-effect bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-20">
             <div className="flex items-center gap-2">
@@ -55,27 +55,27 @@ const HomePage: React.FC = () => {
             <div className="hidden md:flex items-center space-x-8">
               <a
                 href="/"
-                className="text-sm font-medium hover:text-primary transition-colors"
+                className="text-sm font-medium text-slate-500 dark:text-slate-400 hover:text-primary dark:hover:text-primary transition-colors"
               >
                 {t('home.nav.home')}
               </a>
               {getUserRole() === "admin" && (
                 <a
                   href="/dashboard"
-                  className="text-sm font-medium hover:text-primary transition-colors"
+                  className="text-sm font-medium text-slate-500 dark:text-slate-400 hover:text-primary dark:hover:text-primary transition-colors"
                 >
                   {t('home.nav.dashboard')}
                 </a>
               )}
               <a
                 href="/chat"
-                className="text-sm font-medium hover:text-primary transition-colors"
+                className="text-sm font-medium text-slate-500 dark:text-slate-400 hover:text-primary dark:hover:text-primary transition-colors"
               >
                 {t('home.nav.chat')}
               </a>
               <a
                 href="/support"
-                className="text-sm font-medium hover:text-primary transition-colors"
+                className="text-sm font-medium text-slate-500 dark:text-slate-400 hover:text-primary dark:hover:text-primary transition-colors"
               >
                 {t('home.nav.support')}
               </a>
@@ -86,13 +86,13 @@ const HomePage: React.FC = () => {
                   document.documentElement.classList.toggle("dark")
                 }
               >
-                <Moon className="w-5 h-5 dark:hidden" />
-                <Sun className="w-5 h-5 hidden dark:block" />
+                <Moon className="w-5 h-5 dark:hidden text-slate-600" />
+                <Sun className="w-5 h-5 hidden dark:block text-slate-300" />
               </button>
               <button
                 ref={profileAnchorRef}
                 onClick={() => setProfileOpen(true)}
-                className="flex items-center gap-2 p-2 rounded-2xl hover:bg-primary/5 transition-all"
+                className="flex items-center gap-2 p-2 rounded-2xl hover:bg-slate-100 dark:hover:bg-slate-800 transition-all"
                 aria-label="Open profile menu"
                 title="Profile"
               >
@@ -188,7 +188,7 @@ const HomePage: React.FC = () => {
                     <BadgeCheck className="w-6 h-6" />
                   </div>
                   <div>
-                    <p className="text-xs text-slate-500">{t('home.widget.accuracy')}</p>
+                    <p className="text-xs text-slate-500 dark:text-slate-400">{t('home.widget.accuracy')}</p>
                     <p className="text-xl font-bold dark:text-white">96.76%</p>
                   </div>
                 </div>
@@ -199,12 +199,12 @@ const HomePage: React.FC = () => {
       </section>
 
       {/* Solutions Section */}
-      <section className="py-24 bg-white dark:bg-slate-900/50">
+      <section className="py-24 bg-white dark:bg-slate-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl font-bold mb-4 dark:text-white">
+          <h2 className="text-3xl font-bold mb-4 text-slate-900 dark:text-white">
             {t('home.solutions.title')}
           </h2>
-          <p className="text-slate-500 mb-16 max-w-2xl mx-auto">
+          <p className="text-slate-500 dark:text-slate-400 mb-16 max-w-2xl mx-auto">
             {t('home.solutions.desc')}
           </p>
           <div className="grid md:grid-cols-3 gap-8">
@@ -232,10 +232,10 @@ const HomePage: React.FC = () => {
                 <div className="w-14 h-14 rounded-2xl bg-primary/10 text-primary flex items-center justify-center mb-6 group-hover:bg-primary group-hover:text-white transition-colors">
                   {sol.icon}
                 </div>
-                <h3 className="text-xl font-bold mb-4 dark:text-white">
+                <h3 className="text-xl font-bold mb-4 text-slate-900 dark:text-white">
                   {sol.title}
                 </h3>
-                <p className="text-slate-500 text-sm leading-relaxed">
+                <p className="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">
                   {sol.desc}
                 </p>
               </div>
@@ -270,8 +270,8 @@ const HomePage: React.FC = () => {
       <section>
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <h2 className="text-xl font-extrabold">{t('home.howItWorks.title')}</h2>
-            <p className="mt-2 text-sm text-slate-500">
+            <h2 className="text-xl font-extrabold text-slate-900 dark:text-white">{t('home.howItWorks.title')}</h2>
+            <p className="mt-2 text-sm text-slate-500 dark:text-slate-400">
               {t('home.howItWorks.desc')}
             </p>
           </div>
@@ -299,15 +299,15 @@ const HomePage: React.FC = () => {
             ].map((s) => (
               <div
                 key={s.title}
-                className="rounded-2xl bg-white border border-slate-200 shadow-sm p-6 text-center"
+                className="rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm p-6 text-center"
               >
                 <div className="mx-auto h-12 w-12 rounded-full bg-[#0F766E]/10 text-[#0F766E] flex items-center justify-center">
                   {s.icon}
                 </div>
-                <div className="mt-4 font-bold">
+                <div className="mt-4 font-bold text-slate-900 dark:text-white">
                   {s.step}. {s.title}
                 </div>
-                <p className="mt-2 text-sm text-slate-600 leading-relaxed">
+                <p className="mt-2 text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
                   {s.desc}
                 </p>
               </div>
@@ -328,15 +328,15 @@ const HomePage: React.FC = () => {
                 </div>
               </div>
 
-              <div className="absolute bottom-4 right-4 rounded-2xl bg-white border border-slate-200 shadow-sm px-4 py-3 flex items-center gap-3">
+              <div className="absolute bottom-4 right-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm px-4 py-3 flex items-center gap-3">
                 <div className="h-9 w-9 rounded-xl bg-[#0F766E]/10 text-[#0F766E] flex items-center justify-center">
                   <Image className="w-5 h-5" />
                 </div>
                 <div>
-                  <div className="text-sm font-bold leading-none">
+                  <div className="text-sm font-bold leading-none text-slate-900 dark:text-white">
                     {t('home.smartApps.imgRec')}
                   </div>
-                  <div className="text-xs text-slate-500">
+                  <div className="text-xs text-slate-500 dark:text-slate-400">
                     {t('home.smartApps.imgRecDesc')}
                   </div>
                 </div>
@@ -344,7 +344,7 @@ const HomePage: React.FC = () => {
             </div>
 
             <div>
-              <h3 className="text-2xl font-extrabold">{t('home.smartApps.title')}</h3>
+              <h3 className="text-2xl font-extrabold text-slate-900 dark:text-white">{t('home.smartApps.title')}</h3>
               <div className="mt-5 space-y-4">
                 {[
                   {
@@ -360,14 +360,14 @@ const HomePage: React.FC = () => {
                 ].map((a) => (
                   <div
                     key={a.title}
-                    className="rounded-2xl bg-white border border-slate-200 shadow-sm p-5 flex items-start gap-4"
+                    className="rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm p-5 flex items-start gap-4"
                   >
                     <div className="h-10 w-10 rounded-xl bg-[#0F766E]/10 text-[#0F766E] flex items-center justify-center shrink-0">
                       {a.icon}
                     </div>
                     <div>
-                      <div className="font-bold">{a.title}</div>
-                      <div className="mt-1 text-sm text-slate-600 leading-relaxed">
+                      <div className="font-bold text-slate-900 dark:text-white">{a.title}</div>
+                      <div className="mt-1 text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
                         {a.desc}
                       </div>
                     </div>
@@ -378,13 +378,13 @@ const HomePage: React.FC = () => {
           </div>
 
           {/* Ethics & Privacy */}
-          <div className="mt-12 rounded-3xl bg-white border border-slate-200 shadow-sm p-8">
+          <div className="mt-12 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm p-8">
             <div className="grid lg:grid-cols-[1fr,220px] gap-8 items-center">
               <div>
-                <h3 className="text-xl font-extrabold">
+                <h3 className="text-xl font-extrabold text-slate-900 dark:text-white">
                   {t('home.ethics.title')}
                 </h3>
-                <p className="mt-2 text-sm text-slate-600 max-w-2xl leading-relaxed">
+                <p className="mt-2 text-sm text-slate-600 dark:text-slate-400 max-w-2xl leading-relaxed">
                   {t('home.ethics.desc')}
                 </p>
 
@@ -397,7 +397,7 @@ const HomePage: React.FC = () => {
                   ].map((t) => (
                     <div key={t} className="flex items-center gap-2">
                       <CheckCircle className="text-[#0F766E] w-[18px] h-[18px]" />
-                      <span className="text-slate-700">{t}</span>
+                      <span className="text-slate-700 dark:text-slate-300">{t}</span>
                     </div>
                   ))}
                 </div>
@@ -419,10 +419,10 @@ const HomePage: React.FC = () => {
       <section className="mt-16 pb-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <h2 className="text-2xl font-extrabold">
+            <h2 className="text-2xl font-extrabold text-slate-900 dark:text-white">
               {t('home.cta.title')}
             </h2>
-            <p className="mt-2 text-sm text-slate-500">
+            <p className="mt-2 text-sm text-slate-500 dark:text-slate-400">
               {t('home.cta.desc')}
             </p>
 

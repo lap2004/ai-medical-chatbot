@@ -79,7 +79,7 @@ export default function ProfileDropdown({
   return (
     <div className="relative" ref={ref}>
       <button
-        className="flex items-center gap-2 p-2 rounded-lg hover:bg-slate-50"
+        className="flex items-center gap-2 p-2 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors"
         onClick={() => setOpen((v) => !v)}
       >
         {avatarSrc ? (
@@ -93,10 +93,10 @@ export default function ProfileDropdown({
       </button>
 
       {open && (
-        <div className="absolute right-0 mt-3 w-[320px] rounded-[28px] bg-white border border-slate-100 p-5 z-50">
+        <div className="absolute right-0 mt-3 w-[320px] rounded-[28px] bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-700 shadow-2xl p-5 z-50">
           <button
             onClick={() => setOpen(false)}
-            className="absolute right-4 top-4 p-2 rounded-xl hover:bg-slate-50"
+            className="absolute right-4 top-4 p-2 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors"
             aria-label="Close"
           >
             <X className="w-5 h-5 text-slate-400" />
@@ -134,14 +134,14 @@ export default function ProfileDropdown({
               </div>
             </div>
 
-            <div className="mt-4 text-[18px] font-black text-slate-900">
+            <div className="mt-4 text-[18px] font-black text-slate-900 dark:text-white">
               {userInfo?.full_name || "Guest User"}
             </div>
-            <div className="text-[12px] text-slate-400 -mt-0.5">
+            <div className="text-[12px] text-slate-400 dark:text-slate-500 -mt-0.5">
               {userInfo?.email || "guest@example.com"}
             </div>
 
-            <div className="mt-3 inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-teal-50 text-teal-700 border border-teal-100">
+            <div className="mt-3 inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-teal-50 dark:bg-teal-900/20 text-teal-700 dark:text-teal-400 border border-teal-100 dark:border-teal-800">
               <Shield className="w-4 h-4" />
               <span className="text-[11px] font-extrabold">
                 ID: {userInfo?.id || "N/A"}
@@ -149,59 +149,59 @@ export default function ProfileDropdown({
             </div>
           </div>
 
-          <div className="my-4 border-t border-slate-100" />
+          <div className="my-4 border-t border-slate-100 dark:border-slate-800" />
 
           <button
-            className="w-full flex items-center justify-between px-4 py-3 rounded-2xl hover:bg-slate-50"
+            className="w-full flex items-center justify-between px-4 py-3 rounded-2xl hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors"
             onClick={() => fileInputRef.current?.click()}
             disabled={uploading}
           >
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center">
-                <ImageIcon className="w-5 h-5 text-slate-500" />
+              <div className="w-10 h-10 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center">
+                <ImageIcon className="w-5 h-5 text-slate-500 dark:text-slate-400" />
               </div>
-              <div className="text-[13px] font-extrabold text-slate-700">
+              <div className="text-[13px] font-extrabold text-slate-700 dark:text-white">
                 Change Avatar
               </div>
             </div>
-            <ChevronDown className="w-4 h-4 text-slate-300 -rotate-90" />
+            <ChevronDown className="w-4 h-4 text-slate-300 dark:text-slate-600 -rotate-90" />
           </button>
 
           <button
-            className="w-full flex items-center justify-between px-4 py-3 mt-1 rounded-2xl hover:bg-slate-50"
+            className="w-full flex items-center justify-between px-4 py-3 mt-1 rounded-2xl hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors"
             onClick={() => setNameModalOpen(true)}
           >
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center">
-                <UserCircle className="w-5 h-5 text-slate-500" />
+              <div className="w-10 h-10 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center">
+                <UserCircle className="w-5 h-5 text-slate-500 dark:text-slate-400" />
               </div>
-              <div className="text-[13px] font-extrabold text-slate-700">
+              <div className="text-[13px] font-extrabold text-slate-700 dark:text-white">
                 Change Name
               </div>
             </div>
-            <ChevronDown className="w-4 h-4 text-slate-300 -rotate-90" />
+            <ChevronDown className="w-4 h-4 text-slate-300 dark:text-slate-600 -rotate-90" />
           </button>
 
           <button
-            className="w-full flex items-center justify-between px-4 py-3 mt-1 rounded-2xl hover:bg-slate-50"
+            className="w-full flex items-center justify-between px-4 py-3 mt-1 rounded-2xl hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors"
             onClick={() => {
               setOpen(false);
               onChangePassword();
             }}
           >
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center">
-                <KeyRound className="w-5 h-5 text-slate-500" />
+              <div className="w-10 h-10 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center">
+                <KeyRound className="w-5 h-5 text-slate-500 dark:text-slate-400" />
               </div>
-              <div className="text-[13px] font-extrabold text-slate-700">
+              <div className="text-[13px] font-extrabold text-slate-700 dark:text-white">
                 Change Password
               </div>
             </div>
-            <ChevronDown className="w-4 h-4 text-slate-300 -rotate-90" />
+            <ChevronDown className="w-4 h-4 text-slate-300 dark:text-slate-600 -rotate-90" />
           </button>
 
           <button
-            className="mt-4 w-full h-11 rounded-2xl bg-red-50 hover:bg-red-100 text-red-600 font-extrabold text-[13px] flex items-center justify-center gap-2"
+            className="mt-4 w-full h-11 rounded-2xl bg-red-50 dark:bg-red-900/20 hover:bg-red-100 dark:hover:bg-red-900/30 text-red-600 dark:text-red-400 font-extrabold text-[13px] flex items-center justify-center gap-2 transition-colors"
             onClick={() => {
               setOpen(false);
               onLogout();

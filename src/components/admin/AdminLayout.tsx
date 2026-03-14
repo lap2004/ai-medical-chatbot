@@ -28,7 +28,7 @@ export default function AdminLayout({
     fetchUserInfo();
   }, [fetchUserInfo]);
   return (
-    <div className="min-h-screen bg-white text-slate-900">
+    <div className="min-h-screen bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-white transition-colors duration-300">
       <div className="flex">
         <Sidebar nav={nav} setNav={setNav} />
         <main className="flex-1">

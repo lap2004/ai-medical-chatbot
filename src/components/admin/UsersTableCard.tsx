@@ -33,7 +33,7 @@ export default function UsersTableCard(props: {
   currentUserId?: string | number;
 }) {
   return (
-    <div className="rounded-2xl border border-slate-100 bg-white">
+    <div className="rounded-2xl border border-slate-100 dark:border-slate-800 bg-white dark:bg-slate-900 transition-colors">
       <UsersToolbar
         query={props.query}
         onQueryChange={props.onQueryChange}

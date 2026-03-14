@@ -110,7 +110,7 @@ export const ChatComposer: React.FC<Props> = ({ loading, onSend }) => {
   }, [input, loading, onSend, listening, stopVoice, resetTranscript]);
 
   return (
-    <div className="relative bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 p-6">
+    <div className="relative bg-white dark:bg-slate-900/50 backdrop-blur-md border-t border-slate-200 dark:border-slate-800 p-6">
       {listening && (
         <VoiceTranscriptionPill
           text={transcript}
@@ -142,7 +142,7 @@ export const ChatComposer: React.FC<Props> = ({ loading, onSend }) => {
                   ? "Listening..."
                   : "Tell me more about your symptoms..."
               }
-              className="w-full pl-14 pr-14 py-4 bg-slate-100 dark:bg-slate-800 border-none rounded-2xl focus:ring-2 focus:ring-primary/50 text-slate-700 dark:text-slate-200 placeholder-slate-400 dark:placeholder-slate-500 transition-all"
+              className="w-full pl-14 pr-14 py-4 bg-slate-100 dark:bg-slate-950 border-none rounded-2xl focus:ring-2 focus:ring-primary/50 text-slate-700 dark:text-slate-200 placeholder-slate-400 dark:placeholder-slate-500 transition-all"
             />
 
             <button
@@ -160,7 +160,7 @@ export const ChatComposer: React.FC<Props> = ({ loading, onSend }) => {
             onClick={toggleVoice}
             disabled={loading || !browserSupportsSpeechRecognition}
             className={`group flex flex-col items-center justify-center w-14 h-14
-              bg-white dark:bg-slate-800 border-2 rounded-2xl transition-all shrink-0
+              bg-white dark:bg-slate-950 border-2 rounded-2xl transition-all shrink-0
               ${listening ? "border-primary hover:bg-primary/5" : "border-primary/20 hover:border-primary hover:bg-primary/5"}
               ${!browserSupportsSpeechRecognition ? "opacity-50 cursor-not-allowed" : ""}`}
           >

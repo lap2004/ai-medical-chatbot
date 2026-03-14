@@ -3,6 +3,7 @@ import Cropper from "react-easy-crop";
 import getCroppedImg from "@/lib/cropImage";
 import ModalShell from "./ModalShell";
 import { Button } from "./Button";
+import { useTranslation } from "react-i18next";
 
 export default function ImageCropModal({
     open,
@@ -19,6 +20,7 @@ export default function ImageCropModal({
     const [zoom, setZoom] = useState(1);
     const [croppedAreaPixels, setCroppedAreaPixels] = useState(null);
     const [loading, setLoading] = useState(false);
+    const { t } = useTranslation();
 
     const onCropComplete = useCallback((croppedArea: any, croppedAreaPixels: any) => {
         setCroppedAreaPixels(croppedAreaPixels);
@@ -42,11 +44,11 @@ export default function ImageCropModal({
     return (
         <ModalShell
             open={open}
-            title="Crop Photo"
-            subtitle="Adjust your avatar before uploading"
+            title={t('common.profile.cropPhoto', 'Cắt ảnh')}
+            subtitle={t('common.profile.cropPhotoDesc', 'Chỉnh ảnh trước khi tải lên')}
             onClose={onClose}
         >
-            <div className="relative w-full h-64 bg-slate-100 rounded-xl overflow-hidden my-4">
+            <div className="relative w-full h-64 bg-slate-100 dark:bg-slate-800 rounded-xl overflow-hidden my-4">
                 <Cropper
                     image={imageSrc}
                     crop={crop}
@@ -60,7 +62,7 @@ export default function ImageCropModal({
             </div>
 
             <div className="flex items-center gap-4 mb-4">
-                <span className="text-xs font-semibold text-slate-500">Zoom</span>
+                <span className="text-xs font-semibold text-slate-500 dark:text-slate-400">Zoom</span>
                 <input
                     type="range"
                     value={zoom}
@@ -71,16 +73,16 @@ export default function ImageCropModal({
                     onChange={(e) => {
                         setZoom(Number(e.target.value));
                     }}
-                    className="w-full form-range appearance-none bg-slate-200 rounded-full h-1"
+                    className="w-full form-range appearance-none bg-slate-200 dark:bg-slate-700 rounded-full h-1"
                 />
             </div>
 
             <div className="flex justify-end gap-2">
                 <Button variant="ghost" onClick={onClose} disabled={loading}>
-                    Cancel
+                    {t('common.cancel', 'Hủy')}
                 </Button>
                 <Button variant="secondary" onClick={handleSave} disabled={loading}>
-                    {loading ? "Saving..." : "Save Avatar"}
+                    {loading ? t('common.profile.saving', 'Đang lưu...') : t('common.profile.saveAvatar', 'Lưu ảnh')}
                 </Button>
             </div>
         </ModalShell>
