@@ -3,6 +3,8 @@ import SpeechRecognition, {
   useSpeechRecognition,
 } from "react-speech-recognition";
 import { VoiceTranscriptionPill } from "./VoiceTranscriptionPill";
+import { useTranslation } from "react-i18next";
+
 
 type Props = {
   loading: boolean;
@@ -11,7 +13,7 @@ type Props = {
 
 export const ChatComposer: React.FC<Props> = ({ loading, onSend }) => {
   const [input, setInput] = useState("");
-
+  const { t } = useTranslation();
   const {
     transcript,
     listening,
@@ -166,7 +168,7 @@ export const ChatComposer: React.FC<Props> = ({ loading, onSend }) => {
               {listening ? "stop_circle" : "mic"}
             </span>
             <span className="text-[8px] font-bold text-primary mt-0.5">
-              {listening ? "STOP" : "VOICE"}
+              {listening ? "STOP" : t("chat.voice", "voice")}
             </span>
           </button>
         </div>

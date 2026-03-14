@@ -13,8 +13,11 @@ import { useUserLogin, useUserGoogleLogin } from "@/services/hooks/hookAuth";
 import { setAuthCookies } from "@/lib/helper/token";
 import { ROLE_VALUE } from "@/services/config/const";
 import { useAuthUIStore } from "@/store";
+import { useTranslation } from "react-i18next";
+import { LanguageSwitcher } from "@/components/ui/LanguageSwitcher";
 
 const LoginPage: React.FC = () => {
+  const { t } = useTranslation();
   const { postUserLogin } = useUserLogin();
   const { postUserGoogleLogin } = useUserGoogleLogin();
   const navigate = useNavigate();
@@ -34,11 +37,11 @@ const LoginPage: React.FC = () => {
 
   const validate = () => {
     if (!form.email.trim()) {
-      toast.error("Vui lòng nhập email.");
+      toast.error(t('login.pleaseEnterEmail', 'Please enter your email.'));
       return false;
     }
     if (!form.password) {
-      toast.error("Vui lòng nhập mật khẩu.");
+      toast.error(t('login.pleaseEnterPassword', 'Please enter your password.'));
       return false;
     }
     return true;
@@ -58,7 +61,7 @@ const LoginPage: React.FC = () => {
       const data = res?.data;
 
       if (!data?.access_token) {
-        toast.error(data?.detail || "Đăng nhập thất bại!");
+        toast.error(data?.detail || t('login.loginFailed', 'Login failed!'));
         return;
       }
 
@@ -72,9 +75,7 @@ const LoginPage: React.FC = () => {
 
       // ✅ Force đổi mật khẩu
       if (data?.force_password_change === true) {
-        toast.info(
-          "Bạn đang sử dụng mật khẩu tạm thời. Vui lòng đổi mật khẩu.",
-        );
+        toast.info(t('login.tempPasswordNotice', 'You are using a temporary password. Please change it.'));
         setForcePasswordChange(true);
 
         // ✅ Đi vào hệ thống; popup sẽ mở ở Home/Admin
@@ -85,14 +86,14 @@ const LoginPage: React.FC = () => {
       }
 
       // ✅ Login bình thường
-      toast.success("Đăng nhập thành công!");
+      toast.success(t('login.loginSuccess', 'Login successful!'));
       setForcePasswordChange(false); // (khuyến nghị) clear flag nếu trước đó còn
 
       navigate(data.role === "admin" ? "/dashboard" : "/", {
         replace: true,
       });
     } catch (err: any) {
-      toast.error(err?.response?.data?.detail || "Đăng nhập thất bại!");
+      toast.error(err?.response?.data?.detail || t('login.loginFailed', 'Login failed!'));
     } finally {
       setIsLoading(false);
     }
@@ -109,7 +110,7 @@ const LoginPage: React.FC = () => {
       const data = res?.data;
 
       if (!data?.access_token) {
-        toast.error(data?.detail || "Đăng nhập Google thất bại!");
+        toast.error(data?.detail || t('login.googleLoginFailed', 'Google login failed!'));
         return;
       }
 
@@ -118,10 +119,10 @@ const LoginPage: React.FC = () => {
         Cookies.set(ROLE_VALUE, data.role);
       }
 
-      toast.success("Đăng nhập Google thành công!");
+      toast.success(t('login.googleLoginSuccess', 'Google login successful!'));
       navigate(data.role === "admin" ? "/dashboard" : "/", { replace: true });
     } catch (err: any) {
-      toast.error(err?.response?.data?.detail || "Đăng nhập Google thất bại!");
+      toast.error(err?.response?.data?.detail || t('login.googleLoginFailed', 'Google login failed!'));
     } finally {
       setIsLoading(false);
     }
@@ -138,7 +139,8 @@ const LoginPage: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-slate-950 flex items-center justify-center p-4">
+    <div className="min-h-screen bg-slate-50 dark:bg-slate-950 flex flex-col items-center justify-center p-4">
+      <div className="w-full flex justify-end absolute top-4 right-4"><LanguageSwitcher /></div>
       <div className="w-full max-w-md">
         {/* Header */}
         <div className="text-center mb-10">
@@ -147,10 +149,10 @@ const LoginPage: React.FC = () => {
           </div>
 
           <h1 className="text-3xl font-bold text-slate-900 dark:text-white">
-            Welcome Back
+            {t('login.welcomeBack', 'Welcome Back')}
           </h1>
           <p className="text-slate-500 mt-2">
-            Access your personal health assistant
+            {t('login.accessAssistant', 'Access your personal health assistant')}
           </p>
         </div>
 
@@ -158,7 +160,7 @@ const LoginPage: React.FC = () => {
         <div className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border border-white dark:border-slate-800 rounded-[32px] p-8">
           <form className="space-y-6" onSubmit={onSubmit}>
             <TextInput
-              label="Email Address"
+              label={t('login.emailAddress', 'Email Address')}
               type="email"
               placeholder="name@company.com"
               leftIcon={<Mail className="w-4 h-4" />}
@@ -171,7 +173,7 @@ const LoginPage: React.FC = () => {
             <div>
               <div className="flex justify-between mb-2 ml-1">
                 <label className="text-sm font-semibold dark:text-slate-300">
-                  Password
+                  {t('login.password', 'Password')}
                 </label>
                 <button
                   type="button"
@@ -179,7 +181,7 @@ const LoginPage: React.FC = () => {
                   onClick={() => navigate("/forgot-password")}
                   disabled={isLoading}
                 >
-                  Forgot?
+                  {t('login.forgot', 'Forgot?')}
                 </button>
               </div>
 
@@ -217,7 +219,7 @@ const LoginPage: React.FC = () => {
               className="w-full !rounded-2xl !py-4"
               disabled={isLoading}
             >
-              {isLoading ? "Signing In..." : "Sign In"}
+              {isLoading ? t('login.signingIn', 'Signing In...') : t('login.signIn', 'Sign In')}
             </Button>
           </form>
 
@@ -228,7 +230,7 @@ const LoginPage: React.FC = () => {
             </div>
             <div className="relative flex justify-center text-xs uppercase">
               <span className="bg-white dark:bg-slate-900 px-4 text-slate-400 font-bold tracking-widest">
-                Or continue with
+                {t('login.orContinueWith', 'Or continue with')}
               </span>
             </div>
           </div>
@@ -250,20 +252,20 @@ const LoginPage: React.FC = () => {
             <SocialButton
               label="Apple"
               icon={<Apple className="w-5 h-5" />}
-              onClick={() => toast.info("Apple login chưa được tích hợp.")}
+              onClick={() => toast.info(t('login.appleLoginNotIntegrated', 'Apple login is not integrated yet.'))}
             />
           </div>
         </div>
 
         {/* Footer */}
         <p className="text-center mt-8 text-sm text-slate-500">
-          Don&apos;t have an account?{" "}
+          {t('login.dontHaveAccount', "Don't have an account?")}{" "}
           <button
             type="button"
             onClick={() => navigate("/signup")}
             className="font-bold text-secondary hover:underline"
           >
-            Sign up for free
+            {t('login.signUpForFree', 'Sign up for free')}
           </button>
         </p>
       </div>

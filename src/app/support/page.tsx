@@ -11,8 +11,11 @@ import { getUserRole } from "@/lib/helper";
 import { ProfileMenuDialog } from "@/components/chat/ProfileMenuDialog";
 import { ResetPasswordDialog } from "@/components/auth/ResetPasswordDialog";
 import { Button } from "@/components/ui/Button";
+import { LanguageSwitcher } from "@/components/ui/LanguageSwitcher";
+import { useTranslation } from "react-i18next";
 
 const SupportPage: React.FC = () => {
+    const { t } = useTranslation();
     const navigate = useNavigate();
     const [profileOpen, setProfileOpen] = useState(false);
     const [resetOpen, setResetOpen] = useState(false);
@@ -25,7 +28,8 @@ const SupportPage: React.FC = () => {
     const [activeTab, setActiveTab] = useState<"faq" | "contact">("faq");
     const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(0);
     const [searchQuery, setSearchQuery] = useState("");
-    const [selectedCategory, setSelectedCategory] = useState("All");
+    const ALL_CAT = "ALL_CATEGORIES";
+    const [selectedCategory, setSelectedCategory] = useState(ALL_CAT);
 
     React.useEffect(() => {
         getuserMe().then((data) => {
@@ -38,54 +42,13 @@ const SupportPage: React.FC = () => {
         navigate("/login", { replace: true });
     };
 
-    const FAQS = [
-        {
-            category: "Technical",
-            question: "How accurate is the AI diagnosis?",
-            answer: "Our AI model is trained on millions of verified clinical records and medical literature. However, it is an assistant tool and not a replacement for professional medical advice. Always consult with a doctor for serious conditions.",
-        },
-        {
-            category: "Privacy",
-            question: "Is my personal health data secure?",
-            answer: "Yes. We use end-to-end encryption for all conversations and abide by strict HIPAA-compliant privacy standards. Your data is anonymized for processing and never shared with third parties without consent.",
-        },
-        {
-            category: "Technical",
-            question: "Can I use voice mode in noisy environments?",
-            answer: "Our voice recognition model uses noise-cancellation technology, but for the best accuracy, we recommend speaking in a relatively quiet environment.",
-        },
-        {
-            category: "Account",
-            question: "How do I reset my password?",
-            answer: "You can reset your password by going to your Profile menu (top right) and selecting 'Change Password'.",
-        },
-        {
-            category: "General",
-            question: "Does Doctor AI support multiple languages?",
-            answer: "Currently, Doctor AI primarily supports English. We are working on adding support for Spanish, French, and Mandarin in the next major update.",
-        },
-        {
-            category: "Account",
-            question: "Can I export my chat history?",
-            answer: "Yes, you can export your consultation history as a PDF summary from your account settings or directly from the chat interface.",
-        },
-        {
-            category: "General",
-            question: "Is there a mobile app available?",
-            answer: "Yes, the Doctor AI mobile app is available for both iOS and Android. You can download it from the App Store or Google Play Store.",
-        },
-        {
-            category: "Billing",
-            question: "How do I report a billing issue?",
-            answer: "For any billing inquiries, please select 'Billing Question' in the contact form below or email us directly at billing@doctorai.com.",
-        },
-    ];
+    const FAQS = t('support.faqs', { returnObjects: true }) as Array<{ category: string; question: string; answer: string }> || [];
 
-    const categories = ["All", ...Array.from(new Set(FAQS.map(f => f.category)))];
+    const categories = [ALL_CAT, ...Array.from(new Set(FAQS.map(f => f.category)))];
 
     const filteredFaqs = FAQS.filter(
         (f) =>
-            (selectedCategory === "All" || f.category === selectedCategory) &&
+            (selectedCategory === ALL_CAT || f.category === selectedCategory) &&
             (f.question.toLowerCase().includes(searchQuery.toLowerCase()) ||
                 f.answer.toLowerCase().includes(searchQuery.toLowerCase()))
     );
@@ -106,12 +69,13 @@ const SupportPage: React.FC = () => {
                         </div>
 
                         <div className="hidden md:flex items-center space-x-8">
-                            <button onClick={() => navigate("/")} className="text-sm font-medium text-slate-500 hover:text-primary transition-colors">Home</button>
+                            <button onClick={() => navigate("/")} className="text-sm font-medium text-slate-500 hover:text-primary transition-colors">{t('home.nav.home')}</button>
                             {getUserRole() === "admin" && (
-                                <button onClick={() => navigate("/dashboard")} className="text-sm font-medium text-slate-500 hover:text-primary transition-colors">Dashboard</button>
+                                <button onClick={() => navigate("/dashboard")} className="text-sm font-medium text-slate-500 hover:text-primary transition-colors">{t('home.nav.dashboard')}</button>
                             )}
-                            <button onClick={() => navigate("/chat")} className="text-sm font-medium text-slate-500 hover:text-primary transition-colors">ChatAI</button>
-                            <button className="text-sm font-bold text-primary transition-colors">Support</button>
+                            <button onClick={() => navigate("/chat")} className="text-sm font-medium text-slate-500 hover:text-primary transition-colors">{t('home.nav.chat')}</button>
+                            <button className="text-sm font-bold text-primary transition-colors">{t('home.nav.support')}</button>
+                            <LanguageSwitcher />
                             <button
                                 className="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
                                 onClick={() => document.documentElement.classList.toggle("dark")}
@@ -141,8 +105,8 @@ const SupportPage: React.FC = () => {
             <main className="flex-1 max-w-5xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-12">
                 {/* Header Section */}
                 <div className="mb-8">
-                    <h1 className="text-4xl font-extrabold text-slate-900 dark:text-white mb-4">Support Center</h1>
-                    <p className="text-lg text-slate-600 dark:text-slate-400">Ask us anything. We're here to help.</p>
+                    <h1 className="text-4xl font-extrabold text-slate-900 dark:text-white mb-4">{t('support.header.title')}</h1>
+                    <p className="text-lg text-slate-600 dark:text-slate-400">{t('support.header.desc')}</p>
                 </div>
 
                 {/* Tabs */}
@@ -154,7 +118,7 @@ const SupportPage: React.FC = () => {
                             : "text-slate-500 hover:text-slate-700 dark:hover:text-slate-300"
                             }`}
                     >
-                        FAQs
+                        {t('support.tabs.faqs')}
                     </button>
                     <button
                         onClick={() => setActiveTab("contact")}
@@ -163,7 +127,7 @@ const SupportPage: React.FC = () => {
                             : "text-slate-500 hover:text-slate-700 dark:hover:text-slate-300"
                             }`}
                     >
-                        Contact Support
+                        {t('support.tabs.contact')}
                     </button>
                 </div>
 
@@ -176,7 +140,7 @@ const SupportPage: React.FC = () => {
                                 type="text"
                                 value={searchQuery}
                                 onChange={(e) => setSearchQuery(e.target.value)}
-                                placeholder="Search for keywords..."
+                                placeholder={t('support.search.placeholder')}
                                 className="w-full pl-12 pr-4 py-4 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm focus:outline-none focus:ring-2 focus:ring-primary/50 text-slate-900 dark:text-white placeholder-slate-400 text-base"
                             />
                             <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 w-5 h-5" />
@@ -193,7 +157,7 @@ const SupportPage: React.FC = () => {
                                         : "bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-400 border-slate-200 dark:border-slate-800 hover:border-primary/50"
                                         }`}
                                 >
-                                    {cat}
+                                    {cat === ALL_CAT ? t('support.search.all') : cat}
                                 </button>
                             ))}
                         </div>
@@ -243,8 +207,8 @@ const SupportPage: React.FC = () => {
                                     <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-slate-50 dark:bg-slate-800 mb-4">
                                         <Search className="w-8 h-8 text-slate-300" />
                                     </div>
-                                    <h3 className="text-lg font-bold text-slate-900 dark:text-white">No results found</h3>
-                                    <p className="text-slate-500">We couldn't find any articles matching "{searchQuery}".</p>
+                                    <h3 className="text-lg font-bold text-slate-900 dark:text-white">{t('support.search.noResults')}</h3>
+                                    <p className="text-slate-500">{t('support.search.noResultsDesc')} "{searchQuery}".</p>
                                 </div>
                             )}
                         </div>
@@ -256,9 +220,9 @@ const SupportPage: React.FC = () => {
                         {/* Contact Channels Grid */}
                         <div className="grid md:grid-cols-3 gap-6">
                             {[
-                                { icon: MessageCircle, title: "Live Chat", desc: "Chat with our support team real-time.", action: "Start Chat" },
-                                { icon: Mail, title: "Email Support", desc: "Send us a detailed message.", action: "chatbot@vlu.vn" },
-                                { icon: Phone, title: "Phone Line", desc: "Call us for urgent inquiries.", action: "+84 (077) 339 6195" },
+                                { icon: MessageCircle, title: t('support.contact.liveChat'), desc: t('support.contact.liveChatDesc'), action: t('support.contact.startChat') },
+                                { icon: Mail, title: t('support.contact.email'), desc: t('support.contact.emailDesc'), action: "chatbot@vlu.vn" },
+                                { icon: Phone, title: t('support.contact.phone'), desc: t('support.contact.phoneDesc'), action: "+84 (077) 339 6195" },
                             ].map((item, idx) => (
                                 <div key={idx} className="bg-white dark:bg-slate-900 p-8 rounded-3xl border border-slate-200 dark:border-slate-800 hover:border-primary/50 transition-all shadow-sm">
                                     <div className="w-12 h-12 bg-primary/10 text-primary rounded-xl flex items-center justify-center mb-4">
@@ -275,32 +239,32 @@ const SupportPage: React.FC = () => {
 
                         {/* Contact Form */}
                         <div className="bg-white dark:bg-slate-900 shadow-slate-200/50 dark:shadow-none p-10 rounded-3xl border border-slate-200 dark:border-slate-800">
-                            <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-6">Send us a message</h2>
+                            <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-6">{t('support.form.title')}</h2>
                             <form className="grid gap-6 md:grid-cols-2" onSubmit={(e) => e.preventDefault()}>
                                 <div className="space-y-2">
-                                    <label className="text-sm font-semibold text-slate-700 dark:text-slate-300">Your Name</label>
-                                    <input type="text" placeholder="Thai Viet Lap" className="w-full p-4 rounded-xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 text-sm outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all" />
+                                    <label className="text-sm font-semibold text-slate-700 dark:text-slate-300">{t('support.form.nameLabel')}</label>
+                                    <input type="text" placeholder={t('support.form.namePlace')} className="w-full p-4 rounded-xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 text-sm outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all" />
                                 </div>
                                 <div className="space-y-2">
-                                    <label className="text-sm font-semibold text-slate-700 dark:text-slate-300">Email Address</label>
-                                    <input type="email" placeholder="lap@gmail.com" className="w-full p-4 rounded-xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 text-sm outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all" />
+                                    <label className="text-sm font-semibold text-slate-700 dark:text-slate-300">{t('support.form.emailLabel')}</label>
+                                    <input type="email" placeholder={t('support.form.emailPlace')} className="w-full p-4 rounded-xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 text-sm outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all" />
                                 </div>
                                 <div className="md:col-span-2 space-y-2">
-                                    <label className="text-sm font-semibold text-slate-700 dark:text-slate-300">Subject</label>
+                                    <label className="text-sm font-semibold text-slate-700 dark:text-slate-300">{t('support.form.subjectLabel')}</label>
                                     <select className="w-full p-4 rounded-xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 text-sm outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all text-slate-600">
-                                        <option>General Inquiry</option>
-                                        <option>Technical Issue</option>
-                                        <option>Billing Question</option>
-                                        <option>Feature Request</option>
+                                        <option>{t('support.form.sub1')}</option>
+                                        <option>{t('support.form.sub2')}</option>
+                                        <option>{t('support.form.sub3')}</option>
+                                        <option>{t('support.form.sub4')}</option>
                                     </select>
                                 </div>
                                 <div className="md:col-span-2 space-y-2">
-                                    <label className="text-sm font-semibold text-slate-700 dark:text-slate-300">Message</label>
-                                    <textarea rows={5} placeholder="Describe your issue in detail..." className="w-full p-4 rounded-xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 text-sm outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all resize-none" />
+                                    <label className="text-sm font-semibold text-slate-700 dark:text-slate-300">{t('support.form.messageLabel')}</label>
+                                    <textarea rows={5} placeholder={t('support.form.messagePlace')} className="w-full p-4 rounded-xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 text-sm outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all resize-none" />
                                 </div>
                                 <div className="md:col-span-2 pt-4">
                                     <Button className="w-full py-4 text-base font-bold shadow-lg shadow-primary/25 hover:shadow-primary/40 transition-all">
-                                        Send Message
+                                        {t('support.form.send')}
                                     </Button>
                                 </div>
                             </form>

@@ -4,6 +4,7 @@ import { getAnalytics } from "@/services/apis/admin";
 import { AnalyticsStats } from "@/types/admin";
 import GrowthChartCard from "@/components/admin/GrowthChartCard";
 import { CHART_DATA } from "@/data"; // Keep mock data for chart for now, or update if we have real time-series
+import { useTranslation } from "react-i18next";
 
 const StatCard = ({
     title,
@@ -38,6 +39,7 @@ const StatCard = ({
 );
 
 export default function DashboardView() {
+    const { t } = useTranslation();
     const [stats, setStats] = useState<AnalyticsStats | null>(null);
     const [loading, setLoading] = useState(true);
 
@@ -48,34 +50,34 @@ export default function DashboardView() {
             .finally(() => setLoading(false));
     }, []);
 
-    if (loading) return <div className="p-10 text-center text-slate-500">Loading metrics...</div>;
+    if (loading) return <div className="p-10 text-center text-slate-500">{t('dashboard.loadingMetrics', 'Loading metrics...')}</div>;
 
     return (
         <div className="space-y-6">
             {/* Metrics Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                 <StatCard
-                    title="Total Users"
+                    title={t('dashboard.totalUsers', 'Total Users')}
                     value={stats?.users || 0}
                     icon={Users}
                     color="bg-blue-500"
                     trend="+12%"
                 />
                 <StatCard
-                    title="Total Messages"
+                    title={t('dashboard.totalMessages', 'Total Messages')}
                     value={stats?.messages || 0}
                     icon={MessageSquare}
                     color="bg-indigo-500"
                     trend="+24%"
                 />
                 <StatCard
-                    title="Positive Feedback"
+                    title={t('dashboard.positiveFeedback', 'Positive Feedback')}
                     value={stats?.likes || 0}
                     icon={ThumbsUp}
                     color="bg-emerald-500"
                 />
                 <StatCard
-                    title="Total Reports"
+                    title={t('dashboard.totalReports', 'Total Reports')}
                     value={stats?.reports.total || 0}
                     icon={Flag}
                     color="bg-rose-500"
@@ -90,7 +92,7 @@ export default function DashboardView() {
 
                     {/* Recent Activity */}
                     <div className="bg-white dark:bg-slate-800 rounded-xl p-6 shadow-sm border border-slate-200 dark:border-slate-700">
-                        <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-4">Recent Activity</h3>
+                        <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-4">{t('dashboard.recentActivity', 'Recent Activity')}</h3>
                         <div className="space-y-4">
                             {stats?.recent_activities?.slice().reverse().map((activity, idx) => (
                                 <div key={idx} className="flex items-start gap-3 p-3 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-900/50 transition">
@@ -122,7 +124,7 @@ export default function DashboardView() {
                                 </div>
                             ))}
                             {(!stats?.recent_activities || stats.recent_activities.length === 0) && (
-                                <div className="text-center text-slate-400 py-4">No recent activity</div>
+                                <div className="text-center text-slate-400 py-4">{t('dashboard.noRecentActivity', 'No recent activity')}</div>
                             )}
                         </div>
                     </div>
@@ -130,14 +132,14 @@ export default function DashboardView() {
 
                 {/* Feedback Summary Card */}
                 <div className="bg-white dark:bg-slate-800 rounded-xl p-6 shadow-sm border border-slate-200 dark:border-slate-700">
-                    <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-4">Feedback Summary</h3>
+                    <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-4">{t('dashboard.feedbackSummary', 'Feedback Summary')}</h3>
                     <div className="space-y-4">
                         <div className="flex items-center justify-between">
                             <div className="flex items-center gap-2">
                                 <div className="w-8 h-8 rounded-full bg-emerald-500/10 flex items-center justify-center text-emerald-500">
                                     <ThumbsUp size={16} />
                                 </div>
-                                <span className="text-slate-700 dark:text-slate-300">Likes</span>
+                                <span className="text-slate-700 dark:text-slate-300">{t('dashboard.likes', 'Likes')}</span>
                             </div>
                             <span className="font-bold text-slate-900 dark:text-white">{stats?.likes || 0}</span>
                         </div>
@@ -147,7 +149,7 @@ export default function DashboardView() {
                                 <div className="w-8 h-8 rounded-full bg-rose-500/10 flex items-center justify-center text-rose-500">
                                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-thumbs-down"><path d="M17 14V2" /><path d="M9 18.12 10 14H4.17a2 2 0 0 1-1.92-2.56l2.33-8A2 2 0 0 1 6.42 2H19a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-2.76a2 2 0 0 0-1.79 1.11L12 22h0a3.13 3.13 0 0 1-3-3.88Z" /></svg>
                                 </div>
-                                <span className="text-slate-700 dark:text-slate-300">Dislikes</span>
+                                <span className="text-slate-700 dark:text-slate-300">{t('dashboard.dislikes', 'Dislikes')}</span>
                             </div>
                             <span className="font-bold text-slate-900 dark:text-white">{stats?.dislikes || 0}</span>
                         </div>

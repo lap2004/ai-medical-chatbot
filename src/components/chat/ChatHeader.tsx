@@ -4,6 +4,7 @@ import { ProfileMenuDialog } from "./ProfileMenuDialog";
 import { ResetPasswordDialog } from "../auth/ResetPasswordDialog";
 import { removeAuthCookies } from "@/lib/helper/token";
 import { Home, MessageSquare, Mic } from "lucide-react";
+import { LanguageSwitcher } from "../ui/LanguageSwitcher";
 
 import { useUserStore } from "@/store/userStore";
 
@@ -126,6 +127,8 @@ export const ChatHeader: React.FC<Props> = ({ tab, onTabChange }) => {
         </div>
 
         <div className="h-8 w-[1px] bg-slate-200 dark:bg-slate-700 mx-2" />
+
+        <LanguageSwitcher />
 
         {/* USER TRIGGER (neo dialog ở đây) */}
         <button

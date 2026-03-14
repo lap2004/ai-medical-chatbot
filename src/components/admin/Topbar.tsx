@@ -1,6 +1,8 @@
 import React from "react";
 import { Bell } from "lucide-react";
 import ProfileDropdown from "./ProfileDropdown";
+import { LanguageSwitcher } from "../ui/LanguageSwitcher";
+import { useTranslation } from "react-i18next";
 
 export default function Topbar({
   onLogout,
@@ -13,14 +15,18 @@ export default function Topbar({
   onChangePassword: () => void;
   onAvatarChange?: (newUrl: string) => void;
 }) {
+  const { t } = useTranslation();
+
   return (
     <header className="h-14 border-b border-slate-100 px-7 flex items-center justify-between bg-white">
-      <div className="text-[14px] font-extrabold">User Management</div>
+      <div className="text-[14px] font-extrabold">{t('admin.userManagement', 'User Management')}</div>
 
       <div className="flex items-center gap-4">
         <button className="p-2 rounded-lg hover:bg-slate-50">
           <Bell className="w-5 h-5 text-slate-400" />
         </button>
+
+        <LanguageSwitcher />
 
         <ProfileDropdown
           onLogout={onLogout}

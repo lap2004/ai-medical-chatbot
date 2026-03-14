@@ -2,6 +2,7 @@ import React from "react";
 import { MoreHorizontal, Pencil, Trash2, X, Stethoscope, ChevronLeft, Menu, Plus } from "lucide-react";
 import { Conversation } from "../../types/chat";
 import { Button } from "../ui/Button";
+import { useTranslation } from "react-i18next";
 
 interface SidebarProps {
   conversations: Conversation[];
@@ -21,6 +22,7 @@ export const ChatSidebar: React.FC<SidebarProps> = ({
   onRename,
   onDelete,
 }) => {
+  const { t } = useTranslation();
   const [collapsed, setCollapsed] = React.useState(false);
 
   // menu
@@ -145,7 +147,7 @@ export const ChatSidebar: React.FC<SidebarProps> = ({
             <button
               onClick={onNew}
               className="w-10 h-10 rounded-full bg-purple-600 shadow-purple-500/20 hover:bg-purple-700 text-white flex items-center justify-center"
-              title="New Consultation"
+              title={t('chatSidebar.newConsultation', 'New Consultation')}
             >
               <Plus className="w-6 h-6" />
             </button>
@@ -160,7 +162,7 @@ export const ChatSidebar: React.FC<SidebarProps> = ({
               onClick={onNew}
             >
               <Plus className="w-5 h-5 mr-2" />
-              <span>New Consultation</span>
+              <span>{t('chatSidebar.newConsultation', 'New Consultation')}</span>
             </Button>
           </div>
         )}
@@ -175,7 +177,7 @@ export const ChatSidebar: React.FC<SidebarProps> = ({
         `}
       >
         <h3 className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-4 px-2">
-          Recent Sessions
+          {t('chatSidebar.recentSessions', 'Recent Sessions')}
         </h3>
 
         <div className="space-y-1">
@@ -241,7 +243,7 @@ export const ChatSidebar: React.FC<SidebarProps> = ({
                       onClick={() => openRename(conv)}
                     >
                       <Pencil className="w-4 h-4 text-slate-400" />
-                      Rename
+                      {t('chatSidebar.rename', 'Rename')}
                     </button>
 
                     <button
@@ -253,7 +255,7 @@ export const ChatSidebar: React.FC<SidebarProps> = ({
                       onClick={() => openDelete(conv)}
                     >
                       <Trash2 className="w-4 h-4" />
-                      Delete
+                      {t('chatSidebar.delete', 'Delete')}
                     </button>
                   </div>
                 )}
@@ -284,7 +286,7 @@ export const ChatSidebar: React.FC<SidebarProps> = ({
               onClick={(e) => e.stopPropagation()}
             >
               <div className="flex items-center justify-between mb-3">
-                <h2 className="text-base font-bold">Rename session</h2>
+                <h2 className="text-base font-bold">{t('chatSidebar.renameSession', 'Rename session')}</h2>
                 <button
                   className="p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800"
                   onClick={() => !renameBusy && setRenameId(null)}
@@ -295,9 +297,10 @@ export const ChatSidebar: React.FC<SidebarProps> = ({
               </div>
 
               <p className="text-sm text-slate-500 mb-3">
-                Rename{" "}
+                {t('chatSidebar.renameText', 'Rename')}
                 <span className="font-semibold text-slate-700 dark:text-slate-200">
-                  {renameConv?.title ?? "this session"}
+                  {" "}
+                  {renameConv?.title ?? t('chatSidebar.thisSession', 'this session')}
                 </span>
               </p>
 
@@ -315,7 +318,7 @@ export const ChatSidebar: React.FC<SidebarProps> = ({
                 bg-white dark:bg-slate-950
                 outline-none focus:ring-2 focus:ring-primary/30
               "
-                placeholder="New name..."
+                placeholder={t('chatSidebar.newName', 'New name...')}
                 disabled={renameBusy}
               />
 
@@ -325,14 +328,14 @@ export const ChatSidebar: React.FC<SidebarProps> = ({
                   onClick={() => setRenameId(null)}
                   disabled={renameBusy}
                 >
-                  Cancel
+                  {t('chatSidebar.cancel', 'Cancel')}
                 </Button>
                 <Button
                   variant="secondary"
                   onClick={submitRename}
                   disabled={renameBusy || !renameValue.trim()}
                 >
-                  {renameBusy ? "Saving..." : "Save"}
+                  {renameBusy ? t('chatSidebar.saving', 'Saving...') : t('chatSidebar.save', 'Save')}
                 </Button>
               </div>
             </div>
@@ -362,7 +365,7 @@ export const ChatSidebar: React.FC<SidebarProps> = ({
             >
               <div className="flex items-center justify-between mb-2">
                 <h2 className="text-base font-bold text-red-600">
-                  Delete session?
+                  {t('chatSidebar.deleteSession', 'Delete session?')}
                 </h2>
                 <button
                   className="p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800"
@@ -374,11 +377,11 @@ export const ChatSidebar: React.FC<SidebarProps> = ({
               </div>
 
               <p className="text-sm text-slate-500">
-                This will permanently delete{" "}
+                {t('chatSidebar.permanentlyDelete', 'This will permanently delete')}{" "}
                 <span className="font-semibold text-slate-700 dark:text-slate-200">
-                  {deleteConv?.title ?? "this session"}
+                  {deleteConv?.title ?? t('chatSidebar.thisSession', 'this session')}
                 </span>
-                . You can’t undo this action.
+                {t('chatSidebar.cannotUndo', '. You can’t undo this action.')}
               </p>
 
               <div className="mt-4 flex items-center justify-end gap-2">
@@ -387,7 +390,7 @@ export const ChatSidebar: React.FC<SidebarProps> = ({
                   onClick={() => setDeleteId(null)}
                   disabled={deleteBusy}
                 >
-                  Cancel
+                  {t('chatSidebar.cancel', 'Cancel')}
                 </Button>
 
                 <Button
@@ -396,7 +399,7 @@ export const ChatSidebar: React.FC<SidebarProps> = ({
                   onClick={confirmDelete}
                   disabled={deleteBusy}
                 >
-                  {deleteBusy ? "Deleting..." : "Delete"}
+                  {deleteBusy ? t('chatSidebar.deleting', 'Deleting...') : t('chatSidebar.delete', 'Delete')}
                 </Button>
               </div>
             </div>

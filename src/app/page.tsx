@@ -9,8 +9,11 @@ import { useAuthUIStore } from "@/store";
 import { ResetPasswordDialog } from "@/components/auth/ResetPasswordDialog";
 import { ProfileMenuDialog } from "@/components/chat/ProfileMenuDialog";
 import { useUserStore } from "@/store/userStore";
+import { LanguageSwitcher } from "@/components/ui/LanguageSwitcher";
+import { useTranslation } from "react-i18next";
 
 const HomePage: React.FC = () => {
+  const { t } = useTranslation();
   const [isWidgetOpen, setIsWidgetOpen] = useState(false);
   const navigate = useNavigate();
   const forcePasswordChange = useAuthUIStore((s) => s.forcePasswordChange);
@@ -54,28 +57,29 @@ const HomePage: React.FC = () => {
                 href="/"
                 className="text-sm font-medium hover:text-primary transition-colors"
               >
-                Home
+                {t('home.nav.home')}
               </a>
               {getUserRole() === "admin" && (
                 <a
                   href="/dashboard"
                   className="text-sm font-medium hover:text-primary transition-colors"
                 >
-                  Dashboard
+                  {t('home.nav.dashboard')}
                 </a>
               )}
               <a
                 href="/chat"
                 className="text-sm font-medium hover:text-primary transition-colors"
               >
-                ChatAI
+                {t('home.nav.chat')}
               </a>
               <a
                 href="/support"
                 className="text-sm font-medium hover:text-primary transition-colors"
               >
-                Support
+                {t('home.nav.support')}
               </a>
+              <LanguageSwitcher />
               <button
                 className="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
                 onClick={() =>
@@ -123,27 +127,26 @@ const HomePage: React.FC = () => {
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
                 </span>
-                Next-Gen Medical Assistance
+                {t('home.hero.badge')}
               </div>
               <h1 className="text-5xl lg:text-7xl font-extrabold text-slate-900 dark:text-white leading-[1.1]">
-                Your AI <span className="text-primary">Health</span> Companion.
+                {t('home.hero.title1')}<span className="text-primary">{t('home.hero.title2')}</span>{t('home.hero.title3')}
               </h1>
               <p className="text-xl text-slate-600 dark:text-slate-400 leading-relaxed max-w-xl">
-                Experience immediate medical guidance, symptom checks, and
-                medication info powered by advanced AI.
+                {t('home.hero.desc')}
               </p>
               <div className="flex flex-wrap gap-4">
               {/* Nút Get Started */}
               <a href="/chat">
                 <Button size="lg" className="px-10">
-                  Get Started Free <ArrowRight className="ml-2 w-5 h-5" />
+                  {t('home.hero.getStarted')} <ArrowRight className="ml-2 w-5 h-5" />
                 </Button>
               </a>
 
               {/* Nút Watch Demo - Bọc thêm thẻ <a> */}
               <a href="/chat">
                 <Button variant="outline" size="lg" className="px-10">
-                  <PlayCircle className="text-primary mr-2 w-5 h-5" /> Watch Demo
+                  <PlayCircle className="text-primary mr-2 w-5 h-5" /> {t('home.hero.watchDemo')}
                 </Button>
               </a>
             </div>
@@ -168,13 +171,13 @@ const HomePage: React.FC = () => {
                 </div>
                 <div className="p-6 space-y-4">
                   <div className="bg-slate-100 dark:bg-slate-700/50 p-4 rounded-2xl rounded-tl-none mr-12 text-sm">
-                    Hi! How can I assist you today ?
+                    {t('home.widget.title')}
                   </div>
                   <div className="bg-primary/10 p-4 rounded-2xl rounded-tr-none ml-12 text-sm text-primary dark:text-teal-400">
-                    I've been feeling some fatigue.
+                    {t('home.widget.msg1')}
                   </div>
                   <div className="bg-slate-100 dark:bg-slate-700/50 p-4 rounded-2xl rounded-tl-none mr-12 text-sm italic opacity-60">
-                    Analyzing symptoms...
+                    {t('home.widget.msg2')}
                   </div>
                 </div>
               </div>
@@ -185,7 +188,7 @@ const HomePage: React.FC = () => {
                     <BadgeCheck className="w-6 h-6" />
                   </div>
                   <div>
-                    <p className="text-xs text-slate-500">Accuracy Rate</p>
+                    <p className="text-xs text-slate-500">{t('home.widget.accuracy')}</p>
                     <p className="text-xl font-bold dark:text-white">96.76%</p>
                   </div>
                 </div>
@@ -199,28 +202,27 @@ const HomePage: React.FC = () => {
       <section className="py-24 bg-white dark:bg-slate-900/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl font-bold mb-4 dark:text-white">
-            Smart Healthcare Solutions
+            {t('home.solutions.title')}
           </h2>
           <p className="text-slate-500 mb-16 max-w-2xl mx-auto">
-            Trained on millions of clinical papers to provide accurate health
-            information.
+            {t('home.solutions.desc')}
           </p>
           <div className="grid md:grid-cols-3 gap-8">
             {[
               {
                 icon: <MessageSquare className="w-8 h-8" />,
-                title: "Instant Consultation",
-                desc: "Chat with our AI anytime for immediate answers.",
+                title: t('home.solutions.instant'),
+                desc: t('home.solutions.instantDesc'),
               },
               {
                 icon: <Mic className="w-8 h-8" />,
-                title: "Voice Interaction",
-                desc: "Speak naturally for hands-free guidance.",
+                title: t('home.solutions.voice'),
+                desc: t('home.solutions.voiceDesc'),
               },
               {
                 icon: <History className="w-8 h-8" />,
-                title: "Health Tracking",
-                desc: "Securely store and track your history.",
+                title: t('home.solutions.health'),
+                desc: t('home.solutions.healthDesc'),
               },
             ].map((sol, i) => (
               <div
@@ -257,7 +259,7 @@ const HomePage: React.FC = () => {
             <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center">
               <MessageCircle className="w-6 h-6" />
             </div>
-            <span className="font-bold">Chat with AI</span>
+            <span className="font-bold">{t('home.cta.chatWithAi')}</span>
           </button>
         </div>
       )}
@@ -268,9 +270,9 @@ const HomePage: React.FC = () => {
       <section>
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <h2 className="text-xl font-extrabold">How it Works</h2>
+            <h2 className="text-xl font-extrabold">{t('home.howItWorks.title')}</h2>
             <p className="mt-2 text-sm text-slate-500">
-              Our process is designed to be seamless and straightforward.
+              {t('home.howItWorks.desc')}
             </p>
           </div>
 
@@ -279,20 +281,20 @@ const HomePage: React.FC = () => {
               {
                 step: "1",
                 icon: <FileEdit className="w-6 h-6" />,
-                title: "Input Information",
-                desc: "Enter your symptoms, questions, or context in the chat.",
+                title: t('home.howItWorks.step1'),
+                desc: t('home.howItWorks.step1Desc'),
               },
               {
                 step: "2",
                 icon: <Brain className="w-6 h-6" />,
-                title: "AI Analysis",
-                desc: "Our AI evaluates and references relevant clinical signals.",
+                title: t('home.howItWorks.step2'),
+                desc: t('home.howItWorks.step2Desc'),
               },
               {
                 step: "3",
                 icon: <Lightbulb className="w-6 h-6" />,
-                title: "Suggested Results",
-                desc: "Get guidance, next steps, and supportive explanations.",
+                title: t('home.howItWorks.step3'),
+                desc: t('home.howItWorks.step3Desc'),
               },
             ].map((s) => (
               <div
@@ -332,28 +334,28 @@ const HomePage: React.FC = () => {
                 </div>
                 <div>
                   <div className="text-sm font-bold leading-none">
-                    Image Recognition
+                    {t('home.smartApps.imgRec')}
                   </div>
                   <div className="text-xs text-slate-500">
-                    Supportive visual checks
+                    {t('home.smartApps.imgRecDesc')}
                   </div>
                 </div>
               </div>
             </div>
 
             <div>
-              <h3 className="text-2xl font-extrabold">Smart Applications</h3>
+              <h3 className="text-2xl font-extrabold">{t('home.smartApps.title')}</h3>
               <div className="mt-5 space-y-4">
                 {[
                   {
                     icon: <Microscope className="w-5 h-5" />,
-                    title: "Clinical Image Analysis",
-                    desc: "Upload images for supportive insights and general guidance.",
+                    title: t('home.smartApps.clinImg'),
+                    desc: t('home.smartApps.clinImgDesc'),
                   },
                   {
                     icon: <Lightbulb className="w-5 h-5" />,
-                    title: "Medical Education Highlights",
-                    desc: "Personalized learning summaries based on symptoms and context.",
+                    title: t('home.smartApps.medEd'),
+                    desc: t('home.smartApps.medEdDesc'),
                   },
                 ].map((a) => (
                   <div
@@ -380,20 +382,18 @@ const HomePage: React.FC = () => {
             <div className="grid lg:grid-cols-[1fr,220px] gap-8 items-center">
               <div>
                 <h3 className="text-xl font-extrabold">
-                  Ethics &amp; Privacy Committed
+                  {t('home.ethics.title')}
                 </h3>
                 <p className="mt-2 text-sm text-slate-600 max-w-2xl leading-relaxed">
-                  Your health data is secured. We employ privacy-grade
-                  encryption and follow best practices to help ensure your
-                  safety.
+                  {t('home.ethics.desc')}
                 </p>
 
                 <div className="mt-5 grid sm:grid-cols-2 gap-3 text-sm">
                   {[
-                    "HIPAA Compliant",
-                    "End-to-end Encryption",
-                    "Bias-Free Algorithms",
-                    "Human-in-the-loop QA",
+                    t('home.ethics.t1'),
+                    t('home.ethics.t2'),
+                    t('home.ethics.t3'),
+                    t('home.ethics.t4'),
                   ].map((t) => (
                     <div key={t} className="flex items-center gap-2">
                       <CheckCircle className="text-[#0F766E] w-[18px] h-[18px]" />
@@ -420,11 +420,10 @@ const HomePage: React.FC = () => {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <h2 className="text-2xl font-extrabold">
-              Bắt đầu trải nghiệm AI Trợ Lý Bác Sĩ
+              {t('home.cta.title')}
             </h2>
             <p className="mt-2 text-sm text-slate-500">
-              Gia nhập cộng đồng hơn 10,000+ bác sĩ và sinh viên y khoa đang học
-              hỏi và hỗ trợ mỗi ngày.
+              {t('home.cta.desc')}
             </p>
 
             <div className="mt-6 flex justify-center">
@@ -432,7 +431,7 @@ const HomePage: React.FC = () => {
                 onClick={() => navigate("/chat")}
                 className="h-11 px-7 rounded-full bg-[#2563EB] text-white font-semibold shadow-sm hover:brightness-95 transition"
               >
-                Trải nghiệm miễn phí ngay bây giờ
+                {t('home.cta.button')}
               </button>
             </div>
           </div>

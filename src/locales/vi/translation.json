@@ -1,0 +1,219 @@
+{
+  "common": {
+    "login": "Đăng nhập",
+    "logout": "Đăng xuất",
+    "dashboard": "Bảng điều khiển",
+    "settings": "Cài đặt",
+    "save": "Lưu",
+    "cancel": "Hủy",
+    "edit": "Chỉnh sửa",
+    "delete": "Xóa"
+  },
+  "admin": {
+    "userManagement": "Quản lý người dùng",
+    "analytics": "Phân tích",
+    "helpCenter": "Trung tâm trợ giúp",
+    "adminPanel": "Bảng quản trị"
+  },
+  "dashboard": {
+    "loadingMetrics": "Đang tải dữ liệu...",
+    "totalUsers": "Tổng người dùng",
+    "totalMessages": "Tổng tin nhắn",
+    "positiveFeedback": "Phản hồi tích cực",
+    "totalReports": "Tổng báo cáo",
+    "recentActivity": "Hoạt động gần đây",
+    "noRecentActivity": "Không có hoạt động gần đây",
+    "feedbackSummary": "Tổng quan phản hồi",
+    "likes": "Thích",
+    "dislikes": "Không thích",
+    "vsLastMonth": "so với tháng trước"
+  },
+  "login": {
+    "pleaseEnterEmail": "Vui lòng nhập email.",
+    "pleaseEnterPassword": "Vui lòng nhập mật khẩu.",
+    "loginFailed": "Đăng nhập thất bại!",
+    "loginSuccess": "Đăng nhập thành công!",
+    "googleLoginFailed": "Đăng nhập Google thất bại!",
+    "googleLoginSuccess": "Đăng nhập Google thành công!",
+    "appleLoginNotIntegrated": "Apple login chưa được tích hợp.",
+    "welcomeBack": "Chào mừng trở lại",
+    "accessAssistant": "Truy cập trợ lý sức khỏe cá nhân của bạn",
+    "emailAddress": "Địa chỉ Email",
+    "password": "Mật khẩu",
+    "forgot": "Quên?",
+    "signingIn": "Đang đăng nhập...",
+    "signIn": "Đăng nhập",
+    "orContinueWith": "Hoặc tiếp tục với",
+    "dontHaveAccount": "Chưa có tài khoản?",
+    "signUpForFree": "Đăng ký miễn phí",
+    "tempPasswordNotice": "Bạn đang sử dụng mật khẩu tạm thời. Vui lòng đổi mật khẩu."
+  },
+  "chatSidebar": {
+    "newConsultation": "Buổi tư vấn mới",
+    "recentSessions": "Gần đây",
+    "rename": "Đổi tên",
+    "delete": "Xóa",
+    "renameSession": "Đổi tên",
+    "renameText": "Đổi tên",
+    "thisSession": "phiên này",
+    "newName": "Tên mới...",
+    "cancel": "Hủy",
+    "save": "Lưu",
+    "saving": "Đang lưu...",
+    "deleteSession": "Xóa phiên?",
+    "permanentlyDelete": "Hành động này sẽ xóa vĩnh viễn",
+    "cannotUndo": ". Bạn không thể hoàn tác.",
+    "deleting": "Đang xóa..."
+  },
+    "chat": {
+    "voice": "Micro"
+  },
+  "home": {
+    "nav": {
+      "home": "Trang Chủ",
+      "dashboard": "Bảng Điều Khiển",
+      "chat": "ChatAI",
+      "support": "Hỗ Trợ"
+    },
+    "hero": {
+      "badge": "Hỗ Trợ Y Tế Thế Hệ Mới",
+      "title1": "Trợ Lý ",
+      "title2": "Sức Khỏe",
+      "title3": " AI Của Bạn.",
+      "desc": "Trải nghiệm hướng dẫn y tế tức thì, kiểm tra triệu chứng và thông tin thuốc được hỗ trợ bởi AI tiên tiến.",
+      "getStarted": "Bắt Đầu Miễn Phí",
+      "watchDemo": "Xem Demo"
+    },
+    "widget": {
+      "title": "Xin chào! Tôi có thể giúp gì cho bạn hôm nay?",
+      "msg1": "Tôi cảm thấy hơi mệt mỏi.",
+      "msg2": "Đang phân tích triệu chứng...",
+      "accuracy": "Độ chính xác"
+    },
+    "solutions": {
+      "title": "Giải Pháp Chăm Sóc Sức Khỏe Thông Minh",
+      "desc": "Được đào tạo trên hàng triệu tài liệu lâm sàng để cung cấp thông tin sức khỏe chính xác.",
+      "instant": "Tư Vấn Tức Thì",
+      "instantDesc": "Trò chuyện với AI của chúng tôi bất cứ lúc nào để có câu trả lời ngay lập tức.",
+      "voice": "Tương Tác Bằng Giọng Nói",
+      "voiceDesc": "Nói chuyện tự nhiên để được hướng dẫn rảnh tay.",
+      "health": "Theo Dõi Sức Khỏe",
+      "healthDesc": "Lưu trữ và theo dõi lịch sử của bạn một cách an toàn."
+    },
+    "howItWorks": {
+      "title": "Cách Thức Hoạt Động",
+      "desc": "Quy trình của chúng tôi được thiết kế liền mạch và rõ ràng.",
+      "step1": "Nhập Thông Tin",
+      "step1Desc": "Nhập triệu chứng, câu hỏi hoặc ngữ cảnh của bạn vào mục chat.",
+      "step2": "AI Phân Tích",
+      "step2Desc": "AI của chúng tôi đánh giá và tham khảo các tín hiệu lâm sàng có liên quan.",
+      "step3": "Gợi Ý Kết Quả",
+      "step3Desc": "Nhận hướng dẫn, các bước tiếp theo và giải thích hỗ trợ."
+    },
+    "smartApps": {
+      "title": "Ứng Dụng Thông Minh",
+      "imgRec": "Nhận Diện Hình Ảnh",
+      "imgRecDesc": "Hỗ trợ kiểm tra qua hình ảnh",
+      "clinImg": "Phân Tích Hình Ảnh Lâm Sàng",
+      "clinImgDesc": "Tải hình ảnh lên để nhận tư vấn hỗ trợ và hướng dẫn tổng quát.",
+      "medEd": "Tiêu Điểm Giáo Dục Y Khoa",
+      "medEdDesc": "Tóm tắt kiến thức cá nhân hóa dựa trên triệu chứng và ngữ cảnh."
+    },
+    "ethics": {
+      "title": "Cam Kết Đạo Đức & Riêng Tư",
+      "desc": "Dữ liệu sức khỏe của bạn được bảo mật. Chúng tôi sử dụng mã hóa cấp độ quyền riêng tư và tuân theo các thực hành tốt nhất để đảm bảo an toàn cho bạn.",
+      "t1": "Tuân thủ HIPAA",
+      "t2": "Mã hóa đầu cuối",
+      "t3": "Thuật toán không thiên kiến",
+      "t4": "Chất lượng do con người kiểm tra"
+    },
+    "cta": {
+      "title": "Bắt đầu trải nghiệm AI Trợ Lý Bác Sĩ",
+      "desc": "Gia nhập cộng đồng hơn 10,000+ bác sĩ và sinh viên y khoa đang học hỏi và hỗ trợ mỗi ngày.",
+      "button": "Trải nghiệm miễn phí ngay bây giờ",
+      "chatWithAi": "Trò chuyện với AI"
+    }
+  },
+  "support": {
+    "header": {
+      "title": "Trung Tâm Hỗ Trợ",
+      "desc": "Hỏi chúng tôi bất cứ điều gì. Chúng tôi ở đây để giúp đỡ."
+    },
+    "tabs": {
+      "faqs": "Câu Hỏi Thường Gặp",
+      "contact": "Liên Hệ Hỗ Trợ"
+    },
+    "search": {
+      "placeholder": "Tìm kiếm từ khóa...",
+      "all": "Tất cả",
+      "noResults": "Không tìm thấy kết quả",
+      "noResultsDesc": "Chúng tôi không thể tìm thấy bất kỳ bài viết nào khớp với"
+    },
+    "contact": {
+      "liveChat": "Trò Chuyện Trực Tiếp",
+      "liveChatDesc": "Trò chuyện với đội ngũ hỗ trợ theo thời gian thực.",
+      "startChat": "Bắt Đầu Trò Chuyện",
+      "email": "Hỗ Trợ Qua Email",
+      "emailDesc": "Gửi cho chúng tôi một tin nhắn chi tiết.",
+      "phone": "Đường Dây Nóng",
+      "phoneDesc": "Gọi cho chúng tôi nếu có thắc mắc khẩn cấp."
+    },
+    "form": {
+      "title": "Gửi tin nhắn cho chúng tôi",
+      "nameLabel": "Tên Của Bạn",
+      "namePlace": "Thái Việt Lập",
+      "emailLabel": "Địa chỉ Email",
+      "emailPlace": "lap@gmail.com",
+      "subjectLabel": "Chủ Đề",
+      "sub1": "Câu Hỏi Chung",
+      "sub2": "Vấn Đề Kỹ Thuật",
+      "sub3": "Câu Hỏi Thanh Toán",
+      "sub4": "Yêu Cầu Tính Năng",
+      "messageLabel": "Tin Nhắn",
+      "messagePlace": "Mô tả chi tiết vấn đề của bạn...",
+      "send": "Gửi Tin Nhắn"
+    },
+    "faqs": [
+      {
+        "category": "Kỹ thuật",
+        "question": "Chẩn đoán của AI chính xác đến mức nào?",
+        "answer": "Mô hình AI của chúng tôi được đào tạo trên hàng triệu hồ sơ lâm sàng và tài liệu y khoa đã được xác thực. Tuy nhiên, nó là một công cụ hỗ trợ và không thay thế cho lời khuyên y tế chuyên nghiệp. Luôn tham khảo ý kiến bác sĩ đối với các tình trạng nghiêm trọng."
+      },
+      {
+        "category": "Quyền riêng tư",
+        "question": "Dữ liệu sức khỏe cá nhân của tôi có an toàn không?",
+        "answer": "Có. Chúng tôi sử dụng mã hóa đầu cuối cho tất cả các cuộc trò chuyện và tuân thủ các tiêu chuẩn bảo mật nghiêm ngặt theo chuẩn HIPAA. Dữ liệu của bạn được ẩn danh để xử lý và không bao giờ được chia sẻ với bên thứ ba nếu không có sự đồng ý."
+      },
+      {
+        "category": "Kỹ thuật",
+        "question": "Tôi có thể sử dụng chế độ giọng nói trong môi trường ồn ào không?",
+        "answer": "Mô hình nhận dạng giọng nói của chúng tôi sử dụng công nghệ khử tiếng ồn, nhưng để có độ chính xác cao nhất, chúng tôi khuyên bạn nên nói trong môi trường tương đối yên tĩnh."
+      },
+      {
+        "category": "Tài khoản",
+        "question": "Làm thế nào để đặt lại mật khẩu của tôi?",
+        "answer": "Bạn có thể đặt lại mật khẩu bằng cách đi tới menu Hồ sơ (trên cùng bên phải) và chọn 'Đổi Mật khẩu'."
+      },
+      {
+        "category": "Chung",
+        "question": "Doctor AI có hỗ trợ đa ngôn ngữ không?",
+        "answer": "Hiện tại, Doctor AI hỗ trợ tiếng Anh và tiếng Việt. Chúng tôi đang nỗ lực thêm các ngôn ngữ khác trong bản cập nhật lớn tiếp theo."
+      },
+      {
+        "category": "Tài khoản",
+        "question": "Tôi có thể xuất lịch sử trò chuyện của mình không?",
+        "answer": "Có, bạn có thể xuất lịch sử tư vấn của mình dưới dạng tóm tắt PDF từ cài đặt tài khoản của bạn hoặc trực tiếp từ giao diện trò chuyện."
+      },
+      {
+        "category": "Chung",
+        "question": "Có cung cấp ứng dụng di động không?",
+        "answer": "Có, ứng dụng di động Doctor AI có sẵn cho cả iOS và Android. Bạn có thể tải nó từ App Store hoặc Google Play Store."
+      },
+      {
+        "category": "Thanh toán",
+        "question": "Làm thế nào để tôi báo cáo vấn đề thanh toán?",
+        "answer": "Đối với bất kỳ thắc mắc thanh toán nào, vui lòng chọn 'Câu Hỏi Thanh Toán' trong biểu mẫu liên hệ bên dưới hoặc gửi email trực tiếp cho chúng tôi tại billing@doctorai.com."
+      }
+    ]
+  }
+}
