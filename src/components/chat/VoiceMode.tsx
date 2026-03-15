@@ -3,12 +3,9 @@ import { Mic, MicOff, Phone, PhoneOff, Volume2, VolumeX } from "lucide-react";
 
 type ConnState = "IDLE" | "DIALING" | "CONNECTING" | "CONNECTED" | "ERROR";
 type WSMsg =
-  | { type: "info"; message?: string }
-  | { type: "debug"; rms?: number; energy?: number; vad?: boolean; gate?: boolean }
-  | { type: "vad"; state: string }
-  | { type: "final_transcript"; text?: string }
-  | { type: "assistant_text"; text?: string }
-  | { type: "tts_audio_b64"; data: string; mime?: string };
+  | { type: "error"; message?: string }
+  | { type: "welcome"; text: string }
+  | { type: "answer"; text: string; audio_b64?: string };
 
 type ChatRole = "you" | "assistant" | "system";
 type ChatItem = {
@@ -27,44 +24,6 @@ function b64ToBlob(b64: string, mime: string) {
   const bytes = new Uint8Array(byteChars.length);
   for (let i = 0; i < byteChars.length; i++) bytes[i] = byteChars.charCodeAt(i);
   return new Blob([bytes], { type: mime });
-}
-function floatTo16BitPCM(float32: Float32Array) {
-  const out = new Int16Array(float32.length);
-  for (let i = 0; i < float32.length; i++) {
-    const s = Math.max(-1, Math.min(1, float32[i]));
-    out[i] = s < 0 ? (s * 0x8000) : (s * 0x7fff);
-  }
-  return out.buffer;
-}
-function downsampleTo16kAndEncodeInt16(float32: Float32Array, inRate: number, outRate: number) {
-  if (outRate >= inRate) return floatTo16BitPCM(float32);
-
-  const ratio = inRate / outRate;
-  const newLen = Math.floor(float32.length / ratio);
-  if (newLen <= 0) return new ArrayBuffer(0);
-
-  const result = new Int16Array(newLen);
-  let offsetResult = 0;
-  let offsetBuffer = 0;
-
-  while (offsetResult < result.length) {
-    const nextOffsetBuffer = Math.round((offsetResult + 1) * ratio);
-
-    let accum = 0;
-    let count = 0;
-    for (let i = offsetBuffer; i < nextOffsetBuffer && i < float32.length; i++) {
-      accum += float32[i];
-      count++;
-    }
-    const sample = count ? accum / count : 0;
-
-    const s = Math.max(-1, Math.min(1, sample));
-    result[offsetResult] = s < 0 ? (s * 0x8000) : (s * 0x7fff);
-
-    offsetResult++;
-    offsetBuffer = nextOffsetBuffer;
-  }
-  return result.buffer;
 }
 
 export const VoiceMode: React.FC = () => {
@@ -92,11 +51,7 @@ export const VoiceMode: React.FC = () => {
 const WS_URL = `wss://${VOICE_DOMAIN}/ws-call`;
   // refs
   const wsRef = useRef<WebSocket | null>(null);
-  const audioCtxRef = useRef<AudioContext | null>(null);
-  const processorRef = useRef<ScriptProcessorNode | null>(null);
-  const micStreamRef = useRef<MediaStream | null>(null);
-  const micSourceRef = useRef<MediaStreamAudioSourceNode | null>(null);
-  const zeroGainRef = useRef<GainNode | null>(null);
+  const recognizerRef = useRef<any>(null);
   const audioElRef = useRef<HTMLAudioElement | null>(null);
 
   const isTtsMutedRef = useRef(false);
@@ -133,7 +88,16 @@ const WS_URL = `wss://${VOICE_DOMAIN}/ws-call`;
 
   const setTtsMute = (muted: boolean, reason?: string) => {
     isTtsMutedRef.current = muted;
-    wsSendJson({ type: "client_tts", state: muted ? "start" : "end", reason: reason || "" });
+    // Tạm ngắt nhận diện giọng nói khi AI đang nói
+    if (muted) {
+      try { recognizerRef.current?.abort(); } catch {}
+    } else {
+      setTimeout(() => {
+        if (wsRef.current?.readyState === WebSocket.OPEN && !isMuted) {
+          try { recognizerRef.current?.start(); } catch {}
+        }
+      }, 500);
+    }
   };
 
   const startBps = () => {
@@ -151,17 +115,8 @@ const WS_URL = `wss://${VOICE_DOMAIN}/ws-call`;
   };
 
   const stopAll = async () => {
-    try { processorRef.current?.disconnect(); } catch {}
-    try { micSourceRef.current?.disconnect(); } catch {}
-    try { zeroGainRef.current?.disconnect(); } catch {}
-    try { await audioCtxRef.current?.close(); } catch {}
-    try { micStreamRef.current?.getTracks().forEach((t) => t.stop()); } catch {}
-
-    processorRef.current = null;
-    micSourceRef.current = null;
-    zeroGainRef.current = null;
-    audioCtxRef.current = null;
-    micStreamRef.current = null;
+    try { recognizerRef.current?.stop(); } catch {}
+    recognizerRef.current = null;
 
     isTtsMutedRef.current = false;
     setIsMicActive(false);
@@ -173,49 +128,64 @@ const WS_URL = `wss://${VOICE_DOMAIN}/ws-call`;
     const ws = wsRef.current;
     if (!ws || ws.readyState !== WebSocket.OPEN) return;
 
-    const micStream = await navigator.mediaDevices.getUserMedia({
-      audio: { echoCancellation: true, noiseSuppression: true, autoGainControl: true, channelCount: 1 },
-    });
-    micStreamRef.current = micStream;
+    const SpeechRecognition = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
+    if (!SpeechRecognition) {
+      append("system", "Trình duyệt của bạn không hỗ trợ Web Speech API. Hãy dùng Google Chrome.");
+      return;
+    }
 
-    const audioCtx = new (window.AudioContext || (window as any).webkitAudioContext)();
-    audioCtxRef.current = audioCtx;
+    const rec = new SpeechRecognition();
+    rec.lang = "vi-VN";
+    rec.continuous = true;
+    rec.interimResults = true;
 
-    const inputSampleRate = audioCtx.sampleRate;
-    const targetSampleRate = 16000;
+    rec.onresult = (e: any) => {
+      if (isTtsMutedRef.current || isMuted) return;
 
-    const micSource = audioCtx.createMediaStreamSource(micStream);
-    micSourceRef.current = micSource;
+      let finalTrans = "";
+      let interimTrans = "";
+      for (let i = e.resultIndex; i < e.results.length; ++i) {
+        if (e.results[i].isFinal) {
+          finalTrans += e.results[i][0].transcript;
+        } else {
+          interimTrans += e.results[i][0].transcript;
+        }
+      }
 
-    const processor = audioCtx.createScriptProcessor(4096, 1, 1);
-    processorRef.current = processor;
-
-    processor.onaudioprocess = (e) => {
-      const ws2 = wsRef.current;
-      if (!ws2 || ws2.readyState !== WebSocket.OPEN) return;
-
-      if (isMuted) return;
-      if (isTtsMutedRef.current) return;
-
-      const input = e.inputBuffer.getChannelData(0);
-      const pcm16k = downsampleTo16kAndEncodeInt16(input, inputSampleRate, targetSampleRate);
-      if (pcm16k && pcm16k.byteLength > 0) {
-        ws2.send(pcm16k);
-        sentBytesRef.current += pcm16k.byteLength;
+      if (finalTrans) {
+        const text = finalTrans.trim();
+        setTranscript(""); // clear live transcript
+        append("you", text);
+        wsSendJson({ type: "text", text: text, tts: true });
+        sentBytesRef.current += text.length; // Approximate size
+      } else {
+        setTranscript(interimTrans.trim());
       }
     };
 
-    const zeroGain = audioCtx.createGain();
-    zeroGain.gain.value = 0;
-    zeroGainRef.current = zeroGain;
+    rec.onstart = () => { setIsMicActive(true); setIsSpeaking(false); };
+    rec.onerror = (e: any) => { console.error("Speech rec error", e); };
+    rec.onend = () => {
+      setIsMicActive(false);
+      // Restart naturally if active connection
+      if (wsRef.current?.readyState === WebSocket.OPEN && !isTtsMutedRef.current && !isMuted) {
+        try { rec.start(); } catch {}
+      }
+    };
 
-    micSource.connect(processor);
-    processor.connect(zeroGain);
-    zeroGain.connect(audioCtx.destination);
-
-    setIsMicActive(true);
-    append("system", "Mic started.");
+    try { rec.start(); } catch {}
+    recognizerRef.current = rec;
+    append("system", "Mic started (Web Speech API).");
   };
+
+  // Adjust recognizer on mute change
+  useEffect(() => {
+    if (isMuted) {
+      try { recognizerRef.current?.abort(); } catch {}
+    } else if (conn === "CONNECTED" && !isTtsMutedRef.current) {
+      try { recognizerRef.current?.start(); } catch {}
+    }
+  }, [isMuted, conn]);
 
   const connectWS = () => {
     // close old
@@ -255,44 +225,37 @@ const WS_URL = `wss://${VOICE_DOMAIN}/ws-call`;
         return;
       }
 
-      if (data.type === "info") {
-        append("system", `INFO: ${data.message || ""}`.trim());
+      if (data.type === "error") {
+        append("system", `ERROR: ${data.message || ""}`.trim());
         return;
       }
 
-      if (data.type === "vad") {
-        if (data.state === "speech_start") setIsSpeaking(true);
-        else if (data.state.startsWith("speech_end")) setIsSpeaking(false);
-        return;
-      }
-
-      if (data.type === "final_transcript") {
-        const text = data.text || "";
-        setTranscript(text);
-        append("you", text);
-        return;
-      }
-
-      if (data.type === "assistant_text") {
+      if (data.type === "welcome") {
         const text = data.text || "";
         setAssistant(text);
-        append("assistant", text);
+        if (text) append("assistant", text);
         return;
       }
 
-      if (data.type === "tts_audio_b64") {
-        const audioEl = audioElRef.current;
-        if (!audioEl) return;
+      if (data.type === "answer") {
+        const text = data.text || "";
+        setAssistant(text);
+        if (text) append("assistant", text);
 
-        const blob = b64ToBlob(data.data, data.mime || "audio/mpeg");
-        const audioUrl = URL.createObjectURL(blob);
+        if (data.audio_b64) {
+          const audioEl = audioElRef.current;
+          if (!audioEl) return;
 
-        setTtsMute(true, "tts_audio_b64");
-        setIsSpeaking(true);
+          const blob = b64ToBlob(data.audio_b64, "audio/mpeg");
+          const audioUrl = URL.createObjectURL(blob);
 
-        audioEl.src = audioUrl;
-        audioEl.muted = !isSpeakerOn;
-        audioEl.play().catch(() => {});
+          setTtsMute(true, "audio_b64");
+          setIsSpeaking(true);
+
+          audioEl.src = audioUrl;
+          audioEl.muted = !isSpeakerOn;
+          audioEl.play().catch(() => {});
+        }
         return;
       }
     };
@@ -336,6 +299,32 @@ const WS_URL = `wss://${VOICE_DOMAIN}/ws-call`;
     setConn("IDLE");
     append("system", "Hangup.");
     await stopAll();
+  };
+
+  // Smart mute handler: If AI is speaking => interrupt TTS & start listening immediately.
+  // If AI is NOT speaking => normal mute/unmute toggle.
+  const handleMuteClick = () => {
+    if (isSpeaking && isTtsMutedRef.current) {
+      // Interrupt: stop audio immediately
+      const audioEl = audioElRef.current;
+      if (audioEl) {
+        audioEl.pause();
+        audioEl.src = ""; // clear source to prevent resume
+        URL.revokeObjectURL(audioEl.src); // cleanup blob URL
+      }
+      // Force reset TTS mute state & speaking state
+      isTtsMutedRef.current = false;
+      setIsSpeaking(false);
+      // Restart mic recognition immediately (without waiting for audio onPause/onEnded)
+      setTimeout(() => {
+        if (wsRef.current?.readyState === WebSocket.OPEN && !isMuted) {
+          try { recognizerRef.current?.start(); } catch {}
+        }
+      }, 200);
+    } else {
+      // Normal mute/unmute toggle
+      setIsMuted((prev) => !prev);
+    }
   };
 
   // speaker toggle affects audio element
@@ -408,74 +397,90 @@ const WS_URL = `wss://${VOICE_DOMAIN}/ws-call`;
   const inCall = conn === "CONNECTED" || conn === "CONNECTING" || conn === "DIALING";
 
 return (
-  <div className="w-full min-h-screen overflow-y-auto">
-    <div className="max-w-4xl mx-auto w-full px-4 sm:px-6 py-4 sm:py-6">
-      <audio ref={audioElRef} className="hidden" />
+  <div className="flex flex-col w-full h-[calc(100vh-80px)] sm:h-[calc(100vh-90px)] overflow-hidden bg-slate-50 dark:bg-slate-950 relative">
+    <audio ref={audioElRef} className="hidden" />
 
-      {/* Top */}
-      <div className="flex flex-col items-center space-y-3 sm:space-y-4">
-        <div className="relative">
-          <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-full p-[3px] bg-gradient-to-tr from-teal-400 to-blue-500">
+    {/* Scrollable body */}
+    <div className="flex-1 overflow-y-auto w-full px-4 sm:px-6 py-6 sm:py-8" ref={listRef}>
+      <div className="max-w-3xl mx-auto flex flex-col items-center">
+        {/* Top Avatar */}
+        <div className="relative mb-4">
+          <div className="w-24 h-24 rounded-full p-[3px] bg-gradient-to-tr from-teal-400 to-blue-500 shadow-md">
             <img
               src="https://picsum.photos/seed/rebecca/200/200"
               alt="Doctor AI"
-              className="w-full h-full rounded-full object-cover border-4 border-white dark:border-slate-950"
+              className="w-full h-full rounded-full object-cover border-4 border-white dark:border-slate-900"
             />
           </div>
-          <div className={`absolute bottom-1 right-1 w-4 h-4 sm:w-5 sm:h-5 ${dotClass} border-4 border-white dark:border-slate-950 rounded-full`} />
+          <div className={`absolute bottom-2 right-2 w-5 h-5 ${dotClass} border-4 border-white dark:border-slate-900 rounded-full`} />
         </div>
 
-        <div className="text-center">
-          <h2 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white">
+        <div className="text-center mb-6">
+          <h2 className="text-2xl font-bold text-slate-800 dark:text-white mb-3">
             Doctor AI
           </h2>
-          <div className="flex items-center justify-center gap-2 mt-1 text-sm">
-            <span className="px-2 py-0.5 rounded-full bg-teal-100 text-teal-700 font-bold text-[10px] tracking-wide">
-              VERIFIED ASSISTANT
-            </span>
-            <span className="text-slate-500">
-              Professional Healthcare Specialist
-            </span>
-          </div>
-
-          <div className="mt-2 text-[10px] font-bold text-slate-400 tracking-widest uppercase">
-            {statusText}
+          <div className={`text-xs font-bold rounded-full px-5 py-2 inline-flex items-center gap-2 transition-all duration-500 ${
+            conn === "IDLE" ? "bg-slate-100 dark:bg-slate-800 text-slate-500" :
+            conn === "DIALING" ? "bg-amber-100 text-amber-600" :
+            conn === "CONNECTING" ? "bg-blue-100 text-blue-600" :
+            conn === "CONNECTED" && isSpeaking ? "bg-teal-100 text-teal-700" :
+            conn === "CONNECTED" ? "bg-emerald-100 text-emerald-700" :
+            "bg-red-100 text-red-500"
+          }`}>
+            {conn === "IDLE" && (
+              <><span>📞</span><span>Sẵn sàng (Nhấn Call)</span></>
+            )}
+            {conn === "DIALING" && (
+              <><span className="animate-pulse">🔔</span><span>Đang gọi...</span></>
+            )}
+            {conn === "CONNECTING" && (
+              <><span className="animate-spin inline-block">↻</span><span>Đang kết nối...</span></>
+            )}
+            {conn === "CONNECTED" && isSpeaking && (
+              <><span className="animate-pulse">🔊</span><span>Đang nói...</span></>
+            )}
+            {conn === "CONNECTED" && !isSpeaking && (
+              <><span className="animate-pulse">🎤</span><span>Đang lắng nghe...</span></>
+            )}
+            {conn === "ERROR" && (
+              <><span>⚠️</span><span>Lỗi kết nối</span></>
+            )}
           </div>
         </div>
-      </div>
 
-      {/* Wave */}
-      <div className="mt-4 sm:mt-6 flex items-center justify-center gap-1.5 h-10 sm:h-12">
-        {[1, 2, 3, 4, 5].map((i) => (
-          <div
-            key={i}
-            className="w-1.5 bg-teal-600 rounded-full animate-pulse"
-            style={{
-              height: `${(isSpeaking ? 26 : 14) + Math.random() * (isSpeaking ? 22 : 10)}px`,
-              animationDelay: `${i * 0.1}s`,
-            }}
-          />
-        ))}
-      </div>
+        {/* Wave - only show while in call */}
+        {inCall && (
+          <div className="my-4 flex items-end justify-center gap-1 h-14 w-full">
+            {[1, 2, 3, 4, 5, 6, 7].map((i) => (
+              <div
+                key={i}
+                className={`w-1.5 rounded-full ${
+                  isSpeaking ? "bg-teal-500" :
+                  conn === "DIALING" || conn === "CONNECTING" ? "bg-amber-400" :
+                  "bg-emerald-400"
+                }`}
+                style={{
+                  height: isSpeaking
+                    ? `${20 + Math.sin((i / 7) * Math.PI) * 24}px`
+                    : conn === "CONNECTED"
+                    ? `${10 + Math.sin((i / 7) * Math.PI) * 10}px`
+                    : `${6 + i * 2}px`,
+                  animation: isSpeaking
+                    ? `pulse ${0.4 + i * 0.1}s ease-in-out infinite alternate`
+                    : `pulse ${1 + i * 0.15}s ease-in-out infinite alternate`,
+                  animationDelay: `${i * 0.08}s`,
+                }}
+              />
+            ))}
+          </div>
+        )}
 
-      {/* Conversation */}
-      <div className="mt-4 sm:mt-6 w-full max-w-3xl mx-auto">
-        {/* IMPORTANT: max height by viewport so laptop never cut; page can still scroll */}
-        <div
-          ref={listRef}
-           className="rounded-2xl px-2 py-2 overflow-y-auto bg-slate-50/30 dark:bg-slate-900/30 backdrop-blur-sm
-                     max-h-[calc(100vh-360px)] sm:max-h-[calc(100vh-420px)]"
-        >
-          <div className="flex flex-col gap-3">
+        {/* Conversation List */}
+        <div className="w-full mt-6 pb-28">
+          <div className="flex flex-col gap-4">
             {history.map((m) => {
               if (m.role === "system") {
-                return (
-                  <div key={m.id} className="w-full flex justify-center">
-                    <div className="px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 text-[11px] font-semibold">
-                      {m.text}
-                    </div>
-                  </div>
-                );
+                return null;
               }
 
               const isYou = m.role === "you";
@@ -483,10 +488,10 @@ return (
                 <div key={m.id} className={`w-full flex ${isYou ? "justify-end" : "justify-start"}`}>
                   <div
                     className={[
-                      "max-w-[82%] p-3 sm:p-4 shadow-sm",
+                      "max-w-[85%] p-4 sm:p-5 shadow-md",
                       isYou
-                        ? "bg-[#0F5A50] text-white rounded-2xl rounded-tr-none"
-                        : "bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 text-slate-700 dark:text-slate-300 rounded-3xl",
+                        ? "bg-gradient-to-br from-teal-500 to-teal-700 text-white rounded-2xl rounded-tr-sm"
+                        : "bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-700 text-slate-800 dark:text-slate-200 rounded-2xl rounded-tl-sm drop-shadow-sm",
                     ].join(" ")}  
                   >
                     <p className={isYou ? "font-medium italic text-base sm:text-lg leading-relaxed" : "text-base sm:text-lg leading-relaxed"}>
@@ -496,34 +501,51 @@ return (
                 </div>
               );
             })}
+            
+            {/* Live interim transcript bubble */}
+            {transcript && (
+              <div className="w-full flex justify-end animate-in fade-in zoom-in duration-200">
+                <div className="max-w-[82%] p-3 sm:p-4 shadow-sm bg-[#0F5A50]/70 text-white rounded-2xl rounded-tr-none">
+                  <p className="font-medium italic text-base sm:text-lg leading-relaxed">
+                    {`"${transcript}..."`}
+                  </p>
+                </div>
+              </div>
+            )}
+            
+            {/* Speaker Indicator inside chat */}
+            {assistant && isSpeaking && (
+              <div className="w-full flex justify-start my-2">
+                 <span className="text-[10px] font-bold text-teal-600 tracking-widest uppercase animate-pulse">
+                   Doctor AI ĐANG NÓI...
+                 </span>
+              </div>
+            )}
           </div>
         </div>
-
-        <div className="mt-2 flex justify-between px-2">
-          <span className="text-[10px] font-bold text-slate-400 tracking-widest uppercase">
-            {transcript ? "You" : ""}
-          </span>
-          <span className="text-[10px] font-bold text-teal-600 tracking-widest uppercase">
-            {assistant ? (isSpeaking ? "Doctor AI IS SPEAKING" : "Doctor AI") : ""}
-          </span>
-        </div>
       </div>
+    </div>
 
-      {/* Bottom Controls */}
-      <div className="mt-6 sm:mt-8 flex items-center justify-center gap-8 pb-4">
+    {/* Fixed Bottom Controls */}
+    <div className="absolute bottom-0 left-0 w-full bg-gradient-to-t from-slate-50 dark:from-slate-950 via-slate-50/90 dark:via-slate-950/90 to-transparent pt-12 pb-6 px-4 pointer-events-none">
+      <div className="max-w-md mx-auto flex items-center justify-center gap-8 pointer-events-auto">
         {/* Mute */}
         <div className="flex flex-col items-center gap-2">
           <button
-            onClick={() => setIsMuted(!isMuted)}
-            className={`w-14 h-14 rounded-full flex items-center justify-center transition-all ${
+            onClick={handleMuteClick}
+            className={`w-14 h-14 rounded-full flex items-center justify-center transition-all shadow-md ${
               isMuted
                 ? "bg-slate-200 dark:bg-slate-700 text-slate-900 dark:text-white"
-                : "bg-slate-100 dark:bg-slate-950 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-800"
+                : isSpeaking
+                ? "bg-amber-500/90 text-white hover:bg-amber-500 ring-2 ring-amber-400 ring-offset-2"
+                : "bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700"
             }`}
           >
-            {isMuted ? <MicOff className="w-6 h-6" /> : <Mic className="w-6 h-6" />}
+            {isMuted ? <MicOff className="w-6 h-6" /> : isSpeaking ? <div className="w-5 h-5 bg-white rounded-[4px]" /> : <Mic className="w-6 h-6" />}
           </button>
-          <span className="text-[10px] font-bold text-slate-400 tracking-widest">MUTE</span>
+          <span className="text-[10px] font-bold text-slate-500 tracking-widest">
+            {isSpeaking ? "NGẮT" : isMuted ? "BẬT MIC" : "TẮT MIC"}
+          </span>
         </div>
 
         {/* Call/End */}
@@ -531,14 +553,14 @@ return (
           {!inCall ? (
             <button
               onClick={startCall}
-              className="w-16 h-16 rounded-full bg-teal-600 hover:bg-teal-700 text-white flex items-center justify-center shadow-lg shadow-teal-500/30 transform hover:scale-105 transition-all"
+              className="w-16 h-16 rounded-full bg-teal-600 hover:bg-teal-500 text-white flex items-center justify-center shadow-lg shadow-teal-500/30 transform hover:scale-105 transition-all"
             >
               <Phone className="w-8 h-8" />
             </button>
           ) : (
             <button
               onClick={hangup}
-              className="w-16 h-16 rounded-full bg-red-500 hover:bg-red-600 text-white flex items-center justify-center shadow-lg shadow-red-500/30 transform hover:scale-105 transition-all"
+              className="w-16 h-16 rounded-full bg-red-500 hover:bg-red-400 text-white flex items-center justify-center shadow-lg shadow-red-500/30 transform hover:scale-105 transition-all"
             >
               <PhoneOff className="w-8 h-8" />
             </button>
@@ -553,15 +575,15 @@ return (
         <div className="flex flex-col items-center gap-2">
           <button
             onClick={() => setIsSpeakerOn(!isSpeakerOn)}
-            className={`w-14 h-14 rounded-full flex items-center justify-center transition-all ${
+            className={`w-14 h-14 rounded-full flex items-center justify-center transition-all shadow-md ${
               !isSpeakerOn
                 ? "bg-slate-200 dark:bg-slate-700 text-slate-900 dark:text-white"
-                : "bg-slate-100 dark:bg-slate-950 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-800"
+                : "bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700"
             }`}
           >
             {isSpeakerOn ? <Volume2 className="w-6 h-6" /> : <VolumeX className="w-6 h-6" />}
           </button>
-          <span className="text-[10px] font-bold text-slate-400 tracking-widest">SPEAKER</span>
+          <span className="text-[10px] font-bold text-slate-500 tracking-widest">SPEAKER</span>
         </div>
       </div>
     </div>
