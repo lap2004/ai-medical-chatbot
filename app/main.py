@@ -12,12 +12,11 @@ from app.config import settings
 from app.logger import setup_logger
 from app.middleware.log_request import RequestLogMiddleware
 from app.services.admin_seed import ensure_single_admin
-from app.core.security import require_admin  # đã sửa theo is_admin/password
-
 from app.routers.chat import router as chat_router
 from app.routers.voice import router as voice_router
 from app.routers import auth
 from app.routers.conversations import router as conversations_router
+from app.routers.admin import router as admin_router
 
 warnings.filterwarnings("ignore", category=UserWarning, module="ctranslate2")
 
@@ -31,7 +30,13 @@ app = FastAPI(title="AI Bác sĩ (RAG)", version="1.0.0")
 app.add_middleware(RequestLogMiddleware)
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["https://competitive-deployment-trying-works.trycloudflare.com","http://localhost:3000","https://kltn-vlu.vercel.app"],
+    allow_origins=[
+        "https://searched-fioricet-requested-restrictions.trycloudflare.com",
+        "http://localhost:3000",
+        "http://localhost:5173",
+        "http://localhost:5174",
+        "https://kltn-vlu.vercel.app"
+    ],
     allow_credentials=True,  # nếu bạn dùng cookie token -> True
     allow_methods=["*"],
     allow_headers=["*"],
@@ -83,10 +88,7 @@ async def info():
 # -----------------------
 # Admin router
 # -----------------------
-from app.routers.admin import router as admin_router
-  
 app.include_router(admin_router)
-
 
 # -----------------------
 # Startup: seed admin
