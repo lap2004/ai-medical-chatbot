@@ -31,7 +31,7 @@ app.add_middleware(RequestLogMiddleware)
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
-        "https://searched-fioricet-requested-restrictions.trycloudflare.com",
+        "https://opinion-confidence-fonts-calvin.trycloudflare.com",
         "http://localhost:3000",
         "http://localhost:5173",
         "http://localhost:5174",
