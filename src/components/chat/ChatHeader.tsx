@@ -5,6 +5,7 @@ import { ResetPasswordDialog } from "../auth/ResetPasswordDialog";
 import { removeAuthCookies } from "@/lib/helper/token";
 import { Home, MessageSquare, Mic, Moon, Sun } from "lucide-react";
 import { LanguageSwitcher } from "../ui/LanguageSwitcher";
+import { useTranslation } from "react-i18next";
 
 import { useUserStore } from "@/store/userStore";
 
@@ -15,6 +16,7 @@ type Props = {
 
 export const ChatHeader: React.FC<Props> = ({ tab, onTabChange }) => {
   const navigate = useNavigate();
+  const { t } = useTranslation();
   const [resetOpen, setResetOpen] = React.useState(false);
   const [profileOpen, setProfileOpen] = React.useState(false);
   const profileAnchorRef = React.useRef<HTMLButtonElement>(null);
@@ -71,7 +73,7 @@ export const ChatHeader: React.FC<Props> = ({ tab, onTabChange }) => {
               ASSISTANT
             </span>
           </div>
-          <p className="text-xs text-slate-500">Live Health Guidance</p>
+          <p className="text-xs text-slate-500">{t("chat.liveHealthGuidance")}</p>
         </div>
       </div>
 
@@ -122,7 +124,7 @@ export const ChatHeader: React.FC<Props> = ({ tab, onTabChange }) => {
               className={`w-[18px] h-[18px] ${tab === "voice" ? "text-primary" : "opacity-80"
                 }`}
             />
-            <span>Voice</span>
+            <span>{t("chat.voice")}</span>
           </button>
         </div>
 

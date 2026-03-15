@@ -196,7 +196,55 @@
     "deleting": "Deleting..."
   },
   "chat": {
-    "voice": "Voice"
+    "voice": "Voice",
+    "liveHealthGuidance": "Live Health Guidance"
+  },
+  "widget": {
+    "header": {
+      "subtitle": "Medical Assistant"
+    },
+    "tabs": {
+      "chat": "CHAT",
+      "history": "HISTORY",
+      "poweredBy": "Powered by HealthAI Companion"
+    },
+    "chat": {
+      "placeholder": "Describe your symptoms..."
+    },
+    "history": {
+      "title": "Recent Consultations",
+      "noHistory": "No history found."
+    },
+    "voice": {
+      "listening": "Listening to you...",
+      "speakClearly": "Speak clearly about your health concerns."
+    }
+  },
+  "voice": {
+    "readyToCall": "Ready (Tap Call)",
+    "calling": "Calling...",
+    "connecting": "Connecting...",
+    "speaking": "Speaking...",
+    "listening": "Listening...",
+    "connectionError": "Connection Error",
+    "doctorAiSpeaking": "Doctor AI IS SPEAKING...",
+    "interrupt": "INTERRUPT",
+    "unmute": "UNMUTE",
+    "mute": "MUTE MIC",
+    "endCall": "END CALL",
+    "call": "CALL",
+    "speaker": "SPEAKER",
+    "pressCallHint": "Press CALL — it will connect in 3 seconds.",
+    "connecting_msg": "Connecting…",
+    "connected_msg": "Connected.",
+    "micStarted": "Mic started (Web Speech API).",
+    "micPermissionError": "Mic permission error.",
+    "micNotSupported": "Your browser does not support Web Speech API. Please use Google Chrome.",
+    "micPermissionAlert": "Could not open mic. Please allow microphone access and try again.",
+    "wsError": "WS error.",
+    "disconnected": "Disconnected.",
+    "hangup": "Hangup.",
+    "dialing": "Calling… (connecting in 3s)"
   },
   "home": {
     "nav": {

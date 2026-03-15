@@ -1,5 +1,6 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { Mic, MicOff, Phone, PhoneOff, Volume2, VolumeX } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 type ConnState = "IDLE" | "DIALING" | "CONNECTING" | "CONNECTED" | "ERROR";
 type WSMsg =
@@ -27,6 +28,7 @@ function b64ToBlob(b64: string, mime: string) {
 }
 
 export const VoiceMode: React.FC = () => {
+  const { t } = useTranslation();
   // toggles
   const [isMuted, setIsMuted] = useState(false);
   const [isSpeakerOn, setIsSpeakerOn] = useState(true);
@@ -37,7 +39,7 @@ export const VoiceMode: React.FC = () => {
 
   // conversation log (as chat)
   const [history, setHistory] = useState<ChatItem[]>([
-    { id: uid(), role: "system", text: "Press CALL — it will connect in 3 seconds.", ts: Date.now() },
+    { id: uid(), role: "system", text: t("voice.pressCallHint"), ts: Date.now() },
   ]);
 
   // status
@@ -130,7 +132,7 @@ const WS_URL = `wss://${VOICE_DOMAIN}/ws-call`;
 
     const SpeechRecognition = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
     if (!SpeechRecognition) {
-      append("system", "Trình duyệt của bạn không hỗ trợ Web Speech API. Hãy dùng Google Chrome.");
+      append("system", t("voice.micNotSupported"));
       return;
     }
 
@@ -175,7 +177,7 @@ const WS_URL = `wss://${VOICE_DOMAIN}/ws-call`;
 
     try { rec.start(); } catch {}
     recognizerRef.current = rec;
-    append("system", "Mic started (Web Speech API).");
+    append("system", t("voice.micStarted"));
   };
 
   // Adjust recognizer on mute change
@@ -195,7 +197,7 @@ const WS_URL = `wss://${VOICE_DOMAIN}/ws-call`;
     } catch {}
 
     setConn("CONNECTING");
-    append("system", "Connecting…");
+    append("system", t("voice.connecting_msg"));
 
     const ws = new WebSocket(WS_URL);
     wsRef.current = ws;
@@ -203,16 +205,16 @@ const WS_URL = `wss://${VOICE_DOMAIN}/ws-call`;
 
     ws.onopen = async () => {
       setConn("CONNECTED");
-      append("system", "Connected.");
+      append("system", t("voice.connected_msg"));
       startBps();
 
       try {
         await startMicStream();
       } catch {
         setConn("ERROR");
-        append("system", "Mic permission error.");
+        append("system", t("voice.micPermissionError"));
         await stopAll();
-        alert("Không mở được mic. Hãy cho phép microphone và thử lại.");
+        alert(t("voice.micPermissionAlert"));
       }
     };
 
@@ -262,12 +264,12 @@ const WS_URL = `wss://${VOICE_DOMAIN}/ws-call`;
 
     ws.onerror = () => {
       setConn("ERROR");
-      append("system", "WS error.");
+      append("system", t("voice.wsError"));
     };
 
     ws.onclose = async () => {
       setConn("IDLE");
-      append("system", "Disconnected.");
+      append("system", t("voice.disconnected"));
       await stopAll();
     };
   };
@@ -281,7 +283,7 @@ const WS_URL = `wss://${VOICE_DOMAIN}/ws-call`;
     setIsSpeaking(false);
 
     setConn("DIALING");
-    append("system", "Calling… (connecting in 3s)");
+    append("system", t("voice.dialing"));
 
     if (dialTimerRef.current) window.clearTimeout(dialTimerRef.current);
     dialTimerRef.current = window.setTimeout(() => {
@@ -297,7 +299,7 @@ const WS_URL = `wss://${VOICE_DOMAIN}/ws-call`;
     wsRef.current = null;
 
     setConn("IDLE");
-    append("system", "Hangup.");
+    append("system", t("voice.hangup"));
     await stopAll();
   };
 
@@ -428,22 +430,22 @@ return (
             "bg-red-100 text-red-500"
           }`}>
             {conn === "IDLE" && (
-              <><span>📞</span><span>Sẵn sàng (Nhấn Call)</span></>
+              <><span>📞</span><span>{t("voice.readyToCall")}</span></>
             )}
             {conn === "DIALING" && (
-              <><span className="animate-pulse">🔔</span><span>Đang gọi...</span></>
+              <><span className="animate-pulse">🔔</span><span>{t("voice.calling")}</span></>
             )}
             {conn === "CONNECTING" && (
-              <><span className="animate-spin inline-block">↻</span><span>Đang kết nối...</span></>
+              <><span className="animate-spin inline-block">↻</span><span>{t("voice.connecting")}</span></>
             )}
             {conn === "CONNECTED" && isSpeaking && (
-              <><span className="animate-pulse">🔊</span><span>Đang nói...</span></>
+              <><span className="animate-pulse">🔊</span><span>{t("voice.speaking")}</span></>
             )}
             {conn === "CONNECTED" && !isSpeaking && (
-              <><span className="animate-pulse">🎤</span><span>Đang lắng nghe...</span></>
+              <><span className="animate-pulse">🎤</span><span>{t("voice.listening")}</span></>
             )}
             {conn === "ERROR" && (
-              <><span>⚠️</span><span>Lỗi kết nối</span></>
+              <><span>⚠️</span><span>{t("voice.connectionError")}</span></>
             )}
           </div>
         </div>
@@ -517,7 +519,7 @@ return (
             {assistant && isSpeaking && (
               <div className="w-full flex justify-start my-2">
                  <span className="text-[10px] font-bold text-teal-600 tracking-widest uppercase animate-pulse">
-                   Doctor AI ĐANG NÓI...
+                   {t("voice.doctorAiSpeaking")}
                  </span>
               </div>
             )}
@@ -544,7 +546,7 @@ return (
             {isMuted ? <MicOff className="w-6 h-6" /> : isSpeaking ? <div className="w-5 h-5 bg-white rounded-[4px]" /> : <Mic className="w-6 h-6" />}
           </button>
           <span className="text-[10px] font-bold text-slate-500 tracking-widest">
-            {isSpeaking ? "NGẮT" : isMuted ? "BẬT MIC" : "TẮT MIC"}
+            {isSpeaking ? t("voice.interrupt") : isMuted ? t("voice.unmute") : t("voice.mute")}
           </span>
         </div>
 
@@ -567,7 +569,7 @@ return (
           )}
 
           <span className={`text-[10px] font-bold tracking-widest ${inCall ? "text-red-500" : "text-teal-600"}`}>
-            {inCall ? "END CALL" : "CALL"}
+            {inCall ? t("voice.endCall") : t("voice.call")}
           </span>
         </div>
 
@@ -583,7 +585,7 @@ return (
           >
             {isSpeakerOn ? <Volume2 className="w-6 h-6" /> : <VolumeX className="w-6 h-6" />}
           </button>
-          <span className="text-[10px] font-bold text-slate-500 tracking-widest">SPEAKER</span>
+          <span className="text-[10px] font-bold text-slate-500 tracking-widest">{t("voice.speaker")}</span>
         </div>
       </div>
     </div>

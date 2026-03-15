@@ -196,7 +196,55 @@
     "deleting": "Đang xóa..."
   },
     "chat": {
-    "voice": "Micro"
+    "voice": "Micro",
+    "liveHealthGuidance": "Hướng Dẫn Sức Khỏe Trực Tiếp"
+  },
+  "widget": {
+    "header": {
+      "subtitle": "Trợ Lý Y Tế"
+    },
+    "tabs": {
+      "chat": "CHAT",
+      "history": "LỊCH SỬ",
+      "poweredBy": "Được hỗ trợ bởi HealthAI Companion"
+    },
+    "chat": {
+      "placeholder": "Mô tả triệu chứng của bạn..."
+    },
+    "history": {
+      "title": "Tư Vấn Gần Đây",
+      "noHistory": "Không có lịch sử."
+    },
+    "voice": {
+      "listening": "Đang lắng nghe bạn...",
+      "speakClearly": "Hãy nói rõ về vấn đề sức khỏe của bạn."
+    }
+  },
+  "voice": {
+    "readyToCall": "Sẵn sàng (Nhấn Call)",
+    "calling": "Đang gọi...",
+    "connecting": "Đang kết nối...",
+    "speaking": "Đang nói...",
+    "listening": "Đang lắng nghe...",
+    "connectionError": "Lỗi kết nối",
+    "doctorAiSpeaking": "Doctor AI ĐANG NÓI...",
+    "interrupt": "NGẮT",
+    "unmute": "BẬT MIC",
+    "mute": "TẮT MIC",
+    "endCall": "KẾT THÚC",
+    "call": "GỌI",
+    "speaker": "LOA",
+    "pressCallHint": "Nhấn GỌI — sẽ kết nối sau 3 giây.",
+    "connecting_msg": "Đang kết nối…",
+    "connected_msg": "Đã kết nối.",
+    "micStarted": "Mic đã bật (Web Speech API).",
+    "micPermissionError": "Lỗi quyền truy cập mic.",
+    "micNotSupported": "Trình duyệt của bạn không hỗ trợ Web Speech API. Hãy dùng Google Chrome.",
+    "micPermissionAlert": "Không mở được mic. Hãy cho phép microphone và thử lại.",
+    "wsError": "Lỗi kết nối WS.",
+    "disconnected": "Đã ngắt kết nối.",
+    "hangup": "Đã cúp máy.",
+    "dialing": "Đang gọi… (kết nối sau 3 giây)"
   },
   "home": {
     "nav": {
