@@ -109,7 +109,7 @@ export function useChat() {
 
       const newConv: Conversation = {
         id,
-        title: "New Consultation",
+        title: "New Conversation",
         createdAt: now,
         messages: [
           {

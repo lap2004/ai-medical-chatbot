@@ -179,8 +179,8 @@
     "tempPasswordNotice": "Bạn đang sử dụng mật khẩu tạm thời. Vui lòng đổi mật khẩu."
   },
   "chatSidebar": {
-    "newConsultation": "Buổi tư vấn mới",
-    "recentSessions": "Gần đây",
+    "newConsultation": "Cuộc trò chuyện mới",
+    "recentSessions": "Cuộc trò chuyện của bạn",
     "rename": "Đổi tên",
     "delete": "Xóa",
     "renameSession": "Đổi tên",
@@ -197,7 +197,7 @@
   },
     "chat": {
     "voice": "Micro",
-    "liveHealthGuidance": "Hướng Dẫn Sức Khỏe Trực Tiếp"
+    "liveHealthGuidance": "Trợ lý sức khỏe ảo"
   },
   "widget": {
     "header": {

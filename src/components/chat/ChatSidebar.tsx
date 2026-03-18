@@ -118,7 +118,7 @@ export const ChatSidebar: React.FC<SidebarProps> = ({
                 <Stethoscope className="w-6 h-6" />
               </div>
               <h1 className="text-xl font-bold text-primary tracking-tight">
-                HealthAssist
+                Doctor AI
               </h1>
             </div>
 
@@ -147,7 +147,7 @@ export const ChatSidebar: React.FC<SidebarProps> = ({
             <button
               onClick={onNew}
               className="w-10 h-10 rounded-full bg-purple-600 shadow-purple-500/20 hover:bg-purple-700 text-white flex items-center justify-center"
-              title={t('chatSidebar.newConsultation', 'New Consultation')}
+              title={t('chatSidebar.newConsultation', 'New Conversation')}
             >
               <Plus className="w-6 h-6" />
             </button>
@@ -162,7 +162,7 @@ export const ChatSidebar: React.FC<SidebarProps> = ({
               onClick={onNew}
             >
               <Plus className="w-5 h-5 mr-2" />
-              <span>{t('chatSidebar.newConsultation', 'New Consultation')}</span>
+              <span>{t('chatSidebar.newConsultation', 'New Conversation')}</span>
             </Button>
           </div>
         )}
@@ -177,7 +177,7 @@ export const ChatSidebar: React.FC<SidebarProps> = ({
         `}
       >
         <h3 className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-4 px-2">
-          {t('chatSidebar.recentSessions', 'Recent Sessions')}
+          {t('chatSidebar.recentSessions', 'Your Chats')}
         </h3>
 
         <div className="space-y-1">

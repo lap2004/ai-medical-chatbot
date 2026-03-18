@@ -49,7 +49,7 @@ const HomePage: React.FC = () => {
                 <Stethoscope className="w-6 h-6" />
               </div>
               <span className="text-xl font-bold tracking-tight text-slate-900 dark:text-white">
-                Docter AI
+                Doctor AI
               </span>
             </div>
             <div className="hidden md:flex items-center space-x-8">

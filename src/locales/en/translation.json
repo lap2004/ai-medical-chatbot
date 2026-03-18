@@ -179,8 +179,8 @@
     "tempPasswordNotice": "You are using a temporary password. Please change it."
   },
   "chatSidebar": {
-    "newConsultation": "New Consultation",
-    "recentSessions": "Recent Sessions",
+    "newConsultation": "New Conversation",
+    "recentSessions": "Your Chats",
     "rename": "Rename",
     "delete": "Delete",
     "renameSession": "Rename session",
@@ -197,7 +197,7 @@
   },
   "chat": {
     "voice": "Voice",
-    "liveHealthGuidance": "Live Health Guidance"
+    "liveHealthGuidance": "Virtual Health Assistant"
   },
   "widget": {
     "header": {
