@@ -31,7 +31,7 @@ app.add_middleware(RequestLogMiddleware)
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
-        "https://opinion-confidence-fonts-calvin.trycloudflare.com",
+        "https://considers-fish-archives-flashers.trycloudflare.com",
         "http://localhost:3000",
         "http://localhost:5173",
         "http://localhost:5174",
