@@ -3,7 +3,6 @@ from sentence_transformers import SentenceTransformer
 
 _model = None
 
-
 def _load_model():
     global _model
     if _model is None:
@@ -12,16 +11,8 @@ def _load_model():
         logging.info("E5 embedding model loaded")
     return _model
 
-
 def embed_medical_text(text: str) -> list[float]:
-    """
-    Unified embedding function for medical RAG
-    MUST use:
-      - prefix: 'query:' or 'passage:'
-      - normalize_embeddings=True
-    """
     model = _load_model()
-
     embedding = model.encode(
         text,
         normalize_embeddings=True

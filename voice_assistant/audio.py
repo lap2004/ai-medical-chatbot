@@ -1,17 +1,12 @@
 import logging
 from functools import lru_cache
 from io import BytesIO
-
 import speech_recognition as sr
 import pygame
 import pydub
 
-
 @lru_cache(maxsize=1)
 def get_recognizer() -> sr.Recognizer:
-    """
-    Return a cached speech recognizer instance.
-    """
     return sr.Recognizer()
 
 
@@ -26,13 +21,7 @@ def record_audio(
     dynamic_energy_threshold: bool = True,
     calibration_duration: float = 1.0,
 ) -> bool:
-    """
-    Record audio from the microphone and save it as an MP3 file.
 
-    Returns:
-        True  -> recorded & exported successfully (file exists)
-        False -> timed out / failed after retries (no file)
-    """
     recognizer = get_recognizer()
     recognizer.energy_threshold = energy_threshold
     recognizer.pause_threshold = pause_threshold
@@ -53,7 +42,6 @@ def record_audio(
                 )
                 logging.info("Recording complete")
 
-            # Convert speech_recognition AudioData -> MP3 using pydub
             wav_bytes = audio_data.get_wav_data()
             audio_segment = pydub.AudioSegment.from_wav(BytesIO(wav_bytes))
             audio_segment.export(
@@ -63,7 +51,6 @@ def record_audio(
                 parameters=["-ar", "22050", "-ac", "1"],
             )
 
-            # If export succeeds, return True
             return True
 
         except sr.WaitTimeoutError:
@@ -72,18 +59,13 @@ def record_audio(
 
         except Exception as e:
             logging.error(f"Failed to record audio: {e}")
-            # For non-timeout errors, retry; if last attempt, re-raise
             if attempt == retries - 1:
                 raise
 
     logging.error("Recording failed after all retries")
     return False
 
-
 def play_audio(file_path: str) -> None:
-    """
-    Play an audio file using pygame.
-    """
     try:
         pygame.mixer.init()
         pygame.mixer.music.load(file_path)

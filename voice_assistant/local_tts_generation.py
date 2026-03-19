@@ -1,25 +1,9 @@
 import requests
 from voice_assistant.config import Config
 
-
 def generate_audio_file_melotts(text, language='VI', accent='VI', speed=1.0, filename=None):
-    """
-    Generate an audio file from the given text using the FastAPI endpoint.
-
-    Args:
-        text (str): The text to convert to speech.
-        language (str): The language of the text. Default is 'EN'.
-        accent (str): The accent to use for the speech. Default is 'EN-US'.
-        speed (float): The speed of the speech. Default is 1.0.
-        filename (str, optional): The desired name for the output audio file. If None, a unique name will be generated.
-
-    Returns:
-        dict: A dictionary containing the message and the file path of the generated audio.
-    """
-    # Define the API endpoint
     url = f"http://127.0.0.1:{Config.TTS_PORT_LOCAL}/generate-audio/"
 
-    # Define the payload
     payload = {
         "text": text,
         "language": language,
@@ -30,21 +14,16 @@ def generate_audio_file_melotts(text, language='VI', accent='VI', speed=1.0, fil
     if filename:
         payload["filename"] = filename
 
-    # Set the headers
     headers = {
         "Content-Type": "application/json"
     }
 
-    # Make the POST request
     response = requests.post(url, json=payload, headers=headers)
-
-    # Check the response
     if response.status_code == 200:
         return response.json()
     else:
         response.raise_for_status()
 
-# Example usage of the function
 if __name__ == "__main__":
     try:
         result = generate_audio_file_melotts(

@@ -1,10 +1,8 @@
 import logging
 from openai import OpenAI
 from groq import Groq
-
 from voice_assistant.config import Config
 
-# OpenAI
 def _generate_openai_response(api_key, messages):
     client = OpenAI(api_key=api_key)
     response = client.chat.completions.create(
@@ -14,7 +12,6 @@ def _generate_openai_response(api_key, messages):
     )
     return response.choices[0].message.content.strip()
 
-# Groq
 def _generate_groq_response(api_key, messages):
     client = Groq(api_key=api_key)
     response = client.chat.completions.create(
@@ -25,13 +22,6 @@ def _generate_groq_response(api_key, messages):
     return response.choices[0].message.content.strip()
 
 def generate_response(model_type, api_key, messages):
-    """
-    Unified LLM response generator.
-
-    model_type: "openai" | "groq"
-    messages: chat history (system/user/assistant)
-    """
-
     try:
         if model_type == "openai":
             return _generate_openai_response(api_key, messages)

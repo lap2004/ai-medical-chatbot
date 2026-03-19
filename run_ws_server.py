@@ -5,10 +5,8 @@ import base64
 import logging
 import asyncio
 from typing import Dict, Any, List, Optional
-
 from fastapi import FastAPI, WebSocket, WebSocketDisconnect
 from fastapi.middleware.cors import CORSMiddleware
-
 from voice_assistant.config import Config
 from voice_assistant.api_key_manager import (
     get_response_api_key,
@@ -17,7 +15,6 @@ from voice_assistant.api_key_manager import (
 from voice_assistant.rag_retriever import RAGRetriever
 from voice_assistant.response_generation import generate_response
 from voice_assistant.text_to_speech import text_to_speech
-
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
 
 WELCOME_PROMPT = "Xin chào, tôi là trợ lý sức khỏe AI. Tôi có thể giúp gì cho bạn?"
@@ -48,10 +45,8 @@ def tts_to_base64_mp3(text: str) -> Optional[str]:
     if not text or not text.strip():
         return None
 
-    # tạo file tạm mp3
     tmp_name = f"ws_tts_{uuid.uuid4().hex}.mp3"
     tmp_path = os.path.join(os.getcwd(), tmp_name)
-
     try:
         text_to_speech(Config.TTS_MODEL, get_tts_api_key(), text, tmp_path)
         with open(tmp_path, "rb") as f:
@@ -68,18 +63,10 @@ def tts_to_base64_mp3(text: str) -> Optional[str]:
             pass
 
 def rewrite_query_standalone(user_input: str, history: List[Dict[str, str]]) -> str:
-    """
-    Sử dụng LLM để viết lại câu hỏi (standalone query) dưa vào ngữ cảnh lịch sử.
-    Mục đích: Khử các đại từ (nó, cái đó, ông ấy...) thành thực thể cụ thể để RAG search chính xác.
-    """
-    # Lọc bỏ system prompt, chỉ lấy các lượt hội thoại
     user_assistant_hist = [m for m in history if m["role"] != "system"]
-    
-    # Nếu không có lịch sử (câu đầu tiên), trả về nguyên bản
     if not user_assistant_hist:
         return user_input
         
-    # Tạo nội dung lịch sử
     hist_str = ""
     for msg in user_assistant_hist:
         role_name = "User" if msg["role"] == "user" else "AI"
@@ -94,32 +81,22 @@ def rewrite_query_standalone(user_input: str, history: List[Dict[str, str]]) -> 
     
     Câu hỏi hiện tại của User: "{user_input}"
     """
-    
     try:
         rewritten_reply = generate_response(
             Config.RESPONSE_MODEL,
             get_response_api_key(),
             [{"role": "user", "content": prompt.strip()}]
         )
-        # Loại bỏ ngoặc kép dư thừa nếu LLM lỡ sinh ra
         return rewritten_reply.strip(' "')
     except Exception as e:
         logging.warning(f"Failed to rewrite query: {e}")
         return user_input
 
 def build_medical_answer(user_input: str, rag: RAGRetriever, chat_history: List[Dict[str, str]]) -> str:
-    # 1. Sliding Window k=3
-    # Mặc định chat_history luôn có 1 câu system ở đầu.
-    # Nên danh sách sẽ là [system, (user, assistant), (user, assistant)...]
-    # k=3 => giữ tối đa 3 cặp (user, assistant) gần nhất = 6 messages + 1 system
     max_history_len = 1 + (3 * 2) 
-    
-    # 2. Rewrite Query base on history BEFORE adding new user_input
     standalone_query = rewrite_query_standalone(user_input, chat_history)
     logging.info(f"Original Query: {user_input}")
     logging.info(f"Standalone Query: {standalone_query}")
-    
-    # 3. RAG Retrieval sử dụng standalone_query
     clean_query = normalize_voice_query(standalone_query)
     rag_results = rag.retrieve(clean_query)
     
@@ -130,20 +107,13 @@ def build_medical_answer(user_input: str, rag: RAGRetriever, chat_history: List[
         )
         chat_history.append({"role": "user", "content": user_input})
         chat_history.append({"role": "assistant", "content": response_text})
-        
-        # Lọc cửa sổ trượt
+
         if len(chat_history) > max_history_len:
-            # Xoá cặp (user, assistant) cũ nhất ở vị trí index 1 và 2 (sau system)
             chat_history.pop(1)
             chat_history.pop(1)
-            
         return response_text
 
     context = "\n\n---\n\n".join(r["content"] for r in rag_results)
-
-    # 4. Tạo message gửi đi LLM chính
-    # Lưu ý: Lúc này đưa raw "user_input" vào để LLM trả lời tự nhiên theo đúng câu hỏi User hỏi
-    # nhưng "context" thì đã được search mạnh mẽ bằng "standalone_query"
     messages = chat_history + [
         {
             "role": "system",
@@ -155,29 +125,22 @@ def build_medical_answer(user_input: str, rag: RAGRetriever, chat_history: List[
         },
         {"role": "user", "content": user_input},
     ]
-
     response_text = generate_response(
         Config.RESPONSE_MODEL,
         get_response_api_key(),
         messages,
     )
 
-    # 5. Lưu lại lịch sử gốc của user
     chat_history.append({"role": "user", "content": user_input})
     chat_history.append({"role": "assistant", "content": response_text})
     
-    # Lọc cửa sổ trượt
     if len(chat_history) > max_history_len:
-        # Xoá cặp (user, assistant) cũ nhất ở vị trí index 1 và 2 (sau system)
         chat_history.pop(1)
         chat_history.pop(1)
-
     return response_text
-
 
 app = FastAPI()
 
-# Cloudflared/public origin => dễ nhất là allow all khi demo
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -186,16 +149,12 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Singleton RAG
 rag: Optional[RAGRetriever] = None
-
 @app.on_event("startup")
 def on_startup():
     global rag
     Config.validate_config()
-
     rag = RAGRetriever(top_k=3, min_score=0.35)
-
     try:
         if hasattr(rag, "warmup"):
             rag.warmup()
@@ -206,41 +165,25 @@ def on_startup():
 
     logging.info("WS server startup done.")
 
-
 @app.get("/health")
 def health():
     return {"ok": True}
 
-
 @app.websocket("/ws-call")
 async def ws_call(ws: WebSocket):
-    """
-    Protocol (JSON):
-    Client -> Server:
-      {"type":"hello"} (optional)
-      {"type":"text","text":"...","tts":true|false}
-
-    Server -> Client:
-      {"type":"welcome","text":"..."}
-      {"type":"answer","text":"...","audio_b64": "...optional..." }
-      {"type":"error","message":"..."}
-    """
     await ws.accept()
-
     chat_history: List[Dict[str, str]] = [{"role": "system", "content": SYSTEM_BASE}]
 
-    # Gửi welcome khởi điểm với TTS
     async def send_welcome():
         await asyncio.sleep(0.5) 
         tts_b64 = await asyncio.to_thread(tts_to_base64_mp3, WELCOME_PROMPT)
         await ws.send_text(json.dumps({
-            "type": "answer",  # Giữ type là answer để trên Frontend tự gọi được loop phát nhạc
+            "type": "answer",  
             "text": WELCOME_PROMPT, 
             "audio_b64": tts_b64
         }, ensure_ascii=False))
 
     asyncio.create_task(send_welcome())
-
     try:
         while True:
             try:
@@ -260,10 +203,8 @@ async def ws_call(ws: WebSocket):
             except Exception:
                 await ws.send_text(json.dumps({"type": "error", "message": "Invalid JSON"}, ensure_ascii=False))
                 continue
-
             msg_type = payload.get("type")
             if msg_type == "hello":
-                # client hello => just ignore if we already sent welcome
                 continue
 
             if msg_type != "text":

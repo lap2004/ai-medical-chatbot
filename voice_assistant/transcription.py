@@ -1,17 +1,12 @@
 import logging
 import requests
-
 from openai import OpenAI
 from groq import Groq
 
 FAST_WHISPER_URL = "http://127.0.0.1:8080"
 _checked_fastwhisperapi = False
 
-
 def _check_fastwhisperapi():
-    """
-    Check FastWhisperAPI health once per process.
-    """
     global _checked_fastwhisperapi
     if _checked_fastwhisperapi:
         return
@@ -25,16 +20,7 @@ def _check_fastwhisperapi():
 
     _checked_fastwhisperapi = True
 
-
 def transcribe_audio(model, api_key, audio_file_path, local_model_path=None):
-    """
-    STT dispatcher.
-
-    Supported models:
-    - openai
-    - groq
-    - fastwhisperapi
-    """
     try:
         if model == "openai":
             return _openai(api_key, audio_file_path)
@@ -51,15 +37,12 @@ def transcribe_audio(model, api_key, audio_file_path, local_model_path=None):
         logging.error(f"STT error ({model}): {e}")
         return ""
 
-
-# ---------------- OpenAI Whisper ----------------
 def _openai(api_key, audio_file_path):
     if not api_key:
         raise ValueError("OPENAI_API_KEY is required for OpenAI transcription")
 
     client = OpenAI(api_key=api_key)
     with open(audio_file_path, "rb") as f:
-        # returns plain text when response_format="text"
         return client.audio.transcriptions.create(
             model="whisper-1",
             file=f,
@@ -67,8 +50,6 @@ def _openai(api_key, audio_file_path):
             response_format="text",
         )
 
-
-# ---------------- Groq ----------------
 def _groq(api_key, audio_file_path):
     if not api_key:
         raise ValueError("GROQ_API_KEY is required for Groq transcription")
@@ -81,11 +62,8 @@ def _groq(api_key, audio_file_path):
             language="vi",
         ).text
 
-
-# ---------------- FastWhisper API ----------------
 def _fastwhisper(audio_file_path):
     _check_fastwhisperapi()
-
     with open(audio_file_path, "rb") as f:
         r = requests.post(
             f"{FAST_WHISPER_URL}/v1/transcriptions",

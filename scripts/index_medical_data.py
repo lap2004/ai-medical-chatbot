@@ -1,5 +1,3 @@
-# scripts/index_medical_data.py
-
 import json
 import logging
 from sqlalchemy import create_engine, text
@@ -12,11 +10,7 @@ engine = create_engine(DATABASE_URL)
 
 
 def build_medical_passage(item: dict) -> str:
-    """
-    Gộp dữ liệu y khoa thành 1 passage duy nhất để embedding
-    """
     parts = []
-
     parts.append(f"Tiêu đề: {item['title']}")
     parts.append(f"Câu hỏi: {item['question']}")
     parts.append(f"Trả lời: {item['answer']}")
@@ -28,7 +22,6 @@ def build_medical_passage(item: dict) -> str:
         parts.append(f"Điều trị: {item['treatment']}")
 
     return "\n".join(parts)
-
 
 def index_medical_json(json_path: str):
     with open(json_path, "r", encoding="utf-8") as f:
@@ -73,9 +66,7 @@ def index_medical_json(json_path: str):
                     "embedding": embedding,
                 }
             )
-
             logging.info(f"Indexed medical_voice: {item['id']}")
-
 
 if __name__ == "__main__":
     index_medical_json("medical_data.json")
