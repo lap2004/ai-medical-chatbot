@@ -1,48 +1,35 @@
 from __future__ import annotations
-
 from datetime import datetime, timedelta
 from typing import Optional, Dict, Any
-
 from fastapi import Depends, Header, HTTPException, status
 from jose import JWTError, jwt
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select
-
 from app.config import settings
 from db.database import get_db
 from db.models.user_model import User
-
 
 SECRET_KEY = settings.JWT_SECRET_KEY
 ALGORITHM = settings.JWT_ALGORITHM
 EXPIRE_MINUTES = settings.JWT_EXPIRE_MINUTES
 
-
-# Bạn muốn lưu plain text -> giữ nguyên
 def password(pw: str) -> str:
     return pw
-
 
 def verify_password(plain_password: str, stored_password: str) -> bool:
     return plain_password == stored_password
 
-
 def create_access_token(data: Dict[str, Any], expires_delta: Optional[timedelta] = None) -> str:
-    """
-    data nên chứa: {"user_id": <int hoặc str>, "is_admin": <bool>}
-    """
     to_encode = data.copy()
     expire = datetime.utcnow() + (expires_delta or timedelta(minutes=EXPIRE_MINUTES))
     to_encode.update({"exp": expire})
     return jwt.encode(to_encode, SECRET_KEY, algorithm=ALGORITHM)
-
 
 def decode_access_token(token: str) -> Dict[str, Any]:
     try:
         return jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
     except JWTError as e:
         raise ValueError("Token decode failed") from e
-
 
 async def get_current_user(
     authorization: Optional[str] = Header(None),
@@ -70,7 +57,6 @@ async def get_current_user(
     if user_id is None:
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Token thiếu user_id")
 
-    # DB id là INTEGER -> ép kiểu int
     try:
         user_id_int = int(user_id)
     except Exception:
@@ -86,7 +72,6 @@ async def get_current_user(
 
     return user
 
-
 async def register_user(email: str, full_name: Optional[str], raw_password: str, db: AsyncSession) -> User:
     email_norm = (email or "").strip().lower()
 
@@ -98,7 +83,7 @@ async def register_user(email: str, full_name: Optional[str], raw_password: str,
     user = User(
         email=email_norm,
         full_name=full_name,
-        password=password(raw_password),  # plain text theo yêu cầu
+        password=password(raw_password), 
         is_admin=False,
         is_active=True,
         force_password_change=False,
@@ -106,5 +91,5 @@ async def register_user(email: str, full_name: Optional[str], raw_password: str,
 
     db.add(user)
     await db.commit()
-    await db.refresh(user)  # ✅ đúng biến
+    await db.refresh(user) 
     return user

@@ -4,7 +4,6 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from typing import Optional
 from app.config import settings
 from sqlalchemy.future import select
-
 from app.services.auth_service import get_current_user
 
 SECRET_KEY = settings.JWT_SECRET_KEY

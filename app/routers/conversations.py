@@ -1,15 +1,12 @@
 from uuid import UUID
-
 from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select, update, func
-
 from app.core.security import get_current_user
 from db.database import get_db
 from db.models.user_model import User
 from db.models.conversation_model import Conversation
 from db.models.chat_model import ChatMessage
-
 from app.services.chat_service import handle_chat_request, rename_conversation, soft_delete_conversation
 from db.schemas.conversation_schema import (
     ConversationListItem,
@@ -19,14 +16,11 @@ from db.schemas.conversation_schema import (
     RenameConversationRequest,
     MessageItem,
 )
-
 from db.schemas.chat_schema import ChatRequest
 
 
 router = APIRouter(prefix="/conversations", tags=["conversations"])
 
-
-# 1) GET LIST CONVERSATIONS
 @router.get("", response_model=list[ConversationListItem])
 async def get_list_conversations(
     db: AsyncSession = Depends(get_db),
@@ -43,8 +37,6 @@ async def get_list_conversations(
         for r in rows
     ]
 
-
-# 1b) CREATE CONVERSATION (optional, cho FE tạo trước)
 @router.post("", response_model=CreateConversationResponse, status_code=status.HTTP_201_CREATED)
 async def create_conversation(
     db: AsyncSession = Depends(get_db),
@@ -57,20 +49,15 @@ async def create_conversation(
     await db.refresh(conv)
     return {"id": conv.id, "title": conv.title, "created_at": conv.created_at}
 
-
-# 1c) GET MESSAGES IN CONVERSATION
 @router.get("/{conversation_id}/messages")
 async def get_messages(
     conversation_id: UUID,
     db: AsyncSession = Depends(get_db),
     current_user: User = Depends(get_current_user),
 ):
-    """Get all messages in a conversation with feedback status"""
     from app.services.chat_service import get_conversation_messages
     return await get_conversation_messages(conversation_id, db, current_user)
 
-
-# 2) CREATE MESSAGE (chat within a conversation)
 @router.post(
     "/{conversation_id}/messages",
     response_model=CreateMessageResponse,
@@ -111,8 +98,6 @@ async def create_message(
         "created_at": chat_resp.created_at,
     }
 
-
-# 3) RENAME CONVERSATION
 @router.patch("/{conversation_id}", status_code=status.HTTP_200_OK)
 async def patch_rename_conversation(
     conversation_id: UUID,
@@ -122,8 +107,6 @@ async def patch_rename_conversation(
 ):
     return await rename_conversation(conversation_id, req.title, db, current_user)
 
-
-# 4) DELETE CONVERSATION (soft delete)
 @router.delete("/{conversation_id}", status_code=status.HTTP_200_OK)
 async def delete_conversation(
     conversation_id: UUID,

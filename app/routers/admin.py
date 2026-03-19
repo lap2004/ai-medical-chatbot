@@ -3,7 +3,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select, func, or_, cast, String
 from typing import Optional
 from pydantic import BaseModel, EmailStr, Field
-
+from app.core.security import verify_password
 from app.config import settings
 from app.core.security import require_admin, password as hash_password
 from db.database import get_db
@@ -14,21 +14,17 @@ from db.models.enums import FeedbackValue
 
 router = APIRouter(prefix="/admin", tags=["admin"])
 
-
-# ─── Schemas ──────────────────────────────────────────────────────────────────
-
 class UserOut(BaseModel):
     id: int
     name: Optional[str]
     email: str
-    role: str          # "ADMIN" | "USER"
-    status: str        # "Active" | "Inactive"
+    role: str          
+    status: str       
     created_at: str
     avatar_url: Optional[str] = None
 
     class Config:
         from_attributes = True
-
 
 class CreateUserBody(BaseModel):
     full_name: str = Field(min_length=1, max_length=255)
@@ -37,14 +33,12 @@ class CreateUserBody(BaseModel):
     is_admin: bool = False
     is_active: bool = True
 
-
 class UpdateUserBody(BaseModel):
     full_name: Optional[str] = Field(None, min_length=1, max_length=255)
     email: Optional[EmailStr] = None
     password: Optional[str] = Field(None, min_length=6, max_length=128)
     is_admin: Optional[bool] = None
     is_active: Optional[bool] = None
-
 
 def _user_to_out(u: User) -> dict:
     return {
@@ -57,34 +51,17 @@ def _user_to_out(u: User) -> dict:
         "avatar_url": u.avatar_url,
     }
 
-
-# ─── Existing endpoints ────────────────────────────────────────────────────────
-
 @router.get("/dashboard")
 async def admin_dashboard(admin: User = Depends(require_admin())):
     return {"ok": True, "admin_email": admin.email}
-
 
 @router.get("/analytics")
 async def get_analytics(
     db: AsyncSession = Depends(get_db),
     admin: User = Depends(require_admin())
 ):
-    """
-    Get system-wide analytics:
-    - User count
-    - Message count (Traffic)
-    - Feedback stats (Like/Dislike)
-    - Report stats (Total + Breakdown)
-    """
-    
-    # 1. Total Users
     user_count = await db.scalar(select(func.count(User.id)))
-    
-    # 2. Total Messages (Traffic proxy)
     msg_count = await db.scalar(select(func.count(ChatMessage.id)))
-    
-    # 3. Feedback Stats (Like vs Dislike)
     feedback_stats = await db.execute(
         select(
             func.count(MessageFeedback.id).filter(MessageFeedback.value == FeedbackValue.like).label("likes"),
@@ -92,8 +69,6 @@ async def get_analytics(
         )
     )
     fb_row = feedback_stats.one()
-    
-    # 4. Reports Stats
     report_count = await db.scalar(select(func.count(MessageReport.id)))
     
     report_breakdown_res = await db.execute(
@@ -105,7 +80,6 @@ async def get_analytics(
         for row in report_breakdown_res.all()
     ]
 
-    # 5. Recent Activities
     recent_feedbacks_res = await db.execute(
         select(MessageFeedback, User.email)
         .join(User, MessageFeedback.user_id == User.id)
@@ -137,8 +111,7 @@ async def get_analytics(
         }
         for row in recent_reports_res.all()
     ]
-
-    # 6. Top Active Users (by message count)
+    
     top_users_res = await db.execute(
         select(User.email, func.count(ChatMessage.id).label("msg_count"))
         .join(ChatMessage, ChatMessage.user_id == User.id)
@@ -168,9 +141,6 @@ async def get_analytics(
         "top_users": top_users
     }
 
-
-# ─── User Management endpoints ────────────────────────────────────────────────
-
 @router.get("/users")
 async def list_users(
     q: Optional[str] = Query(None, description="Search by name, email or ID"),
@@ -181,10 +151,8 @@ async def list_users(
     db: AsyncSession = Depends(get_db),
     admin: User = Depends(require_admin()),
 ):
-    """List users with optional search/filter/pagination."""
     stmt = select(User)
 
-    # Search
     if q:
         q_lower = f"%{q.lower()}%"
         stmt = stmt.where(
@@ -195,25 +163,21 @@ async def list_users(
             )
         )
 
-    # Role filter
     if role and role != "ALL":
         if role == "ADMIN":
             stmt = stmt.where(User.is_admin == True)
         elif role == "USER":
             stmt = stmt.where(User.is_admin == False)
 
-    # Status filter
     if status and status != "ALL":
         if status == "Active":
             stmt = stmt.where(User.is_active == True)
         elif status == "Inactive":
             stmt = stmt.where(User.is_active == False)
 
-    # Count total
     count_stmt = select(func.count()).select_from(stmt.subquery())
     total = await db.scalar(count_stmt)
 
-    # Paginate
     stmt = stmt.order_by(User.id.asc()).offset((page - 1) * page_size).limit(page_size)
     result = await db.execute(stmt)
     users = result.scalars().all()
@@ -225,15 +189,12 @@ async def list_users(
         "items": [_user_to_out(u) for u in users],
     }
 
-
 @router.post("/users", status_code=201)
 async def create_user(
     body: CreateUserBody,
     db: AsyncSession = Depends(get_db),
     admin: User = Depends(require_admin()),
 ):
-    """Create a new user."""
-    # Check duplicate email
     existing = await db.scalar(select(User).where(User.email == body.email))
     if existing:
         raise HTTPException(status_code=409, detail="Email đã tồn tại.")
@@ -251,7 +212,6 @@ async def create_user(
     await db.refresh(new_user)
     return _user_to_out(new_user)
 
-
 @router.patch("/users/{user_id}")
 async def update_user(
     user_id: int,
@@ -259,7 +219,6 @@ async def update_user(
     db: AsyncSession = Depends(get_db),
     admin: User = Depends(require_admin()),
 ):
-    """Update user fields (partial update)."""
     user = await db.get(User, user_id)
     if not user:
         raise HTTPException(status_code=404, detail="Không tìm thấy user.")
@@ -267,7 +226,6 @@ async def update_user(
     if body.full_name is not None:
         user.full_name = body.full_name
     if body.email is not None:
-        # Check duplicate email (skip if same user)
         dup = await db.scalar(
             select(User).where(User.email == body.email, User.id != user_id)
         )
@@ -285,14 +243,12 @@ async def update_user(
     await db.refresh(user)
     return _user_to_out(user)
 
-
 @router.delete("/users/{user_id}", status_code=204)
 async def delete_user(
     user_id: int,
     db: AsyncSession = Depends(get_db),
     admin: User = Depends(require_admin()),
 ):
-    """Delete a user. Admin cannot delete themselves."""
     if admin.id == user_id:
         raise HTTPException(status_code=400, detail="Không thể xóa chính mình.")
 
@@ -304,14 +260,10 @@ async def delete_user(
     await db.commit()
     return None
 
-
-# ─── Settings endpoints ────────────────────────────────────────────────────────
-
 class SystemSettingsBody(BaseModel):
     allow_signup: Optional[bool] = None
     qa_topk: Optional[int] = Field(None, ge=1, le=20)
     gemini_model: Optional[str] = None
-
 
 class AdminProfileBody(BaseModel):
     full_name: Optional[str] = Field(None, min_length=1, max_length=255)
@@ -319,25 +271,21 @@ class AdminProfileBody(BaseModel):
     current_password: Optional[str] = None
     new_password: Optional[str] = Field(None, min_length=6, max_length=128)
 
-
 @router.get("/settings")
 async def get_settings(
     admin: User = Depends(require_admin()),
 ):
-    """Get current system & AI settings."""
     return {
         "allow_signup": settings.allow_signup,
         "qa_topk": settings.qa_topk,
         "gemini_model": settings.gemini_model,
     }
 
-
 @router.patch("/settings")
 async def update_settings(
     body: SystemSettingsBody,
     admin: User = Depends(require_admin()),
 ):
-    """Update runtime system & AI settings (in-memory, resets on restart)."""
     if body.allow_signup is not None:
         settings.allow_signup = body.allow_signup
     if body.qa_topk is not None:
@@ -350,7 +298,6 @@ async def update_settings(
         "gemini_model": settings.gemini_model,
     }
 
-
 @router.get("/me")
 async def get_admin_profile(
     admin: User = Depends(require_admin()),
@@ -358,15 +305,12 @@ async def get_admin_profile(
     """Get current admin profile."""
     return _user_to_out(admin)
 
-
 @router.patch("/me")
 async def update_admin_profile(
     body: AdminProfileBody,
     db: AsyncSession = Depends(get_db),
     admin: User = Depends(require_admin()),
 ):
-    """Update admin's own profile and/or password."""
-    from app.core.security import verify_password
 
     if body.full_name is not None:
         admin.full_name = body.full_name

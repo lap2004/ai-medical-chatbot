@@ -1,16 +1,12 @@
 import os
 from typing import List, Dict, Any
-
 import numpy as np
 from sqlalchemy import text
 from sqlalchemy.orm import Session
 from loguru import logger
-
 from app.config import settings
 
-# Lazy load để khởi tạo model 1 lần
 _model = None
-
 
 def _get_model():
     global _model
@@ -21,7 +17,6 @@ def _get_model():
         logger.info(f"Loading embedding model: {settings.embedding_model}")
         _model = SentenceTransformer(settings.embedding_model)
     return _model
-
 
 def build_embed_text(rec: Dict[str, Any]) -> str:
     parts = []
@@ -37,12 +32,7 @@ def build_embed_text(rec: Dict[str, Any]) -> str:
         parts.append(f"Treatment: {rec['treatment']}")
     return "\n".join(parts)
 
-
 def embed_texts(texts: List[str], batch_size: int = 32) -> np.ndarray:
-    """
-    Trả về (N, settings.embedding_dim); normalize L2.
-    Nếu settings.use_fake_embedder → zero vectors (phục vụ dev/test).
-    """
     if settings.use_fake_embedder:
         return np.zeros((len(texts), settings.embedding_dim), dtype=float)
 
@@ -59,7 +49,6 @@ def embed_texts(texts: List[str], batch_size: int = 32) -> np.ndarray:
             f"Embedding dim mismatch: model={vecs.shape[1]} vs configured={settings.embedding_dim}"
         )
     return vecs.astype(float)
-
 
 def upsert_medical(db: Session, rows: List[Dict[str, Any]]):
     """
@@ -81,7 +70,6 @@ def upsert_medical(db: Session, rows: List[Dict[str, Any]]):
     """)
     db.execute(sql, rows)
 
-
 def insert_medical_without_id(db: Session, rows: List[Dict[str, Any]]):
     """
     Insert các bản ghi thiếu id (DB sẽ tự gen id); không thể upsert.
@@ -93,7 +81,6 @@ def insert_medical_without_id(db: Session, rows: List[Dict[str, Any]]):
         VALUES (:title, :question, :answer, :symptoms, :treatment, :embedding)
     """)
     db.execute(sql, rows)
-
 
 def embed_and_upsert_records(db: Session, records: List[Dict[str, Any]], batch_size: int = 64):
     """
@@ -123,5 +110,4 @@ def embed_and_upsert_records(db: Session, records: List[Dict[str, Any]], batch_s
         upsert_medical(db, rows_with_id)
     if rows_no_id:
         insert_medical_without_id(db, rows_no_id)
-
     db.commit()

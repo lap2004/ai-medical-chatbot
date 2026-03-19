@@ -1,43 +1,16 @@
-"""
-app/services/chat_service.py
-
-Service layer cho chat (message-based) theo schema *_012026.
-Hỗ trợ:
-- GET  /chat/conversations/{conversation_id}/messages
-- POST /chat/conversations/{conversation_id}/messages
-- PATCH /chat/messages/{message_id}
-- DELETE /chat/messages/{message_id}
-- POST /chat/messages/{message_id}/feedback   (like/dislike/report)
-
-Ngoài ra giữ lại:
-- list conversations (sidebar)
-- rename conversation
-- soft delete conversation
-- soft delete history
-
-Và cung cấp wrapper để voice_router import:
-- handle_chat_request(req, db, current_user, conversation_id) -> ChatResponse
-"""
-
 from __future__ import annotations
-
 from typing import List, Optional, Union
 from datetime import datetime, timezone
 from uuid import UUID
-
 from fastapi import HTTPException
 from loguru import logger
-
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select, update, func
-
 from app.config import settings
 from app.rag.chat_pipeline import run as run_pipeline
 from app.rag.word_filter import has_banned_terms
-
 from db.models.chat_model import ChatMessage
 from db.models.conversation_model import Conversation
-
 from db.schemas.chat_schema import (
     ChatAnswer,
     ChatRequest,
@@ -45,25 +18,18 @@ from db.schemas.chat_schema import (
     MessageCreateIn,
     MessagePatchIn,
     MessageListOut,
-    MessageOut,  # ✅ Added for feedback persistence
+    MessageOut,  
     MessageFeedbackIn,
     RetrievedContext,
 )
-
-# feedback/report models (nếu bạn chưa tạo file này thì service vẫn chạy được cho APIs messages)
 try:
     from db.models.feedback_model import MessageFeedback, MessageReport
 except Exception:
     MessageFeedback = None
     MessageReport = None
 
-
-# =========================
-# Helpers
-# =========================
 def _utc_now() -> datetime:
     return datetime.now(timezone.utc)
-
 
 def _short_title_from_content(content: str, max_len: int = 50) -> str:
     text = (content or "").strip()
@@ -71,11 +37,7 @@ def _short_title_from_content(content: str, max_len: int = 50) -> str:
         return "New chat"
     return (text[:max_len] + "…") if len(text) > max_len else text
 
-
 def _check_word_filter(text: str) -> tuple[bool, list]:
-    """
-    return (bad: bool, terms: list[str])
-    """
     try:
         bad, terms = has_banned_terms(text, settings.word_filter_path)
         return bad, terms
@@ -85,7 +47,6 @@ def _check_word_filter(text: str) -> tuple[bool, list]:
     except Exception:
         logger.exception("Kiểm tra word filter thất bại.")
         return False, []
-
 
 async def _get_owned_conversation(db: AsyncSession, conversation_id: UUID, user_id: int) -> Conversation:
     conv = await db.scalar(
@@ -99,7 +60,6 @@ async def _get_owned_conversation(db: AsyncSession, conversation_id: UUID, user_
         raise HTTPException(status_code=404, detail="Conversation không tồn tại.")
     return conv
 
-
 async def _get_message(db: AsyncSession, message_id: UUID) -> ChatMessage:
     msg = await db.scalar(select(ChatMessage).where(ChatMessage.id == message_id))
     if not msg or msg.deleted_at is not None:
@@ -110,12 +70,6 @@ async def _get_message(db: AsyncSession, message_id: UUID) -> ChatMessage:
 async def _ensure_parent_in_conversation(
     db: AsyncSession, conversation_id: UUID, parent_message_id: Optional[UUID]
 ) -> Optional[UUID]:
-    """
-    Validate parent_message_id:
-    - None => ok
-    - must exist in same conversation and not deleted
-    If invalid => return None
-    """
     if parent_message_id is None:
         return None
 
@@ -128,7 +82,6 @@ async def _ensure_parent_in_conversation(
     )
     return parent_message_id if exists else None
 
-
 async def _touch_conversation(db: AsyncSession, conversation_id: UUID, now: Optional[datetime] = None) -> None:
     now = now or _utc_now()
     await db.execute(
@@ -136,7 +89,6 @@ async def _touch_conversation(db: AsyncSession, conversation_id: UUID, now: Opti
         .where(Conversation.id == conversation_id)
         .values(updated_at=now, last_message_at=now)
     )
-
 
 async def _get_recent_messages(db: AsyncSession, conversation_id: UUID, exclude_id: Optional[UUID] = None, limit: int = 10) -> List[dict]:
     from sqlalchemy import desc
@@ -149,17 +101,11 @@ async def _get_recent_messages(db: AsyncSession, conversation_id: UUID, exclude_
         
     result = await db.execute(stmt.order_by(desc(ChatMessage.created_at)).limit(limit))
     messages = result.scalars().all()
-    # Reverse to chronological order (oldest first in the sliding window)
     messages = list(reversed(messages))
     return [{"role": m.role, "content": m.content} for m in messages]
 
-
 def _extract_assistant_text(pipeline_out: dict) -> str:
-    """
-    pipeline_out: {"answer": {...} or str, "contexts": [...]}
-    raw_answer = pipeline_out.get("answer")
-    Nếu dict thì ưu tiên raw_answer["answer"].
-    """
+
     raw_answer = pipeline_out.get("answer")
     if isinstance(raw_answer, dict):
         txt = raw_answer.get("answer")
@@ -170,10 +116,6 @@ def _extract_assistant_text(pipeline_out: dict) -> str:
 
 
 def _normalize_chat_answer(pipeline_out: dict) -> ChatAnswer:
-    """
-    Convert output pipeline sang ChatAnswer để trả cho voice/legacy.
-    Nếu pipeline trả dict nhưng không đúng schema => fallback.
-    """
     raw_answer = pipeline_out.get("answer") or {}
     if isinstance(raw_answer, dict):
         try:
@@ -188,7 +130,6 @@ def _normalize_chat_answer(pipeline_out: dict) -> ChatAnswer:
             }
             return ChatAnswer(**fallback)
 
-    # raw_answer là string/khác
     fallback = {
         "answer": str(raw_answer),
         "reasoning_brief": None,
@@ -197,10 +138,6 @@ def _normalize_chat_answer(pipeline_out: dict) -> ChatAnswer:
     }
     return ChatAnswer(**fallback)
 
-
-# =========================
-# 0) LIST CONVERSATIONS (Sidebar)
-# =========================
 async def get_list_conversations(db: AsyncSession, current_user) -> List[dict]:
     last_ts = func.coalesce(Conversation.last_message_at, Conversation.updated_at)
 
@@ -229,10 +166,6 @@ async def get_list_conversations(db: AsyncSession, current_user) -> List[dict]:
         for r in rows
     ]
 
-
-# =========================
-# 1) GET /chat/conversations/{conversation_id}/messages
-# =========================
 async def get_conversation_messages(
     conversation_id: UUID,
     db: AsyncSession,
@@ -241,8 +174,6 @@ async def get_conversation_messages(
     from sqlalchemy.orm import selectinload
     
     await _get_owned_conversation(db, conversation_id, int(current_user.id))
-
-    # Load messages with feedbacks and reports relationships
     result = await db.execute(
         select(ChatMessage)
         .where(
@@ -256,23 +187,19 @@ async def get_conversation_messages(
         .order_by(ChatMessage.created_at.asc())
     )
     messages = result.scalars().all()
-    
-    # Build response with feedback info for current user
+
     items = []
     for msg in messages:
-        # Find feedback from current user for this message
         user_feedback = next(
             (fb for fb in msg.feedbacks if fb.user_id == int(current_user.id)),
             None
         )
         
-        # Check if current user reported this message
         user_reported = any(
             rp.reporter_user_id == int(current_user.id)
             for rp in msg.reports
         )
         
-        # Build message dict with feedback info
         msg_dict = {
             "id": msg.id,
             "conversation_id": msg.conversation_id,
@@ -287,7 +214,6 @@ async def get_conversation_messages(
             "rag_context": msg.rag_context,
             "deleted_at": msg.deleted_at,
             "created_at": msg.created_at,
-            # Feedback info
             "feedback": {
                 "value": user_feedback.value,
                 "created_at": user_feedback.created_at
@@ -298,10 +224,6 @@ async def get_conversation_messages(
     
     return MessageListOut(items=items)
 
-
-# =========================
-# 2) POST /chat/conversations/{conversation_id}/messages
-# =========================
 async def create_message(
     conversation_id: UUID,
     payload: MessageCreateIn,
@@ -310,15 +232,6 @@ async def create_message(
     *,
     run_rag: bool = True,
 ) -> Union[ChatMessage, dict]:
-    """
-    Tạo message user. Nếu run_rag=True:
-    - chạy pipeline
-    - tạo thêm 1 message assistant (parent trỏ user message)
-    - return dict {"user": ChatMessage, "assistant": ChatMessage, "pipeline": out}
-
-    Nếu run_rag=False:
-    - chỉ tạo user message và return ChatMessage
-    """
     content = (payload.content or "").strip()
     if len(content) < 2:
         raise HTTPException(status_code=400, detail="Nội dung quá ngắn.")
@@ -342,9 +255,8 @@ async def create_message(
             parent_message_id=parent_id,
         )
         db.add(user_msg)
-        await db.flush()  # lấy user_msg.id
+        await db.flush()  
 
-        # touch + auto title
         await _touch_conversation(db, conversation_id, now=now)
         if (conv.title or "").strip() in ("New chat", "Cuộc trò chuyện mới", "New chat…"):
             conv.title = _short_title_from_content(content)
@@ -354,7 +266,6 @@ async def create_message(
             await db.refresh(user_msg)
             return user_msg
 
-        # RAG + LLM (with recent 5 pairs / limit=10 sliding window memory)
         recent_history = await _get_recent_messages(db, conversation_id, exclude_id=user_msg.id, limit=10)
         out = await run_pipeline(content, db, history=recent_history)
         contexts = out.get("contexts") or []
@@ -396,10 +307,6 @@ async def create_message(
         logger.exception("Lỗi create_message.")
         raise HTTPException(status_code=500, detail="Không thể tạo message. Vui lòng thử lại.")
 
-
-# =========================
-# 3) PATCH /chat/messages/{message_id}
-# =========================
 async def patch_message(
     message_id: UUID,
     payload: MessagePatchIn,
@@ -413,7 +320,6 @@ async def patch_message(
     msg = await _get_message(db, message_id)
     await _get_owned_conversation(db, msg.conversation_id, int(current_user.id))
 
-    # chỉ sửa message của chính user và role=user
     if msg.user_id != int(current_user.id):
         raise HTTPException(status_code=403, detail="Chỉ được sửa message của chính bạn.")
     if msg.role != "user":
@@ -436,10 +342,6 @@ async def patch_message(
         logger.exception("Lỗi patch_message.")
         raise HTTPException(status_code=500, detail="Không thể cập nhật message.")
 
-
-# =========================
-# 4) DELETE /chat/messages/{message_id} (Soft delete)
-# =========================
 async def soft_delete_message(
     message_id: UUID,
     db: AsyncSession,
@@ -448,7 +350,6 @@ async def soft_delete_message(
     msg = await _get_message(db, message_id)
     await _get_owned_conversation(db, msg.conversation_id, int(current_user.id))
 
-    # user chỉ được xoá message của họ và role=user
     if msg.user_id != int(current_user.id):
         raise HTTPException(status_code=403, detail="Chỉ được xóa message của chính bạn.")
     if msg.role != "user":
@@ -469,24 +370,13 @@ async def soft_delete_message(
         logger.exception("Lỗi soft_delete_message.")
         raise HTTPException(status_code=500, detail="Không thể xóa message.")
 
-
-# =========================
-# 5) POST /chat/messages/{message_id}/feedback  (like/dislike/report)
-# =========================
 async def create_feedback_or_report(
     message_id: UUID,
     payload: MessageFeedbackIn,
     db: AsyncSession,
     current_user,
 ) -> dict:
-    """
-    - like/dislike: upsert message_feedback_012026 theo (message_id, user_id)
-    - report: upsert message_reports_012026 theo (message_id, reporter_user_id)
 
-    yêu cầu:
-    - message phải tồn tại và chưa deleted
-    - message thuộc conversation của user
-    """
     if MessageFeedback is None or MessageReport is None:
         raise HTTPException(
             status_code=500,
@@ -510,7 +400,6 @@ async def create_feedback_or_report(
             if existing:
                 existing.value = action
                 existing.reason = payload.reason
-                # nếu model có onupdate thì dòng dưới không bắt buộc
                 try:
                     existing.updated_at = now
                 except Exception:
@@ -563,10 +452,6 @@ async def create_feedback_or_report(
         logger.exception("Lỗi create_feedback_or_report.")
         raise HTTPException(status_code=500, detail="Không thể gửi feedback/report.")
 
-
-# =========================
-# 6) RENAME CONVERSATION
-# =========================
 async def rename_conversation(conversation_id: UUID, new_title: str, db: AsyncSession, current_user) -> dict:
     title = (new_title or "").strip()
     if not (1 <= len(title) <= 255):
@@ -589,10 +474,6 @@ async def rename_conversation(conversation_id: UUID, new_title: str, db: AsyncSe
     await db.commit()
     return {"id": row.id, "title": row.title, "updated_at": row.updated_at, "last_message_at": row.last_message_at}
 
-
-# =========================
-# 7) DELETE CONVERSATION (Soft delete)
-# =========================
 async def soft_delete_conversation(conversation_id: UUID, db: AsyncSession, current_user) -> dict:
     now = _utc_now()
     result = await db.execute(
@@ -612,15 +493,7 @@ async def soft_delete_conversation(conversation_id: UUID, db: AsyncSession, curr
     await db.commit()
     return {"deleted": True, "conversation_id": str(conversation_id)}
 
-
-# =========================
-# 8) Soft delete whole history (all messages of user)
-# =========================
 async def soft_delete_chat_history(db: AsyncSession, current_user) -> dict:
-    """
-    Xoá mềm toàn bộ messages do user tạo (role=user, user_id=current_user).
-    (assistant messages thường user_id=None nên không bị xoá ở đây)
-    """
     now = _utc_now()
     result = await db.execute(
         update(ChatMessage)
@@ -634,10 +507,6 @@ async def soft_delete_chat_history(db: AsyncSession, current_user) -> dict:
     await db.commit()
     return {"deleted": True, "deleted_count": result.rowcount or 0}
 
-
-# =========================
-# Backward-compatible aliases (nếu router cũ đang gọi)
-# =========================
 async def delete_chat_message(message_id: UUID, db: AsyncSession, current_user) -> dict:
     return await soft_delete_message(message_id, db, current_user)
 
@@ -646,39 +515,24 @@ async def delete_chat_history(db: AsyncSession, current_user) -> dict:
     return await soft_delete_chat_history(db, current_user)
 
 
-# =========================
-# Voice / Legacy compatibility
-# =========================
 async def handle_chat_request(
     req: ChatRequest,
     db: AsyncSession,
     current_user,
     conversation_id: UUID,
 ) -> ChatResponse:
-    """
-    Dành cho voice_router (hoặc endpoint legacy) muốn 1 lần gọi là ra answer.
-    - Validate conversation ownership
-    - Word filter
-    - Chạy pipeline
-    - Lưu 2 messages: user + assistant (role-based)
-    - Trả ChatResponse (message_id là assistant message id để client dễ attach like/report)
-    """
+
     question = (req.question or "").strip()
     if len(question) < 2:
         raise HTTPException(status_code=400, detail="Câu hỏi quá ngắn.")
 
-    # ownership
     await _get_owned_conversation(db, conversation_id, int(current_user.id))
-
-    # word filter
     bad, terms = _check_word_filter(question)
     if bad:
         raise HTTPException(status_code=400, detail=f"Câu hỏi chứa từ bị cấm: {', '.join(terms)}")
 
     now = _utc_now()
-
     try:
-        # 1) create user message
         user_msg = ChatMessage(
             conversation_id=conversation_id,
             user_id=int(current_user.id),
@@ -690,13 +544,6 @@ async def handle_chat_request(
         await db.flush()
 
         await _touch_conversation(db, conversation_id, now=now)
-
-        # auto title nếu đang default
-        # NOTE: không load conv ở đây để giảm query; nếu cần bạn có thể load và set title
-        # (đơn giản, bạn có thể bỏ qua title cho voice)
-        # -> nếu bạn muốn title: hãy query conv và set nếu title == "New chat"...
-
-        # 2) pipeline (with recent 5 pairs / limit=10 sliding window memory)
         recent_history = await _get_recent_messages(db, conversation_id, exclude_id=user_msg.id, limit=10)
         out = await run_pipeline(question, db, history=recent_history)
         assistant_text = _extract_assistant_text(out)
@@ -706,7 +553,6 @@ async def handle_chat_request(
         raw_answer = out.get("answer") or {}
         contexts = out.get("contexts") or []
 
-        # 3) create assistant message
         assistant_msg = ChatMessage(
             conversation_id=conversation_id,
             user_id=None,
@@ -726,7 +572,6 @@ async def handle_chat_request(
         await db.commit()
         await db.refresh(assistant_msg)
 
-        # 4) response theo schema cũ (ChatResponse)
         contexts_out = [RetrievedContext(**c) for c in contexts]
         answer_obj = _normalize_chat_answer(out)
 

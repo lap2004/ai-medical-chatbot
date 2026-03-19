@@ -2,7 +2,15 @@ from email.mime.multipart import MIMEMultipart
 import smtplib
 from email.mime.text import MIMEText
 from app.config import settings
+import smtplib
+from email.message import EmailMessage
+import os
 
+EMAIL_FROM = settings.SMTP_EMAIL
+EMAIL_PASSWORD = settings.SMTP_PASSWORD
+FRONTEND_URL = os.getenv("FRONTEND_URL", "http://localhost:3000") 
+
+from app.config import settings
 def send_email(subject: str, recipient: str, body: str, subtype: str = "plain"):
     smtp_email = settings.SMTP_EMAIL
     smtp_password = settings.SMTP_PASSWORD
@@ -27,16 +35,6 @@ def send_email(subject: str, recipient: str, body: str, subtype: str = "plain"):
         raise RuntimeError("Lỗi xác thực SMTP: Kiểm tra lại SMTP_EMAIL hoặc SMTP_PASSWORD")
     except smtplib.SMTPException as e:
         raise RuntimeError(f"Lỗi khi gửi email: {e}")
-
-import smtplib
-from email.message import EmailMessage
-import os
-
-from app.config import settings
-
-EMAIL_FROM = settings.SMTP_EMAIL
-EMAIL_PASSWORD = settings.SMTP_PASSWORD
-FRONTEND_URL = os.getenv("FRONTEND_URL", "http://localhost:3000") 
 
 def get_smtp_config():
     return {
@@ -65,7 +63,6 @@ def send_new_password_email(to_email: str, new_password: str):
       </body>
     </html>
     """
-
     try:
         print(f"Đang gửi mật khẩu mới đến: {to_email}")
 
@@ -74,7 +71,6 @@ def send_new_password_email(to_email: str, new_password: str):
         msg["To"] = to_email
         msg["Subject"] = subject
         msg.attach(MIMEText(html_body, "html"))
-
         server = smtplib.SMTP(settings.SMTP_SERVER, settings.SMTP_PORT)
         server.starttls()
         server.login(settings.SMTP_EMAIL, settings.SMTP_PASSWORD)

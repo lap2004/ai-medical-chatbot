@@ -1,14 +1,8 @@
-"""
-app/middleware/log_request.py
-Middleware log mọi request + thời gian xử lý.
-"""
-
 import time
 from starlette.middleware.base import BaseHTTPMiddleware
 from starlette.requests import Request
 from starlette.responses import Response
 from loguru import logger
-
 
 class RequestLogMiddleware(BaseHTTPMiddleware):
     async def dispatch(self, request: Request, call_next):
@@ -22,6 +16,5 @@ class RequestLogMiddleware(BaseHTTPMiddleware):
             raise exc
         finally:
             dur_ms = (time.perf_counter() - start) * 1000.0
-            # Ẩn body để tránh log PII/secret. Chỉ log đường dẫn, method, status, thời gian.
             logger.info(f"{request.method} {request.url.path} -> {status} ({dur_ms:.1f} ms)")
         return response

@@ -8,16 +8,9 @@ from typing import List, Union, Optional
 from pydantic import Field, field_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
-
 class Settings(BaseSettings):
-    # -------------------------
-    # Pydantic Settings config
-    # -------------------------
     model_config = SettingsConfigDict(env_file=".env", extra="ignore")
-
-    # -------------------------
-    # DB
-    # -------------------------
+    
     database_url: str = Field(default_factory=lambda: os.getenv("DATABASE_URL", ""))
     database_url_async: str = Field(default_factory=lambda: os.getenv("DATABASE_URL_ASYNC", ""))
 
@@ -41,47 +34,27 @@ class Settings(BaseSettings):
     nextauth_url: str
     nextauth_secret: str
 
-    # -------------------------
-    # RAG
-    # -------------------------
     embedding_model: str = Field(default="BAAI/bge-m3")
     embedding_dim: int = Field(default=1024)
     use_fake_embedder: bool = Field(default=False)
     rag_table: str = Field(default="medical_012026")
     qa_topk: int = Field(default=5)
 
-    # -------------------------
-    # Gemini
-    # -------------------------
     gemini_api_key: str = Field(default_factory=lambda: os.getenv("GEMINI_API_KEY", ""))
     gemini_model: str = Field(default_factory=lambda: os.getenv("GEMINI_MODEL", "models/gemini-2.5-flash"))
 
-    # -------------------------
-    # Runtime-mutable settings (can be changed by admin at runtime)
-    # -------------------------
-    allow_signup: bool = Field(default=True)   # Toggle user self-registration
-    # -------------------------
-    # API / CORS
-    # -------------------------
+    allow_signup: bool = Field(default=True)   
+
     allowed_origins: Union[str, List[str]] = Field(default_factory=lambda: os.getenv("ALLOWED_ORIGINS", "*"))
     host: str = Field(default_factory=lambda: os.getenv("HOST", "0.0.0.0"))
     port: int = Field(default_factory=lambda: int(os.getenv("PORT", "8000")))
 
-    # -------------------------
-    # Logging
-    # -------------------------
     log_level: str = Field(default_factory=lambda: os.getenv("LOG_LEVEL", "INFO"))
     log_file: str = Field(default_factory=lambda: os.getenv("LOG_FILE", "logs/app.log"))
-
-    # -------------------------
-    # Data
-    # -------------------------
+    
     data_path: str = Field(default_factory=lambda: os.getenv("DATA_PATH", "data/data.json"))
     word_filter_path: str = Field(default_factory=lambda: os.getenv("WORD_FILTER_PATH", "data/word_filter.json"))
 
-    # -------------------------
-    # STT/TTS (batch)
-    # -------------------------
     stt_provider: str = Field(default_factory=lambda: os.getenv("STT_PROVIDER", "local"))
     stt_language: str = Field(default_factory=lambda: os.getenv("STT_LANGUAGE", "vi-VN"))
     stt_sample_rate: int = Field(default_factory=lambda: int(os.getenv("STT_SAMPLE_RATE", "16000")))
@@ -101,16 +74,13 @@ class Settings(BaseSettings):
     audio_output_dir: str = Field(default_factory=lambda: os.getenv("AUDIO_OUTPUT_DIR", "data/audio"))
     uploads_dir: str = Field(default_factory=lambda: os.getenv("UPLOADS_DIR", "data/uploads"))
 
-    # -------------------------
     jwt_secret: str = "change-me"
     jwt_alg: str = "HS256"
-    jwt_expire_minutes: int = 60 * 24 * 7  # 7 ngày
+    jwt_expire_minutes: int = 60 * 24 * 7  
 
     admin_email: str
     admin_password: str
-    # -------------------------
-    # Validators
-    # -------------------------
+    
     @field_validator("allowed_origins", mode="before")
     @classmethod
     def _normalize_origins(cls, v):
@@ -122,7 +92,6 @@ class Settings(BaseSettings):
 
         s = str(v).strip()
 
-        # JSON list
         if s.startswith("[") and s.endswith("]"):
             try:
                 parsed = json.loads(s)
@@ -131,18 +100,12 @@ class Settings(BaseSettings):
             except Exception:
                 pass
 
-        # CSV or wildcard
         if s == "" or s == "*":
             return ["*"]
 
         return [x.strip() for x in s.split(",") if x.strip()]
 
-
 settings = Settings()
-
-# -------------------------
-# DB URL fallback if empty
-# -------------------------
 if not settings.database_url:
     settings.database_url = (
         f"postgresql+psycopg2://{settings.pguser}:{settings.pgpassword}"

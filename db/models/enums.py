@@ -1,4 +1,3 @@
-# db/models/enums.py
 import enum
 
 class MessageRole(str, enum.Enum):

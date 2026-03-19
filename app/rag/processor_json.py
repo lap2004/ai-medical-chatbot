@@ -1,18 +1,8 @@
-"""
-app/rag/processor_json.py
-Đọc/chuẩn hóa file JSON y khoa theo schema của bạn:
-- id: UUID (có thể thiếu; DB sẽ tự gen, nhưng khuyến nghị nên có)
-- title, question, answer: bắt buộc
-- symptoms, treatment: tuỳ chọn
-"""
-
 import json
 from typing import Iterable, Dict
 
-
 REQUIRED = ("title", "question", "answer")
 FIELDS = ("id", "title", "question", "answer", "symptoms", "treatment")
-
 
 def load_records(path: str) -> Iterable[Dict]:
     with open(path, "r", encoding="utf-8") as f:

@@ -1,6 +1,4 @@
-# app/services/stt_service.py
 from __future__ import annotations
-
 import os
 import shutil
 import subprocess
@@ -8,16 +6,10 @@ import uuid
 from functools import lru_cache
 from pathlib import Path
 from typing import Optional, Tuple, Union, List
-
 import numpy as np
 from faster_whisper import WhisperModel
-
 from app.config import settings
 
-
-# =========================
-# Config & paths
-# =========================
 AUDIO_TMP_DIR = Path(settings.audio_tmp_dir or "data/uploads").resolve()
 AUDIO_TMP_DIR.mkdir(parents=True, exist_ok=True)
 
@@ -26,10 +18,6 @@ STT_DEVICE = settings.stt_device or os.getenv("STT_DEVICE", "auto")
 STT_COMPUTE = settings.stt_compute or os.getenv("STT_COMPUTE", "auto")
 DEFAULT_STT_LANGUAGE = (settings.stt_language or "vi-VN").split("-")[0]  # vi
 
-
-# =========================
-# Helpers
-# =========================
 def _decide_device_and_compute() -> Tuple[str, str]:
     if (settings.stt_device or STT_DEVICE) == "auto":
         use_cuda = os.getenv("CUDA_VISIBLE_DEVICES", "") not in ("", "-1")
@@ -44,7 +32,6 @@ def _decide_device_and_compute() -> Tuple[str, str]:
 
     return device, compute
 
-
 @lru_cache(maxsize=1)
 def _load_model() -> WhisperModel:
     device, compute = _decide_device_and_compute()
@@ -52,9 +39,7 @@ def _load_model() -> WhisperModel:
         STT_MODEL_SIZE,
         device=device,
         compute_type=compute,
-        # download_root="data/models",
     )
-
 
 def _resolve_ffmpeg() -> str:
     if getattr(settings, "ffmpeg_bin", ""):
@@ -70,7 +55,6 @@ def _resolve_ffmpeg() -> str:
         "ffmpeg not found. "
         "Cài ffmpeg và thêm PATH hoặc đặt .env FFMPEG_BIN=C:\\ffmpeg\\bin\\ffmpeg.exe rồi restart."
     )
-
 
 def _ensure_wav_16k_mono(src_path: Path) -> Path:
     if not src_path.exists():
@@ -91,7 +75,6 @@ def _ensure_wav_16k_mono(src_path: Path) -> Path:
     ]
     subprocess.run(cmd, check=True)
     return dst_path
-
 
 def _normalize_language(language: Optional[str]) -> Optional[str]:
     """
@@ -116,10 +99,6 @@ def _segments_to_text(segments) -> str:
                 texts.append(t)
     return " ".join(texts).strip()
 
-
-# =========================
-# Public API (Batch)
-# =========================
 def transcribe_audio(
     file_path: str,
     language: Optional[str] = None,
@@ -127,9 +106,6 @@ def transcribe_audio(
     beam_size: int = 5,
     best_of: int = 5,
 ) -> str:
-    """
-    Batch STT: file -> wav16k mono -> Whisper -> transcript
-    """
     src = Path(file_path)
     if not src.exists():
         raise FileNotFoundError(f"Audio file not found: {file_path}")
@@ -149,7 +125,6 @@ def transcribe_audio(
         except Exception:
             pass
 
-
 def transcribe_wav_path(
     wav_path: str,
     language: Optional[str] = None,
@@ -157,25 +132,18 @@ def transcribe_wav_path(
     beam_size: int = 5,
     best_of: int = 5,
 ) -> str:
-    """
-    Tách riêng để tái dùng: wav path -> transcript
-    """
     model = _load_model()
     lang = _normalize_language(language)
 
     segments, info = model.transcribe(
         wav_path,
-        language=lang,                # None => auto-detect
+        language=lang,               
         vad_filter=vad_filter,
         beam_size=beam_size,
         best_of=best_of,
     )
     return _segments_to_text(segments)
 
-
-# =========================
-# Realtime helpers
-# =========================
 def transcribe_array(
     audio_f32: np.ndarray,
     sample_rate: int = 16000,
@@ -184,18 +152,12 @@ def transcribe_array(
     beam_size: int = 1,
     best_of: int = 1,
 ) -> str:
-    """
-    Realtime-friendly:
-    - audio_f32: np.float32 1D array [-1, 1], mono
-    - sample_rate: khuyến nghị 16000
-    """
     if audio_f32 is None or audio_f32.size == 0:
         return ""
 
     model = _load_model()
     lang = _normalize_language(language)
 
-    # faster-whisper có thể nhận ndarray trực tiếp
     segments, info = model.transcribe(
         audio_f32,
         language=lang,
@@ -212,11 +174,6 @@ def transcribe_pcm16(
     language: Optional[str] = None,
     vad_filter: bool = True,
 ) -> str:
-    """
-    Realtime-friendly:
-    - pcm16_bytes: raw PCM16 mono (little-endian)
-    - Convert -> float32 [-1,1] -> transcribe_array
-    """
     if not pcm16_bytes:
         return ""
 

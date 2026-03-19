@@ -2,9 +2,7 @@ import json
 from pathlib import Path
 from typing import Tuple
 
-
 _cached: set | None = None
-
 
 def _load_wordlist(path: str) -> set:
     p = Path(path)
@@ -12,7 +10,6 @@ def _load_wordlist(path: str) -> set:
         raise FileNotFoundError(path)
     data = json.loads(p.read_text("utf-8"))
     return set(w.strip().lower() for w in data if isinstance(w, str))
-
 
 def has_banned_terms(text: str, path: str) -> Tuple[bool, list]:
     global _cached

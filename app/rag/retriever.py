@@ -1,19 +1,15 @@
 from __future__ import annotations
-
 from typing import Any, Dict, List, Optional
 import asyncio
 import numpy as np
 from loguru import logger
-
 from sqlalchemy import bindparam, text
 from sqlalchemy.ext.asyncio import AsyncSession
 from pgvector.sqlalchemy import Vector
-
 from app.config import settings
 
 _q_model = None
 _q_model_lock = asyncio.Lock()
-
 
 async def _get_q_model():
     global _q_model
@@ -27,21 +23,16 @@ async def _get_q_model():
     async with _q_model_lock:
         if _q_model is None:
             from sentence_transformers import SentenceTransformer
-
             logger.info(f"Loading query embedding model: {settings.embedding_model}")
             _q_model = SentenceTransformer(settings.embedding_model)
-
     return _q_model
-
 
 async def _embed_query(query: str) -> np.ndarray:
     if settings.use_fake_embedder:
         return np.zeros((settings.embedding_dim,), dtype=float)
 
     model = await _get_q_model()
-
     v = model.encode([query], normalize_embeddings=True, convert_to_numpy=True)[0]
-
     if v.shape[0] != settings.embedding_dim:
         raise ValueError(
             f"Embedding dim mismatch: query={v.shape[0]} vs configured={settings.embedding_dim}"
@@ -49,28 +40,16 @@ async def _embed_query(query: str) -> np.ndarray:
 
     return v.astype(float)
 
-
 async def retrieve(
     db: AsyncSession,
     question: str,
     top_k: Optional[int] = None,
 ) -> List[Dict[str, Any]]:
-    """
-    Trả về danh sách context:
-    {
-      "doc_id": "<table_name>",
-      "chunk_id": "<uuid>",
-      "text": "<merged fields>",
-      "score": 0.87   # ~ cosine similarity (1 - cosine distance)
-    }
-    """
     if top_k is None:
         top_k = settings.qa_topk
 
-    # 1) Embed câu hỏi
     qvec = await _embed_query(question)
 
-    # 2) Truy vấn: cosine distance (<#>) và ràng buộc :q là Vector(dim)
     sql = (
         text(
             f"""
@@ -90,10 +69,8 @@ async def retrieve(
     result = await db.execute(sql, {"q": qvec.tolist(), "k": int(top_k)})
     rows = result.mappings().all()
 
-    # 3) Chuẩn hóa kết quả
     results: List[Dict[str, Any]] = []
     for r in rows:
-        # r là RowMapping -> hỗ trợ dict-like access + get()
         merged_text = "\n".join(
             filter(
                 None,

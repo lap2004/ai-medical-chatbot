@@ -1,4 +1,69 @@
-## cấu trúc json
+# 🏥 Medical AI Chatbot Database Schema (v012026)
+
+Hệ thống cơ sở dữ liệu PostgreSQL được thiết kế chuyên biệt cho ứng dụng **AI Medical Chatbot** tích hợp kỹ thuật **RAG (Retrieval-Augmented Generation)**. Schema này tập trung vào việc lưu trữ hội thoại, quản lý tri thức y tế dạng Vector và hệ thống kiểm duyệt nội dung.
+
+---
+
+## 🏗️ Kiến trúc Cơ sở dữ liệu
+
+Hệ thống được xây dựng dựa trên các chuẩn công nghệ hiện đại:
+* **Định danh**: Sử dụng kết hợp `INTEGER IDENTITY` cho User và `UUID` cho các thực thể hội thoại để đảm bảo tính bảo mật và khả năng mở rộng.
+* **Tìm kiếm Vector**: Sử dụng kiểu dữ liệu `vector(1024)` cho cột `embedding` để thực hiện tìm kiếm ngữ nghĩa.
+* **Quản lý trạng thái**: Sử dụng các kiểu dữ liệu `ENUM` tùy chỉnh (`message_role`, `feedback_value`, `report_status`) để đảm bảo tính toàn vẹn dữ liệu.
+
+---
+
+## 🗂️ Chi tiết các Bảng (Tables)
+
+### 1. Quản lý Người dùng (`users_012026`)
+Lưu trữ thông tin định danh và phân quyền.
+* **`id`**: Khóa chính tự tăng.
+* **`email`**: Duy nhất, dùng để đăng nhập.
+* **`is_admin`**: Xác định quyền quản trị viên.
+* **`force_password_change`**: Ép buộc người dùng đổi mật khẩu khi cần thiết.
+
+### 2. Kho Tri thức Y tế (`medical_012026`)
+Lưu trữ dữ liệu nguồn cho công cụ RAG.
+* **`embedding`**: Lưu trữ vector đặc trưng của văn bản y tế để so khớp.
+* **`symptoms` & `treatment`**: Các trường dữ liệu chi tiết về triệu chứng và điều trị.
+
+### 3. Hội thoại & Tin nhắn (`conversations_012026` & `messages_012026`)
+Quản lý luồng tương tác giữa người dùng và AI.
+* **`conversations_012026`**:
+    * Hỗ trợ "Xóa mềm" qua trường `deleted_at`.
+    * `last_message_at`: Tối ưu sắp xếp danh sách chat.
+* **`messages_012026`**:
+    * `role`: Phân định giữa `system`, `user` và `assistant`.
+    * `rag_context`: Lưu trữ ngữ cảnh JSON mà AI đã sử dụng.
+    * `token` tracking: Theo dõi số lượng token tiêu thụ (`prompt`, `completion`, `total`).
+
+### 4. Đánh giá & Trích dẫn
+* **`message_feedback_012026`**: Lưu trữ đánh giá Like/Dislike kèm lý do từ người dùng.
+* **`message_reports_012026`**: Hệ thống báo cáo nội dung y tế sai lệch.
+* **`message_citations_012026`**: Liên kết trực tiếp tin nhắn AI với tài liệu gốc trong kho tri thức kèm theo điểm số tương đồng (`score`).
+
+---
+
+## ⚡ Chỉ mục & Tối ưu hóa (Indexes)
+
+Hệ thống bao gồm các chỉ mục được thiết kế để xử lý truy vấn nhanh:
+* **`idx_conversations_user_active_012026`**: Tối ưu lấy các hội thoại đang hoạt động của người dùng, sắp xếp theo thời gian mới nhất.
+* **`idx_messages_conversation_012026`**: Tăng tốc độ tải lịch sử chat theo trình tự thời gian.
+* **`uq_message_feedback_012026`**: Ràng buộc duy nhất đảm bảo mỗi người dùng chỉ feedback một lần trên mỗi tin nhắn.
+
+---
+
+## 🛠️ Cài đặt yêu cầu
+1. **PostgreSQL**: Phiên bản 12 trở lên.
+2. **Extensions**: 
+   * `pgvector`: Xử lý vector.
+   * `pgcrypto`: Để sử dụng `gen_random_uuid()`.
+
+---
+*Tài liệu được cập nhật dựa trên phiên bản Schema tháng 01/2026.*
+
+
+## Cấu trúc json
 
 "id": UUID, duy nhất cho mỗi bản ghi, tương ứng với id UUID PRIMARY KEY DEFAULT gen_random_uuid() trong SQL.
 "title": Tên loại bệnh, tương ứng với cột title TEXT NOT NULL.
@@ -7,66 +72,40 @@
 "symptoms": Triệu chứng hoặc dấu hiệu nhận biết bệnh, tương ứng với symptoms TEXT.
 "treatment": Phương pháp điều trị, tương ứng với treatment TEXT.
 
-## Cấu trúc dự án
-.
-├── app
-│   ├── config.py                         # Biến môi trường (DB URL, GEMINI_API_KEY, TOP_K, ...)
-│   ├── logger.py                         # Cấu hình loguru
-│   ├── main.py                           # Entry FastAPI: mount router, CORS, middleware, mount /static
-│   ├── middleware
-│   │   └── log_request.py                # Log mọi request + thời gian xử lý
-│   ├── routers
-│   │   ├── chat.py                       # POST /chat: gọi service/pipeline, trả JSON schema
-│   │   └── voice.py                      # NEW: /voice/tts, /voice/stt, /voice/voice_chat (RAG)
-│   ├── services
-│   │   ├── chat_service.py               # Orchestrator (tùy dự án; có thể mỏng vì pipeline đã đủ)
-│   │   ├── stt_service.py                # NEW: STT free (faster-whisper + ffmpeg chuẩn hoá)
-│   │   └── tts_service.py                # NEW: TTS free (gTTS) + tách đoạn dài
-│   ├── utils
-│   │   └── audio_io.py                   # NEW: Lưu UploadFile vào data/uploads
-│   └── rag
-│       ├── chat_pipeline.py              # retrieve → (rerank?) → prompt → Gemini → parse JSON
-│       ├── llm_chain.py                  # Prompt template y tế + gọi Gemini
-│       ├── retriever.py                  # Truy vấn pgvector Top-K
-│       ├── embedder.py                   # Tạo embedding (BGE), upsert vào Postgres
-│       ├── text_splitter.py              # Chia nhỏ văn bản theo ngữ nghĩa/ký tự
-│       ├── processor_json.py             # Đọc/chuẩn hóa data.json → bản ghi
-│       └── word_filter.py                # Lọc từ cấm trước khi gọi LLM
-├── db
-│   ├── database.py                       # Engine, SessionLocal, Base, register pgvector
-│   ├── models
-│   │   ├── chat_model.py                 # Lịch sử chat (id, user_id, question, answer, created_at)
-│   │   └── vector_model.py               # DocChunk (text, metadata, embedding VECTOR)
-│   └── schemas
-│       └── chat_schema.py                # Pydantic I/O: ChatRequest/ChatResponse + Safety info
-├── scripts
-│   └── embed_runner.py                   # Chạy pipeline index: processor → splitter → embed → upsert
-├── alembic/                              # (khuyến nghị) Migration cho bảng chat/doc_chunks, index ivfflat
-│   ├── env.py
-│   ├── script.py.mako
-│   └── versions/
-│       └── xxxx_init_tables.py
-├── data
-│   ├── audio/                            # NEW: Output mp3 từ TTS (được serve qua /static/audio)
-│   ├── uploads/                          # NEW: Lưu file audio upload tạm để STT xử lý
-│   ├── data.json                         # Kiến thức nền (hướng dẫn y tế, khuyến cáo, ... )
-│   └── word_filter.json                  # Danh sách từ cấm (ví dụ: “kê toa”, “thuốc không cần toa”)
-├── logs
-│   └── app.log
-├── requirements.txt                      # + gTTS, faster-whisper, python-multipart
-├── .env.example                          # + STT_MODEL_SIZE, STT_DEVICE, STT_COMPUTE, AUDIO_TMP_DIR
-├── README.md
+# 🛠 Công nghệ sử dụng
 
+* **Framework**: FastAPI – Hiệu suất cao, dễ sử dụng
+* **Database**: PostgreSQL + pgvector (lưu trữ vector embedding)
+* **ORM**: SQLAlchemy & Alembic (quản lý migration)
+* **RAG Engine**: Xử lý chuỗi LLM, Retriever và Text Splitter tùy chỉnh
+* **Voice Processing**: Hỗ trợ Speech-to-Text (STT) và Text-to-Speech (TTS)
+* **Caching**: Redis (quản lý session & security)
+* **Authentication**: JWT (JSON Web Tokens)
 
+---
 
-## cơ sở dữ liệu
-psql -h localhost -p 5432 -U postgres -d aibacsi
-123456
+# 📁 Cấu trúc thư mục (Project Structure)
 
-## Run embedding
-python scripts/embed_runner.py --path data/data.json
-python scripts\embed_runner.py
-python embedding_json.py --data-dir data
-
-uvicorn app.main:app --reload --host 127.0.1.8 --port 8000
-cloudflared tunnel --url http://127.0.1.8:8000
+```bash
+backend/
+├── alembic/                # Quản lý migration database (SQLAlchemy)
+├── app/                    # Mã nguồn chính của ứng dụng
+│   ├── auth/               # Xử lý xác thực, cấp phát token (JWT)
+│   ├── core/               # Các cấu hình lõi (Security, Redis, Dependencies)
+│   ├── middleware/         # Middleware xử lý request/logging
+│   ├── rag/                # Pipeline RAG (Embedding, Retriever, LLM Chain)
+│   ├── routers/            # Các API endpoints (Chat, Auth, Voice, Admin)
+│   ├── schemas/            # Pydantic models cho request/response
+│   ├── services/           # Logic nghiệp vụ (Chat service, STT, TTS)
+│   └── utils/              # Các hàm tiện ích (Audio, Password, Security)
+├── data/                   # Dữ liệu tĩnh, file uploads và file audio
+├── db/                     # Cấu hình Database
+│   ├── models/             # SQLAlchemy ORM models (User, Chat, Feedback...)
+│   └── schemas/            # Schemas dành riêng cho database operations
+├── logs/                   # Lưu trữ file log hệ thống
+├── scripts/                # Các script chạy độc lập (crawl, embed data...)
+├── .env                    # Biến môi trường (Secret key, DB URL...)
+├── alembic.ini             # Cấu hình migration
+├── data.md                 # Tài liệu dữ liệu dự án
+└── requirements.txt        # Danh sách thư viện phụ thuộc
+```
