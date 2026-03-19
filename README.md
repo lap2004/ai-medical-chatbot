@@ -25,4 +25,21 @@ A robust, aesthetic React application built with TypeScript and Tailwind CSS. Fe
 4. Run `npm run dev` to start the development server.
 5. Open your browser and navigate to the application.
 
+## 💻 Frontend (React / Vite / Next.js)
+
+### Cài đặt dependencies (nếu chưa có):
+
+```bash
+npm install
+```
+
+### Chạy frontend:
+
+```bash
+npm run dev
+```
+
+---
+
 *Note: This application uses hash-based routing (#/) to ensure compatibility with single-page deployment environments.*
+
