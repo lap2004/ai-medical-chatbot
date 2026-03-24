@@ -129,7 +129,7 @@ const SignupPage: React.FC = () => {
               </label>
               <input
                 type="text"
-                placeholder="Thái Viết Lập"
+                placeholder="Nguyen Van A"
                 className="w-full px-5 py-4 bg-slate-50 dark:bg-slate-800 border-none rounded-2xl focus:ring-2 focus:ring-primary transition-all"
                 value={form.full_name}
                 onChange={handleChange("full_name")}
@@ -143,7 +143,7 @@ const SignupPage: React.FC = () => {
               </label>
               <input
                 type="email"
-                placeholder="lap@gmail.com"
+                placeholder="exam@gmail.com"
                 className="w-full px-5 py-4 bg-slate-50 dark:bg-slate-800 border-none rounded-2xl focus:ring-2 focus:ring-primary transition-all"
                 value={form.email}
                 onChange={handleChange("email")}

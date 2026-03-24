@@ -39,7 +39,9 @@ npm install
 npm run dev
 ```
 
----
+```bash
+https://analytics.google.com/analytics/web/provision/#/provision/create
+```
 
 *Note: This application uses hash-based routing (#/) to ensure compatibility with single-page deployment environments.*
 
