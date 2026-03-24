@@ -27,7 +27,7 @@ app.add_middleware(RequestLogMiddleware)
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
-        "https://amongst-audio-crossing-packs.trycloudflare.com",
+        "https://cite-expertise-van-spirit.trycloudflare.com",
         "http://localhost:3000",
         "http://localhost:5173",
         "http://localhost:5174",
