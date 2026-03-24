@@ -42,14 +42,7 @@ export const ChatComposer: React.FC<Props> = ({ loading, onSend }) => {
       return;
     }
 
-    try {
-      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-      stream.getTracks().forEach((t) => t.stop());
-    } catch (e) {
-      console.error("[VOICE] getUserMedia error:", e);
-      alert("Không truy cập được microphone. Hãy cấp quyền mic cho site.");
-      return;
-    }
+
 
     resetTranscript();
 
