@@ -42,12 +42,18 @@ export const ChatComposer: React.FC<Props> = ({ loading, onSend }) => {
       return;
     }
 
+    // Yêu cầu và kiểm tra quyền Microphone trước khi bắt đầu (để tránh lỗi bị nuốt tĩnh lặng trên Vercel do bị chặn)
     try {
-      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-      stream.getTracks().forEach((t) => t.stop());
-    } catch (e) {
-      console.error("[VOICE] getUserMedia error:", e);
-      alert("Không truy cập được microphone. Hãy cấp quyền mic cho site.");
+      if (typeof navigator !== "undefined" && navigator.mediaDevices) {
+        await navigator.mediaDevices.getUserMedia({ audio: true });
+      } else {
+        throw new Error("Trình duyệt không hỗ trợ getUserMedia.");
+      }
+    } catch (err: any) {
+      alert(
+        "Không thể truy cập Microphone! Hãy cấp quyền truy cập âm thanh cho trang web này (click vào biểu tượng ổ khóa 🔒 trên thanh địa chỉ). Lỗi: " +
+          err.message
+      );
       return;
     }
 
