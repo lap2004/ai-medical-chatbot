@@ -1,7 +1,6 @@
 import { Role, Status } from "@/types/admin";
 import React from "react";
 import { useTranslation } from "react-i18next";
-
 export default function UserFormFields({
   form,
   setForm,
@@ -33,7 +32,6 @@ export default function UserFormFields({
           placeholder={t('admin.users.fullNamePlaceholder', 'Full name')}
         />
       </div>
-
       <div>
         <div className="text-[10px] font-extrabold text-slate-400 dark:text-slate-500 uppercase tracking-widest mb-1">
           {t('admin.users.email', 'Email')}
@@ -46,7 +44,6 @@ export default function UserFormFields({
           type="email"
         />
       </div>
-
       {mode === "add" && (
         <div>
           <div className="text-[10px] font-extrabold text-slate-400 dark:text-slate-500 uppercase tracking-widest mb-1">
@@ -61,7 +58,6 @@ export default function UserFormFields({
           />
         </div>
       )}
-
       <div className="grid grid-cols-2 gap-3">
         <div>
           <div className="text-[10px] font-extrabold text-slate-400 dark:text-slate-500 uppercase tracking-widest mb-1">
@@ -78,7 +74,6 @@ export default function UserFormFields({
             <option value="USER">{t('admin.users.user', 'User')}</option>
           </select>
         </div>
-
         <div>
           <div className="text-[10px] font-extrabold text-slate-400 dark:text-slate-500 uppercase tracking-widest mb-1">
             {t('admin.users.status', 'Status')}

@@ -1,6 +1,5 @@
 import { clsx } from "@/types/admin";
 import React from "react";
-
 export default function SideItem({
   icon,
   label,

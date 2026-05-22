@@ -8,7 +8,6 @@ import {
   CartesianGrid,
   Tooltip,
 } from "recharts";
-
 export default function GrowthChartCard({
   data,
 }: {
@@ -30,7 +29,6 @@ export default function GrowthChartCard({
           <div className="text-[10px] text-slate-400 dark:text-slate-500">+25.3% prev month</div>
         </div>
       </div>
-
       <div className="mt-3 h-[220px]">
         <ResponsiveContainer width="100%" height="100%">
           <LineChart data={data} margin={{ left: 8, right: 8 }}>

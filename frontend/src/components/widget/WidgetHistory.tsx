@@ -1,6 +1,5 @@
 import { useChat } from "@/services/hooks/hookChat";
 import React from "react";
-
 export const WidgetHistory: React.FC<
   ReturnType<typeof useChat> & { onSelect: () => void }
 > = ({ conversations, selectConversation, onSelect }) => {
@@ -11,7 +10,6 @@ export const WidgetHistory: React.FC<
           Recent Consultations
         </h3>
       </div>
-
       {conversations.length === 0 ? (
         <div className="text-center py-12">
           <span className="material-icons-round text-slate-300 text-5xl mb-2">

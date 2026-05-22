@@ -1,14 +1,11 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
-
 import { Button } from "../../components/ui/Button";
 import { useUserSignup } from "@/services/hooks/hookAuth";
-
 const SignupPage: React.FC = () => {
   const navigate = useNavigate();
   const { postUserSignup } = useUserSignup();
-
   const [form, setForm] = useState({
     full_name: "",
     email: "",
@@ -16,13 +13,11 @@ const SignupPage: React.FC = () => {
     agree: false,
   });
   const [loading, setLoading] = useState(false);
-
   const handleChange =
     (key: "full_name" | "email" | "password") =>
       (e: React.ChangeEvent<HTMLInputElement>) => {
         setForm((prev) => ({ ...prev, [key]: e.target.value }));
       };
-
   const validate = () => {
     if (!form.full_name.trim()) {
       toast.warning("Vui lòng nhập họ và tên.");
@@ -42,13 +37,11 @@ const SignupPage: React.FC = () => {
     }
     return true;
   };
-
   const handleSubmit = async (e: React.FormEvent) => {
     console.log("[Signup] click", form);
     e.preventDefault();
     if (loading) return;
     if (!validate()) return;
-
     setLoading(true);
     try {
       await postUserSignup({
@@ -57,7 +50,6 @@ const SignupPage: React.FC = () => {
         role: "student",
         password: form.password,
       });
-
       toast.success("Đăng ký tài khoản thành công.");
       navigate("/login");
     } catch (err: any) {
@@ -69,7 +61,6 @@ const SignupPage: React.FC = () => {
       setLoading(false);
     }
   };
-
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-slate-950 flex items-center justify-center p-4">
       <div className="w-full max-w-5xl bg-white dark:bg-slate-900 rounded-[40px] overflow-hidden grid md:grid-cols-2">
@@ -90,7 +81,6 @@ const SignupPage: React.FC = () => {
               checks, and medication support instantly.
             </p>
           </div>
-
           <div className="z-10 bg-white/10 p-6 rounded-3xl border border-white/20">
             <div className="flex items-center gap-4">
               <div className="w-12 h-12 rounded-2xl bg-white/20 flex items-center justify-center text-white">
@@ -104,12 +94,10 @@ const SignupPage: React.FC = () => {
               </div>
             </div>
           </div>
-
           {/* Decorations */}
           <div className="absolute top-20 right-0 w-64 h-64 bg-teal-400/20 rounded-full blur-[100px]"></div>
           <div className="absolute -bottom-20 -left-20 w-80 h-80 bg-secondary/20 rounded-full blur-[100px]"></div>
         </div>
-
         {/* Right Side */}
         <div className="p-10 md:p-16 flex flex-col justify-center">
           <div className="mb-10">
@@ -120,7 +108,6 @@ const SignupPage: React.FC = () => {
               Start your journey to better health today.
             </p>
           </div>
-
           {/* ✅ chỉ thêm onSubmit + value/onChange/disabled (UI giữ nguyên) */}
           <form className="space-y-5" onSubmit={handleSubmit}>
             <div>
@@ -136,7 +123,6 @@ const SignupPage: React.FC = () => {
                 disabled={loading}
               />
             </div>
-
             <div>
               <label className="block text-sm font-bold mb-2 ml-1 dark:text-slate-300">
                 Email Address
@@ -150,7 +136,6 @@ const SignupPage: React.FC = () => {
                 disabled={loading}
               />
             </div>
-
             <div>
               <label className="block text-sm font-bold mb-2 ml-1 dark:text-slate-300">
                 Password
@@ -167,7 +152,6 @@ const SignupPage: React.FC = () => {
                 At least 8 characters with a mix of letters and numbers.
               </p>
             </div>
-
             <div className="flex items-start space-x-3 py-2">
               <input
                 type="checkbox"
@@ -190,7 +174,6 @@ const SignupPage: React.FC = () => {
                 .
               </label>
             </div>
-
             <Button
               className="w-full py-4 text-lg"
               type="submit"
@@ -201,7 +184,6 @@ const SignupPage: React.FC = () => {
               <span className="material-icons-round ml-2">arrow_forward</span>
             </Button>
           </form>
-
           <div className="mt-10 pt-10 border-t border-slate-100 dark:border-slate-800 text-center">
             <p className="text-slate-500 font-medium">
               Already have an account?{" "}
@@ -218,5 +200,4 @@ const SignupPage: React.FC = () => {
     </div>
   );
 };
-
 export default SignupPage;

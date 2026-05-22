@@ -1,21 +1,17 @@
 import React, { useState, useRef, useEffect } from "react";
 import { useTranslation } from "react-i18next";
-
 export const LanguageSwitcher: React.FC = () => {
   const { i18n } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
-
   const currentLang = i18n.language?.startsWith("vi") ? "vi" : "en";
-  const vnFlag = "https://flagcdn.com/w40/vn.png";
-  const usFlag = "https://flagcdn.com/w40/us.png";
+  const vnFlag = "https:
+  const usFlag = "https:
   const currentFlag = currentLang === "vi" ? vnFlag : usFlag;
-
   const toggleLanguage = (lang: string) => {
     i18n.changeLanguage(lang);
     setIsOpen(false);
   };
-
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
@@ -29,7 +25,6 @@ export const LanguageSwitcher: React.FC = () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [isOpen]);
-
   return (
     <div className="relative inline-block text-left" ref={menuRef}>
       <button
@@ -44,7 +39,6 @@ export const LanguageSwitcher: React.FC = () => {
           className="w-6 h-4 object-cover shadow-sm"
         />
       </button>
-
       {isOpen && (
         <div className="absolute right-[-7px] mt-1 w-auto min-w-[3.5rem] p-1 rounded-md border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 shadow-lg z-50 flex flex-col items-center gap-1">
           <button

@@ -4,7 +4,6 @@ import Badge from "../ui/Badge";
 import StatusDot from "../ui/StatusDot";
 import { UserRow } from "@/types/admin";
 import { useTranslation } from "react-i18next";
-
 export default function UsersTable({
   rows,
   onEdit,
@@ -30,12 +29,10 @@ export default function UsersTable({
           <th className="text-right font-extrabold py-3">{t('admin.users.actions', 'Actions')}</th>
         </tr>
       </thead>
-
       <tbody>
         {rows.map((r) => (
           <tr key={r.id} className="border-t border-slate-100 dark:border-slate-800 text-[12px] hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
             <td className="py-3 text-slate-500 dark:text-slate-400 font-semibold">{r.id}</td>
-
             <td className="py-3">
               <div className="flex items-center gap-3">
                 <div className="w-8 h-8 rounded-full bg-slate-200 dark:bg-slate-700 overflow-hidden">
@@ -50,21 +47,16 @@ export default function UsersTable({
                 <div className="font-extrabold text-slate-900 dark:text-white">{r.name}</div>
               </div>
             </td>
-
             <td className="py-3 text-slate-500 dark:text-slate-400 font-semibold">{r.email}</td>
-
             <td className="py-3">
               <Badge tone={r.role === "ADMIN" ? "blue" : "slate"}>
                 {r.role}
               </Badge>
             </td>
-
             <td className="py-3">
               <StatusDot status={r.status} />
             </td>
-
             <td className="py-3 text-slate-500 dark:text-slate-400 font-semibold">{r.createdAt}</td>
-
             <td className="py-3">
               <div className="flex items-center justify-end gap-2">
                 <button
@@ -101,7 +93,6 @@ export default function UsersTable({
             </td>
           </tr>
         ))}
-
         {rows.length === 0 && (
           <tr>
             <td

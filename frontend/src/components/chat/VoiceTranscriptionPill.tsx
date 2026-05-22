@@ -1,10 +1,8 @@
 import React from "react";
-
 type Props = {
     text: string;
     onClose: () => void;
 };
-
 export const VoiceTranscriptionPill: React.FC<Props> = ({ text, onClose }) => {
     return (
         <div className="absolute -top-14 left-0 right-0 px-4">
@@ -14,7 +12,6 @@ export const VoiceTranscriptionPill: React.FC<Props> = ({ text, onClose }) => {
                     <span className="w-1 h-6 rounded-full bg-current animate-pulse" />
                     <span className="w-1 h-3 rounded-full bg-current animate-pulse" />
                 </div>
-
                 <div className="flex-1 min-w-0">
                     <div className="text-[11px] font-bold tracking-widest uppercase text-slate-600 dark:text-slate-300">
                         Voice Transcription
@@ -23,7 +20,6 @@ export const VoiceTranscriptionPill: React.FC<Props> = ({ text, onClose }) => {
                         “{text || "Listening..."}”
                     </div>
                 </div>
-
                 <button
                     type="button"
                     onClick={onClose}

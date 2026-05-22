@@ -4,13 +4,10 @@ import SpeechRecognition, {
 } from "react-speech-recognition";
 import { VoiceTranscriptionPill } from "./VoiceTranscriptionPill";
 import { useTranslation } from "react-i18next";
-
-
 type Props = {
   loading: boolean;
   onSend: (text: string) => void;
 };
-
 export const ChatComposer: React.FC<Props> = ({ loading, onSend }) => {
   const [input, setInput] = useState("");
   const { t } = useTranslation();
@@ -21,28 +18,21 @@ export const ChatComposer: React.FC<Props> = ({ loading, onSend }) => {
     browserSupportsSpeechRecognition,
     isMicrophoneAvailable,
   } = useSpeechRecognition();
-
-  // DEBUG extra: insecure context / protocol
   const isSecureContext =
     typeof window !== "undefined" ? (window.isSecureContext ?? false) : false;
   const protocol =
     typeof window !== "undefined" ? window.location.protocol : "";
   const ua = typeof navigator !== "undefined" ? navigator.userAgent : "";
-
-  // Khi đang nghe: đổ transcript vào input
   useEffect(() => {
     if (!listening) return;
     if (!transcript) return;
     setInput(transcript);
   }, [listening, transcript]);
-
   const startVoice = useCallback(async () => {
     if (!browserSupportsSpeechRecognition) {
       alert("Browser không hỗ trợ SpeechRecognition. Hãy thử Chrome/Edge.");
       return;
     }
-
-    // Yêu cầu và kiểm tra quyền Microphone trước khi bắt đầu (để tránh lỗi bị nuốt tĩnh lặng trên Vercel do bị chặn)
     try {
       if (typeof navigator !== "undefined" && navigator.mediaDevices) {
         await navigator.mediaDevices.getUserMedia({ audio: true });
@@ -56,11 +46,8 @@ export const ChatComposer: React.FC<Props> = ({ loading, onSend }) => {
       );
       return;
     }
-
     resetTranscript();
-
     SpeechRecognition.stopListening();
-
     SpeechRecognition.startListening({
       continuous: true,
       interimResults: true,
@@ -73,48 +60,38 @@ export const ChatComposer: React.FC<Props> = ({ loading, onSend }) => {
     protocol,
     resetTranscript,
   ]);
-
   const stopVoice = useCallback(() => {
     setSendOnStop(true);
     SpeechRecognition.stopListening();
   }, []);
-
   const [sendOnStop, setSendOnStop] = useState(false);
   useEffect(() => {
     if (listening) return;
     if (!sendOnStop) return;
-
     setSendOnStop(false);
-
     const text = (transcript || input).trim();
     if (!text) {
       resetTranscript();
       return;
     }
-
     onSend(text);
     setInput("");
     resetTranscript();
   }, [listening, sendOnStop, transcript, input, onSend, resetTranscript]);
-
   const toggleVoice = useCallback(() => {
     if (loading) return;
     if (listening) stopVoice();
     else startVoice();
   }, [loading, listening, startVoice, stopVoice]);
-
   const handleSend = useCallback(() => {
     if (loading) return;
     const text = input.trim();
     if (!text) return;
-
     if (listening) stopVoice();
-
     onSend(text);
     setInput("");
     resetTranscript();
   }, [input, loading, onSend, listening, stopVoice, resetTranscript]);
-
   return (
     <div className="relative bg-white dark:bg-slate-900/50 backdrop-blur-md border-t border-slate-200 dark:border-slate-800 p-6">
       {listening && (
@@ -127,7 +104,6 @@ export const ChatComposer: React.FC<Props> = ({ loading, onSend }) => {
           }}
         />
       )}
-
       <div className="max-w-4xl mx-auto">
         <div className="relative flex items-center gap-3">
           <div className="flex-1 relative">
@@ -137,7 +113,6 @@ export const ChatComposer: React.FC<Props> = ({ loading, onSend }) => {
             >
               <span className="material-icons-round">add_circle</span>
             </button>
-
             <input
               type="text"
               value={input}
@@ -150,7 +125,6 @@ export const ChatComposer: React.FC<Props> = ({ loading, onSend }) => {
               }
               className="w-full pl-14 pr-14 py-4 bg-slate-100 dark:bg-slate-950 border-none rounded-2xl focus:ring-2 focus:ring-primary/50 text-slate-700 dark:text-slate-200 placeholder-slate-400 dark:placeholder-slate-500 transition-all"
             />
-
             <button
               type="button"
               onClick={handleSend}
@@ -160,7 +134,6 @@ export const ChatComposer: React.FC<Props> = ({ loading, onSend }) => {
               <span className="material-icons-round text-xl">send</span>
             </button>
           </div>
-
           <button
             type="button"
             onClick={toggleVoice}

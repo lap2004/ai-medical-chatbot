@@ -2,21 +2,16 @@ import { ArrowLeft, CheckCircle2, KeyRound, Mail } from "lucide-react";
 import React, { useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
-
 import { Button } from "@/components/ui/Button";
 import { TextInput } from "@/components/ui/TextInput";
 import { useUserForgotPassword } from "@/services/hooks/hookAuth";
-
 const ForgotPasswordPage: React.FC = () => {
   const navigate = useNavigate();
-
   const [email, setEmail] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
-
   const trimmedEmail = useMemo(() => email.trim(), [email]);
   const { postUserForgotPassword } = useUserForgotPassword();
-
   const validate = () => {
     if (!trimmedEmail) {
       toast.error("Vui lòng nhập email.");
@@ -26,17 +21,13 @@ const ForgotPasswordPage: React.FC = () => {
       toast.error("Email không hợp lệ.");
       return false;
     }
-
     return true;
   };
-
   const handleSend = async () => {
     if (isLoading) return;
     if (!validate()) return;
-
     setIsLoading(true);
     try {
-
       await postUserForgotPassword({ email: trimmedEmail });
       toast.success(
         "Đã gửi liên kết đặt lại mật khẩu. Vui lòng kiểm tra email.",
@@ -48,7 +39,6 @@ const ForgotPasswordPage: React.FC = () => {
       setIsLoading(false);
     }
   };
-
   return (
     <div className="min-h-screen flex items-center justify-center p-4 bg-gradient-to-br from-emerald-50 via-slate-50 to-violet-50 dark:from-slate-950 dark:via-slate-950 dark:to-slate-900">
       <div className="w-full max-w-md">
@@ -57,7 +47,6 @@ const ForgotPasswordPage: React.FC = () => {
           <div className="inline-flex items-center justify-center w-16 h-16 rounded-3xl bg-primary mb-4 shadow-primary/20 text-white">
             <KeyRound className="w-8 h-8" />
           </div>
-
           <h1 className="text-3xl font-bold text-slate-900 dark:text-white">
             Forgot Password?
           </h1>
@@ -65,7 +54,6 @@ const ForgotPasswordPage: React.FC = () => {
             Enter your email address to receive a password reset link.
           </p>
         </div>
-
         {/* Card */}
         <div className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border border-white dark:border-slate-800 rounded-[32px] p-8">
           {submitted ? (
@@ -82,7 +70,6 @@ const ForgotPasswordPage: React.FC = () => {
                   tới trang Reset Password.
                 </p>
               </div>
-
               <Button
                 type="button"
                 onClick={() => navigate("/login")}
@@ -92,7 +79,6 @@ const ForgotPasswordPage: React.FC = () => {
               >
                 Back to Login
               </Button>
-
               <button
                 type="button"
                 onClick={() => {
@@ -115,7 +101,6 @@ const ForgotPasswordPage: React.FC = () => {
                 onChange={(e) => setEmail(e.target.value)}
                 disabled={isLoading}
               />
-
               <Button
                 type="button"
                 onClick={handleSend}
@@ -126,11 +111,9 @@ const ForgotPasswordPage: React.FC = () => {
               >
                 {isLoading ? "Sending..." : "Send Reset Link"}
               </Button>
-
               <div className="relative pt-2">
                 <div className="w-full border-t border-slate-200 dark:border-slate-800" />
               </div>
-
               <button
                 type="button"
                 onClick={() => navigate("/login")}
@@ -143,11 +126,9 @@ const ForgotPasswordPage: React.FC = () => {
             </div>
           )}
         </div>
-
         <p className="text-center mt-8 text-xs text-slate-400">
           Need help? Contact our support team or read our Security Guide.
         </p>
-
         <p className="text-center mt-3 text-[10px] text-slate-300 tracking-widest">
           SECURE BY <span className="font-semibold">MediaAI</span>
         </p>
@@ -155,5 +136,4 @@ const ForgotPasswordPage: React.FC = () => {
     </div>
   );
 };
-
 export default ForgotPasswordPage;

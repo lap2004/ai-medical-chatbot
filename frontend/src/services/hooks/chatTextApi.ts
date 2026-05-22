@@ -2,7 +2,6 @@ export type ChatTextRes = {
   answer: string;
   contexts?: any[];
 };
-
 export async function postTextChat(params: {
   text: string;
   language?: string;
@@ -13,7 +12,6 @@ export async function postTextChat(params: {
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(params),
   });
-
   if (!res.ok) throw new Error(await res.text());
   return res.json();
 }

@@ -11,7 +11,6 @@ import { ProfileMenuDialog } from "@/components/chat/ProfileMenuDialog";
 import { useUserStore } from "@/store/userStore";
 import { LanguageSwitcher } from "@/components/ui/LanguageSwitcher";
 import { useTranslation } from "react-i18next";
-
 const HomePage: React.FC = () => {
   const { t } = useTranslation();
   const [isWidgetOpen, setIsWidgetOpen] = useState(false);
@@ -21,11 +20,9 @@ const HomePage: React.FC = () => {
   const [profileOpen, setProfileOpen] = React.useState(false);
   const profileAnchorRef = React.useRef<HTMLButtonElement>(null);
   const { userInfo, fetchUserInfo, updateAvatarUrl } = useUserStore();
-
   React.useEffect(() => {
     fetchUserInfo();
   }, [fetchUserInfo]);
-
   const handleLogout = () => {
     try {
       removeAuthCookies();
@@ -34,7 +31,6 @@ const HomePage: React.FC = () => {
       console.error("Logout error:", err);
     }
   };
-
   React.useEffect(() => {
     if (forcePasswordChange) setOpenReset(true);
   }, [forcePasswordChange]);
@@ -115,7 +111,6 @@ const HomePage: React.FC = () => {
           </div>
         </div>
       </nav>
-
       {/* Hero Section */}
       <section className="relative pt-40 pb-20 overflow-hidden">
         <div className="absolute top-0 right-0 -z-10 w-1/2 h-full bg-gradient-to-l from-teal-50 to-transparent dark:from-teal-900/10 dark:to-transparent opacity-50"></div>
@@ -142,7 +137,6 @@ const HomePage: React.FC = () => {
                   {t('home.hero.getStarted')} <ArrowRight className="ml-2 w-5 h-5" />
                 </Button>
               </a>
-
               {/* Nút Watch Demo - Bọc thêm thẻ <a> */}
               <a href="/chat">
                 <Button variant="outline" size="lg" className="px-10">
@@ -151,13 +145,12 @@ const HomePage: React.FC = () => {
               </a>
             </div>
             </div>
-
             <div className="relative hidden lg:flex items-center justify-center">
               <div className="relative w-full max-w-md bg-white dark:bg-slate-800 rounded-3xl border border-slate-100 dark:border-slate-700 overflow-hidden transform rotate-2 z-10 floating">
                 <div className="p-6 bg-primary text-white flex items-center justify-between">
                   <div className="flex items-center gap-3">
                     <img
-                      src="https://picsum.photos/seed/doc/100/100"
+                      src="https:
                       className="w-10 h-10 rounded-full border-2 border-white/20"
                       alt=""
                     />
@@ -197,7 +190,6 @@ const HomePage: React.FC = () => {
           </div>
         </div>
       </section>
-
       {/* Solutions Section */}
       <section className="py-24 bg-white dark:bg-slate-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -243,7 +235,6 @@ const HomePage: React.FC = () => {
           </div>
         </div>
       </section>
-
       {/* Floating Action Button */}
       {!isWidgetOpen && (
         <div className="fixed bottom-6 right-6 z-[60]">
@@ -263,7 +254,6 @@ const HomePage: React.FC = () => {
           </button>
         </div>
       )}
-
       {/* Pop-up Widget */}
       {isWidgetOpen && <DoctorWidget onClose={() => setIsWidgetOpen(false)} />}
       {/* How it Works */}
@@ -275,7 +265,6 @@ const HomePage: React.FC = () => {
               {t('home.howItWorks.desc')}
             </p>
           </div>
-
           <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-6">
             {[
               {
@@ -313,7 +302,6 @@ const HomePage: React.FC = () => {
               </div>
             ))}
           </div>
-
           {/* Smart Applications */}
           <div className="mt-12 grid lg:grid-cols-2 gap-10 items-center">
             <div className="relative">
@@ -322,12 +310,11 @@ const HomePage: React.FC = () => {
                   {/* Placeholder illustration */}
                   <img
                     className="h-full object-cover"
-                    src="https://images.unsplash.com/photo-1582750433449-648ed127bb54?auto=format&fit=crop&w=1200&q=80"
+                    src="https:
                     alt=""
                   />
                 </div>
               </div>
-
               <div className="absolute bottom-4 right-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm px-4 py-3 flex items-center gap-3">
                 <div className="h-9 w-9 rounded-xl bg-[#0F766E]/10 text-[#0F766E] flex items-center justify-center">
                   <Image className="w-5 h-5" />
@@ -342,7 +329,6 @@ const HomePage: React.FC = () => {
                 </div>
               </div>
             </div>
-
             <div>
               <h3 className="text-2xl font-extrabold text-slate-900 dark:text-white">{t('home.smartApps.title')}</h3>
               <div className="mt-5 space-y-4">
@@ -376,7 +362,6 @@ const HomePage: React.FC = () => {
               </div>
             </div>
           </div>
-
           {/* Ethics & Privacy */}
           <div className="mt-12 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm p-8">
             <div className="grid lg:grid-cols-[1fr,220px] gap-8 items-center">
@@ -387,7 +372,6 @@ const HomePage: React.FC = () => {
                 <p className="mt-2 text-sm text-slate-600 dark:text-slate-400 max-w-2xl leading-relaxed">
                   {t('home.ethics.desc')}
                 </p>
-
                 <div className="mt-5 grid sm:grid-cols-2 gap-3 text-sm">
                   {[
                     t('home.ethics.t1'),
@@ -402,7 +386,6 @@ const HomePage: React.FC = () => {
                   ))}
                 </div>
               </div>
-
               <div className="flex justify-center lg:justify-end">
                 <div className="h-32 w-32 rounded-full bg-[#0F766E]/10 flex items-center justify-center">
                   <div className="h-20 w-20 rounded-full bg-[#0F766E] flex items-center justify-center text-white">
@@ -414,7 +397,6 @@ const HomePage: React.FC = () => {
           </div>
         </div>
       </section>
-
       {/* CTA */}
       <section className="mt-16 pb-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -425,7 +407,6 @@ const HomePage: React.FC = () => {
             <p className="mt-2 text-sm text-slate-500 dark:text-slate-400">
               {t('home.cta.desc')}
             </p>
-
             <div className="mt-6 flex justify-center">
               <button
                 onClick={() => navigate("/chat")}
@@ -457,5 +438,4 @@ const HomePage: React.FC = () => {
     </div>
   );
 };
-
 export default HomePage;

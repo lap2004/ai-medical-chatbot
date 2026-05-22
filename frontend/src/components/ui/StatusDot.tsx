@@ -1,6 +1,5 @@
 import { Status, clsx } from "@/types/admin";
 import React from "react";
-
 export default function StatusDot({ status }: { status: Status }) {
   return (
     <span className="inline-flex items-center gap-2">

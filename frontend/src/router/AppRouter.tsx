@@ -8,7 +8,6 @@ import AuthRoute from "./AuthRoute";
 import AdminRoute from "./AdminRoute";
 import ForgotPasswordPage from "@/app/login/forgot_pw";
 import UserManagementDashboard from "@/app/dashboard/page";
-
 export default function AppRouter() {
   return (
     <Routes>
@@ -20,7 +19,6 @@ export default function AppRouter() {
           </AuthRoute>
         }
       />
-
       <Route
         path="/chat"
         element={
@@ -29,7 +27,6 @@ export default function AppRouter() {
           </AuthRoute>
         }
       />
-
       <Route
         path="/login"
         element={
@@ -38,7 +35,6 @@ export default function AppRouter() {
           </AuthRoute>
         }
       />
-
       <Route path="/signup" element={<SignupPage />} />
       <Route path="/forgot-password" element={<ForgotPasswordPage />} />
       <Route

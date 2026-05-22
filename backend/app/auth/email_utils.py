@@ -19,7 +19,6 @@ def send_email(subject: str, recipient: str, body: str, subtype: str = "plain"):
 
     if not smtp_email or not smtp_password:
         raise ValueError("Thiếu SMTP_EMAIL hoặc SMTP_PASSWORD trong file .env")
-    # Tạo email message
     msg = MIMEMultipart()
     msg["Subject"] = subject
     msg["From"] = smtp_email

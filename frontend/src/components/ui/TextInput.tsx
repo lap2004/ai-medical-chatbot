@@ -1,11 +1,9 @@
 import React from "react";
-
 type TextInputProps = React.InputHTMLAttributes<HTMLInputElement> & {
   label?: string;
   leftIcon?: React.ReactNode;
   rightSlot?: React.ReactNode;
 };
-
 export const TextInput: React.FC<TextInputProps> = ({
   label,
   leftIcon,
@@ -20,14 +18,12 @@ export const TextInput: React.FC<TextInputProps> = ({
           {label}
         </label>
       ) : null}
-
       <div className="relative">
         {leftIcon ? (
           <span className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400">
             {leftIcon}
           </span>
         ) : null}
-
         <input
           {...props}
           className={[
@@ -45,7 +41,6 @@ export const TextInput: React.FC<TextInputProps> = ({
             className,
           ].join(" ")}
         />
-
         {rightSlot ? (
           <span className="absolute right-3 top-1/2 -translate-y-1/2">
             {rightSlot}

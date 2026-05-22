@@ -10,22 +10,17 @@ import {
 } from "@/services/apis/admin";
 import { useTranslation } from "react-i18next";
 import { notify } from "@/utils/notify";
-
-// ── Shared helpers ──────────────────────────────────────────────────────────
-
 const Label: React.FC<{ children: React.ReactNode }> = ({ children }) => (
     <div className="text-[10px] font-extrabold text-slate-400 uppercase tracking-widest mb-1">
         {children}
     </div>
 );
-
 const Input: React.FC<React.InputHTMLAttributes<HTMLInputElement>> = (props) => (
     <input
         {...props}
         className={`w-full h-10 px-3 rounded-xl border border-slate-200 dark:border-slate-700 outline-none focus:ring-2 focus:ring-teal-100 dark:focus:ring-teal-900 text-[13px] font-semibold bg-white dark:bg-slate-800 text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-500 transition-colors ${props.className ?? ""}`}
     />
 );
-
 const SectionCard: React.FC<{
     icon: React.ReactNode;
     title: string;
@@ -45,7 +40,6 @@ const SectionCard: React.FC<{
         <div className="p-6 space-y-4">{children}</div>
     </div>
 );
-
 function Toast({ msg, type }: { msg: string; type: "success" | "error" }) {
     return (
         <div
@@ -59,9 +53,6 @@ function Toast({ msg, type }: { msg: string; type: "success" | "error" }) {
         </div>
     );
 }
-
-// ── Toggle component ────────────────────────────────────────────────────────
-
 const Toggle: React.FC<{ value: boolean; onChange: (v: boolean) => void; disabled?: boolean }> = ({
     value,
     onChange,
@@ -78,24 +69,16 @@ const Toggle: React.FC<{ value: boolean; onChange: (v: boolean) => void; disable
         />
     </button>
 );
-
-// ── Main Component ──────────────────────────────────────────────────────────
-
 export default function SettingsView() {
     const { t } = useTranslation();
-    // ── System settings state ────────────────────────────────────
     const [sysSettings, setSysSettings] = React.useState<SystemSettings | null>(null);
     const [sysLoading, setSysLoading] = React.useState(false);
     const [sysMsg, setSysMsg] = React.useState<{ text: string; type: "success" | "error" } | null>(null);
-
-    // ── Profile state ─────────────────────────────────────────────
     const [profile, setProfile] = React.useState<AdminProfile | null>(null);
     const [profileForm, setProfileForm] = React.useState({ full_name: "", email: "" });
     const [pwForm, setPwForm] = React.useState({ current_password: "", new_password: "", confirm: "" });
     const [profileLoading, setProfileLoading] = React.useState(false);
     const [profileMsg, setProfileMsg] = React.useState<{ text: string; type: "success" | "error" } | null>(null);
-
-    // ── Load data ─────────────────────────────────────────────────
     React.useEffect(() => {
         Promise.all([getSystemSettings(), getAdminProfile()]).then(([sys, prof]) => {
             setSysSettings(sys);
@@ -103,9 +86,6 @@ export default function SettingsView() {
             setProfileForm({ full_name: prof.name, email: prof.email });
         });
     }, []);
-
-    // ── System settings handlers ───────────────────────────────────
-
     const handleSysChange = async <K extends keyof SystemSettings>(key: K, value: SystemSettings[K]) => {
         if (!sysSettings) return;
         const updated = { ...sysSettings, [key]: value };
@@ -119,7 +99,7 @@ export default function SettingsView() {
             setSysMsg({ text: successMsg, type: "success" });
             notify(t('admin.settingsView.systemEvent', 'System Event'), successMsg, 'success');
         } catch (e: any) {
-            setSysSettings(sysSettings); // revert
+            setSysSettings(sysSettings); 
             const errMsg = e?.response?.data?.detail ?? t('admin.settingsView.failedToSave', 'Failed to save.');
             setSysMsg({ text: errMsg, type: "error" });
             notify(t('admin.settingsView.updateFailed', 'Update Failed'), errMsg, 'error');
@@ -128,8 +108,6 @@ export default function SettingsView() {
             setTimeout(() => setSysMsg(null), 3000);
         }
     };
-
-    // ── Profile save ──────────────────────────────────────────────
     const saveProfile = async () => {
         setProfileLoading(true);
         setProfileMsg(null);
@@ -152,7 +130,6 @@ export default function SettingsView() {
             setTimeout(() => setProfileMsg(null), 3500);
         }
     };
-
     const savePassword = async () => {
         if (!pwForm.current_password || !pwForm.new_password) return;
         if (pwForm.new_password !== pwForm.confirm) {
@@ -183,13 +160,11 @@ export default function SettingsView() {
             setTimeout(() => setProfileMsg(null), 3500);
         }
     };
-
     return (
         <div className="max-w-2xl space-y-6">
             <div className="text-[11px] text-amber-600 dark:text-amber-500 bg-amber-50 dark:bg-amber-500/10 border border-amber-200 dark:border-amber-500/20 px-4 py-2 rounded-xl transition-colors">
                 {t('admin.settingsView.warningRestart', '⚠️ AI/System configurations will reset to default if server restarts.')}
             </div>
-
             {/* ── 1. Admin Profile ─────────────────────────────────── */}
             <SectionCard
                 icon={<User className="w-5 h-5" />}
@@ -226,7 +201,6 @@ export default function SettingsView() {
                     </div>
                 </div>
             </SectionCard>
-
             {/* ── 2. Change Password ────────────────────────────────── */}
             <SectionCard
                 icon={<Shield className="w-5 h-5" />}
@@ -277,7 +251,6 @@ export default function SettingsView() {
                     </div>
                 </div>
             </SectionCard>
-
             {/* ── 3. System Settings ────────────────────────────────── */}
             <SectionCard
                 icon={<Bot className="w-5 h-5" />}
@@ -300,7 +273,6 @@ export default function SettingsView() {
                                 disabled={sysLoading}
                             />
                         </div>
-
                         {/* RAG Top-K */}
                         <div className="flex items-center justify-between py-2 border-b border-slate-100 dark:border-slate-800">
                             <div>
@@ -323,7 +295,6 @@ export default function SettingsView() {
                                 className="w-20 h-9 text-center rounded-xl border border-slate-200 dark:border-slate-700 outline-none focus:ring-2 focus:ring-teal-100 dark:focus:ring-teal-900 text-[13px] font-bold bg-white dark:bg-slate-800 text-slate-900 dark:text-white transition-colors"
                             />
                         </div>
-
                         {/* Gemini Model */}
                         <div className="flex items-center justify-between py-2">
                             <div>
@@ -344,7 +315,6 @@ export default function SettingsView() {
                                 <option value="models/gemini-1.5-flash">gemini-1.5-flash</option>
                             </select>
                         </div>
-
                         {sysMsg && <Toast msg={sysMsg.text} type={sysMsg.type} />}
                     </>
                 ) : (

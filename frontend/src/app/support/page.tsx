@@ -13,46 +13,36 @@ import { ResetPasswordDialog } from "@/components/auth/ResetPasswordDialog";
 import { Button } from "@/components/ui/Button";
 import { LanguageSwitcher } from "@/components/ui/LanguageSwitcher";
 import { useTranslation } from "react-i18next";
-
 const SupportPage: React.FC = () => {
     const { t } = useTranslation();
     const navigate = useNavigate();
     const [profileOpen, setProfileOpen] = useState(false);
     const [resetOpen, setResetOpen] = useState(false);
     const profileAnchorRef = React.useRef<HTMLButtonElement>(null);
-
     const { getuserMe } = useUserMe();
     const [userInfo, setUserInfo] = useState<any>(null);
-
-    // FAQ State
     const [activeTab, setActiveTab] = useState<"faq" | "contact">("faq");
     const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(0);
     const [searchQuery, setSearchQuery] = useState("");
     const ALL_CAT = "ALL_CATEGORIES";
     const [selectedCategory, setSelectedCategory] = useState(ALL_CAT);
-
     React.useEffect(() => {
         getuserMe().then((data) => {
             if (data) setUserInfo(data);
         });
     }, []);
-
     const handleLogout = () => {
         removeAuthCookies();
         navigate("/login", { replace: true });
     };
-
     const FAQS = t('support.faqs', { returnObjects: true }) as Array<{ category: string; question: string; answer: string }> || [];
-
     const categories = [ALL_CAT, ...Array.from(new Set(FAQS.map(f => f.category)))];
-
     const filteredFaqs = FAQS.filter(
         (f) =>
             (selectedCategory === ALL_CAT || f.category === selectedCategory) &&
             (f.question.toLowerCase().includes(searchQuery.toLowerCase()) ||
                 f.answer.toLowerCase().includes(searchQuery.toLowerCase()))
     );
-
     return (
         <div className="min-h-screen bg-slate-50 dark:bg-slate-950 transition-colors duration-300 flex flex-col">
             {/* Navigation */}
@@ -67,7 +57,6 @@ const SupportPage: React.FC = () => {
                                 Doctor AI
                             </span>
                         </div>
-
                         <div className="hidden md:flex items-center space-x-8">
                             <button onClick={() => navigate("/")} className="text-sm font-medium text-slate-500 hover:text-primary transition-colors">{t('home.nav.home')}</button>
                             {getUserRole() === "admin" && (
@@ -91,7 +80,7 @@ const SupportPage: React.FC = () => {
                                 <img
                                     alt={userInfo?.full_name || "User"}
                                     className="w-9 h-9 rounded-full border border-slate-200 dark:border-slate-700 object-cover"
-                                    src="https://picsum.photos/seed/alex/100/100"
+                                    src="https:
                                 />
                                 <span className="hidden md:inline text-sm font-bold text-slate-700 dark:text-white truncate max-w-[140px]">
                                     {userInfo?.full_name || "Guest"}
@@ -101,14 +90,12 @@ const SupportPage: React.FC = () => {
                     </div>
                 </div>
             </nav>
-
             <main className="flex-1 max-w-5xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-12">
                 {/* Header Section */}
                 <div className="mb-8">
                     <h1 className="text-4xl font-extrabold text-slate-900 dark:text-white mb-4">{t('support.header.title')}</h1>
                     <p className="text-lg text-slate-600 dark:text-slate-400">{t('support.header.desc')}</p>
                 </div>
-
                 {/* Tabs */}
                 <div className="flex p-1 bg-slate-100 dark:bg-slate-900 rounded-2xl mb-10 w-fit">
                     <button
@@ -130,7 +117,6 @@ const SupportPage: React.FC = () => {
                         {t('support.tabs.contact')}
                     </button>
                 </div>
-
                 {/* Tab Content */}
                 {activeTab === "faq" && (
                     <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
@@ -145,7 +131,6 @@ const SupportPage: React.FC = () => {
                             />
                             <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 w-5 h-5" />
                         </div>
-
                         {/* Category Pills */}
                         <div className="flex flex-wrap gap-2">
                             {categories.map((cat) => (
@@ -161,7 +146,6 @@ const SupportPage: React.FC = () => {
                                 </button>
                             ))}
                         </div>
-
                         {/* FAQ List */}
                         <div className="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 overflow-hidden shadow-sm">
                             {filteredFaqs.length > 0 ? (
@@ -214,7 +198,6 @@ const SupportPage: React.FC = () => {
                         </div>
                     </div>
                 )}
-
                 {activeTab === "contact" && (
                     <div className="space-y-10 animate-in fade-in slide-in-from-bottom-4 duration-500">
                         {/* Contact Channels Grid */}
@@ -236,7 +219,6 @@ const SupportPage: React.FC = () => {
                                 </div>
                             ))}
                         </div>
-
                         {/* Contact Form */}
                         <div className="bg-white dark:bg-slate-900 shadow-slate-200/50 dark:shadow-none p-10 rounded-3xl border border-slate-200 dark:border-slate-800">
                             <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-6">{t('support.form.title')}</h2>
@@ -272,7 +254,6 @@ const SupportPage: React.FC = () => {
                     </div>
                 )}
             </main>
-
             {/* Profile Dialogs */}
             <ProfileMenuDialog
                 open={profileOpen}
@@ -293,5 +274,4 @@ const SupportPage: React.FC = () => {
         </div>
     );
 };
-
 export default SupportPage;

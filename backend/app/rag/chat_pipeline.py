@@ -12,10 +12,8 @@ async def run(question: str, db: AsyncSession, history: List[Dict[str, Any]] = N
     else:
         standalone_question = question
         
-    # 1) Retrieval (async)
     contexts: List[Dict[str, Any]] = await retrieve(db, standalone_question, top_k=settings.qa_topk)
 
-    # 2) LLM (Gemini) (build_answer hiện sync -> OK)
     answer = build_answer(question, contexts, history)
     return {"answer": answer, "contexts": contexts}
 

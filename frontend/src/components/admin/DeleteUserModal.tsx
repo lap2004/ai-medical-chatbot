@@ -1,7 +1,6 @@
 import React from "react";
 import ModalShell from "../ui/ModalShell";
 import { useTranslation } from "react-i18next";
-
 export default function DeleteUserModal({
   open,
   name,

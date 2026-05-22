@@ -1,19 +1,15 @@
 import { useCallback, useState } from "react";
-
 type ActionPostType = (options?: any) => Promise<any>;
 type ActionPutType = (params?: any) => Promise<any>;
 type ActionDeleteType = (option?: any) => Promise<any>;
-
 const usePostAPI = (action: ActionPostType) => {
   const [error, setError] = useState<any>(null);
   const [loading, setLoading] = useState<boolean>(false);
-
   const post = useCallback(
     async (body: any) => {
       try {
         setLoading(true);
         const res = await action(body);
-
         if (res.status === 200) {
           return res;
         } else {
@@ -32,7 +28,6 @@ const usePostAPI = (action: ActionPostType) => {
     },
     [action]
   );
-
   return {
     loading,
     post,
@@ -40,11 +35,9 @@ const usePostAPI = (action: ActionPostType) => {
     setError,
   };
 };
-
 const useGetAPI = (action: any) => {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState<boolean>(false);
-
   const get = useCallback(
     async (params: any = {}) => {
       const { searchOption, pagination } = params;
@@ -69,17 +62,14 @@ const useGetAPI = (action: any) => {
   );
   return { loading, get, error, setError };
 };
-
 const usePutAPI = (action: ActionPutType) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-
   const put = useCallback(
     async (body: any) => {
       try {
         setLoading(true);
         const res = await action(body);
-
         if (res.status === 200) {
           return res.data;
         }
@@ -100,25 +90,20 @@ const usePutAPI = (action: ActionPutType) => {
     setError,
   };
 };
-
 const usePutAPIById = (action: ActionPutType) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-
   const put = useCallback(
     async (param: any) => {
       try {
         setLoading(true);
         setError(null);
-
         const { data, errors, message, statusCode } = await action({
           ...param,
         });
-
         if (statusCode === 200) {
           return data || {};
         }
-
         setError(message?.content);
         handleError(errors, setError);
         return undefined;
@@ -130,7 +115,6 @@ const usePutAPIById = (action: ActionPutType) => {
         } = errorAPI || {
           response: { data: { error: "", detail: "", message: "" } },
         };
-
         if (error) {
           setError(detail);
         }
@@ -149,23 +133,18 @@ const usePutAPIById = (action: ActionPutType) => {
     setError,
   };
 };
-
 const useDeleteAPI = (action: ActionDeleteType) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-
   const deleteItem = useCallback(
     async (params: any) => {
       try {
         setLoading(true);
         setError(null);
-
         const res = await action(params);
-
         if (res.status === 200) {
           return res.data || {};
         }
-
         setError(res.message?.content);
         handleError(res.errors, setError);
         return undefined;
@@ -177,7 +156,6 @@ const useDeleteAPI = (action: ActionDeleteType) => {
         } = errorAPI || {
           response: { data: { error: "", detail: "", message: "" } },
         };
-
         if (error) {
           setError(detail);
         }
@@ -189,7 +167,6 @@ const useDeleteAPI = (action: ActionDeleteType) => {
     },
     [action]
   );
-
   return {
     loading,
     deleteItem,
@@ -197,7 +174,6 @@ const useDeleteAPI = (action: ActionDeleteType) => {
     setError,
   };
 };
-
 const handleError = (errors: any, setError: any) => {
   if (Array.isArray(errors) && errors.length > 0) {
     setError(errors[0]);
@@ -205,5 +181,4 @@ const handleError = (errors: any, setError: any) => {
     setError(new Error("Something went wrong"));
   }
 };
-
 export { useGetAPI, usePostAPI, usePutAPI, usePutAPIById, useDeleteAPI };

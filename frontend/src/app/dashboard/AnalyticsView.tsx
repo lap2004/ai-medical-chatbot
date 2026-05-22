@@ -3,37 +3,29 @@ import { getAnalytics } from "@/services/apis/admin";
 import { AnalyticsStats } from "@/types/admin";
 import { PieChart, Pie, Cell, Tooltip, Legend, ResponsiveContainer, BarChart, Bar, XAxis, YAxis, CartesianGrid } from "recharts";
 import { useTranslation } from "react-i18next";
-
 const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042", "#8884d8", "#82ca9d"];
-
 export default function AnalyticsView() {
     const { t } = useTranslation();
     const [stats, setStats] = useState<AnalyticsStats | null>(null);
     const [loading, setLoading] = useState(true);
-
     useEffect(() => {
         getAnalytics()
             .then((data) => setStats(data))
             .catch((err) => console.error(err))
             .finally(() => setLoading(false));
     }, []);
-
     if (loading) return <div className="p-10 text-center text-slate-500">{t('admin.analyticsView.loading', 'Loading analytics...')}</div>;
-
     const reportData = stats?.reports.breakdown.map((item) => ({
         name: item.category,
         value: item.count,
     })) || [];
-
     const feedbackData = [
         { name: t('admin.analyticsView.likes', 'Likes'), value: stats?.likes || 0 },
         { name: t('admin.analyticsView.dislikes', 'Dislikes'), value: stats?.dislikes || 0 },
     ];
-
     return (
         <div className="space-y-6">
             <h2 className="text-xl font-bold text-slate-900 dark:text-white">{t('admin.analyticsView.title', 'Analytics Reports')}</h2>
-
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {/* Reports Breakdown Pie Chart */}
                 <div className="bg-white dark:bg-slate-900 rounded-xl p-6 shadow-sm border border-slate-200 dark:border-slate-800">
@@ -65,7 +57,6 @@ export default function AnalyticsView() {
                         )}
                     </div>
                 </div>
-
                 {/* Feedback Bar Chart */}
                 <div className="bg-white dark:bg-slate-900 rounded-xl p-6 shadow-sm border border-slate-200 dark:border-slate-800">
                     <h3 className="text-lg font-semibold mb-4 text-slate-800 dark:text-slate-200">{t('admin.analyticsView.feedbackOverview', 'Feedback Overview')}</h3>
@@ -86,7 +77,6 @@ export default function AnalyticsView() {
                         </ResponsiveContainer>
                     </div>
                 </div>
-
                 {/* Report Count Table */}
                 <div className="bg-white dark:bg-slate-900 rounded-xl p-6 shadow-sm border border-slate-200 dark:border-slate-800">
                     <h3 className="text-lg font-semibold mb-4 text-slate-800 dark:text-slate-200">{t('admin.analyticsView.reportDetails', 'Report Details')}</h3>
@@ -112,7 +102,6 @@ export default function AnalyticsView() {
                         </tbody>
                     </table>
                 </div>
-
                 {/* Top Users Table */}
                 <div className="bg-white dark:bg-slate-900 rounded-xl p-6 shadow-sm border border-slate-200 dark:border-slate-800">
                     <h3 className="text-lg font-semibold mb-4 text-slate-800 dark:text-slate-200">{t('admin.analyticsView.topActiveUsers', 'Top Active Users')}</h3>

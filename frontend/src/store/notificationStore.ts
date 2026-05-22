@@ -1,8 +1,6 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
-
 export type NotificationType = "success" | "error" | "info" | "warning";
-
 export interface AppNotification {
   id: string;
   title: string;
@@ -11,7 +9,6 @@ export interface AppNotification {
   read: boolean;
   createdAt: number;
 }
-
 interface NotificationStore {
   notifications: AppNotification[];
   addNotification: (notification: Omit<AppNotification, "id" | "read" | "createdAt">) => void;
@@ -20,12 +17,10 @@ interface NotificationStore {
   clearAll: () => void;
   deleteNotification: (id: string) => void;
 }
-
 export const useNotificationStore = create<NotificationStore>()(
   persist(
     (set) => ({
       notifications: [],
-
       addNotification: (notification) =>
         set((state) => ({
           notifications: [
@@ -36,30 +31,26 @@ export const useNotificationStore = create<NotificationStore>()(
               createdAt: Date.now(),
             },
             ...state.notifications,
-          ].slice(0, 50), // Keep only the latest 50 notifications
+          ].slice(0, 50), 
         })),
-
       markAsRead: (id) =>
         set((state) => ({
           notifications: state.notifications.map((n) =>
             n.id === id ? { ...n, read: true } : n
           ),
         })),
-
       markAllAsRead: () =>
         set((state) => ({
           notifications: state.notifications.map((n) => ({ ...n, read: true })),
         })),
-
       clearAll: () => set({ notifications: [] }),
-
       deleteNotification: (id) =>
         set((state) => ({
           notifications: state.notifications.filter((n) => n.id !== id),
         })),
     }),
     {
-      name: "healthai-notifications", // key in localStorage
+      name: "healthai-notifications", 
     }
   )
 );

@@ -1,12 +1,10 @@
-// ReportDialog.tsx
-import React, { useMemo, useState } from "react";
 
+import React, { useMemo, useState } from "react";
 type Props = {
   open: boolean;
   onClose: () => void;
   onSubmit: (payload: { reason: string; note?: string }) => void;
 };
-
 export const ReportDialog: React.FC<Props> = ({ open, onClose, onSubmit }) => {
   const reasons = useMemo(
     () => [
@@ -20,9 +18,7 @@ export const ReportDialog: React.FC<Props> = ({ open, onClose, onSubmit }) => {
   );
   const [reason, setReason] = useState(reasons[0]);
   const [note, setNote] = useState("");
-
   if (!open) return null;
-
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center">
       <div className="absolute inset-0 bg-black/40" onClick={onClose} />
@@ -39,7 +35,6 @@ export const ReportDialog: React.FC<Props> = ({ open, onClose, onSubmit }) => {
             <span className="material-icons-round">close</span>
           </button>
         </div>
-
         <div className="mt-3 space-y-2">
           <label className="text-xs font-semibold text-slate-600 dark:text-slate-300">
             Reason
@@ -55,7 +50,6 @@ export const ReportDialog: React.FC<Props> = ({ open, onClose, onSubmit }) => {
               </option>
             ))}
           </select>
-
           <label className="text-xs font-semibold text-slate-600 dark:text-slate-300">
             Note (optional)
           </label>
@@ -67,7 +61,6 @@ export const ReportDialog: React.FC<Props> = ({ open, onClose, onSubmit }) => {
             placeholder="Mô tả thêm (nếu cần)..."
           />
         </div>
-
         <div className="mt-4 flex gap-2 justify-end">
           <button
             type="button"

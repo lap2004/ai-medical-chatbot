@@ -8,7 +8,6 @@ import {
   userSignup,
 } from "../apis/auth";
 import { useGetAPI, usePostAPI, usePutAPI } from "./hookApi";
-
 const useUserLogin = () => {
   const {
     loading,
@@ -23,7 +22,6 @@ const useUserLogin = () => {
     setError,
   };
 };
-
 const useUserSignup = () => {
   const {
     loading,
@@ -38,7 +36,6 @@ const useUserSignup = () => {
     setError,
   };
 };
-
 const useUserMe = () => {
   const { loading, get: getuserMe, error, setError } = useGetAPI(userMe);
   return {
@@ -48,7 +45,6 @@ const useUserMe = () => {
     setError,
   };
 };
-
 const useProtectedProtected = () => {
   const {
     loading,
@@ -77,7 +73,6 @@ const useUserGoogleLogin = () => {
     setError,
   };
 };
-
 const useUserForgotPassword = () => {
   const {
     loading,
@@ -92,7 +87,6 @@ const useUserForgotPassword = () => {
     setError,
   };
 };
-
 const useUserResetPassword = () => {
   const {
     loading,
@@ -107,7 +101,6 @@ const useUserResetPassword = () => {
     setError,
   };
 };
-
 export {
   useProtectedProtected,
   useUserLogin,

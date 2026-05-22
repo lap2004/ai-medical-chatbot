@@ -1,6 +1,5 @@
 import { useChat } from "@/services/hooks/hookChat";
 import React, { useState, useRef, useEffect } from "react";
-
 export const WidgetChat: React.FC<ReturnType<typeof useChat>> = ({
   activeConversation,
   sendMessage,
@@ -8,19 +7,16 @@ export const WidgetChat: React.FC<ReturnType<typeof useChat>> = ({
 }) => {
   const [input, setInput] = useState("");
   const scrollRef = useRef<HTMLDivElement>(null);
-
   useEffect(() => {
     if (scrollRef.current) {
       scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
     }
   }, [activeConversation?.messages]);
-
   const handleSend = () => {
     if (!input.trim()) return;
     sendMessage(input);
     setInput("");
   };
-
   return (
     <div className="flex flex-col h-full bg-slate-50 dark:bg-slate-950">
       <div
@@ -55,7 +51,6 @@ export const WidgetChat: React.FC<ReturnType<typeof useChat>> = ({
           </div>
         )}
       </div>
-
       <div className="p-4 bg-white dark:bg-slate-950/50 backdrop-blur-sm border-t border-slate-100 dark:border-slate-800">
         <div className="relative flex items-center">
           <input

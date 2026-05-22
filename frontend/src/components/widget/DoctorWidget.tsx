@@ -6,12 +6,9 @@ import { WidgetChat } from './WidgetChat';
 import { WidgetVoice } from './WidgetVoice';
 import { WidgetHistory } from './WidgetHistory';
 import { useChat } from '@/services/hooks/hookChat';
-
-
 export const DoctorWidget: React.FC<{ onClose: () => void }> = ({ onClose }) => {
   const [activeTab, setActiveTab] = useState<'chat' | 'voice' | 'history'>('chat');
   const chat = useChat();
-
   return (
     <div
       className="
@@ -28,13 +25,11 @@ export const DoctorWidget: React.FC<{ onClose: () => void }> = ({ onClose }) => 
   "
     >
       <WidgetHeader onClose={onClose} />
-
       <div className="flex-1 overflow-y-auto custom-scrollbar">
         {activeTab === 'chat' && <WidgetChat {...chat} />}
         {activeTab === 'voice' && <WidgetVoice />}
         {activeTab === 'history' && <WidgetHistory {...chat} onSelect={() => setActiveTab('chat')} />}
       </div>
-
       <WidgetTabs activeTab={activeTab} onTabChange={setActiveTab} />
     </div>
   );

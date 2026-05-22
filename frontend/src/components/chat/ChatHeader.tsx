@@ -6,27 +6,21 @@ import { removeAuthCookies } from "@/lib/helper/token";
 import { Home, MessageSquare, Mic, Moon, Sun } from "lucide-react";
 import { LanguageSwitcher } from "../ui/LanguageSwitcher";
 import { useTranslation } from "react-i18next";
-
 import { useUserStore } from "@/store/userStore";
-
 type Props = {
   tab: "chat" | "voice";
   onTabChange: (t: "chat" | "voice") => void;
 };
-
 export const ChatHeader: React.FC<Props> = ({ tab, onTabChange }) => {
   const navigate = useNavigate();
   const { t } = useTranslation();
   const [resetOpen, setResetOpen] = React.useState(false);
   const [profileOpen, setProfileOpen] = React.useState(false);
   const profileAnchorRef = React.useRef<HTMLButtonElement>(null);
-
   const { userInfo, fetchUserInfo, updateAvatarUrl } = useUserStore();
-
   React.useEffect(() => {
     fetchUserInfo();
   }, [fetchUserInfo]);
-
   const handleLogout = () => {
     try {
       removeAuthCookies();
@@ -54,16 +48,14 @@ export const ChatHeader: React.FC<Props> = ({ tab, onTabChange }) => {
         >
           <Home className="w-6 h-6" />
         </button>
-
         <div className="relative">
           <img
             alt="Doctor AI"
             className="w-12 h-12 rounded-full border-2 border-primary/20 object-cover"
-            src="https://picsum.photos/seed/doctor1/200/200"
+            src="https:
           />
           <div className="absolute bottom-0 right-0 w-3.5 h-3.5 bg-green-500 border-2 border-white dark:border-slate-900 rounded-full" />
         </div>
-
         <div>
           <div className="flex items-center space-x-2">
             <h2 className="font-bold text-lg text-slate-800 dark:text-white">
@@ -76,7 +68,6 @@ export const ChatHeader: React.FC<Props> = ({ tab, onTabChange }) => {
           <p className="text-xs text-slate-500">{t("chat.liveHealthGuidance")}</p>
         </div>
       </div>
-
       <div className="flex items-center space-x-4">
         <div className="inline-flex items-center rounded-2xl bg-slate-100 dark:bg-slate-800 p-1">
           {/* Active: Chat */}
@@ -103,7 +94,6 @@ export const ChatHeader: React.FC<Props> = ({ tab, onTabChange }) => {
             />
             <span>Chat</span>
           </button>
-
           {/* Tab: Voice */}
           <button
             type="button"
@@ -127,11 +117,8 @@ export const ChatHeader: React.FC<Props> = ({ tab, onTabChange }) => {
             <span>{t("chat.voice")}</span>
           </button>
         </div>
-
         <div className="h-8 w-[1px] bg-slate-200 dark:bg-slate-700 mx-2" />
-
         <LanguageSwitcher />
-
         {/* Dark Mode Toggle */}
         <button
           className="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
@@ -142,7 +129,6 @@ export const ChatHeader: React.FC<Props> = ({ tab, onTabChange }) => {
           <Moon className="w-5 h-5 dark:hidden text-slate-600" />
           <Sun className="w-5 h-5 hidden dark:block text-slate-300" />
         </button>
-
         {/* USER TRIGGER (neo dialog ở đây) */}
         <button
           ref={profileAnchorRef}
@@ -166,7 +152,6 @@ export const ChatHeader: React.FC<Props> = ({ tab, onTabChange }) => {
             {userInfo?.full_name || "Guest"}
           </span>
         </button>
-
         {/* PROFILE MENU DIALOG */}
         <ProfileMenuDialog
           open={profileOpen}

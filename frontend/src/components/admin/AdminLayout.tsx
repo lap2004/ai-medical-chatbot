@@ -1,14 +1,10 @@
 import React from "react";
-
 import Topbar from "./Topbar";
 import { NavKey } from "@/types/admin";
 import Sidebar from "./SidebarAdmin";
-
 import { useUserStore } from "@/store/userStore";
-
 import { ResetPasswordDialog } from "@/components/auth/ResetPasswordDialog";
 import { useNavigate } from "react-router-dom";
-
 export default function AdminLayout({
   nav,
   setNav,
@@ -23,7 +19,6 @@ export default function AdminLayout({
   const { userInfo, fetchUserInfo, updateAvatarUrl } = useUserStore();
   const [openReset, setOpenReset] = React.useState(false);
   const navigate = useNavigate();
-
   React.useEffect(() => {
     fetchUserInfo();
   }, [fetchUserInfo]);

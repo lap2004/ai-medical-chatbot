@@ -8,19 +8,16 @@ import { TextInput } from "@/components/ui/TextInput";
 import { useUserResetPassword } from "@/services/hooks/hookAuth";
 import { useAuthUIStore } from "@/store";
 import { useTranslation } from "react-i18next";
-
 function getPasswordStrength(pw: string) {
   const password = pw ?? "";
   const hasMinLen = password.length >= 8;
   const hasNumber = /\d/.test(password);
   const hasSymbol = /[^A-Za-z0-9]/.test(password);
-
   let level = 0;
   if (password.length > 0) level = 1;
   if (hasMinLen) level = 2;
   if (hasMinLen && (hasNumber || hasSymbol)) level = 3;
   if (hasMinLen && hasNumber && hasSymbol) level = 4;
-
   const label =
     level >= 4
       ? "STRONG"
@@ -29,20 +26,16 @@ function getPasswordStrength(pw: string) {
         : level === 2
           ? "FAIR"
           : "WEAK";
-
   const passed = hasMinLen && hasNumber && hasSymbol;
   return { level, label, passed };
 }
-
 type ResetPasswordPopupProps = {
   open: boolean;
   onClose: () => void;
   onSuccess?: () => void;
-
   /** ✅ true = bắt buộc đổi mật khẩu (UI khác + khóa close) */
   forceChange?: boolean;
 };
-
 export const ResetPasswordDialog: React.FC<ResetPasswordPopupProps> = ({
   open,
   onClose,
@@ -53,15 +46,12 @@ export const ResetPasswordDialog: React.FC<ResetPasswordPopupProps> = ({
   const { postUserResetPassword } = useUserResetPassword();
   const { t } = useTranslation();
   const panelRef = useRef<HTMLDivElement>(null);
-
   const [currentPassword, setCurrentPassword] = useState("");
   const [password, setPassword] = useState("");
   const [confirm, setConfirm] = useState("");
-
   const [show0, setShow0] = useState(false);
   const [show1, setShow1] = useState(false);
   const [show2, setShow2] = useState(false);
-
   const [isLoading, setIsLoading] = useState(false);
   const strength = useMemo(() => getPasswordStrength(password), [password]);
   const forcePasswordChange = useAuthUIStore((s) => s.forcePasswordChange);
@@ -75,28 +65,20 @@ export const ResetPasswordDialog: React.FC<ResetPasswordPopupProps> = ({
     setShow2(false);
     setIsLoading(false);
   }, [open]);
-
   useEffect(() => {
     if (!open) return;
-
     const onKey = (e: KeyboardEvent) => {
-      // ✅ forceChange: không cho ESC close
       if (e.key === "Escape" && !forceChange) onClose();
     };
-
     window.addEventListener("keydown", onKey);
-
     const prevOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
-
     setTimeout(() => panelRef.current?.focus(), 0);
-
     return () => {
       window.removeEventListener("keydown", onKey);
       document.body.style.overflow = prevOverflow;
     };
   }, [open, onClose, forceChange]);
-
   const validate = () => {
     if (!accessToken) {
       toast.error(
@@ -126,20 +108,16 @@ export const ResetPasswordDialog: React.FC<ResetPasswordPopupProps> = ({
     }
     return true;
   };
-
   const handleReset = async () => {
     if (isLoading) return;
     if (!validate()) return;
-
     setIsLoading(true);
     try {
       await postUserResetPassword({
         current_password: currentPassword,
         new_password: password,
       });
-
       toast.success("Đổi mật khẩu thành công. Vui lòng đăng nhập lại.");
-
       onClose();
     } catch (err: any) {
       toast.error(
@@ -149,9 +127,7 @@ export const ResetPasswordDialog: React.FC<ResetPasswordPopupProps> = ({
       setIsLoading(false);
     }
   };
-
   if (!open) return null;
-
   return createPortal(
     <div className="fixed inset-0 z-[99999]">
       {/* ✅ Backdrop: forceChange => không đóng */}
@@ -163,7 +139,6 @@ export const ResetPasswordDialog: React.FC<ResetPasswordPopupProps> = ({
         }}
         aria-label="Close"
       />
-
       <div className="absolute inset-0 flex items-center justify-center p-4">
         <div className="w-full max-w-md" onClick={(e) => e.stopPropagation()}>
           <div
@@ -195,7 +170,6 @@ export const ResetPasswordDialog: React.FC<ResetPasswordPopupProps> = ({
                   <X className="w-5 h-5" />
                 </button>
               )}
-
               <div className="text-center space-y-2">
                 {forcePasswordChange ? (
                   <>
@@ -218,7 +192,6 @@ export const ResetPasswordDialog: React.FC<ResetPasswordPopupProps> = ({
                 )}
               </div>
             </div>
-
             <div className="space-y-5 max-h-[70vh] overflow-auto p-1 pt-3">
               {/* Current password */}
               <div>
@@ -250,7 +223,6 @@ export const ResetPasswordDialog: React.FC<ResetPasswordPopupProps> = ({
                   </button>
                 </div>
               </div>
-
               {/* New password */}
               <div>
                 <label className="block text-sm font-semibold dark:text-slate-300 mb-2 ml-1">
@@ -281,7 +253,6 @@ export const ResetPasswordDialog: React.FC<ResetPasswordPopupProps> = ({
                   </button>
                 </div>
               </div>
-
               {/* Strength */}
               <div className="space-y-2">
                 <div className="flex items-center justify-between text-[11px]">
@@ -301,7 +272,6 @@ export const ResetPasswordDialog: React.FC<ResetPasswordPopupProps> = ({
                     {strength.label}
                   </span>
                 </div>
-
                 <div className="flex gap-2">
                   {Array.from({ length: 4 }).map((_, i) => {
                     const filled = i < strength.level;
@@ -316,7 +286,6 @@ export const ResetPasswordDialog: React.FC<ResetPasswordPopupProps> = ({
                     );
                   })}
                 </div>
-
                 <div className="flex items-center gap-2 text-[12px]">
                   <CheckCircle2
                     className={`w-4 h-4 ${strength.passed
@@ -333,7 +302,6 @@ export const ResetPasswordDialog: React.FC<ResetPasswordPopupProps> = ({
                   </span>
                 </div>
               </div>
-
               {/* Confirm */}
               <div>
                 <label className="block text-sm font-semibold dark:text-slate-300 mb-2 ml-1">
@@ -364,7 +332,6 @@ export const ResetPasswordDialog: React.FC<ResetPasswordPopupProps> = ({
                   </button>
                 </div>
               </div>
-
               <Button
                 type="button"
                 onClick={handleReset}

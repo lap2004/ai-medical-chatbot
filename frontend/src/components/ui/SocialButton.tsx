@@ -1,10 +1,8 @@
 import React from "react";
-
 type SocialButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
   icon: React.ReactNode;
   label: string;
 };
-
 export const SocialButton: React.FC<SocialButtonProps> = ({
   icon,
   label,

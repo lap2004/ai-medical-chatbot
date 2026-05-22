@@ -3,14 +3,13 @@ export interface Message {
   role: "user" | "assistant";
   content: string;
   createdAt: number;
-  feedback?: "like" | "dislike";  // Like/Dislike only
-  is_reported?: boolean;  // Separate field for report status
+  feedback?: "like" | "dislike";  
+  is_reported?: boolean;  
   triage?: {
     questions: string[];
     suggestedAnswers: string[];
   };
 }
-
 export interface Conversation {
   id: string;
   title: string;
@@ -18,23 +17,19 @@ export interface Conversation {
   messages: Message[];
   isLoaded?: boolean;
 }
-
 export type MsgRole = "user" | "assistant";
-
 export type ImproveAction =
   | "shorter"
   | "detailed"
   | "explain"
   | "translate_vi"
   | "translate_en";
-
 export type ReactionState = "none" | "like" | "dislike";
-
 export type ChatMsg = {
   id: string;
   role: MsgRole;
   content: string;
   createdAt?: number;
   fromApi?: boolean;
-  is_reported?: boolean;  // For report prevention
+  is_reported?: boolean;  
 };

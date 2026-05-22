@@ -5,10 +5,8 @@ import { BrowserRouter } from "react-router-dom";
 import { Toaster } from "sonner";
 import App from "./App";
 import "./i18n";
-
 const root = document.getElementById("root");
 if (!root) throw new Error("Root not found");
-
 ReactDOM.createRoot(root).render(
   <React.StrictMode>
     <BrowserRouter>

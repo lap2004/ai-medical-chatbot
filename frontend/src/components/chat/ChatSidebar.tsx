@@ -3,17 +3,14 @@ import { MoreHorizontal, Pencil, Trash2, X, Stethoscope, ChevronLeft, Menu, Plus
 import { Conversation } from "../../types/chat";
 import { Button } from "../ui/Button";
 import { useTranslation } from "react-i18next";
-
 interface SidebarProps {
   conversations: Conversation[];
   activeId: string | null;
   onSelect: (id: string) => void;
   onNew: () => void;
-
   onRename: (id: string, newTitle: string) => Promise<void> | void;
   onDelete: (id: string) => Promise<void> | void;
 }
-
 export const ChatSidebar: React.FC<SidebarProps> = ({
   conversations,
   activeId,
@@ -24,52 +21,38 @@ export const ChatSidebar: React.FC<SidebarProps> = ({
 }) => {
   const { t } = useTranslation();
   const [collapsed, setCollapsed] = React.useState(false);
-
-  // menu
   const [openMenuId, setOpenMenuId] = React.useState<string | null>(null);
-
-  // rename modal
   const [renameId, setRenameId] = React.useState<string | null>(null);
   const [renameValue, setRenameValue] = React.useState("");
   const [renameBusy, setRenameBusy] = React.useState(false);
-
-  // delete confirm modal
   const [deleteId, setDeleteId] = React.useState<string | null>(null);
   const [deleteBusy, setDeleteBusy] = React.useState(false);
-
-  // click outside closes dropdown
   React.useEffect(() => {
     const onDocClick = () => setOpenMenuId(null);
     document.addEventListener("click", onDocClick);
     return () => document.removeEventListener("click", onDocClick);
   }, []);
-
   const activeConv = React.useMemo(
     () => conversations.find((c) => c.id === activeId) ?? null,
     [conversations, activeId],
   );
-
   const renameConv = React.useMemo(
     () => conversations.find((c) => c.id === renameId) ?? null,
     [conversations, renameId],
   );
-
   const deleteConv = React.useMemo(
     () => conversations.find((c) => c.id === deleteId) ?? null,
     [conversations, deleteId],
   );
-
   const openRename = (conv: Conversation) => {
     setOpenMenuId(null);
     setRenameId(conv.id);
     setRenameValue(conv.title ?? "");
   };
-
   const submitRename = async () => {
     if (!renameId) return;
     const next = renameValue.trim();
     if (!next) return;
-
     try {
       setRenameBusy(true);
       await onRename(renameId, next);
@@ -78,26 +61,20 @@ export const ChatSidebar: React.FC<SidebarProps> = ({
       setRenameBusy(false);
     }
   };
-
   const openDelete = (conv: Conversation) => {
     setOpenMenuId(null);
     setDeleteId(conv.id);
   };
-
   const confirmDelete = async () => {
     if (!deleteId) return;
     try {
       setDeleteBusy(true);
       await onDelete(deleteId);
-
-      // nếu đang active bị xóa, bạn có thể auto chuyển sang conv khác ở layer cha.
-      // ở đây chỉ đóng dialog.
       setDeleteId(null);
     } finally {
       setDeleteBusy(false);
     }
   };
-
   return (
     <aside
       className={`
@@ -121,7 +98,6 @@ export const ChatSidebar: React.FC<SidebarProps> = ({
                 Doctor AI
               </h1>
             </div>
-
             <button
               onClick={() => setCollapsed(true)}
               className="p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800"
@@ -130,7 +106,6 @@ export const ChatSidebar: React.FC<SidebarProps> = ({
             </button>
           </div>
         )}
-
         {collapsed && (
           <div className="py-4 flex flex-col items-center gap-4">
             <button
@@ -139,11 +114,9 @@ export const ChatSidebar: React.FC<SidebarProps> = ({
             >
               <Menu className="w-6 h-6 text-slate-400" />
             </button>
-
             <div className="w-10 h-10 bg-primary rounded-xl flex items-center justify-center text-white">
               <Stethoscope className="w-6 h-6" />
             </div>
-
             <button
               onClick={onNew}
               className="w-10 h-10 rounded-full bg-purple-600 shadow-purple-500/20 hover:bg-purple-700 text-white flex items-center justify-center"
@@ -153,7 +126,6 @@ export const ChatSidebar: React.FC<SidebarProps> = ({
             </button>
           </div>
         )}
-
         {!collapsed && (
           <div className="px-4 pb-4">
             <Button
@@ -167,7 +139,6 @@ export const ChatSidebar: React.FC<SidebarProps> = ({
           </div>
         )}
       </div>
-
       {/* ================= SESSION LIST ================= */}
       <div
         className={`
@@ -179,12 +150,10 @@ export const ChatSidebar: React.FC<SidebarProps> = ({
         <h3 className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-4 px-2">
           {t('chatSidebar.recentSessions', 'Your Chats')}
         </h3>
-
         <div className="space-y-1">
           {conversations.map((conv) => {
             const isActive = activeId === conv.id;
             const isOpen = openMenuId === conv.id;
-
             return (
               <div key={conv.id} className="relative group">
                 <button
@@ -198,7 +167,6 @@ export const ChatSidebar: React.FC<SidebarProps> = ({
                   `}
                 >
                   <p className="text-sm font-bold truncate text-slate-900 dark:text-white">{conv.title}</p>
-
                   {/* 3 dots (hover show) */}
                   <span
                     className={`
@@ -223,7 +191,6 @@ export const ChatSidebar: React.FC<SidebarProps> = ({
                     </button>
                   </span>
                 </button>
-
                 {/* dropdown */}
                 {isOpen && (
                   <div
@@ -245,7 +212,6 @@ export const ChatSidebar: React.FC<SidebarProps> = ({
                       <Pencil className="w-4 h-4 text-slate-400" />
                       {t('chatSidebar.rename', 'Rename')}
                     </button>
-
                     <button
                       className="
                         w-full px-3 py-2 text-left text-sm
@@ -264,7 +230,6 @@ export const ChatSidebar: React.FC<SidebarProps> = ({
           })}
         </div>
       </div>
-
       {/* ================= RENAME DIALOG ================= */}
       {
         renameId && (
@@ -275,7 +240,6 @@ export const ChatSidebar: React.FC<SidebarProps> = ({
             onClick={() => !renameBusy && setRenameId(null)}
           >
             <div className="absolute inset-0 bg-black/40" />
-
             <div
               className="
               relative w-[92vw] max-w-md
@@ -295,7 +259,6 @@ export const ChatSidebar: React.FC<SidebarProps> = ({
                   <X className="w-5 h-5 text-slate-400" />
                 </button>
               </div>
-
               <p className="text-sm text-slate-500 mb-3">
                 {t('chatSidebar.renameText', 'Rename')}
                 <span className="font-semibold text-slate-700 dark:text-slate-200">
@@ -303,7 +266,6 @@ export const ChatSidebar: React.FC<SidebarProps> = ({
                   {renameConv?.title ?? t('chatSidebar.thisSession', 'this session')}
                 </span>
               </p>
-
               <input
                 value={renameValue}
                 onChange={(e) => setRenameValue(e.target.value)}
@@ -321,7 +283,6 @@ export const ChatSidebar: React.FC<SidebarProps> = ({
                 placeholder={t('chatSidebar.newName', 'New name...')}
                 disabled={renameBusy}
               />
-
               <div className="mt-4 flex items-center justify-end gap-2">
                 <Button
                   variant="ghost"
@@ -342,7 +303,6 @@ export const ChatSidebar: React.FC<SidebarProps> = ({
           </div>
         )
       }
-
       {/* ================= DELETE CONFIRM DIALOG ================= */}
       {
         deleteId && (
@@ -353,7 +313,6 @@ export const ChatSidebar: React.FC<SidebarProps> = ({
             onClick={() => !deleteBusy && setDeleteId(null)}
           >
             <div className="absolute inset-0 bg-black/40" />
-
             <div
               className="
               relative w-[92vw] max-w-md
@@ -375,7 +334,6 @@ export const ChatSidebar: React.FC<SidebarProps> = ({
                   <X className="w-5 h-5 text-slate-400" />
                 </button>
               </div>
-
               <p className="text-sm text-slate-500">
                 {t('chatSidebar.permanentlyDelete', 'This will permanently delete')}{" "}
                 <span className="font-semibold text-slate-700 dark:text-slate-200">
@@ -383,7 +341,6 @@ export const ChatSidebar: React.FC<SidebarProps> = ({
                 </span>
                 {t('chatSidebar.cannotUndo', '. You can’t undo this action.')}
               </p>
-
               <div className="mt-4 flex items-center justify-end gap-2">
                 <Button
                   variant="ghost"
@@ -392,7 +349,6 @@ export const ChatSidebar: React.FC<SidebarProps> = ({
                 >
                   {t('chatSidebar.cancel', 'Cancel')}
                 </Button>
-
                 <Button
                   variant="secondary"
                   className="bg-red-600 hover:bg-red-700 text-white"

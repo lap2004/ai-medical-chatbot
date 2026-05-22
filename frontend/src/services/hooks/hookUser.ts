@@ -4,9 +4,7 @@ import {
   updateUserById,
   deleteUserById,
 } from "../apis/user";
-
 import { useGetAPI, usePostAPI, usePutAPI, useDeleteAPI } from "./hookApi";
-
 const useGetAllUser = () => {
   const {
     loading,
@@ -14,7 +12,6 @@ const useGetAllUser = () => {
     error,
     setError,
   } = useGetAPI(getAllUser);
-
   return {
     loading,
     getGetAllUser,
@@ -22,7 +19,6 @@ const useGetAllUser = () => {
     setError,
   };
 };
-
 const useCreateUser = () => {
   const {
     loading,
@@ -30,7 +26,6 @@ const useCreateUser = () => {
     error,
     setError,
   } = usePostAPI(createUser);
-
   return {
     loading,
     postCreateUser,
@@ -38,7 +33,6 @@ const useCreateUser = () => {
     setError,
   };
 };
-
 const useUpdateUser = () => {
   const {
     loading,
@@ -46,7 +40,6 @@ const useUpdateUser = () => {
     error,
     setError,
   } = usePutAPI(updateUserById);
-
   return {
     loading,
     putUpdateUser,
@@ -54,7 +47,6 @@ const useUpdateUser = () => {
     setError,
   };
 };
-
 const useDeleteUser = () => {
   const {
     loading,
@@ -62,7 +54,6 @@ const useDeleteUser = () => {
     error,
     setError,
   } = useDeleteAPI(deleteUserById);
-
   return {
     loading,
     deleteUser,

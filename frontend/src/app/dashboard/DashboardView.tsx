@@ -3,9 +3,8 @@ import { Users, MessageSquare, ThumbsUp, Flag } from "lucide-react";
 import { getAnalytics } from "@/services/apis/admin";
 import { AnalyticsStats } from "@/types/admin";
 import GrowthChartCard from "@/components/admin/GrowthChartCard";
-import { CHART_DATA } from "@/data"; // Keep mock data for chart for now, or update if we have real time-series
+import { CHART_DATA } from "@/data"; 
 import { useTranslation } from "react-i18next";
-
 const StatCard = ({
     title,
     value,
@@ -40,21 +39,17 @@ const StatCard = ({
     </div>
 );
 };
-
 export default function DashboardView() {
     const { t } = useTranslation();
     const [stats, setStats] = useState<AnalyticsStats | null>(null);
     const [loading, setLoading] = useState(true);
-
     useEffect(() => {
         getAnalytics()
             .then((data) => setStats(data))
             .catch((err) => console.error(err))
             .finally(() => setLoading(false));
     }, []);
-
     if (loading) return <div className="p-10 text-center text-slate-500">{t('dashboard.loadingMetrics', 'Loading metrics...')}</div>;
-
     return (
         <div className="space-y-6">
             {/* Metrics Grid */}
@@ -86,13 +81,11 @@ export default function DashboardView() {
                     color="bg-rose-500"
                 />
             </div>
-
             {/* Charts & Activity Row */}
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
                 <div className="lg:col-span-2 space-y-6">
                     {/* Reusing existing chart with mock data for now, since backend analytics didn't implement time-series yet */}
                     <GrowthChartCard data={CHART_DATA} />
-
                     {/* Recent Activity */}
                     <div className="bg-white dark:bg-slate-900 rounded-xl p-6 shadow-sm border border-slate-200 dark:border-slate-800">
                         <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-4">{t('dashboard.recentActivity', 'Recent Activity')}</h3>
@@ -132,7 +125,6 @@ export default function DashboardView() {
                         </div>
                     </div>
                 </div>
-
                 {/* Feedback Summary Card */}
                 <div className="bg-white dark:bg-slate-900 rounded-xl p-6 shadow-sm border border-slate-200 dark:border-slate-800">
                     <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-4">{t('dashboard.feedbackSummary', 'Feedback Summary')}</h3>
@@ -146,7 +138,6 @@ export default function DashboardView() {
                             </div>
                             <span className="font-bold text-slate-900 dark:text-white">{stats?.likes || 0}</span>
                         </div>
-
                         <div className="flex items-center justify-between">
                             <div className="flex items-center gap-2">
                                 <div className="w-8 h-8 rounded-full bg-rose-500/10 flex items-center justify-center text-rose-500">

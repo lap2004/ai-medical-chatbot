@@ -1,6 +1,5 @@
 import { clsx } from "@/types/admin";
 import React from "react";
-
 export default function Badge({
   children,
   tone = "slate",
@@ -14,7 +13,6 @@ export default function Badge({
       : tone === "green"
         ? "bg-emerald-50 text-emerald-600 border-emerald-100 dark:bg-emerald-500/10 dark:text-emerald-300 dark:border-emerald-500/20"
         : "bg-slate-50 text-slate-600 border-slate-100 dark:bg-slate-500/10 dark:text-slate-300 dark:border-slate-500/20";
-
   return (
     <span
       className={clsx(

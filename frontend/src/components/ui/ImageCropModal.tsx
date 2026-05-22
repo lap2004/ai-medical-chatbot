@@ -4,7 +4,6 @@ import getCroppedImg from "@/lib/cropImage";
 import ModalShell from "./ModalShell";
 import { Button } from "./Button";
 import { useTranslation } from "react-i18next";
-
 export default function ImageCropModal({
     open,
     imageSrc,
@@ -21,11 +20,9 @@ export default function ImageCropModal({
     const [croppedAreaPixels, setCroppedAreaPixels] = useState(null);
     const [loading, setLoading] = useState(false);
     const { t } = useTranslation();
-
     const onCropComplete = useCallback((croppedArea: any, croppedAreaPixels: any) => {
         setCroppedAreaPixels(croppedAreaPixels);
     }, []);
-
     const handleSave = async () => {
         try {
             if (!croppedAreaPixels) return;
@@ -40,7 +37,6 @@ export default function ImageCropModal({
             setLoading(false);
         }
     };
-
     return (
         <ModalShell
             open={open}
@@ -53,14 +49,13 @@ export default function ImageCropModal({
                     image={imageSrc}
                     crop={crop}
                     zoom={zoom}
-                    aspect={1} // Hình vuông
+                    aspect={1} 
                     cropShape="round"
                     onCropChange={setCrop}
                     onCropComplete={onCropComplete}
                     onZoomChange={setZoom}
                 />
             </div>
-
             <div className="flex items-center gap-4 mb-4">
                 <span className="text-xs font-semibold text-slate-500 dark:text-slate-400">Zoom</span>
                 <input
@@ -76,7 +71,6 @@ export default function ImageCropModal({
                     className="w-full form-range appearance-none bg-slate-200 dark:bg-slate-700 rounded-full h-1"
                 />
             </div>
-
             <div className="flex justify-end gap-2">
                 <Button variant="ghost" onClick={onClose} disabled={loading}>
                     {t('common.cancel', 'Hủy')}

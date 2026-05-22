@@ -2,7 +2,6 @@ import React, { useState, useRef, useEffect } from "react";
 import { Bell, Check, Trash2, Info, CheckCircle2, AlertTriangle, AlertCircle, X } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { useNotificationStore, NotificationType, AppNotification } from "@/store/notificationStore";
-
 const getIcon = (type: NotificationType) => {
   switch (type) {
     case "success": return <CheckCircle2 className="w-5 h-5 text-emerald-500" />;
@@ -12,7 +11,6 @@ const getIcon = (type: NotificationType) => {
     default: return <Info className="w-5 h-5 text-blue-500" />;
   }
 };
-
 const formatTimeAgo = (timestamp: number) => {
   const seconds = Math.floor((Date.now() - timestamp) / 1000);
   if (seconds < 60) return "Just now";
@@ -23,12 +21,10 @@ const formatTimeAgo = (timestamp: number) => {
   const days = Math.floor(hours / 24);
   return `${days}d ago`;
 };
-
 export default function NotificationDropdown() {
   const { t } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
-  
   const { 
     notifications, 
     markAsRead, 
@@ -36,9 +32,7 @@ export default function NotificationDropdown() {
     clearAll,
     deleteNotification
   } = useNotificationStore();
-
   const unreadCount = notifications.filter((n) => !n.read).length;
-
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
@@ -52,7 +46,6 @@ export default function NotificationDropdown() {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [isOpen]);
-
   return (
     <div className="relative inline-block" ref={menuRef}>
       <button
@@ -65,7 +58,6 @@ export default function NotificationDropdown() {
           <span className="absolute top-1 right-1.5 w-2 h-2 rounded-full bg-red-500 border-2 border-white dark:border-slate-950"></span>
         )}
       </button>
-
       {isOpen && (
         <div className="absolute right-0 mt-2 w-80 sm:w-96 rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 shadow-xl z-50 overflow-hidden flex flex-col max-h-[500px]">
           {/* Header */}
@@ -100,7 +92,6 @@ export default function NotificationDropdown() {
               </div>
             )}
           </div>
-
           {/* Body */}
           <div className="overflow-y-auto flex-1 p-2 space-y-1">
             {notifications.length === 0 ? (
@@ -141,7 +132,6 @@ export default function NotificationDropdown() {
                       </div>
                     </div>
                   </div>
-
                   {/* Actions (visible on hover) */}
                   <div className="absolute right-2 top-1/2 -translate-y-1/2 flex items-center opacity-0 group-hover:opacity-100 transition-opacity">
                     {!notif.read && (
@@ -161,7 +151,6 @@ export default function NotificationDropdown() {
                       <X className="w-3.5 h-3.5" />
                     </button>
                   </div>
-
                   {/* Unread dot */}
                   {!notif.read && (
                     <div className="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-8 rounded-r-md bg-teal-500" />

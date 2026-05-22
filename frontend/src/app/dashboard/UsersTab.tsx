@@ -12,34 +12,23 @@ import {
 import { useUserStore } from "@/store/userStore";
 import { useTranslation } from "react-i18next";
 import { notify } from "@/utils/notify";
-
 const PAGE_SIZE = 5;
-
 export default function UsersTab() {
     const { t } = useTranslation();
-    // ── Current User Store ─────────────────────────────────────
     const { userInfo } = useUserStore();
-
-    // ── Filter / search state ─────────────────────────────────
     const [query, setQuery] = React.useState("");
     const [roleFilter, setRoleFilter] = React.useState<Role | "ALL">("ALL");
     const [statusFilter, setStatusFilter] = React.useState<Status | "ALL">("ALL");
     const [page, setPage] = React.useState(1);
-
-    // ── Data state ────────────────────────────────────────────
     const [rows, setRows] = React.useState<UserRow[]>([]);
     const [total, setTotal] = React.useState(0);
     const [loading, setLoading] = React.useState(false);
     const [saving, setSaving] = React.useState(false);
     const [error, setError] = React.useState<string | null>(null);
-
-    // ── Modal state ───────────────────────────────────────────
     const [addOpen, setAddOpen] = React.useState(false);
     const [editOpen, setEditOpen] = React.useState(false);
     const [deleteOpen, setDeleteOpen] = React.useState(false);
     const [activeRow, setActiveRow] = React.useState<UserRow | null>(null);
-
-    // ── Form state ────────────────────────────────────────────
     const [form, setForm] = React.useState<{
         name: string;
         email: string;
@@ -47,10 +36,7 @@ export default function UsersTab() {
         role: Role;
         status: Status;
     }>({ name: "", email: "", password: "", role: "USER", status: "Active" });
-
     const totalPages = Math.max(1, Math.ceil(total / PAGE_SIZE));
-
-    // ── Fetch helper ──────────────────────────────────────────
     const fetchUsers = React.useCallback(
         async (p = page) => {
             setLoading(true);
@@ -83,27 +69,20 @@ export default function UsersTab() {
         },
         [query, roleFilter, statusFilter, page]
     );
-
-    // ── Auto-fetch on filter/page change ─────────────────────
     React.useEffect(() => {
         fetchUsers(page);
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [query, roleFilter, statusFilter, page]);
-
-    // ── Debounce search ───────────────────────────────────────
     const searchTimeout = React.useRef<ReturnType<typeof setTimeout> | null>(null);
     const handleQueryChange = (v: string) => {
         setQuery(v);
         setPage(1);
         if (searchTimeout.current) clearTimeout(searchTimeout.current);
     };
-
-    // ── Add ───────────────────────────────────────────────────
     const openAdd = () => {
         setForm({ name: "", email: "", password: "", role: "USER", status: "Active" });
         setAddOpen(true);
     };
-
     const submitAdd = async () => {
         if (!form.name.trim() || !form.email.trim() || !form.password) return;
         setSaving(true);
@@ -132,14 +111,11 @@ export default function UsersTab() {
             setSaving(false);
         }
     };
-
-    // ── Edit ──────────────────────────────────────────────────
     const openEdit = (r: UserRow) => {
         setActiveRow(r);
         setForm({ name: r.name, email: r.email, role: r.role, status: r.status });
         setEditOpen(true);
     };
-
     const submitEdit = async () => {
         if (!activeRow || !form.name.trim() || !form.email.trim()) return;
         const numericId = parseInt(activeRow.id.replace("#", ""), 10);
@@ -168,13 +144,10 @@ export default function UsersTab() {
             setSaving(false);
         }
     };
-
-    // ── Delete ────────────────────────────────────────────────
     const openDelete = (r: UserRow) => {
         setActiveRow(r);
         setDeleteOpen(true);
     };
-
     const confirmDelete = async () => {
         if (!activeRow) return;
         const numericId = parseInt(activeRow.id.replace("#", ""), 10);
@@ -184,7 +157,6 @@ export default function UsersTab() {
             await deleteUser(numericId);
             setDeleteOpen(false);
             setActiveRow(null);
-            // Go back a page if last item on current page was deleted
             const newTotal = total - 1;
             const newTotalPages = Math.max(1, Math.ceil(newTotal / PAGE_SIZE));
             const newPage = Math.min(page, newTotalPages);
@@ -203,7 +175,6 @@ export default function UsersTab() {
             setSaving(false);
         }
     };
-
     return (
         <>
             {/* Error Banner */}
@@ -213,14 +184,12 @@ export default function UsersTab() {
                     <button onClick={() => setError(null)} className="ml-4 text-red-400 hover:text-red-600">✕</button>
                 </div>
             )}
-
             {/* Loading Overlay */}
             {loading && (
                 <div className="mb-2 text-[11px] text-slate-400 font-semibold animate-pulse">
                     {t('admin.users.loadingUsers', 'Loading users...')}
                 </div>
             )}
-
             <UsersTableCard
                 query={query}
                 onQueryChange={(v) => { handleQueryChange(v); }}
@@ -243,7 +212,6 @@ export default function UsersTab() {
                 onDelete={openDelete}
                 currentUserId={userInfo?.id}
             />
-
             {/* Modals */}
             <AddEditUserModal
                 mode="add"
@@ -257,7 +225,6 @@ export default function UsersTab() {
                 submitLabel={t('admin.users.create', "Create")}
                 loading={saving}
             />
-
             <AddEditUserModal
                 mode="edit"
                 open={editOpen}
@@ -270,7 +237,6 @@ export default function UsersTab() {
                 submitLabel={t('admin.users.save', "Save")}
                 loading={saving}
             />
-
             <DeleteUserModal
                 open={deleteOpen}
                 name={activeRow?.name}

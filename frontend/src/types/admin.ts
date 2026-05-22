@@ -1,6 +1,5 @@
 export type Role = "ADMIN" | "USER";
 export type Status = "Active" | "Inactive";
-
 export type UserRow = {
   id: string;
   name: string;
@@ -10,27 +9,21 @@ export type UserRow = {
   createdAt: string;
   avatarUrl?: string;
 };
-
 export type NavKey = "dashboard" | "users" | "analytics" | "settings";
-
 export function clsx(...s: Array<string | false | null | undefined>) {
   return s.filter(Boolean).join(" ");
 }
-
-// ... types ...
 export interface RecentActivity {
   type: "feedback" | "report";
   user: string;
-  value?: "like" | "dislike"; // for feedback
-  category?: string; // for report
+  value?: "like" | "dislike"; 
+  category?: string; 
   time: string;
 }
-
 export interface TopUser {
   email: string;
   count: number;
 }
-
 export interface AnalyticsStats {
   users: number;
   messages: number;
@@ -43,7 +36,6 @@ export interface AnalyticsStats {
   recent_activities: RecentActivity[];
   top_users: TopUser[];
 }
-
 export function exportUsersToCSV(rows: UserRow[]) {
   const header = ["ID", "Name", "Email", "Role", "Status", "CreatedAt"];
   const body = rows.map((r) => [
@@ -54,7 +46,6 @@ export function exportUsersToCSV(rows: UserRow[]) {
     r.status,
     r.createdAt,
   ]);
-
   const csv = [header, ...body]
     .map((line) =>
       line
@@ -66,7 +57,6 @@ export function exportUsersToCSV(rows: UserRow[]) {
         .join(","),
     )
     .join("\n");
-
   const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
   const url = URL.createObjectURL(blob);
   const a = document.createElement("a");

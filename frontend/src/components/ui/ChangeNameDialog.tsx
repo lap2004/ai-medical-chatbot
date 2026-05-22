@@ -5,30 +5,24 @@ import { toast } from "sonner";
 import { updateProfile } from "@/services/apis/auth";
 import { useUserStore } from "@/store/userStore";
 import { useTranslation } from "react-i18next";
-
 type Props = {
     open: boolean;
     onClose: () => void;
     currentName?: string;
 };
-
 export const ChangeNameDialog: React.FC<Props> = ({ open, onClose, currentName }) => {
     const [name, setName] = useState(currentName || "");
     const [loading, setLoading] = useState(false);
     const { t } = useTranslation();
     const { updateFullName } = useUserStore();
-
-    // Reset name khi modal mở
     React.useEffect(() => {
         if (open) {
             setName(currentName || "");
         }
     }, [open, currentName]);
-
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         if (!name.trim()) return;
-
         setLoading(true);
         try {
             await updateProfile(name.trim());
@@ -42,7 +36,6 @@ export const ChangeNameDialog: React.FC<Props> = ({ open, onClose, currentName }
             setLoading(false);
         }
     };
-
     return (
         <ModalShell open={open} onClose={onClose} title={t('common.profile.changeName', 'Đổi tên hiển thị')}>
             <form onSubmit={handleSubmit} className="space-y-4">
@@ -60,7 +53,6 @@ export const ChangeNameDialog: React.FC<Props> = ({ open, onClose, currentName }
                         maxLength={255}
                     />
                 </div>
-
                 <div className="flex gap-3 justify-end pt-4 border-t border-slate-100 dark:border-slate-800">
                     <Button
                         type="button"

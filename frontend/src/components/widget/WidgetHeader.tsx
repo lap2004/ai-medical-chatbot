@@ -1,6 +1,5 @@
 
 import React from 'react';
-
 export const WidgetHeader: React.FC<{ onClose: () => void }> = ({ onClose }) => {
   return (
     <div className="p-5 bg-primary rounded-t-3xl text-white relative">
@@ -9,7 +8,7 @@ export const WidgetHeader: React.FC<{ onClose: () => void }> = ({ onClose }) => 
           <img 
             alt="Doctor AI" 
             className="w-12 h-12 rounded-full border-2 border-white/20 object-cover" 
-            src="https://picsum.photos/seed/doctor1/200/200" 
+            src="https:
           />
           <div className="absolute bottom-0 right-0 w-3 h-3 bg-green-500 border-2 border-primary rounded-full"></div>
         </div>

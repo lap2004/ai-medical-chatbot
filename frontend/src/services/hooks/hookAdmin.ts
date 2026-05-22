@@ -1,6 +1,5 @@
 import { getstats, useTrack } from "../apis/admin";
 import { useGetAPI, usePostAPI } from "./hookApi";
-
 const useGetStats = () => {
   const { loading, get: getGetStats, error, setError } = useGetAPI(getstats);
   return {
@@ -10,7 +9,6 @@ const useGetStats = () => {
     setError,
   };
 };
-
 const useGetTrack = () => {
   const {
     loading,
@@ -25,5 +23,4 @@ const useGetTrack = () => {
     setError,
   };
 };
-
 export { useGetStats, useGetTrack};

@@ -1,5 +1,4 @@
 import { Role, UserRow } from "@/types/admin";
-
 export const MOCK_USERS: UserRow[] = [
   {
     id: "#4829",
@@ -9,7 +8,7 @@ export const MOCK_USERS: UserRow[] = [
     status: "Active",
     createdAt: "Oct 24, 2023",
     avatarUrl:
-      "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=64&h=64&fit=crop&crop=faces",
+      "https:
   },
   {
     id: "#4830",
@@ -19,7 +18,7 @@ export const MOCK_USERS: UserRow[] = [
     status: "Active",
     createdAt: "Nov 12, 2023",
     avatarUrl:
-      "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=64&h=64&fit=crop&crop=faces",
+      "https:
   },
   {
     id: "#4831",
@@ -29,7 +28,7 @@ export const MOCK_USERS: UserRow[] = [
     status: "Inactive",
     createdAt: "Dec 01, 2023",
     avatarUrl:
-      "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=64&h=64&fit=crop&crop=faces",
+      "https:
   },
   ...Array.from({ length: 22 }).map((_, i) => ({
     id: `#48${32 + i}`,
@@ -40,7 +39,6 @@ export const MOCK_USERS: UserRow[] = [
     createdAt: "Dec 01, 2023",
   })),
 ];
-
 export const CHART_DATA = [
   { w: "Week 1", v: 2200 },
   { w: " ", v: 3500 },

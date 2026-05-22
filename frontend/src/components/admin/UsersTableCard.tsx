@@ -3,23 +3,17 @@ import React from "react";
 import PaginationFooter from "./PaginationFooter";
 import UsersTable from "./UsersTable";
 import UsersToolbar from "./UsersToolbar";
-
 export default function UsersTableCard(props: {
   query: string;
   onQueryChange: (v: string) => void;
-
   roleFilter: Role | "ALL";
   onRoleFilterChange: (v: Role | "ALL") => void;
-
   statusFilter: Status | "ALL";
   onStatusFilterChange: (v: Status | "ALL") => void;
-
   onResetFilters: () => void;
   onExport: () => void;
   onOpenAdd: () => void;
-
   rows: UserRow[];
-
   page: number;
   pageSize: number;
   totalPages: number;
@@ -27,7 +21,6 @@ export default function UsersTableCard(props: {
   onPrev: () => void;
   onNext: () => void;
   onGoToPage: (p: number) => void;
-
   onEdit: (r: UserRow) => void;
   onDelete: (r: UserRow) => void;
   currentUserId?: string | number;
@@ -45,7 +38,6 @@ export default function UsersTableCard(props: {
         onExport={props.onExport}
         onOpenAdd={props.onOpenAdd}
       />
-
       <div className="px-4 pb-3">
         <UsersTable
           rows={props.rows}

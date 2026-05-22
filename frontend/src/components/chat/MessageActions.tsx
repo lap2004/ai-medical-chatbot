@@ -1,24 +1,21 @@
-// MessageActions.tsx
+
 import React from "react";
 import type { ReactionState } from "@/types/chat";
-
 type Props = {
   visible: boolean;
   disabled?: boolean;
   reaction: ReactionState;
-  isReported?: boolean;  // ✅ Add this
-
+  isReported?: boolean;  
   onLike: () => void;
   onDislike: () => void;
   onReport: () => void;
   onCopy: () => void;
 };
-
 export const MessageActions: React.FC<Props> = ({
   visible,
   disabled,
   reaction,
-  isReported,  // ✅ Add this
+  isReported,  
   onLike,
   onDislike,
   onReport,
@@ -62,7 +59,6 @@ export const MessageActions: React.FC<Props> = ({
             thumb_up
           </span>
         </button>
-
         {/* Dislike */}
         <button
           disabled={disabled}
@@ -81,7 +77,6 @@ export const MessageActions: React.FC<Props> = ({
             thumb_down
           </span>
         </button>
-
         {/* Copy */}
         <button
           disabled={disabled}
@@ -98,7 +93,6 @@ export const MessageActions: React.FC<Props> = ({
             content_copy
           </span>
         </button>
-
         {/* Report - Only show if not already reported */}
         {!isReported && (
           <button

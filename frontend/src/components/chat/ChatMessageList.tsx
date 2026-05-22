@@ -8,7 +8,6 @@ import React, {
 import { TriageCard } from "./TriageCard";
 import { ChatMessageBubble } from "./ChatMessageBubble";
 import type { Message, ReactionState, ImproveAction } from "@/types/chat";
-
 type Props = {
   messages: Message[];
   loading: boolean;
@@ -16,7 +15,6 @@ type Props = {
   onReact?: (messageId: string, reaction: ReactionState) => void | Promise<void>;
   onReport?: (messageId: string, payload: { reason: string; note?: string }) => void | Promise<void>;
 };
-
 export const ChatMessageList: React.FC<Props> = ({
   messages,
   loading,
@@ -26,20 +24,14 @@ export const ChatMessageList: React.FC<Props> = ({
 }) => {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [stickToBottom, setStickToBottom] = useState(true);
-
-  // ✅ feedback state (local optimistic)
   const [reactionsById, setReactionsById] = useState<
     Record<string, ReactionState>
   >({});
   const [savedById, setSavedById] = useState<Record<string, boolean>>({});
-
-  // Date header theo message đầu tiên (không phải today)
   const headerDate = useMemo(() => {
     const first = messages?.[0]?.createdAt;
     return first ? new Date(first) : new Date();
   }, [messages]);
-
-  // ✅ Sync reactionsById from messages.feedback (for persistence after reload)
   useEffect(() => {
     const newReactions: Record<string, ReactionState> = {};
     messages.forEach(msg => {
@@ -49,47 +41,36 @@ export const ChatMessageList: React.FC<Props> = ({
     });
     setReactionsById(newReactions);
   }, [messages]);
-
-  // theo dõi user có đang ở gần đáy không
   useEffect(() => {
     const el = scrollRef.current;
     if (!el) return;
-
     const onScroll = () => {
       const dist = el.scrollHeight - el.scrollTop - el.clientHeight;
       setStickToBottom(dist < 120);
     };
-
     el.addEventListener("scroll", onScroll);
     onScroll();
     return () => el.removeEventListener("scroll", onScroll);
   }, []);
-
-  // auto-scroll khi có tin mới
   useEffect(() => {
     const el = scrollRef.current;
     if (!el) return;
     if (!stickToBottom) return;
-
     requestAnimationFrame(() => {
       el.scrollTop = el.scrollHeight;
     });
   }, [messages, loading, stickToBottom]);
-
-  // ✅ handlers
   const onReact = useCallback(async (id: string, next: ReactionState) => {
-    setReactionsById((p) => ({ ...p, [id]: next })); // optimistic
+    setReactionsById((p) => ({ ...p, [id]: next })); 
     if (onReactProp) {
       await onReactProp(id, next);
     }
   }, [onReactProp]);
-
   const onSave = useCallback(async (id: string, next: boolean) => {
     setSavedById((p) => ({ ...p, [id]: next }));
     // TODO: call API here
     console.log("[chat] save", id, next);
   }, []);
-
   const onReport = useCallback(
     async (id: string, payload: { reason: string; note?: string }) => {
       if (onReportProp) {
@@ -98,17 +79,14 @@ export const ChatMessageList: React.FC<Props> = ({
     },
     [onReportProp],
   );
-
   const onRegenerate = useCallback(async (id: string) => {
     // TODO: call API here
     console.log("[chat] regenerate from", id);
   }, []);
-
   const onImprove = useCallback(async (id: string, action: ImproveAction) => {
     // TODO: call API here
     console.log("[chat] improve", id, action);
   }, []);
-
   return (
     <div
       ref={scrollRef}
@@ -123,12 +101,10 @@ export const ChatMessageList: React.FC<Props> = ({
           })}
         </span>
       </div>
-
       {messages.map((msg) => {
         const isUser = msg.role === "user";
         const isAssistant = msg.role === "assistant";
         const hasTriage = !!msg.triage;
-
         return (
           <div
             key={msg.id}
@@ -142,7 +118,6 @@ export const ChatMessageList: React.FC<Props> = ({
                 </span>
               </div>
             )}
-
             <div className="flex flex-col space-y-3">
               {hasTriage ? (
                 <TriageCard
@@ -151,9 +126,8 @@ export const ChatMessageList: React.FC<Props> = ({
                   onSelect={onSelectTriage}
                 />
               ) : isAssistant ? (
-                // ✅ assistant message -> dùng ChatMessageBubble (có hover actions)
                 <ChatMessageBubble
-                  msg={msg as any} // nếu Message khác ChatMsg, bạn map lại type ở types/chat.ts
+                  msg={msg as any} 
                   loading={loading}
                   reaction={reactionsById[msg.id] ?? "none"}
                   saved={savedById[msg.id] ?? false}
@@ -164,7 +138,6 @@ export const ChatMessageList: React.FC<Props> = ({
                   onImprove={onImprove}
                 />
               ) : (
-                // ✅ user message giữ nguyên UI cũ
                 <div
                   className={`p-5 shadow-sm border ${isUser
                     ? "bg-primary text-white border-primary rounded-3xl rounded-tr-none max-w-xl"
@@ -176,7 +149,6 @@ export const ChatMessageList: React.FC<Props> = ({
                   </p>
                 </div>
               )}
-
               <div
                 className={`flex items-center space-x-2 ${isUser ? "justify-end mr-1" : "ml-1"
                   }`}
@@ -197,7 +169,6 @@ export const ChatMessageList: React.FC<Props> = ({
           </div>
         );
       })}
-
       {loading && (
         <div className="flex items-start space-x-4">
           <div className="w-9 h-9 rounded-full bg-primary flex items-center justify-center shrink-0">

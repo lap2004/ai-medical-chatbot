@@ -1,16 +1,13 @@
-// ChatMessageBubble.tsx
+
 import React, { useCallback, useEffect, useState } from "react";
 import { MessageActions } from "./MessageActions";
 import { ReportDialog } from "./ReportDialog";
 import { ChatMsg, ReactionState, ImproveAction } from "@/types/chat";
-
 type Props = {
   msg: ChatMsg;
   loading?: boolean;
-
   reaction?: ReactionState;
   saved?: boolean;
-
   onReact?: (id: string, next: ReactionState) => Promise<void> | void;
   onReport?: (
     id: string,
@@ -20,7 +17,6 @@ type Props = {
   onRegenerate?: (id: string) => Promise<void> | void;
   onImprove?: (id: string, action: ImproveAction) => Promise<void> | void;
 };
-
 export const ChatMessageBubble: React.FC<Props> = ({
   msg,
   loading,
@@ -34,19 +30,13 @@ export const ChatMessageBubble: React.FC<Props> = ({
 }) => {
   const isAssistant = msg.role === "assistant";
   const isActionEnabled = isAssistant && (msg.fromApi ?? true);
-
   const [hovered, setHovered] = useState(false);
   const [reportOpen, setReportOpen] = useState(false);
-
-  // optimistic UI
   const [localReaction, setLocalReaction] = useState<ReactionState>(reaction);
   const [localSaved, setLocalSaved] = useState(saved);
-
   useEffect(() => setLocalReaction(reaction), [reaction]);
   useEffect(() => setLocalSaved(saved), [saved]);
-
   const visible = isActionEnabled && hovered;
-
   const handleCopy = useCallback(async () => {
     try {
       await navigator.clipboard.writeText(msg.content);
@@ -55,41 +45,34 @@ export const ChatMessageBubble: React.FC<Props> = ({
       console.log("Copy failed");
     }
   }, [msg.content]);
-
   const handleLike = useCallback(async () => {
     const next: ReactionState = localReaction === "like" ? "none" : "like";
     setLocalReaction(next);
     await onReact?.(msg.id, next);
   }, [localReaction, msg.id, onReact]);
-
   const handleDislike = useCallback(async () => {
     const next: ReactionState =
       localReaction === "dislike" ? "none" : "dislike";
     setLocalReaction(next);
     await onReact?.(msg.id, next);
   }, [localReaction, msg.id, onReact]);
-
   const handleSave = useCallback(async () => {
     const next = !localSaved;
     setLocalSaved(next);
     await onSave?.(msg.id, next);
   }, [localSaved, msg.id, onSave]);
-
   const handleRegenerate = useCallback(async () => {
     await onRegenerate?.(msg.id);
   }, [msg.id, onRegenerate]);
-
   const handleImprove = useCallback(
     async (action: ImproveAction) => {
       await onImprove?.(msg.id, action);
     },
     [msg.id, onImprove],
   );
-
   const bubbleClass = isAssistant
     ? "bg-slate-100 dark:bg-slate-900 border border-transparent dark:border-slate-800 text-slate-800 dark:text-slate-100"
     : "bg-primary text-white";
-
   return (
     <div className="w-full flex">
       <div
@@ -104,20 +87,18 @@ export const ChatMessageBubble: React.FC<Props> = ({
         <div className="whitespace-pre-wrap text-sm leading-relaxed">
           {msg.content}
         </div>
-
         {isActionEnabled && (
           <MessageActions
             visible={visible}
             disabled={!!loading}
             reaction={localReaction}
-            isReported={msg.is_reported}  // ✅ Pass this
+            isReported={msg.is_reported}  
             onLike={handleLike}
             onDislike={handleDislike}
             onReport={() => setReportOpen(true)}
             onCopy={handleCopy}
           />
         )}
-
         <ReportDialog
           open={reportOpen}
           onClose={() => setReportOpen(false)}

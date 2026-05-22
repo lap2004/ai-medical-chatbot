@@ -1,4 +1,3 @@
-# backend/app/utils/security.py
 from __future__ import annotations
 
 from datetime import datetime, timedelta, timezone
@@ -43,7 +42,6 @@ def decode_access_token(token: str) -> dict[str, Any]:
         raise ValueError("Invalid token") from e
 
 
-# alias tương thích (nếu bạn đang dùng decode_token ở nơi khác)
 def decode_token(token: str) -> dict[str, Any]:
     return decode_access_token(token)
 
@@ -79,7 +77,6 @@ def get_current_user(
             headers={"WWW-Authenticate": "Bearer"},
         )
 
-    # IMPORT TRONG HÀM để tránh circular import
     from app.services.auth_service import get_user_by_email
 
     user = get_user_by_email(db, str(email))
