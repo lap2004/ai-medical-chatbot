@@ -1,5 +1,6 @@
 import logging
 import subprocess
+import base64
 from openai import OpenAI
 
 def text_to_speech(model: str, api_key: str, text: str, output_file_path: str):
@@ -21,6 +22,25 @@ def text_to_speech(model: str, api_key: str, text: str, output_file_path: str):
 
     logging.info(f"TTS saved: {output_file_path}")
     return output_file_path
+
+def text_to_speech_base64(model: str, api_key: str, text: str) -> str:
+    if model != "openai":
+        raise ValueError(f"Unsupported TTS model (OpenAI only): {model}")
+    if not api_key:
+        raise ValueError("OPENAI_API_KEY is required for OpenAI TTS")
+    if not isinstance(text, str) or not text.strip():
+        raise ValueError("text must be a non-empty string")
+    
+    client = OpenAI(api_key=api_key)
+    
+    with client.audio.speech.with_streaming_response.create(
+        model="gpt-4o-mini-tts",
+        voice="nova",
+        input=text,
+        speed=1.15,
+    ) as response:
+        audio_data = response.read()
+        return base64.b64encode(audio_data).decode("utf-8")
 
 
 def speak_openai_stream(api_key: str, text: str, voice: str = "nova", speed: float = 1.15):

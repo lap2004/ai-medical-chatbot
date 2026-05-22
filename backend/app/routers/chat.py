@@ -22,7 +22,11 @@ from db.schemas.chat_schema import (
     ChatTurnResponse,
     ChatAnswer,
     RetrievedContext,
+    InternalVoiceChatRequest,
+    InternalVoiceChatResponse,
 )
+
+from app.rag.chat_pipeline import run as run_pipeline
 
 from app.services.chat_service import (
     get_list_conversations,
@@ -122,3 +126,23 @@ async def chat_legacy(
         contexts=retrieved_contexts,
         created_at=assistant_msg.created_at,
     )
+
+@router.post("/internal/voice", response_model=InternalVoiceChatResponse, status_code=status.HTTP_200_OK)
+async def chat_internal_voice(
+    req: InternalVoiceChatRequest,
+    db: AsyncSession = Depends(get_db),
+):
+    question = (req.question or "").strip()
+    if len(question) < 2:
+        raise HTTPException(status_code=400, detail="Câu hỏi quá ngắn.")
+        
+    out = await run_pipeline(question, db, history=req.history)
+    raw_answer = out.get("answer") or {}
+    
+    if isinstance(raw_answer, dict):
+        answer_text = raw_answer.get("answer")
+        if answer_text:
+            return InternalVoiceChatResponse(answer=str(answer_text))
+        return InternalVoiceChatResponse(answer=str(raw_answer))
+        
+    return InternalVoiceChatResponse(answer=str(raw_answer))

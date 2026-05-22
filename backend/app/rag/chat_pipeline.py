@@ -8,12 +8,12 @@ async def run(question: str, db: AsyncSession, history: List[Dict[str, Any]] = N
     if history is None:
         history = []
     if history:
-        standalone_question = contextualize_query(question, history)
+        standalone_question = await contextualize_query(question, history)
     else:
         standalone_question = question
         
     contexts: List[Dict[str, Any]] = await retrieve(db, standalone_question, top_k=settings.qa_topk)
 
-    answer = build_answer(question, contexts, history)
+    answer = await build_answer(question, contexts, history)
     return {"answer": answer, "contexts": contexts}
 

@@ -129,7 +129,7 @@ def _format_prompt(question: str, contexts: List[Dict[str, Any]], history: List[
         "Hãy trả lời BẰNG JSON DUY NHẤT theo JSON_SCHEMA ở trên."
     )
 
-def call_gemini(prompt: str) -> str:
+async def call_gemini(prompt: str) -> str:
     if not settings.gemini_api_key:
         logger.warning("GEMINI_API_KEY không có; trả dummy JSON.")
         return json.dumps({
@@ -142,7 +142,7 @@ def call_gemini(prompt: str) -> str:
     genai.configure(api_key=settings.gemini_api_key)
     model_name = settings.gemini_model or "models/gemini-2.5-flash"
     model = genai.GenerativeModel(model_name)
-    resp = model.generate_content(prompt)
+    resp = await model.generate_content_async(prompt)
     return resp.text or ""
 
 def parse_json_safely(raw: str) -> Dict[str, Any]:
@@ -166,7 +166,7 @@ def parse_json_safely(raw: str) -> Dict[str, Any]:
         "safety": {"urgency": "routine", "rationale": "LLM returned non-JSON"},
     }
 
-def contextualize_query(question: str, history: List[Dict[str, Any]]) -> str:
+async def contextualize_query(question: str, history: List[Dict[str, Any]]) -> str:
     if not history:
         return question
         
@@ -187,7 +187,7 @@ Tuyệt đối KHÔNG trả lời câu hỏi, CHỈ trả về câu hỏi đã �
         f"-> CÂU HỎI ĐỘC LẬP:"
     )
     
-    rewritten = call_gemini(prompt)
+    rewritten = await call_gemini(prompt)
     if not rewritten.strip():
         return question
         
@@ -195,9 +195,9 @@ Tuyệt đối KHÔNG trả lời câu hỏi, CHỈ trả về câu hỏi đã �
     logger.info(f"O-Query: {question} | Rewritten: {clean_rewritten}")
     return clean_rewritten
 
-def build_answer(question: str, contexts: List[Dict[str, Any]], history: List[Dict[str, Any]] = None) -> Dict[str, Any]:
+async def build_answer(question: str, contexts: List[Dict[str, Any]], history: List[Dict[str, Any]] = None) -> Dict[str, Any]:
     prompt = _format_prompt(question, contexts, history)
-    raw = call_gemini(prompt)
+    raw = await call_gemini(prompt)
     parsed = parse_json_safely(raw)
 
     if "references" not in parsed:

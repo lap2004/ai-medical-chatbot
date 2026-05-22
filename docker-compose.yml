@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  voice_ai:
+    build:
+      context: ./voice_ai
+      dockerfile: Dockerfile
+    container_name: medical_chatbot_voice
+    restart: unless-stopped
+    ports:
+      - "8001:8001"
+    environment:
+      # Thay bằng URL HuggingFace của bạn, ví dụ: https://your-space.hf.space/chat/internal/voice
+      - BACKEND_INTERNAL_CHAT_URL=${BACKEND_INTERNAL_CHAT_URL:-https://your-huggingface-url.hf.space/chat/internal/voice}
+      - OPENAI_API_KEY=${OPENAI_API_KEY:-}
+      - GROQ_API_KEY=${GROQ_API_KEY:-}
+      - CARTESIA_API_KEY=${CARTESIA_API_KEY:-}
+      - ELEVENLABS_API_KEY=${ELEVENLABS_API_KEY:-}
+      - TTS_MODEL=${TTS_MODEL:-openai}
+      - RESPONSE_MODEL=${RESPONSE_MODEL:-groq}
+      - STT_MODEL=${STT_MODEL:-deepgram}

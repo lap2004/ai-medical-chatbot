@@ -112,3 +112,10 @@ class ChatResponse(BaseModel):
     answer: ChatAnswer
     contexts: List[RetrievedContext] = []
     created_at: Optional[datetime] = None
+
+class InternalVoiceChatRequest(BaseModel):
+    question: str
+    history: List[Dict[str, str]] = []
+
+class InternalVoiceChatResponse(BaseModel):
+    answer: str
