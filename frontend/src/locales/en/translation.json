@@ -1,0 +1,397 @@
+{
+  "common": {
+    "login": "Login",
+    "logout": "Logout",
+    "dashboard": "Dashboard",
+    "settings": "Settings",
+    "save": "Save",
+    "cancel": "Cancel",
+    "edit": "Edit",
+    "delete": "Delete",
+    "profile": {
+      "changeAvatar": "Change Avatar",
+      "changeName": "Change Name",
+      "changePassword": "Change Password",
+      "fullName": "Full Name",
+      "newNamePlaceholder": "Enter your new name...",
+      "changeNameSuccess": "Name changed successfully!",
+      "changeNameError": "An error occurred, please try again.",
+      "saving": "Saving...",
+      "saveChanges": "Save Changes",
+      "logout": "Logout",
+      "uploading": "Uploading...",
+      "uploadSuccess": "Avatar changed successfully!",
+      "uploadError": "An error occurred while changing your avatar!",
+      "resetPassword": "Change Password",
+      "resetPasswordDesc": "Update your password to keep your account secure.",
+      "resetPasswordRequired": "Password Update Required",
+      "resetPasswordRequiredDesc": "For security reasons, you must update your password before continuing.",
+      "currentPassword": "Current Password",
+      "newPassword": "New Password",
+      "confirmNewPassword": "Confirm New Password",
+      "passwordStrength": "PASSWORD STRENGTH",
+      "passwordHint": "Use at least 8 characters with numbers and symbols",
+      "updating": "Updating...",
+      "cancelCap": "Cancel",
+      "cropPhoto": "Crop Photo",
+      "cropPhotoDesc": "Adjust your avatar before uploading",
+      "saveAvatar": "Save Avatar"
+    }
+  },
+  "admin": {
+    "userManagement": "User Management",
+    "analytics": "Analytics",
+    "helpCenter": "Help Center",
+    "adminPanel": "Admin Panel",
+    "copyright": "© 2026 AI Doctor Assistant Management System. All rights reserved.",
+    "users": {
+        "searchUser": "Search users by name, email or ID...",
+        "filter": "Filter",
+        "filters": "Filters",
+        "role": "Role",
+        "status": "Status",
+        "all": "All",
+        "admin": "Admin",
+        "user": "User",
+        "active": "Active",
+        "inactive": "Inactive",
+        "reset": "Reset",
+        "exportCsv": "Export CSV",
+        "addNewUser": "Add New User",
+        "id": "ID",
+        "email": "Email",
+        "createdDate": "Created Date",
+        "actions": "Actions",
+        "noUsersFound": "No users found.",
+        "showing": "Showing",
+        "to": "to",
+        "of": "of",
+        "users": "users",
+        "previous": "Previous",
+        "next": "Next",
+        "addNewUserTitle": "Add New User",
+        "addNewUserDesc": "Create a new account for the system",
+        "editUserTitle": "Edit User",
+        "editUserDesc": "Editing {{name}}",
+        "cancel": "Cancel",
+        "create": "Create",
+        "save": "Save",
+        "saving": "Saving...",
+        "nameLabel": "Name",
+        "fullNamePlaceholder": "Full name",
+        "emailPlaceholder": "email@example.com",
+        "passwordLabel": "Password",
+        "passwordPlaceholder": "Minimum 6 characters",
+        "deleteUser": "Delete user?",
+        "deleteUserDesc": "This will permanently delete {{name}}. You can't undo this action.",
+        "deleteActionCantUndo": "This action can't be undone.",
+        "delete": "Delete",
+        "loadingUsers": "Loading users...",
+        "failedToLoad": "Failed to load users.",
+        "failedToCreate": "Failed to create user.",
+        "failedToUpdate": "Failed to update user.",
+        "failedToDelete": "Failed to delete user."
+    },
+    "analyticsView": {
+        "title": "Analytics Reports",
+        "loading": "Loading analytics...",
+        "reportsByCategory": "Reports by Category",
+        "noReportData": "No report data available",
+        "feedbackOverview": "Feedback Overview",
+        "likes": "Likes",
+        "dislikes": "Dislikes",
+        "reportDetails": "Report Details",
+        "category": "Category",
+        "count": "Count",
+        "noReportsFound": "No reports found",
+        "topActiveUsers": "Top Active Users",
+        "messages": "Messages",
+        "noDataAvailable": "No data available"
+    },
+    "settingsView": {
+        "warningRestart": "⚠️ AI/System configurations will reset to default if server restarts.",
+        "adminProfile": "Admin Profile",
+        "adminProfileDesc": "Update your display name and email",
+        "fullName": "Full Name",
+        "email": "Email",
+        "saveProfile": "Save Profile",
+        "saving": "Saving...",
+        "profileUpdated": "Profile updated.",
+        "failedToUpdateProfile": "Failed to update profile.",
+        "changePassword": "Change Password",
+        "changePasswordDesc": "Keep your admin account secure",
+        "currentPassword": "Current Password",
+        "newPassword": "New Password",
+        "confirmPassword": "Confirm Password",
+        "min6chars": "Min. 6 characters",
+        "repeatPassword": "Repeat password",
+        "passwordMismatch": "New passwords do not match.",
+        "passwordTooShort": "New password must be at least 6 characters.",
+        "passwordChanged": "Password changed.",
+        "failedToChangePassword": "Failed to change password.",
+        "systemSettings": "System & AI Config",
+        "systemSettingsDesc": "Runtime configuration — resets on server restart",
+        "userRegistration": "User Self-Registration",
+        "userRegistrationDesc": "Allow new users to register from the signup page",
+        "ragTopK": "RAG Top-K",
+        "ragTopKDesc": "Number of document chunks retrieved per query (1–20)",
+        "geminiModel": "Gemini Model",
+        "geminiModelDesc": "Active Gemini model used for all chat responses",
+        "loadingSettings": "Loading settings...",
+        "settingsSaved": "Settings saved.",
+        "failedToSave": "Failed to save."
+    }
+  },
+  "dashboard": {
+    "loadingMetrics": "Loading metrics...",
+    "totalUsers": "Total Users",
+    "totalMessages": "Total Messages",
+    "positiveFeedback": "Positive Feedback",
+    "totalReports": "Total Reports",
+    "recentActivity": "Recent Activity",
+    "noRecentActivity": "No recent activity",
+    "feedbackSummary": "Feedback Summary",
+    "likes": "Likes",
+    "dislikes": "Dislikes",
+    "vsLastMonth": "vs last month",
+    "likedMessage": " liked a message",
+    "dislikedMessage": " disliked a message",
+    "reportedMessage": " reported a message for "
+  },
+  "login": {
+    "pleaseEnterEmail": "Please enter your email.",
+    "pleaseEnterPassword": "Please enter your password.",
+    "loginFailed": "Login failed!",
+    "loginSuccess": "Login successful!",
+    "googleLoginFailed": "Google login failed!",
+    "googleLoginSuccess": "Google login successful!",
+    "appleLoginNotIntegrated": "Apple login is not integrated yet.",
+    "welcomeBack": "Welcome Back",
+    "accessAssistant": "Access your personal health assistant",
+    "emailAddress": "Email Address",
+    "password": "Password",
+    "forgot": "Forgot?",
+    "signingIn": "Signing In...",
+    "signIn": "Sign In",
+    "orContinueWith": "Or continue with",
+    "dontHaveAccount": "Don't have an account?",
+    "signUpForFree": "Sign up for free",
+    "tempPasswordNotice": "You are using a temporary password. Please change it."
+  },
+  "chatSidebar": {
+    "newConsultation": "New Conversation",
+    "recentSessions": "Your Chats",
+    "rename": "Rename",
+    "delete": "Delete",
+    "renameSession": "Rename session",
+    "renameText": "Rename",
+    "thisSession": "this session",
+    "newName": "New name...",
+    "cancel": "Cancel",
+    "save": "Save",
+    "saving": "Saving...",
+    "deleteSession": "Delete session?",
+    "permanentlyDelete": "This will permanently delete",
+    "cannotUndo": ". You can’t undo this action.",
+    "deleting": "Deleting..."
+  },
+  "chat": {
+    "voice": "Voice",
+    "liveHealthGuidance": "Virtual Health Assistant"
+  },
+  "widget": {
+    "header": {
+      "subtitle": "Medical Assistant"
+    },
+    "tabs": {
+      "chat": "CHAT",
+      "history": "HISTORY",
+      "poweredBy": "Powered by HealthAI Companion"
+    },
+    "chat": {
+      "placeholder": "Describe your symptoms..."
+    },
+    "history": {
+      "title": "Recent Consultations",
+      "noHistory": "No history found."
+    },
+    "voice": {
+      "listening": "Listening to you...",
+      "speakClearly": "Speak clearly about your health concerns."
+    }
+  },
+  "voice": {
+    "readyToCall": "Ready (Tap Call)",
+    "calling": "Calling...",
+    "connecting": "Connecting...",
+    "speaking": "Speaking...",
+    "listening": "Listening...",
+    "connectionError": "Connection Error",
+    "doctorAiSpeaking": "Doctor AI IS SPEAKING...",
+    "interrupt": "INTERRUPT",
+    "unmute": "UNMUTE",
+    "mute": "MUTE MIC",
+    "endCall": "END CALL",
+    "call": "CALL",
+    "speaker": "SPEAKER",
+    "pressCallHint": "Press CALL — it will connect in 3 seconds.",
+    "connecting_msg": "Connecting…",
+    "connected_msg": "Connected.",
+    "micStarted": "Mic started (Web Speech API).",
+    "micPermissionError": "Mic permission error.",
+    "micNotSupported": "Your browser does not support Web Speech API. Please use Google Chrome.",
+    "micPermissionAlert": "Could not open mic. Please allow microphone access and try again.",
+    "wsError": "WS error.",
+    "disconnected": "Disconnected.",
+    "hangup": "Hangup.",
+    "dialing": "Calling… (connecting in 3s)"
+  },
+  "home": {
+    "nav": {
+      "home": "Home",
+      "dashboard": "Dashboard",
+      "chat": "ChatAI",
+      "support": "Support"
+    },
+    "hero": {
+      "badge": "Next-Gen Medical Assistance",
+      "title1": "Your AI ",
+      "title2": "Health",
+      "title3": " Companion.",
+      "desc": "Experience immediate medical guidance, symptom checks, and medication info powered by advanced AI.",
+      "getStarted": "Get Started Free",
+      "watchDemo": "Watch Demo"
+    },
+    "widget": {
+      "title": "Hi! How can I assist you today ?",
+      "msg1": "I've been feeling some fatigue.",
+      "msg2": "Analyzing symptoms...",
+      "accuracy": "Accuracy Rate"
+    },
+    "solutions": {
+      "title": "Smart Healthcare Solutions",
+      "desc": "Trained on millions of clinical papers to provide accurate health information.",
+      "instant": "Instant Consultation",
+      "instantDesc": "Chat with our AI anytime for immediate answers.",
+      "voice": "Voice Interaction",
+      "voiceDesc": "Speak naturally for hands-free guidance.",
+      "health": "Health Tracking",
+      "healthDesc": "Securely store and track your history."
+    },
+    "howItWorks": {
+      "title": "How it Works",
+      "desc": "Our process is designed to be seamless and straightforward.",
+      "step1": "Input Information",
+      "step1Desc": "Enter your symptoms, questions, or context in the chat.",
+      "step2": "AI Analysis",
+      "step2Desc": "Our AI evaluates and references relevant clinical signals.",
+      "step3": "Suggested Results",
+      "step3Desc": "Get guidance, next steps, and supportive explanations."
+    },
+    "smartApps": {
+      "title": "Smart Applications",
+      "imgRec": "Image Recognition",
+      "imgRecDesc": "Supportive visual checks",
+      "clinImg": "Clinical Image Analysis",
+      "clinImgDesc": "Upload images for supportive insights and general guidance.",
+      "medEd": "Medical Education Highlights",
+      "medEdDesc": "Personalized learning summaries based on symptoms and context."
+    },
+    "ethics": {
+      "title": "Ethics & Privacy Committed",
+      "desc": "Your health data is secured. We employ privacy-grade encryption and follow best practices to help ensure your safety.",
+      "t1": "HIPAA Compliant",
+      "t2": "End-to-end Encryption",
+      "t3": "Bias-Free Algorithms",
+      "t4": "Human-in-the-loop QA"
+    },
+    "cta": {
+      "title": "Start experiencing AI Doctor Assistant",
+      "desc": "Join a community of over 10,000+ doctors and medical students learning and supporting every day.",
+      "button": "Try it free right now",
+      "chatWithAi": "Chat with AI"
+    }
+  },
+  "support": {
+    "header": {
+      "title": "Support Center",
+      "desc": "Ask us anything. We're here to help."
+    },
+    "tabs": {
+      "faqs": "FAQs",
+      "contact": "Contact Support"
+    },
+    "search": {
+      "placeholder": "Search for keywords...",
+      "all": "All",
+      "noResults": "No results found",
+      "noResultsDesc": "We couldn't find any articles matching"
+    },
+    "contact": {
+      "liveChat": "Live Chat",
+      "liveChatDesc": "Chat with our support team real-time.",
+      "startChat": "Start Chat",
+      "email": "Email Support",
+      "emailDesc": "Send us a detailed message.",
+      "phone": "Phone Line",
+      "phoneDesc": "Call us for urgent inquiries."
+    },
+    "form": {
+      "title": "Send us a message",
+      "nameLabel": "Your Name",
+      "namePlace": "Thai Viet Lap",
+      "emailLabel": "Email Address",
+      "emailPlace": "lap@gmail.com",
+      "subjectLabel": "Subject",
+      "sub1": "General Inquiry",
+      "sub2": "Technical Issue",
+      "sub3": "Billing Question",
+      "sub4": "Feature Request",
+      "messageLabel": "Message",
+      "messagePlace": "Describe your issue in detail...",
+      "send": "Send Message"
+    },
+    "faqs": [
+      {
+        "category": "Technical",
+        "question": "How accurate is the AI diagnosis?",
+        "answer": "Our AI model is trained on millions of verified clinical records and medical literature. However, it is an assistant tool and not a replacement for professional medical advice. Always consult with a doctor for serious conditions."
+      },
+      {
+        "category": "Privacy",
+        "question": "Is my personal health data secure?",
+        "answer": "Yes. We use end-to-end encryption for all conversations and abide by strict HIPAA-compliant privacy standards. Your data is anonymized for processing and never shared with third parties without consent."
+      },
+      {
+        "category": "Technical",
+        "question": "Can I use voice mode in noisy environments?",
+        "answer": "Our voice recognition model uses noise-cancellation technology, but for the best accuracy, we recommend speaking in a relatively quiet environment."
+      },
+      {
+        "category": "Account",
+        "question": "How do I reset my password?",
+        "answer": "You can reset your password by going to your Profile menu (top right) and selecting 'Change Password'."
+      },
+      {
+        "category": "General",
+        "question": "Does Doctor AI support multiple languages?",
+        "answer": "Currently, Doctor AI primarily supports English. We are working on adding support for Spanish, French, and Mandarin in the next major update."
+      },
+      {
+        "category": "Account",
+        "question": "Can I export my chat history?",
+        "answer": "Yes, you can export your consultation history as a PDF summary from your account settings or directly from the chat interface."
+      },
+      {
+        "category": "General",
+        "question": "Is there a mobile app available?",
+        "answer": "Yes, the Doctor AI mobile app is available for both iOS and Android. You can download it from the App Store or Google Play Store."
+      },
+      {
+        "category": "Billing",
+        "question": "How do I report a billing issue?",
+        "answer": "For any billing inquiries, please select 'Billing Question' in the contact form below or email us directly at billing@doctorai.com."
+      }
+    ]
+  }
+}

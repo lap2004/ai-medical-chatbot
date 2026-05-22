@@ -1,0 +1,397 @@
+{
+  "common": {
+    "login": "Đăng nhập",
+    "logout": "Đăng xuất",
+    "dashboard": "Bảng điều khiển",
+    "settings": "Cài đặt",
+    "save": "Lưu",
+    "cancel": "Hủy",
+    "edit": "Chỉnh sửa",
+    "delete": "Xóa",
+    "profile": {
+      "changeAvatar": "Đổi ảnh đại diện",
+      "changeName": "Đổi tên hiển thị",
+      "changePassword": "Đổi mật khẩu",
+      "fullName": "Họ và Tên",
+      "newNamePlaceholder": "Nhập tên mới của bạn...",
+      "changeNameSuccess": "Thay đổi tên thành công!",
+      "changeNameError": "Có lỗi xảy ra, vui lòng thử lại sau.",
+      "saving": "Đang lưu...",
+      "saveChanges": "Lưu thay đổi",
+      "logout": "Đăng xuất",
+      "uploading": "Đang tải...",
+      "uploadSuccess": "Thay đổi ảnh đại diện thành công!",
+      "uploadError": "Đã có lỗi xảy ra khi đổi ảnh!",
+      "resetPassword": "Đổi mật khẩu",
+      "resetPasswordDesc": "Cập nhật mật khẩu để bảo vệ tài khoản của bạn.",
+      "resetPasswordRequired": "Yêu cầu đổi mật khẩu",
+      "resetPasswordRequiredDesc": "Vì lý do bảo mật, bạn phải đổi mật khẩu trước khi tiếp tục.",
+      "currentPassword": "Mật khẩu hiện tại",
+      "newPassword": "Mật khẩu mới",
+      "confirmNewPassword": "Xác nhận mật khẩu mới",
+      "passwordStrength": "Độ mạnh mật khẩu",
+      "passwordHint": "Dùng ít nhất 8 ký tự gồm chữ, số và ký hiệu",
+      "updating": "Đang cập nhật...",
+      "cancelCap": "Hủy",
+      "cropPhoto": "Cắt ảnh",
+      "cropPhotoDesc": "Chỉnh ảnh trước khi tải lên",
+      "saveAvatar": "Lưu ảnh"
+    }
+  },
+  "admin": {
+    "userManagement": "Quản lý người dùng",
+    "analytics": "Phân tích",
+    "helpCenter": "Trung tâm trợ giúp",
+    "adminPanel": "Bảng quản trị",
+    "copyright": "© 2026 Hệ thống quản lý AI Doctor Assistant. Bảo lưu mọi quyền.",
+    "users": {
+        "searchUser": "Tìm người dùng theo tên, email hoặc ID...",
+        "filter": "Bộ lọc",
+        "filters": "Các bộ lọc",
+        "role": "Vai trò",
+        "status": "Trạng thái",
+        "all": "Tất cả",
+        "admin": "Quản trị viên",
+        "user": "Người dùng",
+        "active": "Đang hoạt động",
+        "inactive": "Chưa hoạt động",
+        "reset": "Đặt lại",
+        "exportCsv": "Xuất CSV",
+        "addNewUser": "Thêm Người Dùng",
+        "id": "ID",
+        "email": "Email",
+        "createdDate": "Ngày tạo",
+        "actions": "Thao tác",
+        "noUsersFound": "Không tìm thấy người dùng nào.",
+        "showing": "Hiển thị",
+        "to": "đến",
+        "of": "của",
+        "users": "người dùng",
+        "previous": "Trước",
+        "next": "Tiếp",
+        "addNewUserTitle": "Thêm Người Dùng Mới",
+        "addNewUserDesc": "Tạo một tài khoản mới cho hệ thống",
+        "editUserTitle": "Sửa Người Dùng",
+        "editUserDesc": "Đang sửa {{name}}",
+        "cancel": "Hủy",
+        "create": "Tạo",
+        "save": "Lưu",
+        "saving": "Đang lưu...",
+        "nameLabel": "Tên",
+        "fullNamePlaceholder": "Họ và tên",
+        "emailPlaceholder": "email@example.com",
+        "passwordLabel": "Mật khẩu",
+        "passwordPlaceholder": "Tối thiểu 6 ký tự",
+        "deleteUser": "Xóa người dùng?",
+        "deleteUserDesc": "Hành động này sẽ xóa vĩnh viễn {{name}}. Bạn không thể hoàn tác.",
+        "deleteActionCantUndo": "Hành động này không thể hoàn tác.",
+        "delete": "Xóa",
+        "loadingUsers": "Đang tải danh sách người dùng...",
+        "failedToLoad": "Tải danh sách thất bại.",
+        "failedToCreate": "Tạo người dùng thất bại.",
+        "failedToUpdate": "Cập nhật người dùng thất bại.",
+        "failedToDelete": "Xóa người dùng thất bại."
+    },
+    "analyticsView": {
+        "title": "Báo cáo Phân Tích",
+        "loading": "Đang tải phân tích...",
+        "reportsByCategory": "Báo cáo theo danh mục",
+        "noReportData": "Không có dữ liệu báo cáo",
+        "feedbackOverview": "Tổng quan Phản hồi",
+        "likes": "Thích",
+        "dislikes": "Không thích",
+        "reportDetails": "Chi Tiết Báo Cáo",
+        "category": "Danh mục",
+        "count": "Số lượng",
+        "noReportsFound": "Không tìm thấy báo cáo",
+        "topActiveUsers": "Người Dùng Tích Cực Nhất",
+        "messages": "Tin nhắn",
+        "noDataAvailable": "Không có dữ liệu"
+    },
+    "settingsView": {
+        "warningRestart": "⚠️ Các cấu hình AI/Hệ thống sẽ đặt lại về mặc định nếu khởi động lại máy chủ.",
+        "adminProfile": "Hồ sơ Quản Trị Viên",
+        "adminProfileDesc": "Cập nhật tên hiển thị và email của bạn",
+        "fullName": "Họ và tên",
+        "email": "Email",
+        "saveProfile": "Lưu Hồ sơ",
+        "saving": "Đang lưu...",
+        "profileUpdated": "Đã cập nhật hồ sơ.",
+        "failedToUpdateProfile": "Cập nhật hồ sơ thất bại.",
+        "changePassword": "Đổi Mật Khẩu",
+        "changePasswordDesc": "Giữ tài khoản quản trị của bạn an toàn",
+        "currentPassword": "Mật khẩu hiện tại",
+        "newPassword": "Mật khẩu mới",
+        "confirmPassword": "Xác nhận mật khẩu",
+        "min6chars": "Tối thiểu 6 ký tự",
+        "repeatPassword": "Nhập lại mật khẩu",
+        "passwordMismatch": "Mật khẩu mới không khớp.",
+        "passwordTooShort": "Mật khẩu mới phải có ít nhất 6 ký tự.",
+        "passwordChanged": "Đã đổi mật khẩu.",
+        "failedToChangePassword": "Đổi mật khẩu thất bại.",
+        "systemSettings": "Cấu hình AI & Hệ thống",
+        "systemSettingsDesc": "Cấu hình Runtime — sẽ đặt lại khi khởi động lại máy chủ",
+        "userRegistration": "Đăng ký Người Dùng Tự Do",
+        "userRegistrationDesc": "Cho phép người dùng mới đăng ký từ trang signup",
+        "ragTopK": "RAG Top-K",
+        "ragTopKDesc": "Số lượng đoạn văn bản truy xuất cho mỗi truy vấn (1–20)",
+        "geminiModel": "Mô hình Gemini",
+        "geminiModelDesc": "Mô hình Gemini đang hoạt động dùng cho mọi câu trả lời chat",
+        "loadingSettings": "Đang tải cài đặt...",
+        "settingsSaved": "Đã lưu cài đặt.",
+        "failedToSave": "Lưu thất bại."
+    }
+  },
+  "dashboard": {
+    "loadingMetrics": "Đang tải dữ liệu...",
+    "totalUsers": "Tổng người dùng",
+    "totalMessages": "Tổng tin nhắn",
+    "positiveFeedback": "Phản hồi tích cực",
+    "totalReports": "Tổng báo cáo",
+    "recentActivity": "Hoạt động gần đây",
+    "noRecentActivity": "Không có hoạt động gần đây",
+    "feedbackSummary": "Tổng quan phản hồi",
+    "likes": "Thích",
+    "dislikes": "Không thích",
+    "vsLastMonth": "so với tháng trước",
+    "likedMessage": " đã thích một tin nhắn",
+    "dislikedMessage": " đã không thích một tin nhắn",
+    "reportedMessage": " đã báo cáo một tin nhắn về "
+  },
+  "login": {
+    "pleaseEnterEmail": "Vui lòng nhập email.",
+    "pleaseEnterPassword": "Vui lòng nhập mật khẩu.",
+    "loginFailed": "Đăng nhập thất bại!",
+    "loginSuccess": "Đăng nhập thành công!",
+    "googleLoginFailed": "Đăng nhập Google thất bại!",
+    "googleLoginSuccess": "Đăng nhập Google thành công!",
+    "appleLoginNotIntegrated": "Apple login chưa được tích hợp.",
+    "welcomeBack": "Chào mừng trở lại",
+    "accessAssistant": "Truy cập trợ lý sức khỏe cá nhân của bạn",
+    "emailAddress": "Địa chỉ Email",
+    "password": "Mật khẩu",
+    "forgot": "Quên?",
+    "signingIn": "Đang đăng nhập...",
+    "signIn": "Đăng nhập",
+    "orContinueWith": "Hoặc tiếp tục với",
+    "dontHaveAccount": "Chưa có tài khoản?",
+    "signUpForFree": "Đăng ký miễn phí",
+    "tempPasswordNotice": "Bạn đang sử dụng mật khẩu tạm thời. Vui lòng đổi mật khẩu."
+  },
+  "chatSidebar": {
+    "newConsultation": "Cuộc trò chuyện mới",
+    "recentSessions": "Cuộc trò chuyện của bạn",
+    "rename": "Đổi tên",
+    "delete": "Xóa",
+    "renameSession": "Đổi tên",
+    "renameText": "Đổi tên",
+    "thisSession": "phiên này",
+    "newName": "Tên mới...",
+    "cancel": "Hủy",
+    "save": "Lưu",
+    "saving": "Đang lưu...",
+    "deleteSession": "Xóa đoạn chat?",
+    "permanentlyDelete": "Hành động này sẽ xóa vĩnh viễn",
+    "cannotUndo": ". Bạn không thể hoàn tác.",
+    "deleting": "Đang xóa..."
+  },
+    "chat": {
+    "voice": "Micro",
+    "liveHealthGuidance": "Trợ lý sức khỏe ảo"
+  },
+  "widget": {
+    "header": {
+      "subtitle": "Trợ Lý Y Tế"
+    },
+    "tabs": {
+      "chat": "CHAT",
+      "history": "LỊCH SỬ",
+      "poweredBy": "Được hỗ trợ bởi HealthAI Companion"
+    },
+    "chat": {
+      "placeholder": "Mô tả triệu chứng của bạn..."
+    },
+    "history": {
+      "title": "Tư Vấn Gần Đây",
+      "noHistory": "Không có lịch sử."
+    },
+    "voice": {
+      "listening": "Đang lắng nghe bạn...",
+      "speakClearly": "Hãy nói rõ về vấn đề sức khỏe của bạn."
+    }
+  },
+  "voice": {
+    "readyToCall": "Sẵn sàng (Nhấn Call)",
+    "calling": "Đang gọi...",
+    "connecting": "Đang kết nối...",
+    "speaking": "Đang nói...",
+    "listening": "Đang lắng nghe...",
+    "connectionError": "Lỗi kết nối",
+    "doctorAiSpeaking": "Doctor AI ĐANG NÓI...",
+    "interrupt": "NGẮT",
+    "unmute": "BẬT MIC",
+    "mute": "TẮT MIC",
+    "endCall": "KẾT THÚC",
+    "call": "GỌI",
+    "speaker": "LOA",
+    "pressCallHint": "Nhấn GỌI — sẽ kết nối sau 3 giây.",
+    "connecting_msg": "Đang kết nối…",
+    "connected_msg": "Đã kết nối.",
+    "micStarted": "Mic đã bật (Web Speech API).",
+    "micPermissionError": "Lỗi quyền truy cập mic.",
+    "micNotSupported": "Trình duyệt của bạn không hỗ trợ Web Speech API. Hãy dùng Google Chrome.",
+    "micPermissionAlert": "Không mở được mic. Hãy cho phép microphone và thử lại.",
+    "wsError": "Lỗi kết nối WS.",
+    "disconnected": "Đã ngắt kết nối.",
+    "hangup": "Đã cúp máy.",
+    "dialing": "Đang gọi… (kết nối sau 3 giây)"
+  },
+  "home": {
+    "nav": {
+      "home": "Trang Chủ",
+      "dashboard": "Bảng Điều Khiển",
+      "chat": "ChatAI",
+      "support": "Hỗ Trợ"
+    },
+    "hero": {
+      "badge": "Hỗ Trợ Y Tế Thế Hệ Mới",
+      "title1": "Trợ Lý ",
+      "title2": "Sức Khỏe",
+      "title3": " AI Của Bạn.",
+      "desc": "Trải nghiệm hướng dẫn y tế tức thì, kiểm tra triệu chứng và thông tin thuốc được hỗ trợ bởi AI tiên tiến.",
+      "getStarted": "Bắt Đầu Miễn Phí",
+      "watchDemo": "Xem Demo"
+    },
+    "widget": {
+      "title": "Xin chào! Tôi có thể giúp gì cho bạn hôm nay?",
+      "msg1": "Tôi cảm thấy hơi mệt mỏi.",
+      "msg2": "Đang phân tích triệu chứng...",
+      "accuracy": "Độ chính xác"
+    },
+    "solutions": {
+      "title": "Giải Pháp Chăm Sóc Sức Khỏe Thông Minh",
+      "desc": "Được đào tạo trên hàng triệu tài liệu lâm sàng để cung cấp thông tin sức khỏe chính xác.",
+      "instant": "Tư Vấn Tức Thì",
+      "instantDesc": "Trò chuyện với AI của chúng tôi bất cứ lúc nào để có câu trả lời ngay lập tức.",
+      "voice": "Tương Tác Bằng Giọng Nói",
+      "voiceDesc": "Nói chuyện tự nhiên để được hướng dẫn rảnh tay.",
+      "health": "Theo Dõi Sức Khỏe",
+      "healthDesc": "Lưu trữ và theo dõi lịch sử của bạn một cách an toàn."
+    },
+    "howItWorks": {
+      "title": "Cách Thức Hoạt Động",
+      "desc": "Quy trình của chúng tôi được thiết kế liền mạch và rõ ràng.",
+      "step1": "Nhập Thông Tin",
+      "step1Desc": "Nhập triệu chứng, câu hỏi hoặc ngữ cảnh của bạn vào mục chat.",
+      "step2": "AI Phân Tích",
+      "step2Desc": "AI của chúng tôi đánh giá và tham khảo các tín hiệu lâm sàng có liên quan.",
+      "step3": "Gợi Ý Kết Quả",
+      "step3Desc": "Nhận hướng dẫn, các bước tiếp theo và giải thích hỗ trợ."
+    },
+    "smartApps": {
+      "title": "Ứng Dụng Thông Minh",
+      "imgRec": "Nhận Diện Hình Ảnh",
+      "imgRecDesc": "Hỗ trợ kiểm tra qua hình ảnh",
+      "clinImg": "Phân Tích Hình Ảnh Lâm Sàng",
+      "clinImgDesc": "Tải hình ảnh lên để nhận tư vấn hỗ trợ và hướng dẫn tổng quát.",
+      "medEd": "Tiêu Điểm Giáo Dục Y Khoa",
+      "medEdDesc": "Tóm tắt kiến thức cá nhân hóa dựa trên triệu chứng và ngữ cảnh."
+    },
+    "ethics": {
+      "title": "Cam Kết Đạo Đức & Riêng Tư",
+      "desc": "Dữ liệu sức khỏe của bạn được bảo mật. Chúng tôi sử dụng mã hóa cấp độ quyền riêng tư và tuân theo các thực hành tốt nhất để đảm bảo an toàn cho bạn.",
+      "t1": "Tuân thủ HIPAA",
+      "t2": "Mã hóa đầu cuối",
+      "t3": "Thuật toán không thiên kiến",
+      "t4": "Chất lượng do con người kiểm tra"
+    },
+    "cta": {
+      "title": "Bắt đầu trải nghiệm AI Trợ Lý Bác Sĩ",
+      "desc": "Gia nhập cộng đồng hơn 10,000+ bác sĩ và sinh viên y khoa đang học hỏi và hỗ trợ mỗi ngày.",
+      "button": "Trải nghiệm miễn phí ngay bây giờ",
+      "chatWithAi": "Trò chuyện với AI"
+    }
+  },
+  "support": {
+    "header": {
+      "title": "Trung Tâm Hỗ Trợ",
+      "desc": "Hỏi chúng tôi bất cứ điều gì. Chúng tôi ở đây để giúp đỡ."
+    },
+    "tabs": {
+      "faqs": "Câu Hỏi Thường Gặp",
+      "contact": "Liên Hệ Hỗ Trợ"
+    },
+    "search": {
+      "placeholder": "Tìm kiếm từ khóa...",
+      "all": "Tất cả",
+      "noResults": "Không tìm thấy kết quả",
+      "noResultsDesc": "Chúng tôi không thể tìm thấy bất kỳ bài viết nào khớp với"
+    },
+    "contact": {
+      "liveChat": "Trò Chuyện Trực Tiếp",
+      "liveChatDesc": "Trò chuyện với đội ngũ hỗ trợ theo thời gian thực.",
+      "startChat": "Bắt Đầu Trò Chuyện",
+      "email": "Hỗ Trợ Qua Email",
+      "emailDesc": "Gửi cho chúng tôi một tin nhắn chi tiết.",
+      "phone": "Đường Dây Nóng",
+      "phoneDesc": "Gọi cho chúng tôi nếu có thắc mắc khẩn cấp."
+    },
+    "form": {
+      "title": "Gửi tin nhắn cho chúng tôi",
+      "nameLabel": "Tên Của Bạn",
+      "namePlace": "Thái Việt Lập",
+      "emailLabel": "Địa chỉ Email",
+      "emailPlace": "lap@gmail.com",
+      "subjectLabel": "Chủ Đề",
+      "sub1": "Câu Hỏi Chung",
+      "sub2": "Vấn Đề Kỹ Thuật",
+      "sub3": "Câu Hỏi Thanh Toán",
+      "sub4": "Yêu Cầu Tính Năng",
+      "messageLabel": "Tin Nhắn",
+      "messagePlace": "Mô tả chi tiết vấn đề của bạn...",
+      "send": "Gửi Tin Nhắn"
+    },
+    "faqs": [
+      {
+        "category": "Kỹ thuật",
+        "question": "Chẩn đoán của AI chính xác đến mức nào?",
+        "answer": "Mô hình AI của chúng tôi được đào tạo trên hàng triệu hồ sơ lâm sàng và tài liệu y khoa đã được xác thực. Tuy nhiên, nó là một công cụ hỗ trợ và không thay thế cho lời khuyên y tế chuyên nghiệp. Luôn tham khảo ý kiến bác sĩ đối với các tình trạng nghiêm trọng."
+      },
+      {
+        "category": "Quyền riêng tư",
+        "question": "Dữ liệu sức khỏe cá nhân của tôi có an toàn không?",
+        "answer": "Có. Chúng tôi sử dụng mã hóa đầu cuối cho tất cả các cuộc trò chuyện và tuân thủ các tiêu chuẩn bảo mật nghiêm ngặt theo chuẩn HIPAA. Dữ liệu của bạn được ẩn danh để xử lý và không bao giờ được chia sẻ với bên thứ ba nếu không có sự đồng ý."
+      },
+      {
+        "category": "Kỹ thuật",
+        "question": "Tôi có thể sử dụng chế độ giọng nói trong môi trường ồn ào không?",
+        "answer": "Mô hình nhận dạng giọng nói của chúng tôi sử dụng công nghệ khử tiếng ồn, nhưng để có độ chính xác cao nhất, chúng tôi khuyên bạn nên nói trong môi trường tương đối yên tĩnh."
+      },
+      {
+        "category": "Tài khoản",
+        "question": "Làm thế nào để đặt lại mật khẩu của tôi?",
+        "answer": "Bạn có thể đặt lại mật khẩu bằng cách đi tới menu Hồ sơ (trên cùng bên phải) và chọn 'Đổi Mật khẩu'."
+      },
+      {
+        "category": "Chung",
+        "question": "Doctor AI có hỗ trợ đa ngôn ngữ không?",
+        "answer": "Hiện tại, Doctor AI hỗ trợ tiếng Anh và tiếng Việt. Chúng tôi đang nỗ lực thêm các ngôn ngữ khác trong bản cập nhật lớn tiếp theo."
+      },
+      {
+        "category": "Tài khoản",
+        "question": "Tôi có thể xuất lịch sử trò chuyện của mình không?",
+        "answer": "Có, bạn có thể xuất lịch sử tư vấn của mình dưới dạng tóm tắt PDF từ cài đặt tài khoản của bạn hoặc trực tiếp từ giao diện trò chuyện."
+      },
+      {
+        "category": "Chung",
+        "question": "Có cung cấp ứng dụng di động không?",
+        "answer": "Có, ứng dụng di động Doctor AI có sẵn cho cả iOS và Android. Bạn có thể tải nó từ App Store hoặc Google Play Store."
+      },
+      {
+        "category": "Thanh toán",
+        "question": "Làm thế nào để tôi báo cáo vấn đề thanh toán?",
+        "answer": "Đối với bất kỳ thắc mắc thanh toán nào, vui lòng chọn 'Câu Hỏi Thanh Toán' trong biểu mẫu liên hệ bên dưới hoặc gửi email trực tiếp cho chúng tôi tại billing@doctorai.com."
+      }
+    ]
+  }
+}

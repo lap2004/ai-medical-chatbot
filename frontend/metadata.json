@@ -1,0 +1,7 @@
+{
+  "name": "HealthAI Companion",
+  "description": "A comprehensive AI Health Assistant providing symptom checks, medical guidance, and voice-enabled triage through a sleek, modern UI.",
+  "requestFramePermissions": [
+    "microphone"
+  ]
+}
