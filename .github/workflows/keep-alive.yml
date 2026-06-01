@@ -1,0 +1,21 @@
+name: Keep Services Alive
+
+on:
+  schedule:
+    # 17:00 UTC tương đương với 12:00 đêm (00:00) theo giờ Việt Nam (UTC+7)
+    - cron: '0 17 * * *'
+  workflow_dispatch:
+
+jobs:
+  ping-services:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Auto Login to Keep Backend & Supabase Alive
+        run: |
+          echo "Bắt đầu đăng nhập tự động vào hệ thống..."
+          curl -X POST \
+            -H "Content-Type: application/json" \
+            -d '{"email":"lap@gmail.com","password":"lap.2274802010473"}' \
+            https://lap2004-kltn-backend.hf.space/login
+          echo ""
+          echo "Đăng nhập hoàn tất!"
