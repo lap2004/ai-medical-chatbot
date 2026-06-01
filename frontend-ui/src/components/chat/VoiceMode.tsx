@@ -324,7 +324,7 @@ return (
         <div className="relative mb-4">
           <div className="w-24 h-24 rounded-full p-[3px] bg-gradient-to-tr from-teal-400 to-blue-500 shadow-md">
             <img
-              src="https:
+              src="https://ui-avatars.com/api/?name=Doctor+AI"
               alt="Doctor AI"
               className="w-full h-full rounded-full object-cover border-4 border-white dark:border-slate-900"
             />

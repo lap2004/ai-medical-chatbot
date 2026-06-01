@@ -200,7 +200,7 @@ const LoginPage: React.FC = () => {
               label="Google"
               icon={
                 <img
-                  src="https:
+                  src="https://www.svgrepo.com/show/475656/google-color.svg"
                   className="w-5 h-5"
                   alt="Google"
                 />

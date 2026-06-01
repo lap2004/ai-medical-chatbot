@@ -80,7 +80,7 @@ const SupportPage: React.FC = () => {
                                 <img
                                     alt={userInfo?.full_name || "User"}
                                     className="w-9 h-9 rounded-full border border-slate-200 dark:border-slate-700 object-cover"
-                                    src="https:
+                                    src="https://ui-avatars.com/api/?name=User"
                                 />
                                 <span className="hidden md:inline text-sm font-bold text-slate-700 dark:text-white truncate max-w-[140px]">
                                     {userInfo?.full_name || "Guest"}

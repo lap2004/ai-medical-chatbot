@@ -150,9 +150,9 @@ const HomePage: React.FC = () => {
                 <div className="p-6 bg-primary text-white flex items-center justify-between">
                   <div className="flex items-center gap-3">
                     <img
-                      src="https:
+                      src="https://ui-avatars.com/api/?name=Doctor+AI"
                       className="w-10 h-10 rounded-full border-2 border-white/20"
-                      alt=""
+                      alt="Doctor AI"
                     />
                     <div>
                       <h4 className="font-bold text-sm">Doctor AI</h4>
@@ -307,11 +307,10 @@ const HomePage: React.FC = () => {
             <div className="relative">
               <div className="rounded-3xl bg-gradient-to-br from-[#0F766E]/80 to-[#0F766E]/40 p-8 shadow-sm">
                 <div className="h-56 rounded-2xl bg-white/10 border border-white/20 flex items-center justify-center overflow-hidden">
-                  {/* Placeholder illustration */}
                   <img
                     className="h-full object-cover"
-                    src="https:
-                    alt=""
+                    src="https://images.unsplash.com/photo-1576091160550-2173ff9e5ee4?auto=format&fit=crop&q=80&w=800"
+                    alt="Medical Innovation"
                   />
                 </div>
               </div>

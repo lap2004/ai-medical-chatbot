@@ -9,7 +9,7 @@ export const WidgetVoice: React.FC = () => {
           <img
             alt="Voice Avatar"
             className="w-full h-full object-cover"
-            src="https:
+            src="https://ui-avatars.com/api/?name=Doctor+AI"
           />
         </div>
       </div>
