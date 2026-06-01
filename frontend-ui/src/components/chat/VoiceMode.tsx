@@ -36,7 +36,7 @@ export const VoiceMode: React.FC = () => {
   const [isSpeaking, setIsSpeaking] = useState(false);
   const [isMicActive, setIsMicActive] = useState(false);
   const [sendBps, setSendBps] = useState(0);
-const WS_URL = `wss:
+  const WS_URL = `wss://${VOICE_DOMAIN || "localhost:8000"}/ws`;
   const wsRef = useRef<WebSocket | null>(null);
   const recognizerRef = useRef<any>(null);
   const audioElRef = useRef<HTMLAudioElement | null>(null);
