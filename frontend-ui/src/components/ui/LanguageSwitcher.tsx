@@ -5,8 +5,8 @@ export const LanguageSwitcher: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
   const currentLang = i18n.language?.startsWith("vi") ? "vi" : "en";
-  const vnFlag = "https:
-  const usFlag = "https:
+  const vnFlag = "https://flagcdn.com/w40/vn.png";
+  const usFlag = "https://flagcdn.com/w40/us.png";
   const currentFlag = currentLang === "vi" ? vnFlag : usFlag;
   const toggleLanguage = (lang: string) => {
     i18n.changeLanguage(lang);

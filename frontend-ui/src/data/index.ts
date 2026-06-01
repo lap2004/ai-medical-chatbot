@@ -8,7 +8,7 @@ export const MOCK_USERS: UserRow[] = [
     status: "Active",
     createdAt: "Oct 24, 2023",
     avatarUrl:
-      "https:
+      "https://ui-avatars.com/api/?name=Sarah+Jenkins",
   },
   {
     id: "#4830",
@@ -18,7 +18,7 @@ export const MOCK_USERS: UserRow[] = [
     status: "Active",
     createdAt: "Nov 12, 2023",
     avatarUrl:
-      "https:
+      "https://ui-avatars.com/api/?name=David+Chen",
   },
   {
     id: "#4831",
@@ -28,7 +28,7 @@ export const MOCK_USERS: UserRow[] = [
     status: "Inactive",
     createdAt: "Dec 01, 2023",
     avatarUrl:
-      "https:
+      "https://ui-avatars.com/api/?name=Elena+Rodriguez",
   },
   ...Array.from({ length: 22 }).map((_, i) => ({
     id: `#48${32 + i}`,
