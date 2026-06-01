@@ -44,7 +44,7 @@ export const uploadAvatar = async (file: File): Promise<{ avatar_url: string }> 
   const token = Cookies.get("access_token");
   const formData = new FormData();
   formData.append("file", file);
-  const base = import.meta.env.VITE_API_BACKEND_DOMAIN || "http:
+  const base = import.meta.env.VITE_API_BACKEND_DOMAIN || "http://localhost:8000";
   const res = await fetch(`${base}/upload-avatar`, {
     method: "POST",
     headers: {
